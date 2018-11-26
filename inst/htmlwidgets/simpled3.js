@@ -1,6 +1,6 @@
 HTMLWidgets.widget({
 
-  name: 'IMPosterior',
+  name: 'simpled3',
 
   type: 'output',
 
