@@ -16,8 +16,8 @@ HTMLWidgets.widget({
           var data = HTMLWidgets.dataframeToD3(x.data)
 
           var margin = ({top:10, right:10, bottom:40, left:60});
-          var Gwidth = width - margin.left - margin.right
-          var Gheight = height - margin.top - margin.bottom
+          var width = width - margin.left - margin.right
+          var height = height - margin.top - margin.bottom
           var barPadding = 0.2;
           var colors = ['#bd6916', '#166abd ']
 
@@ -26,6 +26,8 @@ HTMLWidgets.widget({
           var cRadius = 7;
 
           var svg = d3.select('el').append('svg')
+            .attr("width", width + margin.left + margin.right)
+            .attr(("height", height + margin.top + margin.bottom))
 
           var topG = svg.append('g')
               .attr('transform', 'translate(' + margin.left + ',' + margin.top +')')
@@ -237,11 +239,8 @@ HTMLWidgets.widget({
               .style("text-anchor", "middle");
 
 
-
-
           }
 
-          update(data)
 
       },
 
