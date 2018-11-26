@@ -16,6 +16,7 @@ HTMLWidgets.widget({
       renderValue: function(x) {
 
         if (!initialized){
+          initialized = true;
           var svg = d3.select(el).append('svg')
             .attr("width", width)
             .attr("height", height);
