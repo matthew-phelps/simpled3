@@ -8,7 +8,11 @@ HTMLWidgets.widget({
 
     // TODO: define shared variables for this instance
 
-    var chart = null
+    var chart = null;
+    var svg = d3.select('el').append('svg')
+      .attr("width", width)
+      .attr("height", height);
+
 
     return {
 
@@ -25,9 +29,7 @@ HTMLWidgets.widget({
           var tShort = 200;
           var cRadius = 7;
 
-          var svg = d3.select('el').append('svg')
-            .attr("width", width + margin.left + margin.right)
-            .attr(("height", height + margin.top + margin.bottom))
+
 
           var topG = svg.append('g')
               .attr('transform', 'translate(' + margin.left + ',' + margin.top +')')
