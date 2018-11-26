@@ -13,7 +13,7 @@ HTMLWidgets.widget({
     return {
 
       renderValue: function(x) {
-          var data = x.data
+          var data = HTMLWidgets.dataframeToD3(x.data)
 
           var margin = ({top:10, right:10, bottom:40, left:60});
           var Gwidth = width - margin.left - margin.right
