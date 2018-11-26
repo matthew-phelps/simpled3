@@ -8,15 +8,19 @@ HTMLWidgets.widget({
 
     // TODO: define shared variables for this instance
 
-    var chart = null;
-    var svg = d3.select(el).append('svg')
-      .attr("width", width)
-      .attr("height", height);
+    var initialized = false;
 
 
     return {
 
       renderValue: function(x) {
+
+        if (!initialized){
+          var svg = d3.select(el).append('svg')
+            .attr("width", width)
+            .attr("height", height);
+
+
           var data = HTMLWidgets.dataframeToD3(x.data)
 
           var margin = ({top:10, right:10, bottom:40, left:60});
@@ -36,12 +40,12 @@ HTMLWidgets.widget({
 
 
           // Initial scale
-
-          // Scale between the keys (i.e. b/w age groups, edu, etc`)
           var scaleX = d3.scaleLinear()
-            .domain(d3.extent(data, d => d.year))
-            .range([0, Gwidth])
-
+          .domain(d3.extent(data, d => d.year))
+          .range([0, width])
+          var scaleY = d3.scaleLinear()
+            .domain([0, maxY])
+            .range([height, 0]);
 
           var scaleColors = d3.scaleOrdinal()
               .range(colors)
@@ -55,21 +59,21 @@ HTMLWidgets.widget({
 
           xAxis.call(d3.axisBottom(scaleX)
                         .tickFormat(d3.format("")))
-              .attr("transform", 'translate(' + 0 + "," + Gheight + ')')
+              .attr("transform", 'translate(' + 0 + "," + height + ')')
 
 
 
           // Axis titles
           topG.append("text")
-            .attr("x", Gwidth / 2)
-            .attr("y", Gheight + margin.bottom)
+            .attr("x", width / 2)
+            .attr("y", height + margin.bottom)
             .attr("class", "x axisTitle")
             .text("Year")
             .style("text-anchor", "middle");
 
           topG.append("text")
             .attr("transform", "rotate(-90)")
-            .attr("x", 0 - Gheight / 2)
+            .attr("x", 0 - height / 2)
             .attr("y", 0 - margin.left + 20)
             .attr("class", "y axisTitle")
             .text("Total")
@@ -81,13 +85,7 @@ HTMLWidgets.widget({
 
 
           // Scales used in updates
-          var scaleY = d3.scaleLinear()
-            .domain([0, maxY])
-            .range([Gheight, 0]);
 
-          var scaleX = d3.scaleLinear()
-          .domain(d3.extent(data, d => d.year))
-          .range([0, Gwidth])
 
           // Line generators
           var valueLine1 = d3.line()
@@ -140,7 +138,7 @@ HTMLWidgets.widget({
               .attr("fill", colors[1]);
 
 
-          var div = svg.append("rect")
+          var div = svg.append("div")
               .attr('class', 'tooltip')
               .style('opacity', 0)
               .attr("position", "absolute")
@@ -153,26 +151,22 @@ HTMLWidgets.widget({
               /*.attr("border", "0px")
               .attr("border-radius"," 8px")
           */
-
-            // UPDATE FUNCTION - will be called by r2d3.onRender()
-          function update(newData) {
+        }
+          // Only run on update data
 
             // Reshape data
             var maxY = d3.max(newData, d=> Math.max(d.female, d.male))
             var varName = newData[0].variable
 
-            // Tooltip
-
-
 
             // Scales used in updates
             var scaleY = d3.scaleLinear()
               .domain([0, maxY])
-              .range([Gheight, 0]);
+              .range([height, 0]);
 
             var scaleX = d3.scaleLinear()
             .domain(d3.extent(newData, d => d.year))
-            .range([0, Gwidth])
+            .range([0, width])
 
             // Line generators
             var valueLine1 = d3.line()
@@ -241,7 +235,7 @@ HTMLWidgets.widget({
               .style("text-anchor", "middle");
 
 
-          }
+
 
 
       },
