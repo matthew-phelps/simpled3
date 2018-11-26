@@ -8,339 +8,243 @@ HTMLWidgets.widget({
 
     // TODO: define shared variables for this instance
 
+    var chart = null;
+    var svg = d3.select(el).append('svg')
+      .attr("width", width)
+      .attr("height", height);
+
+
     return {
 
-      renderValue: function(opts) {
+      renderValue: function(x) {
+          var data = HTMLWidgets.dataframeToD3(x.data)
 
-        //transition
-        var transDuration = 2500;
+          var margin = ({top:10, right:10, bottom:40, left:60});
+          var width = width - margin.left - margin.right
+          var height = height - margin.top - margin.bottom
+          var barPadding = 0.2;
+          var colors = ['#bd6916', '#166abd ']
 
-        var dataDiscrete = opts.bars.map((b, i) => {
-            b.y = Number(b.y);
-            b.desc = opts.text[i];
-            return b;
-        });
+          var tLong = 450;
+          var tShort = 200;
+          var cRadius = 7;
 
-        var distParams = {
-            min: d3.min(opts.data, d => d.x),
-            max: d3.max(opts.data, d => d.x)
-        };
 
-        distParams.cuts = [-opts.MME, opts.MME, distParams.max];
 
-        opts.data = opts.data.sort((a,b) => a.x - b.x);
+          var topG = svg.append('g')
+              .attr('transform', 'translate(' + margin.left + ',' + margin.top +')')
 
-        var dataContinuousGroups = [];
-        distParams.cuts.forEach((c, i) => {
-            let data = opts.data.filter(d => {
-                if (i === 0) {
-                    return d.x < c;
-                } else if (i === distParams.cuts.length - 1) {
-                    return d.x > distParams.cuts[i - 1];
-                } else {
-                    return d.x < c && d.x > distParams.cuts[i - 1];
-                }
-            });
 
-            data.unshift({x:data[0].x, y:0});
-            data.push({x:data[data.length - 1].x, y:0});
+          // Initial scale
 
-            dataContinuousGroups.push({
-                color: opts.colors[i],
-                data: data
-            });
-        });
+          // Scale between the keys (i.e. b/w age groups, edu, etc`)
+          var scaleX = d3.scaleLinear()
+            .domain(d3.extent(data, d => d.year))
+            .range([0, Gwidth])
 
-        var margin = {
-                top: 50,
-                right: 20,
-                bottom: 80,
-                left: 70
-            },
-            dims = {
-                width: width - margin.left - margin.right,
-                height: height - margin.top - margin.bottom
-            };
 
-        var xContinuous = d3.scaleLinear()
-            .domain([distParams.min - 1, distParams.max + 1])
-            .range([0, dims.width]);
+          var scaleColors = d3.scaleOrdinal()
+              .range(colors)
 
-        var xDiscrete = d3.scaleBand()
-            .domain(dataDiscrete.map(function(d) { return d.x; }))
-            .rangeRound([0, dims.width]).padding(0.1);
-
-        var y = d3.scaleLinear()
-            .domain([0, 1])
-            .range([dims.height, 0]);
-
-        var svg = d3.select(el).append("svg")
-            .attr("width", dims.width + margin.left + margin.right)
-            .attr("height", dims.height + margin.top + margin.bottom);
-
-        var g = svg
-            .append("g")
-            .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
-
-        var xAxis = d3.axisBottom()
-            .scale(xDiscrete);
-
-        var yAxis = d3.axisLeft()
-            .scale(y)
-            .ticks(10)
-            .tickFormat(d3.format(".0%"));
-
-        var yLabel = g.append("text")
-            .attr("class", "y-axis-label")
-            .attr("transform", "rotate(-90)")
-            .attr("y", -52)
-            .attr("x", -160)
-            .attr("dy", ".71em")
-            .style("text-anchor", "end")
-            .style("font-size", 14 + "px")
-            .text("Probability");
-
-        g.append("g")
-            .attr("class", "x axis")
-            .attr("transform", "translate(0," + dims.height + ")")
-            .call(xAxis);
-
-        g.append("g")
+          // Initial axis
+          var yAxis = topG.append('g')
             .attr("class", "y axis")
-            .call(yAxis);
 
-        var areas = g.selectAll(".area")
-            .data(dataDiscrete)
-            .enter().append("path")
-                .attr("class", "area")
-                .style("fill", function(d) { return d.color; })
-                .attr("d", function(d, i) {
-                    let numPts = dataContinuousGroups[i].data.length - 2;
-                    var path = d3.path();
-                    path.moveTo(xDiscrete(d.x), y(0));
-                    for (j=0; j<numPts; j++) {
-                        path.lineTo(xDiscrete(d.x) + j*xDiscrete.bandwidth()/(numPts-1), y(d.y));
-                    }
-                    path.lineTo(xDiscrete(d.x) + xDiscrete.bandwidth(), y(0));
-                    return path.toString();
-                });
+          var xAxis = topG.append('g')
+              .attr("class", "x axis")
 
-        var tooltip = d3.tip()
-            .attr('class', 'd3-tip chart-data-tip')
-            .offset([30, 0])
-            .direction('s')
-            .html(function(d, i) {
-                return "<span>" + dataDiscrete[i].desc + "</span>";
-            });
-
-        g.call(tooltip);
-
-        areas
-            .on('mouseover', tooltip.show)
-            .on('mouseout', tooltip.hide);
-
-        var thresholdLine = g.append("line")
-            .attr("stroke", "black")
-            .style("stroke-width", "1.5px")
-            .style("stroke-dasharray", "5,5")
-            .style("opacity", 1)
-            .attr("x1", 0)
-            .attr("y1", y(opts.threshold))
-            .attr("x2", dims.width)
-            .attr("y2", y(opts.threshold));
+          xAxis.call(d3.axisBottom(scaleX)
+                        .tickFormat(d3.format("")))
+              .attr("transform", 'translate(' + 0 + "," + Gheight + ')')
 
 
-        var updateXAxis = function(type, duration) {
-            if (type === "continuous") {
-                xAxis.scale(xContinuous);
-            } else {
-                xAxis.scale(xDiscrete);
-            }
-            d3.select(".x").transition().duration(duration).call(xAxis);
-        };
 
-        var updateYAxis = function(data, duration) {
-            var extent = d3.extent(data, function(d) {
-                return d.y;
-            });
-            extent[0] = 0;
-            extent[1] = extent[1] + 0.2*(extent[1] - extent[0]);
-            y.domain(extent);
-            d3.select(".y").transition().duration(duration).call(yAxis);
-        };
+          // Axis titles
+          topG.append("text")
+            .attr("x", Gwidth / 2)
+            .attr("y", Gheight + margin.bottom)
+            .attr("class", "x axisTitle")
+            .text("Year")
+            .style("text-anchor", "middle");
 
-        var toggle = function(to, duration) {
-            if (to === "distribution") {
-                updateYAxis(dataContinuousGroups[0].data.concat(dataContinuousGroups[1].data).concat(dataContinuousGroups[2].data), 0);
-                updateXAxis("continuous", duration);
+          topG.append("text")
+            .attr("transform", "rotate(-90)")
+            .attr("x", 0 - Gheight / 2)
+            .attr("y", 0 - margin.left + 20)
+            .attr("class", "y axisTitle")
+            .text("Total")
 
-                areas
-                    .data(dataContinuousGroups)
-                    .transition()
-                    .duration(duration)
-                        .attr("d", function(d) {
-                            var gen = d3.line()
-                                .x(function(p) {
-                                    return xContinuous(p.x);
-                                })
-                                .y(function(p) {
-                                    return y(p.y);
-                                });
-                            return gen(d.data);
-                        });
+          var chartArea = topG.append("g");
 
-                thresholdLine
-                    .style("opacity", 0);
-
-                g.select(".y.axis")
-                    .style("opacity", 0);
-
-                g.select(".y-axis-label")
-                    .style("opacity", 0);
-
-            } else {
-                y.domain([0, 1]);
-                d3.select(".y").transition().duration(duration).call(yAxis);
-
-                updateXAxis("discrete", duration);
-
-                areas
-                    .data(dataDiscrete)
-                    .transition()
-                    .duration(duration)
-                        .attr("d", function(d, i) {
-                            let numPts = dataContinuousGroups[i].data.length - 2;
-                            var path = d3.path();
-                            path.moveTo(xDiscrete(d.x), y(0));
-                            for (j=0; j<numPts; j++) {
-                                path.lineTo(xDiscrete(d.x) + j*xDiscrete.bandwidth()/(numPts-1), y(d.y));
-                            }
-                            path.lineTo(xDiscrete(d.x) + xDiscrete.bandwidth(), y(0));
-                            return path.toString();
-                        });
-
-                thresholdLine
-                    .transition()
-                    .duration(0)
-                    .delay(duration)
-                        .style("opacity", 1)
-                        .attr("y1", y(opts.threshold))
-                        .attr("y2", y(opts.threshold));
-
-                g.select(".y.axis")
-                    .transition()
-                    .duration(0)
-                    .delay(duration)
-                        .style("opacity", 1);
-
-                g.select(".y-axis-label")
-                    .transition()
-                    .duration(0)
-                    .delay(duration)
-                        .style("opacity", 1);
-            }
-        };
+          var maxY = d3.max(data, d=> Math.max(d.female, d.male))
+          grouping1Names = data.map(d => d.year);
 
 
-        // Add buttons
+          // Scales used in updates
+          var scaleY = d3.scaleLinear()
+            .domain([0, maxY])
+            .range([Gheight, 0]);
 
-        //container for all buttons
-        var allButtons = svg.append("g")
-          .attr("id", "allButtons");
+          var scaleX = d3.scaleLinear()
+          .domain(d3.extent(data, d => d.year))
+          .range([0, Gwidth])
 
-        //fontawesome button labels
-        var labels = ["B", "D"];
+          // Line generators
+          var valueLine1 = d3.line()
+          .x(d => scaleX(d.year))
+          .y(d => scaleY(d.female))
 
-        //colors for different button states
-        var defaultColor = "#E0E0E0";
-        var hoverColor = "#808080";
-        var pressedColor = "#000000";
+          var valueLine2 = d3.line()
+          .x(d => scaleX(d.year))
+          .y(d => scaleY(d.male))
 
-        //groups for each button (which will hold a rect and text)
-        var buttonGroups = allButtons.selectAll("g.button")
-          .data(labels)
-          .enter()
-          .append("g")
-          .attr("class", "button")
-          .style("cursor", "pointer")
-          .on("click", function(d, i) {
-            updateButtonColors(d3.select(this), d3.select(this.parentNode));
-            d3.select("#numberToggle").text(i + 1);
-            if (d === "D") {
-                toggle("distribution", transDuration);
-            } else {
-                toggle("discrete", transDuration);
-            }
+          // Add initial line paths
+           var line1 = chartArea
+            .append("path")
+            .datum(data) // use dataum() because appending to single svg element
+            .attr("d", valueLine1)
+            .attr("fill", "none")
+            .attr("stroke", colors[0])
+            .attr("stroke-width", 3)
+            .attr("class", "line female");
 
-          })
-          .on("mouseover", function() {
-            if (d3.select(this).select("rect").attr("fill") != pressedColor) {
-              d3.select(this)
-                .select("rect")
-                .attr("fill", hoverColor);
-            }
-          })
-          .on("mouseout", function() {
-            if (d3.select(this).select("rect").attr("fill") != pressedColor) {
-              d3.select(this)
-                .select("rect")
-                .attr("fill", defaultColor);
-            }
-          });
+          var line2 = chartArea
+            .append("path")
+            .datum(data) // use dataum() because appending to single svg element
+            .attr("d", valueLine2)
+            .attr("fill", "none")
+            .attr("stroke", colors[1])
+            .attr("stroke-width", "3")
+            .attr("class", "line male");
 
-        var bWidth = 40; //button width
-        var bHeight = 25; //button height
-        var bSpace = 10; //space between buttons
-        var x0 = 20; //x offset
-        var y0 = 10; //y offset
+          // Add initial circles
 
-        //adding a rect to each toggle button group
-        //rx and ry give the rect rounded corner
-        buttonGroups.append("rect")
-          .attr("class", "buttonRect")
-          .attr("width", bWidth)
-          .attr("height", bHeight)
-          .attr("x", function(d, i) {
-            return x0 + (bWidth + bSpace) * i;
-          })
-          .attr("y", y0)
-          .attr("rx", 5) //rx and ry give the buttons rounded corners
-          .attr("ry", 5)
-          .attr("fill", defaultColor);
+          var circlesFemale = chartArea
+            .selectAll(".dot")
+              .data(data)
+              .enter().append("circle")
+              .attr("class", "dotfemale")
+              .attr("cx", d => scaleX(d.year))
+              .attr("cy", d => scaleY(d.female))
+              .attr("r", cRadius)
+              .attr("fill", colors[0]);
 
-        //adding text to each toggle button group, centered
-        //within the toggle button rect
-        buttonGroups.append("text")
-          .attr("class", "buttonText")
-          .attr("x", function(d, i) {
-            return x0 + (bWidth + bSpace) * i + bWidth / 2;
-          })
-          .attr("y", y0 + bHeight / 2)
-          .attr("text-anchor", "middle")
-          .attr("dominant-baseline", "central")
-          .attr("fill", "white")
-          .text(function(d) {
-            return d;
-          });
+          var circlesMale = chartArea
+            .selectAll(".dot")
+              .data(data)
+              .enter().append("circle")
+              .attr("class", "dotmale")
+              .attr("cx", d => scaleX(d.year))
+              .attr("cy", d => scaleY(d.male))
+              .attr("r", cRadius)
+              .attr("fill", colors[1]);
 
-        function updateButtonColors(button, parent) {
-          parent.selectAll("rect")
-            .attr("fill", defaultColor);
 
-          button.select("rect")
-            .attr("fill", pressedColor);
+          var div = svg.append("rect")
+              .attr('class', 'tooltip')
+              .style('opacity', 0)
+              .attr("position", "absolute")
+              .attr("text-align", "center")
+              .attr("width"," 60px")
+              .attr("height", "28px")
+              /*.attr("padding", "2px")				*/
+              /*.attr("font", "12px sans-serif")*/
+              .attr("fill", "lightsteelblue")
+              /*.attr("border", "0px")
+              .attr("border-radius"," 8px")
+          */
 
-        }
+            // UPDATE FUNCTION - will be called by r2d3.onRender()
+          function update(newData) {
 
-        toggle("distribution", 0);
+            // Reshape data
+            var maxY = d3.max(newData, d=> Math.max(d.female, d.male))
+            var varName = newData[0].variable
 
-        setTimeout(() => {
-            toggle("discrete", transDuration);
-        }, 1000);
+            // Tooltip
+
+
+
+            // Scales used in updates
+            var scaleY = d3.scaleLinear()
+              .domain([0, maxY])
+              .range([Gheight, 0]);
+
+            var scaleX = d3.scaleLinear()
+            .domain(d3.extent(newData, d => d.year))
+            .range([0, Gwidth])
+
+            // Line generators
+            var valueLine1 = d3.line()
+            .x(d => scaleX(d.year))
+            .y(d => scaleY(d.female))
+
+            var valueLine2 = d3.line()
+            .x(d => scaleX(d.year))
+            .y(d => scaleY(d.male))
+
+             // Create the paths for each series of data
+            chartArea
+              .select(".female")
+              .transition()
+              .duration(tLong)
+              .attr("d", valueLine1(newData))
+
+            chartArea
+              .select(".male")
+              .transition()
+              .duration(tLong)
+              .attr("d", valueLine2(newData))
+
+            // Update circles
+            var dotFemale = chartArea.selectAll(".dotfemale")
+              .data(newData)
+
+              dotFemale.transition()
+              .duration(tLong)
+              .attr("cx", d => scaleX(d.year))
+              .attr("cy", d => scaleY(d.female))
+
+              dotFemale.on("mouseover", function(d){
+                                    div.transition()
+                                    .duration(tShort)
+                                    .style('opacity', .9);
+                                    div.html(d)
+                                      .style("left", d3.event.pageX + "px")
+                                      .style("top", (d3.event.pageY - 28) + "px");
+              })
+
+
+            chartArea.selectAll(".dotmale")
+              .data(newData)
+              .transition()
+              .duration(tLong)
+              .attr("cx", d => scaleX(d.year))
+              .attr("cy", d => scaleY(d.male))
+
+
+            // Udpate axes
+            yAxis.transition()
+              .duration(tLong)
+              .call(d3.axisLeft(scaleY))
+
+            xAxis.transition()
+              .duration(tLong)
+              .call(d3.axisBottom(scaleX)
+                      .tickFormat(d3.format("")))
+
+            // Update axis titles
+            topG.select(".y.axisTitle")
+              .transition()
+              .duration(tLong)
+              .text(varName)
+              .style("text-anchor", "middle");
+
+
+          }
+
 
       },
-
-
 
       resize: function(width, height) {
 
