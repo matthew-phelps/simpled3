@@ -13,7 +13,7 @@ HTMLWidgets.widget({
     return {
 
       renderValue: function(x) {
-        console.log(x)
+          var data = x.data
 
           var margin = ({top:10, right:10, bottom:40, left:60});
           var Gwidth = width - margin.left - margin.right
@@ -35,7 +35,7 @@ HTMLWidgets.widget({
 
           // Scale between the keys (i.e. b/w age groups, edu, etc`)
           var scaleX = d3.scaleLinear()
-            .domain(d3.extent(x.data, d => d.year))
+            .domain(d3.extent(data, d => d.year))
             .range([0, Gwidth])
 
 
@@ -240,6 +240,8 @@ HTMLWidgets.widget({
 
 
           }
+
+          update(data)
 
       },
 
