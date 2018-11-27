@@ -5,11 +5,17 @@
 #' @import htmlwidgets
 #'
 #' @export
-simpleD3Bar <- function(message, width = NULL, height = NULL, elementId = NULL) {
+simpleD3Bar <- function(data, colors = NULL, width = NULL, height = NULL, elementId = NULL) {
+
+  # List of settings to pass to d3
+  settings = list(
+    colors = colors
+  )
 
   # forward options using x
   x = list(
-    message = message
+    data = data,
+    setting = settings
   )
 
   # create widget

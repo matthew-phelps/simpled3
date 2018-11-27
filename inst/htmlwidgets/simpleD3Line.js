@@ -87,7 +87,7 @@ HTMLWidgets.widget({
 
 
         // Mouseover area for each circle should extend halfway to next circle on x-axis. This will cause problems for nearby male/female circles
-        var mRadius = scaleX(d3.max(data, d=> d.year)) / data.length;
+        var ius = scaleX(d3.max(data, d=> d.year)) / data.length;
         // Line generators
         var valueLine1 = d3.line()
         .x(d => scaleX(d.year))
@@ -141,7 +141,7 @@ HTMLWidgets.widget({
               .attr("fill", colors[1]);
 
           // Mouseover circles
-          var circlesFemale = chartArea
+         /* var circlesFemale = chartArea
             .selectAll(".dot")
               .data(data)
               .enter().append("circle")
@@ -160,7 +160,7 @@ HTMLWidgets.widget({
               .attr("cy", d => scaleY(d.male))
               .attr("r", mRadius)
               .attr("fill", colors[1]);
-
+*/
         }
 
 
