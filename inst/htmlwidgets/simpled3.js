@@ -65,6 +65,7 @@ HTMLWidgets.widget({
 
           xAxis.call(d3.axisBottom(scaleX)
               .tickFormat(d3.format("")))
+              .attr("transform", "translate(" + 0 + "," + height + ')')
 
 
 
