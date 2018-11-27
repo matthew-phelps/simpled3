@@ -162,7 +162,7 @@ HTMLWidgets.widget({
           // Only run on update data
 
             // Reshape data
-            var newdata = HTMLWidgets.dataframeToD3(x.data)
+            var newData = HTMLWidgets.dataframeToD3(x.data)
 
 
             var maxY = d3.max(newData, d=> Math.max(d.female, d.male))
