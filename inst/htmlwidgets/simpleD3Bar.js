@@ -150,8 +150,8 @@ HTMLWidgets.widget({
                 .duration(tShort)
                 .style('opacity', 0.9);
                 div.html(
-                  "<b>" + "År " + "</b>" + d.year + "<br/><br/>" +
-                  varName + " " + "<b>" + d.female + "</br>")
+                  "<b>" + "År " + "</b>" + d.key + "<br/><br/>" +
+                  varName + " " + "<b>" + d.values[0].value+ "</br>")
                   .style("left", d3.mouse(this)[0] + "px")
                   .style("top", (d3.mouse(this)[1] + 28) + "px");
             })
