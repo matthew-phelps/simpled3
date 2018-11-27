@@ -1,6 +1,6 @@
 HTMLWidgets.widget({
 
-  name: 'simpled3',
+  name: 'simpleD3Line',
 
   type: 'output',
 
