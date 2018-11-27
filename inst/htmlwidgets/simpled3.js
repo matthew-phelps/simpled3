@@ -175,8 +175,8 @@ HTMLWidgets.widget({
                                 .duration(tShort)
                                 .style('opacity', 0.9);
                                 div.html(d)
-                                  .style("left", d3.event.pageX + "px")
-                                  .style("top", (d3.event.pageY + 28) + "px");
+                                  .style("left", d3.mouse(this)[0] + "px")
+                                  .style("top", (d3.mouse(this)[1] + 28) + "px");
           });
 
 
