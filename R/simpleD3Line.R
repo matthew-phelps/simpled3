@@ -22,7 +22,7 @@ simpleD3Line <- function(data, colors = NULL, width = NULL, height = NULL, eleme
 
   # create widget
   htmlwidgets::createWidget(
-    name = 'simpled3',
+    name = 'simpleD3Line',
     x,
     width = width,
     height = height,
@@ -49,12 +49,12 @@ simpleD3Line <- function(data, colors = NULL, width = NULL, height = NULL, eleme
 #'
 #' @export
 simpleD3LineOutput <- function(outputId, width = '100%', height = '400px'){
-  htmlwidgets::shinyWidgetOutput(outputId, 'simpled3', width, height, package = 'simpled3')
+  htmlwidgets::shinyWidgetOutput(outputId, 'simpleD3Line', width, height, package = 'simpled3')
 }
 
 #' @rdname simpled3-shiny
 #' @export
 renderSimpleD3Line <- function(expr, env = parent.frame(), quoted = FALSE) {
   if (!quoted) { expr <- substitute(expr) } # force quoted
-  htmlwidgets::shinyRenderWidget(expr, simpled3Output, env, quoted = TRUE)
+  htmlwidgets::shinyRenderWidget(expr, simpleD3LineOutput, env, quoted = TRUE)
 }
