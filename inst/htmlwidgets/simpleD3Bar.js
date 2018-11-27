@@ -93,6 +93,9 @@ HTMLWidgets.widget({
           .domain(grouping2Names)
           .rangeRound([0, scaleX.bandwidth()]);
 
+        var scaleColors = d3.scaleOrdinal()
+          .range(colors);
+
 
          // Perform the data joins
          var barGroupWithData = chartArea
@@ -147,7 +150,8 @@ HTMLWidgets.widget({
 
           xAxis.transition()
             .duration(tLong)
-            .call(d3.axisBottom(scaleX));
+            .call(d3.axisBottom(scaleX))
+            .attr("transform", 'translate(' + 0 + "," + height + ')');
 
 
           topG.select(".y.axisTitle")
