@@ -245,6 +245,7 @@ HTMLWidgets.widget({
 
       resize: function(width, height) {
 
+        console.log(width)
         // TODO: code to re-render the widget with a new size
 
       }
