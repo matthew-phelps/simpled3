@@ -24,7 +24,8 @@ HTMLWidgets.widget({
     var scaleColors = d3.scaleOrdinal()
         .range(colors);
 
-    var svg = d3.select(el).append('svg')
+    var svgContainer = d3.select(el);
+    var svg = svgContainer.append('svg')
       .attr("width", width + margin.left + margin.right)
       .attr("height", height + margin.top + margin.bottom);
 
@@ -58,7 +59,7 @@ HTMLWidgets.widget({
 
     // Tooltip
 
-    var div = topG.append("div")
+    var div = svgContainer.append("div")
         .attr('class', 'tooltip')
         .style('opacity', 0)
         .attr("position", "absolute")
