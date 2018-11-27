@@ -24,15 +24,6 @@ HTMLWidgets.widget({
     var scaleColors = d3.scaleOrdinal()
         .range(colors);
 
-    // Initial axis
-    var yAxis = topG.append('g')
-      .attr("class", "y axis");
-
-    var xAxis = topG.append('g')
-        .attr("class", "x axis");
-
-
-
     var svg = d3.select(el).append('svg')
       .attr("width", width + margin.left + margin.right)
       .attr("height", height + margin.top + margin.bottom);
@@ -41,6 +32,14 @@ HTMLWidgets.widget({
       .attr('transform', 'translate(' + margin.left + ',' + margin.top +')');
 
     var chartArea = topG.append("g");
+
+    // Initial axis
+    var yAxis = topG.append('g')
+      .attr("class", "y axis");
+
+    var xAxis = topG.append('g')
+        .attr("class", "x axis");
+
 
     // Axis titles
     topG.append("text")
@@ -213,7 +212,7 @@ HTMLWidgets.widget({
 
       resize: function(width, height) {
 
-        console.log(width)
+        console.log(width);
         // TODO: code to re-render the widget with a new size
 
       }
