@@ -10,8 +10,8 @@ HTMLWidgets.widget({
 
     var initialized = false;
     var margin = ({top:10, right:10, bottom:40, left:60});
-    var width = width - margin.left - margin.right
-    var height = height - margin.top - margin.bottom
+    var width = width + margin.left + margin.right
+    var height = height + margin.top + margin.bottom
     var svg = d3.select(el).append('svg')
       .attr("width", width)
       .attr("height", height);
@@ -47,6 +47,8 @@ HTMLWidgets.widget({
           var scaleX = d3.scaleLinear()
           .domain(d3.extent(data, d => d.year))
           .range([0, width])
+
+          var maxY = d3.max(data, d=> Math.max(d.female, d.male))
           var scaleY = d3.scaleLinear()
             .domain([0, maxY])
             .range([height, 0]);
@@ -84,7 +86,7 @@ HTMLWidgets.widget({
 
           var chartArea = topG.append("g");
 
-          var maxY = d3.max(data, d=> Math.max(d.female, d.male))
+
           grouping1Names = data.map(d => d.year);
 
 
