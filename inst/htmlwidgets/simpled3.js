@@ -14,7 +14,7 @@ HTMLWidgets.widget({
     var height = height -margin.top - margin.bottom
     var svg = d3.select(el).append('svg')
       .attr("width", width + margin.left + margin.right)
-      .attr("height", height + margin.top + mmargin.bottom);
+      .attr("height", height + margin.top + margin.bottom);
 
 
     return {
