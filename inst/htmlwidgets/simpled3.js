@@ -175,7 +175,8 @@ HTMLWidgets.widget({
                 div.transition()
                 .duration(tShort)
                 .style('opacity', 0.9);
-                div.html(d)
+                div.html(
+                  "Year " + d.year + "<br/>" + d.female)
                   .style("left", d3.mouse(this)[0] + "px")
                   .style("top", (d3.mouse(this)[1] + 28) + "px");
           })
@@ -183,7 +184,7 @@ HTMLWidgets.widget({
               div.transition()
               .duration(tShort)
               .style('opacity', 0);
-            })
+            });
 
 
 
