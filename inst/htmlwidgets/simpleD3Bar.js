@@ -69,9 +69,9 @@ HTMLWidgets.widget({
             delete data[i][varName];
             delete data[i][groupingName];
 
-        var newData = d3.nest()
+        var newData= d3.nest()
           .key(d => d.grouping)
-          .entries(inData);
+          .entries(data);
 
 
         var maxY = d3.max(newData, d => d3.max(d.values, k => k.value));
