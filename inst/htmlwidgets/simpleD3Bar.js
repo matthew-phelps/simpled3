@@ -68,6 +68,7 @@ HTMLWidgets.widget({
             data[i].value = data[i][varName];
             delete data[i][varName];
             delete data[i][groupingName];
+            }
 
         var newData= d3.nest()
           .key(d => d.grouping)
