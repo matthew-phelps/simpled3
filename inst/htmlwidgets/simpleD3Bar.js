@@ -168,10 +168,6 @@ HTMLWidgets.widget({
             .text(groupingName)
               .style("text-anchor", "middle");
 
-
-
-  }
-
       },
 
       resize: function(width, height) {
