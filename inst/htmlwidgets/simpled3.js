@@ -12,9 +12,58 @@ HTMLWidgets.widget({
     var margin = ({top:10, right:10, bottom:40, left:60});
     var width = width - margin.left - margin.right
     var height = height -margin.top - margin.bottom
+
+    var barPadding = 0.2;
+    var colors = ['#bd6916', '#166abd ']
+
+    var tLong = 450;
+    var tShort = 200;
+    var cRadius = 7;
+
+    var scaleX = d3.scaleLinear()
+      .domain(d3.extent(data, d => d.year))
+      .range([0, width])
+
+    var scaleY = d3.scaleLinear()
+      .domain([0, maxY])
+      .range([height, 0]);
+
+    var scaleColors = d3.scaleOrdinal()
+        .range(colors)
+
+    // Initial axis
+    var yAxis = topG.append('g')
+      .attr("class", "y axis")
+
+    var xAxis = topG.append('g')
+        .attr("class", "x axis")
+
+
+
     var svg = d3.select(el).append('svg')
       .attr("width", width + margin.left + margin.right)
       .attr("height", height + margin.top + margin.bottom);
+
+    var topG = svg.append('g')
+      .attr('transform', 'translate(' + margin.left + ',' + margin.top +')')
+
+    var chartArea = topG.append("g");
+
+    // Axis titles
+    topG.append("text")
+      .attr("x", width / 2)
+      .attr("y", height + margin.bottom)
+      .attr("class", "x axisTitle")
+      .text("Year")
+      .style("text-anchor", "middle");
+
+    topG.append("text")
+      .attr("transform", "rotate(-90)")
+      .attr("x", 0 - height / 2)
+      .attr("y", 0 - margin.left + 20)
+      .attr("class", "y axisTitle")
+      .text("Total")
+
 
 
     return {
@@ -28,40 +77,18 @@ HTMLWidgets.widget({
 
           var data = HTMLWidgets.dataframeToD3(x.data)
 
-          var barPadding = 0.2;
-          var colors = ['#bd6916', '#166abd ']
-
-          var tLong = 450;
-          var tShort = 200;
-          var cRadius = 7;
 
 
 
 
 
-          var topG = svg.append('g')
-              .attr('transform', 'translate(' + margin.left + ',' + margin.top +')')
+
 
 
           // Initial scale
-          var scaleX = d3.scaleLinear()
-          .domain(d3.extent(data, d => d.year))
-          .range([0, width])
 
           var maxY = d3.max(data, d=> Math.max(d.female, d.male))
-          var scaleY = d3.scaleLinear()
-            .domain([0, maxY])
-            .range([height, 0]);
 
-          var scaleColors = d3.scaleOrdinal()
-              .range(colors)
-
-          // Initial axis
-          var yAxis = topG.append('g')
-            .attr("class", "y axis")
-
-          var xAxis = topG.append('g')
-              .attr("class", "x axis")
 
           xAxis.call(d3.axisBottom(scaleX)
               .tickFormat(d3.format("")))
@@ -69,23 +96,6 @@ HTMLWidgets.widget({
 
 
 
-
-          // Axis titles
-          topG.append("text")
-            .attr("x", width / 2)
-            .attr("y", height + margin.bottom)
-            .attr("class", "x axisTitle")
-            .text("Year")
-            .style("text-anchor", "middle");
-
-          topG.append("text")
-            .attr("transform", "rotate(-90)")
-            .attr("x", 0 - height / 2)
-            .attr("y", 0 - margin.left + 20)
-            .attr("class", "y axisTitle")
-            .text("Total")
-
-          var chartArea = topG.append("g");
 
 
           grouping1Names = data.map(d => d.year);
@@ -145,7 +155,7 @@ HTMLWidgets.widget({
               .attr("fill", colors[1]);
 
 
-          var div = svg.append("div")
+          var div = topG.append("div")
               .attr('class', 'tooltip')
               .style('opacity', 0)
               .attr("position", "absolute")
