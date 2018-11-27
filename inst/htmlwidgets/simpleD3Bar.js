@@ -82,11 +82,11 @@ HTMLWidgets.widget({
         // Scales
         var scaleY = d3.scaleLinear()
           .domain([0, maxY])
-          .range([Gheight, 0]);
+          .range([height, 0]);
 
         var scaleX = d3.scaleBand()
           .domain(grouping1Names)
-          .range([0, Gwidth])
+          .range([0, width])
           .padding(barPadding);
 
         var scaleX1 = d3.scaleBand()
@@ -110,7 +110,7 @@ HTMLWidgets.widget({
          var barsData = barGroupWithData.enter()
             .append("g")
             .merge(barGroupWithData)
-            .attr("transform", d => "translate(" + scaleX(d.key) + ",0)")
+            .attr("transform", d => "translate(" + scaleX(d.key) + ",0)");
 
            //barsData.transition().duration(t).
 
