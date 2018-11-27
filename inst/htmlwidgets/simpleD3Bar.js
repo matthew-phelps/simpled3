@@ -53,7 +53,7 @@ HTMLWidgets.widget({
       .attr("class", "y axisTitle")
       .text("Total");
 
-
+    // Tooltip div
     var div = svgContainer.append("div")
         .attr('class', 'tooltip');
 
@@ -142,6 +142,24 @@ HTMLWidgets.widget({
               .attr('y', d => scaleY(d.value))
               .attr("height", d => scaleY(0) - scaleY(d.value));
 
+          // Tooltip events
+
+          barGroupWithData
+            .on("mouseover", function(d){
+                div.transition()
+                .duration(tShort)
+                .style('opacity', 0.9);
+                div.html(
+                  "<b>" + "År " + "</b>" + d.year + "<br/><br/>" +
+                  varName + " " + "<b>" + d.female + "</br>")
+                  .style("left", d3.mouse(this)[0] + "px")
+                  .style("top", (d3.mouse(this)[1] + 28) + "px");
+            })
+            .on("mouseout", function(d){
+              div.transition()
+              .duration(tShort)
+              .style('opacity', 0);
+            });
 
 
           // Udpate axes
