@@ -13,20 +13,17 @@ HTMLWidgets.widget({
 
     return {
 
-      renderValue: function(x) {
+      renderValue: function(x, width, height) {
 
         if (!initialized){
           initialized = true;
-          var svg = d3.select(el).append('svg')
-            .attr("width", width)
-            .attr("height", height);
-
-
-          var data = HTMLWidgets.dataframeToD3(x.data)
 
           var margin = ({top:10, right:10, bottom:40, left:60});
           var width = width - margin.left - margin.right
           var height = height - margin.top - margin.bottom
+
+          var data = HTMLWidgets.dataframeToD3(x.data)
+
           var barPadding = 0.2;
           var colors = ['#bd6916', '#166abd ']
 
@@ -35,6 +32,11 @@ HTMLWidgets.widget({
           var cRadius = 7;
 
 
+
+
+          var svg = d3.select(el).append('svg')
+            .attr("width", width)
+            .attr("height", height);
 
           var topG = svg.append('g')
               .attr('transform', 'translate(' + margin.left + ',' + margin.top +')')
