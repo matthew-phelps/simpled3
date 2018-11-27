@@ -10,11 +10,11 @@ HTMLWidgets.widget({
 
     var initialized = false;
     var margin = ({top:10, right:10, bottom:40, left:60});
-    var width = width + margin.left + margin.right
-    var height = height + margin.top + margin.bottom
+    var width = width - margin.left - margin.right
+    var height = height -margin.top - margin.bottom
     var svg = d3.select(el).append('svg')
-      .attr("width", width)
-      .attr("height", height);
+      .attr("width", width + margin.left + margin.right)
+      .attr("height", height + margin.top + mmargin.bottom);
 
 
     return {
@@ -64,8 +64,8 @@ HTMLWidgets.widget({
               .attr("class", "x axis")
 
           xAxis.call(d3.axisBottom(scaleX)
-                        .tickFormat(d3.format("")))
-              .attr("transform", 'translate(' + 0 + "," + height + ')')
+              .tickFormat(d3.format("")))
+
 
 
 
