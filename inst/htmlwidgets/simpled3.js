@@ -61,14 +61,6 @@ HTMLWidgets.widget({
 
     var div = svgContainer.append("div")
         .attr('class', 'tooltip')
-        .style('opacity', 0)
-        .attr("position", "absolute")
-        .attr("text-align", "center")
-        .attr("width"," 60px")
-        .attr("height", "28px")
-        /*.attr("padding", "2px")				*/
-        /*.attr("font", "12px sans-serif")*/
-        .attr("fill", "lightsteelblue");
 
     return {
 
@@ -176,7 +168,8 @@ HTMLWidgets.widget({
                 .duration(tShort)
                 .style('opacity', 0.9);
                 div.html(
-                  "Year " + d.year + "<br/>" + d.female)
+                  "<b>" + "År " + "</b>" + d.year + "<br/>" +
+                  varName + " " + "<b>" + d.female + "</br>")
                   .style("left", d3.mouse(this)[0] + "px")
                   .style("top", (d3.mouse(this)[1] + 28) + "px");
           })
