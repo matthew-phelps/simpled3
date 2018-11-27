@@ -71,9 +71,6 @@ HTMLWidgets.widget({
         var varName = data[0].variable;
         var grouping1Names = data.map(d => d.year);
 
-        // Mouseover area for each circle should extend halfway to next circle on x-axis. This will cause problems for nearby male/female circles
-        var mRadius = scaleX(d3.max(data, d=> d.year)) / data.length;
-
         // Scales
         var maxY = d3.max(data, d=> Math.max(d.female, d.male));
         var scaleX = d3.scaleLinear()
@@ -88,6 +85,9 @@ HTMLWidgets.widget({
             .tickFormat(d3.format("")))
             .attr("transform", "translate(" + 0 + "," + height + ')');
 
+
+        // Mouseover area for each circle should extend halfway to next circle on x-axis. This will cause problems for nearby male/female circles
+        var mRadius = scaleX(d3.max(data, d=> d.year)) / data.length;
         // Line generators
         var valueLine1 = d3.line()
         .x(d => scaleX(d.year))
