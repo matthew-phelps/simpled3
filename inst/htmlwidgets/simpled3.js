@@ -9,18 +9,22 @@ HTMLWidgets.widget({
     // TODO: define shared variables for this instance
 
     var initialized = false;
+    var margin = ({top:10, right:10, bottom:40, left:60});
+    var width = width - margin.left - margin.right
+    var height = height - margin.top - margin.bottom
+    var svg = d3.select(el).append('svg')
+      .attr("width", width)
+      .attr("height", height);
 
 
     return {
 
-      renderValue: function(x, width, height) {
+      renderValue: function(x) {
 
         if (!initialized){
           initialized = true;
 
-          var margin = ({top:10, right:10, bottom:40, left:60});
-          var width = width - margin.left - margin.right
-          var height = height - margin.top - margin.bottom
+
 
           var data = HTMLWidgets.dataframeToD3(x.data)
 
@@ -34,9 +38,6 @@ HTMLWidgets.widget({
 
 
 
-          var svg = d3.select(el).append('svg')
-            .attr("width", width)
-            .attr("height", height);
 
           var topG = svg.append('g')
               .attr('transform', 'translate(' + margin.left + ',' + margin.top +')')
