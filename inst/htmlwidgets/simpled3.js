@@ -180,7 +180,7 @@ HTMLWidgets.widget({
 
 
             chartArea.selectAll(".dotmale")
-              .data(sdata)
+              .data(data)
               .transition()
               .duration(tLong)
               .attr("cx", d => scaleX(d.year))
