@@ -45,7 +45,7 @@ simpleD3Line <- function(data, colors = NULL, width = NULL, height = NULL, eleme
 #' @param quoted Is \code{expr} a quoted expression (with \code{quote()})? This
 #'   is useful if you want to save an expression in a variable.
 #'
-#' @name simpled3-shiny
+#' @name simpleD3Line-shiny
 #'
 #' @export
 simpleD3LineOutput <- function(outputId, width = '100%', height = '400px'){
