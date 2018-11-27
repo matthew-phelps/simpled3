@@ -24,7 +24,7 @@ HTMLWidgets.widget({
     var scaleColors = d3.scaleOrdinal()
         .range(colors);
 
-    var svgContainer = d3.select(el);
+    var svgContainer = d3.select(el).style("position", "relative");
     var svg = svgContainer.append('svg')
       .attr("width", width + margin.left + margin.right)
       .attr("height", height + margin.top + margin.bottom);
@@ -176,7 +176,7 @@ HTMLWidgets.widget({
                                 .style('opacity', 0.9);
                                 div.html(d)
                                   .style("left", d3.event.pageX + "px")
-                                  .style("top", (d3.event.pageY - 28) + "px");
+                                  .style("top", (d3.event.pageY + 28) + "px");
           });
 
 
