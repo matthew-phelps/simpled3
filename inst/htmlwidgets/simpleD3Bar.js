@@ -226,7 +226,7 @@ HTMLWidgets.widget({
 
       },
 
-      resize: function(width, height) {
+      resize: function(x, width, height) {
 
 
         var barPadding = 0.2;
@@ -292,7 +292,7 @@ HTMLWidgets.widget({
 
 
 
-        var data = HTMLWidgets.dataframeToD3(this.x.data);
+        var data = HTMLWidgets.dataframeToD3(x.data);
         var groupingName = Object.keys(data[0])[1];
         var varName = Object.keys(data[0])[2];
         for (var i = 0; i<data.length; i++) {
