@@ -188,7 +188,7 @@ HTMLWidgets.widget({
 
 
           // Tooltip functions
-          function showTooltip() {
+          function showTooltip(d) {
                 toolTip.transition()
                 .duration(tShort)
                 .style('opacity', 0.9);
