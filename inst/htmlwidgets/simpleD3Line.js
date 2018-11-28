@@ -186,6 +186,8 @@ HTMLWidgets.widget({
           .attr("cx", d => scaleX(d.year))
           .attr("cy", d => scaleY(d.female));
 
+
+          // Tooltip functions
           function showTooltip(d) {
                 div.transition()
                 .duration(tShort)
@@ -197,13 +199,16 @@ HTMLWidgets.widget({
                   .style("top", (d3.mouse(this)[1] + 28) + "px");
           }
 
-          dotFemale
-            .on("mouseover", showTooltip)
-            .on("mouseout", function(d){
+          function hideTooltip() {
               div.transition()
               .duration(tShort)
               .style('opacity', 0);
-            });
+
+          }
+
+          dotFemale
+            .on("mouseover", showTooltip)
+            .on("mouseout", hideTooltip);
 
 
 
