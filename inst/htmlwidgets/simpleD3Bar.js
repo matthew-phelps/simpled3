@@ -222,7 +222,7 @@ HTMLWidgets.widget({
           xAxis.transition()
             .duration(tLong)
             .call(d3.axisBottom(scaleX))
-            .attr("transform", 'translate(' + 0 + "," + height + ')');
+            .attr("transform", 'translate(' + 0 + "," + dim.height + ')');
 
 
           topG.select(".y.axisTitle")
