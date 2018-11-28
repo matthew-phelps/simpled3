@@ -75,14 +75,14 @@ HTMLWidgets.widget({
     	//Define and show the tooltip
     	$(this).popover({
     		placement: 'auto top',
-    		container: '#chart',
+    		container: '.tooltip',
     		trigger: 'manual',
     		html : true,
     		content: function() {
-    			return "<span style='font-size: 11px; text-align: center;'>" + d.Country + "</span>"; }
-    	});
+    			return "<span style='font-size: 11px; text-align: center;'>" + d.key + "</span>"; }
+    	  });
     	$(this).popover('show');
-    }
+      }
 
 
 
@@ -176,21 +176,8 @@ HTMLWidgets.widget({
           // Tooltip events
 
           barGroupWithData
-            .on("mouseover", function(d){
-                div.transition()
-                .duration(tShort)
-                .style('opacity', 0.9);
-                div.html(
-                  "<b>" + "År " + "</b>" + d.key + "<br/><br/>" +
-                  varName + " " + "<b>" + d.values[0].value+ "</br>")
-                  .style("left", d3.mouse(this)[0] + "px")
-                  .style("top", (d3.mouse(this)[1] + 28) + "px");
-            })
-            .on("mouseout", function(d){
-              div.transition()
-              .duration(tShort)
-              .style('opacity', 0);
-            });
+            .on("mouseover", showTooltip)
+            .on("mouseout", removeTooltip);
 
 
           // Udpate axes
