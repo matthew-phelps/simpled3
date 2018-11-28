@@ -58,39 +58,7 @@ HTMLWidgets.widget({
         .attr('id', 'tooltip');
 
 
-    //Hide the tooltip when the mouse moves away
-    function removeTooltip() {
 
-
-    	//Hide tooltip
-    	$('.popover').each(function() {
-    		$(this).remove();
-    	});
-
-    }
-
-    //Show the tooltip on the hovered over slice
-    function showTooltip(d) {
-
-      // Function to return html styling for tooltip
-      function tooltipContent() {
-        	return "<span text-align: left;'>" + varName + ":" + d.value + "</span>";
-      }
-      function tooltipTitle() {
-        	return d.keyL2 ;
-      }
-
-    	//Define and show the tooltip
-    	$(this).popover({
-    		placement: 'auto top',
-    		container: '#tooltip',
-    		trigger: 'manual',
-    		html : true,
-    		title: tooltipTitle,
-    		content: tooltipContent
-    	  });
-    	$(this).popover('show');
-      }
 
 
 
@@ -137,8 +105,45 @@ HTMLWidgets.widget({
           .range(colors);
 
 
-         // Perform the data joins
-         var barGroupWithData = chartArea
+          //Hide the tooltip when the mouse moves away
+        function removeTooltip() {
+
+
+        	//Hide tooltip
+        	$('.popover').each(function() {
+        		$(this).remove();
+        	});
+
+        }
+
+        //Show the tooltip on the hovered over slice
+        function showTooltip(d) {
+
+          // Function to return html styling for tooltip
+
+          function tooltipTitle() {
+            	return d.keyL2 ;
+          }
+
+          function tooltipContent() {
+            	return "<span text-align: left;'>" + varName + ":" + d.value + "</span>";
+          µ}
+
+
+        	//Define and show the tooltip
+        	$(this).popover({
+        		placement: 'auto top',
+        		container: '#tooltip',
+        		trigger: 'manual',
+        		html : true,
+        		title: tooltipTitle,
+        		content: tooltipContent
+        	  });
+        	$(this).popover('show');
+          }
+
+             // Perform the data joins
+          var barGroupWithData = chartArea
             .selectAll('g')
             .data(newData, d => d.key);
 
