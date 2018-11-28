@@ -20,8 +20,11 @@ HTMLWidgets.widget({
     var scaleColors = d3.scaleOrdinal()
         .range(colors);
 
-    var svgContainer = d3.select(el).style("position", "relative");
-    var svg = svgContainer.append('svg')
+    var container = d3.select(el)
+      .append('div')
+      .attr("class", "container")
+
+    var svg = container.append('svg')
       .attr("width", width + margin.left + margin.right)
       .attr("height", height + margin.top + margin.bottom);
 
@@ -53,11 +56,11 @@ HTMLWidgets.widget({
       .attr("class", "y axisTitle")
       .text("Total");
 
-    // Tooltip div
-    var div = svgContainer.append("div")
+   /* // Tooltip div
+    var div = Container.append("div")
         .attr('id', 'popoverContainer')
         .style("position", "relative");
-
+*/
 
 
 
@@ -134,7 +137,7 @@ HTMLWidgets.widget({
         	//Define and show the tooltip
         	$(this).popover({
         		placement: 'auto top',
-        		container: '#popoverContainer',
+        		container: '#container',
         		trigger: 'manual',
         		html : true,
         		title: tooltipTitle,
