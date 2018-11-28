@@ -24,7 +24,7 @@ HTMLWidgets.widget({
       .append('div')
       .attr("id", "container")
 
-    var svg = container.append('svg')
+    var svg = container.append('svg').style("position", "relative")
       .attr("width", width + margin.left + margin.right)
       .attr("height", height + margin.top + margin.bottom);
 
@@ -117,7 +117,7 @@ HTMLWidgets.widget({
               toolTip.html(
                 "<b>" + "År " + "</b>" + d.keyL2 + "<br/><br/>" +
                 varName + " " + "<b>" + d.value + "</br>")
-                .style("left", d3.mouse(this)[0] + "px")
+                .style("left", d3.event.pageX + "px")
                 .style("top", (d3.mouse(this)[1] + 28) + "px");
           }
 
