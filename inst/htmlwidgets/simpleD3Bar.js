@@ -9,7 +9,7 @@ HTMLWidgets.widget({
     var margin = ({top:10, right:10, bottom:40, left:60});
     var barPadding = 0.2;
     var colors = ['#bd6916', '#166abd '];
-
+    var el = el;
     var tLong = 450;
     var tShort = 200;
 
