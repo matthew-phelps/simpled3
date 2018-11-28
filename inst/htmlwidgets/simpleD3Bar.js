@@ -83,7 +83,7 @@ HTMLWidgets.widget({
     		container: '#tooltip',
     		trigger: 'manual',
     		html : true,
-    		title: "Title"
+    		title: "Title",
     		content: tooltipContent
     	  });
     	$(this).popover('show');
