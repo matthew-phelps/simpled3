@@ -223,12 +223,12 @@ function updateChart(inData, width, height, el) {
 
   d3.selectAll('.x.axisTitle')
     .attr("x", dim.width / 2)
-    .attr("y", dim.height + margin.bottom)
+    .attr("y", dim.height + margin.bottom);
 
     d3.selectAll('.y.axisTitle')
     .attr("x", 0 - dim.height / 2)
-    .attr("y", 0 - margin.left + 20)
-/*
+    .attr("y", 0 - margin.left + 20);
+
   var data = HTMLWidgets.dataframeToD3(inData.data);
   var groupingName = Object.keys(data[0])[1];
   var varName = Object.keys(data[0])[2];
@@ -242,7 +242,7 @@ function updateChart(inData, width, height, el) {
   var newData= d3.nest()
   .key(d => d.grouping)
   .entries(data);
-*/
+
 
   var maxY = d3.max(newData, d => d3.max(d.values, k => k.value));
   grouping1Names = newData.map(d => d.key);
