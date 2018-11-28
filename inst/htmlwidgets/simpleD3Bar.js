@@ -165,15 +165,15 @@ HTMLWidgets.widget({
             .attr("fill", d => scaleColors(d.keyL2))
             .attr("y", d => scaleY(0))
             .merge(bars)
-            .on("mouseover", showTooltip)
-            .on("mouseout", removeTooltip)
             .attr("x", (d) => scaleX1(d.keyL2))
             .transition()
               .duration(tLong)
               .ease(d3.easeLinear)
               .attr("width", scaleX1.bandwidth())
               .attr('y', d => scaleY(d.value))
-              .attr("height", d => scaleY(0) - scaleY(d.value));
+              .attr("height", d => scaleY(0) - scaleY(d.value))
+              .on("mouseover", showTooltip)
+            .on("mouseout", removeTooltip);
 
           // Tooltip events
 
