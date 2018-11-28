@@ -57,7 +57,7 @@ HTMLWidgets.widget({
       .text("Total");
 
      // Tooltip div
-    var toolTip = Container.append("div")
+    var toolTip = container.append("div")
         .attr('class', 'tooltip')
         .style("position", "absolute");
 
