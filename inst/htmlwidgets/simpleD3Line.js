@@ -87,7 +87,7 @@ HTMLWidgets.widget({
 
 
         // Mouseover area for each circle should extend halfway to next circle on x-axis. This will cause problems for nearby male/female circles
-        var ius = scaleX(d3.max(data, d=> d.year)) / data.length;
+        var bigRadius = scaleX(d3.max(data, d=> d.year)) / data.length;
         // Line generators
         var valueLine1 = d3.line()
         .x(d => scaleX(d.year))
@@ -186,8 +186,7 @@ HTMLWidgets.widget({
           .attr("cx", d => scaleX(d.year))
           .attr("cy", d => scaleY(d.female));
 
-          dotFemale
-            .on("mouseover", function(d){
+          function showTooltip(d) {
                 div.transition()
                 .duration(tShort)
                 .style('opacity', 0.9);
@@ -196,7 +195,10 @@ HTMLWidgets.widget({
                   varName + " " + "<b>" + d.female + "</br>")
                   .style("left", d3.mouse(this)[0] + "px")
                   .style("top", (d3.mouse(this)[1] + 28) + "px");
-          })
+          }
+
+          dotFemale
+            .on("mouseover", showTooltip)
             .on("mouseout", function(d){
               div.transition()
               .duration(tShort)
