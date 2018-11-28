@@ -153,6 +153,7 @@ function drawChart(inData, width, height, el) {
 
   var barsEntered = bars.enter()
     .append("rect")
+    .attr("class", "bars")
     .attr("fill", d => scaleColors(d.keyL2))
     .attr("y", d => scaleY(0))
     .merge(bars)
@@ -204,8 +205,8 @@ function updateChart(inData, width, height, el) {
   var tLong = 450;
   var tShort = 200;
 
-  var scaleColors = d3.scaleOrdinal()
-      .range(colors);
+/*  var scaleColors = d3.scaleOrdinal()
+      .range(colors);*/
 
   var dim = {
     width: width - margin.left - margin.right,
@@ -227,7 +228,7 @@ function updateChart(inData, width, height, el) {
     d3.selectAll('.y.axisTitle')
     .attr("x", 0 - dim.height / 2)
     .attr("y", 0 - margin.left + 20)
-
+/*
   var data = HTMLWidgets.dataframeToD3(inData.data);
   var groupingName = Object.keys(data[0])[1];
   var varName = Object.keys(data[0])[2];
@@ -241,7 +242,7 @@ function updateChart(inData, width, height, el) {
   var newData= d3.nest()
   .key(d => d.grouping)
   .entries(data);
-
+*/
 
   var maxY = d3.max(newData, d => d3.max(d.values, k => k.value));
   grouping1Names = newData.map(d => d.key);
@@ -262,98 +263,28 @@ function updateChart(inData, width, height, el) {
   .domain(grouping2Names)
   .rangeRound([0, scaleX.bandwidth()]);
 
-  var scaleColors = d3.scaleOrdinal()
-  .range(colors);
-
-
-  // Tooltip functions
-
-
-  function showTooltip(d) {
-      toolTip.transition()
-      .duration(tShort)
-      .style('opacity', 0.9);
-
-  }
-
-  function moveTooltip(d) {
-     toolTip.html(
-        "<b>" + "År " + "</b>" + d.keyL2 + "<br/><br/>" +
-        varName + " " + "<b>" + d.value + "</br>")
-        .style("left", d3.event.pageX + "px")
-        .style("top", (d3.mouse(this)[1] + 28) + "px");
-
-  }
-  function hideTooltip() {
-    toolTip.transition()
-    .duration(tShort)
-    .style('opacity', 0);
-  }
-
-   // Perform the data joins
+   // BAR GROUPS
   svg.selectAll(".barGroups")
     .attr("transform", d => "translate(" + scaleX(d.key) + ",0)");
 
 
-  // Remove any bar-groups not present in incoming data
-
-  var barsData = barGroupWithData.enter()
-    .append("g")
-    .merge(barGroupWithData)
-
-
-   //barsData.transition().duration(t).
-
-  var	bars = barsData.selectAll("rect")
-    .data(d => Object.keys(d.values)
-    .map(k => ({
-        keyL2: grouping2Names[k],
-        value: d.values[k].value }) ));
-
-  bars.exit()
-    .transition()
-      .duration(tLong)
-      .attr("y", d=> scaleY(0)).remove();
-
-  var barsEntered = bars.enter()
-    .append("rect")
-    .attr("fill", d => scaleColors(d.keyL2))
-    .attr("y", d => scaleY(0))
-    .merge(bars)
+  // BARS
+  svg.selectAll(".bars")
     .attr("x", (d) => scaleX1(d.keyL2))
-    .on("mouseover", showTooltip)
-    .on("mousemove", moveTooltip)
-    .on("mouseout", hideTooltip)
-      .transition()
-      .duration(tLong)
-      .ease(d3.easeLinear)
-      .attr("width", scaleX1.bandwidth())
-      .attr('y', d => scaleY(d.value))
-      .attr("height", d => scaleY(0) - scaleY(d.value));
+    .attr("width", scaleX1.bandwidth())
+    .attr('y', d => scaleY(d.value))
+    .attr("height", d => scaleY(0) - scaleY(d.value));
 
-  // Udpate axes
-  yAxis.transition()
-    .duration(tLong)
-    .call(d3.axisLeft(scaleY));
 
-  xAxis.transition()
-    .duration(tLong)
-    .call(d3.axisBottom(scaleX))
+  // Resize Axes
+  svg.selectAll(".x.axis")
+    .attr("transform", 'translate(' + 0 + "," + dim.height + ')');
+
+  svg.selectAll(".y.axis")
     .attr("transform", 'translate(' + 0 + "," + dim.height + ')');
 
 
-  topG.select(".y.axisTitle")
-    .transition()
-    .duration(tLong)
-    .text(varName)
-      .style("text-anchor", "middle");
 
-  topG.select(".x.axisTitle")
-    .transition()
-    .duration(tLong)
-    .style('opacity', 1)
-    .text(groupingName)
-      .style("text-anchor", "middle");
 
   }
 
