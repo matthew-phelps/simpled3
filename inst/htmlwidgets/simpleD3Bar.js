@@ -58,7 +58,7 @@ HTMLWidgets.widget({
         .attr('class', 'tooltip');
 
 
-/*    //Hide the tooltip when the mouse moves away
+    //Hide the tooltip when the mouse moves away
     function removeTooltip() {
 
     	//Hide tooltip
@@ -82,7 +82,7 @@ HTMLWidgets.widget({
     	});
     	$(this).popover('show');
 
-*/
+
 
 }
 
