@@ -55,7 +55,7 @@ HTMLWidgets.widget({
 
     // Tooltip div
     var div = svgContainer.append("div")
-        .attr('class', 'tooltip');
+        .attr('id', 'tooltip');
 
 
     //Hide the tooltip when the mouse moves away
@@ -75,7 +75,7 @@ HTMLWidgets.widget({
     	//Define and show the tooltip
     	$(this).popover({
     		placement: 'auto top',
-    		container: '.tooltip',
+    		container: '#tooltip',
     		trigger: 'manual',
     		html : true,
     		content: function() {
@@ -133,8 +133,6 @@ HTMLWidgets.widget({
          var barGroupWithData = chartArea
             .selectAll('g')
             .data(newData, d => d.key)
-            .on("mouseover", showTooltip)
-            .on("mouseout", removeTooltip);
 
         // Remove any bar-groups not present in incoming data
          barGroupWithData.exit()
@@ -167,6 +165,8 @@ HTMLWidgets.widget({
             .attr("fill", d => scaleColors(d.keyL2))
             .attr("y", d => scaleY(0))
             .merge(bars)
+            .on("mouseover", showTooltip)
+            .on("mouseout", removeTooltip)
             .attr("x", (d) => scaleX1(d.keyL2))
             .transition()
               .duration(tLong)
@@ -177,7 +177,7 @@ HTMLWidgets.widget({
 
           // Tooltip events
 
-          barGroupWithData
+
 
 
 
