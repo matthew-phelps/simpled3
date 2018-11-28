@@ -82,10 +82,10 @@ HTMLWidgets.widget({
     	});
     	$(this).popover('show');
 
-*/
+
 
 }
-
+*/
 
 
 
