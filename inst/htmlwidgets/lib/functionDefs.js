@@ -119,9 +119,6 @@ function drawChart(inData, width, height, el) {
   }
 
 
-
-
-
    // Perform the data joins
   var barGroupWithData = chartArea
   .selectAll('g')
@@ -196,7 +193,9 @@ function drawChart(inData, width, height, el) {
 
   }
 
-
+//////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////
 
 function updateChart(inData, width, height, el) {
   var margin = ({top:10, right:10, bottom:40, left:60});
@@ -292,22 +291,16 @@ function updateChart(inData, width, height, el) {
   }
 
    // Perform the data joins
-  var barGroupWithData = chartArea
-  .selectAll('g')
-  .data(newData, d => d.key);
+  svg.selectAll(".barGroups")
+    .attr("transform", d => "translate(" + scaleX(d.key) + ",0)");
+
 
   // Remove any bar-groups not present in incoming data
-  barGroupWithData.exit()
-  .transition()
-  .duration(tShort)
-  .ease(d3.easeLinear)
-  .style('opacity', 0)
-  .remove();
 
   var barsData = barGroupWithData.enter()
     .append("g")
     .merge(barGroupWithData)
-    .attr("transform", d => "translate(" + scaleX(d.key) + ",0)");
+
 
    //barsData.transition().duration(t).
 
