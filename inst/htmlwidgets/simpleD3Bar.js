@@ -5,24 +5,15 @@ HTMLWidgets.widget({
   type: 'output',
 
   factory: function(el, width, height) {
-
-    var margin = ({top:10, right:10, bottom:40, left:60});
-    var barPadding = 0.2;
-    var colors = ['#bd6916', '#166abd '];
     var el = el;
-    var tLong = 450;
-    var tShort = 200;
-
-    var scaleColors = d3.scaleOrdinal()
-        .range(colors);
-
-
+    var width = width;
+    var height = height;
 
     return {
 
       renderValue: function(x) {
-        drawChart(x, wdith, height, el);
-          this.x = x; // store for resize
+        drawChart(x, width, height, el);
+        this.x = x; // store for resize
 
       },
 
