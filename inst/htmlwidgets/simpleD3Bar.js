@@ -215,6 +215,7 @@ HTMLWidgets.widget({
             .text(groupingName)
               .style("text-anchor", "middle");
 
+          this.x = x;
       },
 
       resize: function(width, height) {
