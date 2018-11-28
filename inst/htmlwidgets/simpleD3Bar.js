@@ -8,18 +8,23 @@ HTMLWidgets.widget({
     var el = el;
     var width = width;
     var height = height;
-
+    var chartExists = false;
     return {
 
       renderValue: function(x) {
-        drawChart(x, width, height, el);
+        if(!chartExists){
+          chartExists = true;
+          drawChart(x, width, height, el);
+        } else {
+          updateChart(x, width, height, el);
+        }
         this.x = x; // store for resize
 
       },
 
       resize: function(width, height) {
 
-        drawChart(this.x, width, height, el)
+        updateChart(this.x, width, height, el);
       }
 
     };
