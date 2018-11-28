@@ -55,7 +55,7 @@ HTMLWidgets.widget({
 
     // Tooltip div
     var div = svgContainer.append("div")
-        .attr('id', 'tooltip');
+        .attr('id', 'popoverContainer');
 
 
 
@@ -133,7 +133,7 @@ HTMLWidgets.widget({
         	//Define and show the tooltip
         	$(this).popover({
         		placement: 'auto top',
-        		container: '#tooltip',
+        		container: '#popoverContainer',
         		trigger: 'manual',
         		html : true,
         		title: tooltipTitle,
