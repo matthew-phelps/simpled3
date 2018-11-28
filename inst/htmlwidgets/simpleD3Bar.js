@@ -72,14 +72,18 @@ HTMLWidgets.widget({
     //Show the tooltip on the hovered over slice
     function showTooltip(d) {
 
+      // Function to return html styling for tooltip
+      function tooltipContent() {
+        	return "<span style='font-size: 11px; text-align: center;'>" + d.keyL2 + "</span>";
+      }
+
     	//Define and show the tooltip
     	$(this).popover({
     		placement: 'auto top',
     		container: '#tooltip',
     		trigger: 'manual',
     		html : true,
-    		content: function() {
-    			return "<span style='font-size: 11px; text-align: center;'>" + d.key + "</span>"; }
+    		content: tooltipContent
     	  });
     	$(this).popover('show');
       }
@@ -132,7 +136,7 @@ HTMLWidgets.widget({
          // Perform the data joins
          var barGroupWithData = chartArea
             .selectAll('g')
-            .data(newData, d => d.key)
+            .data(newData, d => d.key);
 
         // Remove any bar-groups not present in incoming data
          barGroupWithData.exit()
@@ -165,19 +169,20 @@ HTMLWidgets.widget({
             .attr("fill", d => scaleColors(d.keyL2))
             .attr("y", d => scaleY(0))
             .merge(bars)
-            .attr("x", (d) => scaleX1(d.keyL2));
+            .attr("x", (d) => scaleX1(d.keyL2))
+            .on("mouseover", showTooltip)
+            .on("mouseout", removeTooltip);
 
 
-            barsEntered.transition()
-              .duration(tLong)
-              .ease(d3.easeLinear)
-              .attr("width", scaleX1.bandwidth())
-              .attr('y', d => scaleY(d.value))
-              .attr("height", d => scaleY(0) - scaleY(d.value));
+          barsEntered.transition()
+            .duration(tLong)
+            .ease(d3.easeLinear)
+            .attr("width", scaleX1.bandwidth())
+            .attr('y', d => scaleY(d.value))
+            .attr("height", d => scaleY(0) - scaleY(d.value));
 
             barsEntered
-              .on("mouseover", showTooltip)
-              .on("mouseout", removeTooltip);
+
 
           // Tooltip events
 
