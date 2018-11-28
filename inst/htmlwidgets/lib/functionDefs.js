@@ -278,10 +278,15 @@ function updateChart(inData, width, height, el) {
 
   // Resize Axes
   svg.selectAll(".x.axis")
-    .attr("transform", 'translate(' + 0 + "," + dim.height + ')');
+    .transition()
+    .duration(tLong)
+    .call(d3.axisBottom(scaleX))
+
 
   svg.selectAll(".y.axis")
-    .attr("transform", 'translate(' + 0 + "," + dim.height + ')');
+    .transition()
+    .duration(tLong)
+    .call(d3.axisLeft(scaleY))
 
 
 
