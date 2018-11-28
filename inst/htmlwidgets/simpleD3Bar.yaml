@@ -5,5 +5,5 @@ dependencies:
   version: 5.7.0
 - name: jq
   src: htmlwidgets/lib/jq
-  script: ./dist/jquery.min.js
+  script: ./jquery.min.js
   version: 3.3.1
