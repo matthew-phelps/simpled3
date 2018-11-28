@@ -112,18 +112,24 @@ HTMLWidgets.widget({
 
 
         // Tooltip functions
+
+        maxWidthwindow.innerWidth;
         function showTooltip(d) {
               toolTip.transition()
               .duration(tShort)
               .style('opacity', 0.9);
-              toolTip.html(
+
+          }
+
+          function moveTooltip(d) {
+             toolTip.html(
                 "<b>" + "År " + "</b>" + d.keyL2 + "<br/><br/>" +
                 varName + " " + "<b>" + d.value + "</br>")
                 .style("left", d3.event.pageX + "px")
                 .style("top", (d3.mouse(this)[1] + 28) + "px");
-          }
 
-        function hideTooltip() {
+          }
+          function hideTooltip() {
             toolTip.transition()
             .duration(tShort)
             .style('opacity', 0);
