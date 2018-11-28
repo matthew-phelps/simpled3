@@ -57,38 +57,6 @@ HTMLWidgets.widget({
     var div = svgContainer.append("div")
         .attr('class', 'tooltip');
 
-
-    //Hide the tooltip when the mouse moves away
-    function removeTooltip() {
-
-    	//Hide tooltip
-    	$('.popover').each(function() {
-    		$(this).remove();
-    	});
-
-    }
-
-    //Show the tooltip on the hovered over slice
-    function showTooltip(d) {
-
-    	//Define and show the tooltip
-    	$(this).popover({
-    		placement: 'auto top',
-    		container: '.tooltip',
-    		trigger: 'manual',
-    		html : true,
-    		content: function() {
-    			return "<span style='font-size: 11px; text-align: center;'>" + d.key + "</span>"; }
-    	});
-    	$(this).popover('show');
-
-
-
-}
-
-
-
-
     return {
 
       renderValue: function(x) {
