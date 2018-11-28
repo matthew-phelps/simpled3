@@ -22,7 +22,7 @@ HTMLWidgets.widget({
 
     var container = d3.select(el)
       .append('div')
-      .attr("class", "container")
+      .attr("id", "container")
 
     var svg = container.append('svg')
       .attr("width", width + margin.left + margin.right)
