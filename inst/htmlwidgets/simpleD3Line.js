@@ -60,7 +60,7 @@ HTMLWidgets.widget({
 
     // Tooltip
 
-    var div = svgContainer.append("div")
+    var toolTip = svgContainer.append("div")
         .attr('class', 'tooltip');
 
     return {
@@ -188,11 +188,11 @@ HTMLWidgets.widget({
 
 
           // Tooltip functions
-          function showTooltip(d) {
-                div.transition()
+          function showTooltip() {
+                toolTip.transition()
                 .duration(tShort)
                 .style('opacity', 0.9);
-                div.html(
+                toolTip.html(
                   "<b>" + "År " + "</b>" + d.year + "<br/><br/>" +
                   varName + " " + "<b>" + d.female + "</br>")
                   .style("left", d3.mouse(this)[0] + "px")
@@ -200,11 +200,12 @@ HTMLWidgets.widget({
           }
 
           function hideTooltip() {
-              div.transition()
+              toolTip.transition()
               .duration(tShort)
               .style('opacity', 0);
 
           }
+
 
           dotFemale
             .on("mouseover", showTooltip)
