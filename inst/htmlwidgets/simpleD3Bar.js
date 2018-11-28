@@ -136,8 +136,13 @@ HTMLWidgets.widget({
 
         	//Define and show the tooltip
         	$(this).popover({
+<<<<<<< HEAD
         		placement: 'auto top',
         		container: '#container',
+=======
+        		placement: 'top',
+        		container: '#popoverContainer',
+>>>>>>> ca3dcb408b7dca6bf90c9b2665eec80b67f5899c
         		trigger: 'manual',
         		html : true,
         		title: tooltipTitle,
