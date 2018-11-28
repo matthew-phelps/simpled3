@@ -133,7 +133,7 @@ HTMLWidgets.widget({
 
         	//Define and show the tooltip
         	$(this).popover({
-        		placement: 'auto top',
+        		placement: 'top',
         		container: '#popoverContainer',
         		trigger: 'manual',
         		html : true,
