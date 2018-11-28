@@ -251,25 +251,29 @@ function updateChart(inData, width, height, el) {
 
   // Scales
   var scaleY = d3.scaleLinear()
-  .domain([0, maxY])
-  .range([dim.height, 0]);
+    .domain([0, maxY])
+    .range([dim.height, 0]);
 
   var scaleX = d3.scaleBand()
-  .domain(grouping1Names)
-  .range([0, dim.width])
-  .padding(barPadding);
+    .domain(grouping1Names)
+    .range([0, dim.width])
+    .padding(barPadding);
 
   var scaleX1 = d3.scaleBand()
-  .domain(grouping2Names)
-  .rangeRound([0, scaleX.bandwidth()]);
+    .domain(grouping2Names)
+    .rangeRound([0, scaleX.bandwidth()]);
 
    // BAR GROUPS
   svg.selectAll(".barGroups")
+    .transition()
+    .duration(tLong)
     .attr("transform", d => "translate(" + scaleX(d.key) + ",0)");
 
 
   // BARS
   svg.selectAll(".bars")
+    .transition()
+    .duration(tLong)
     .attr("x", (d) => scaleX1(d.keyL2))
     .attr("width", scaleX1.bandwidth())
     .attr('y', d => scaleY(d.value))
