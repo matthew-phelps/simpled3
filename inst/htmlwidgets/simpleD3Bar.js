@@ -220,6 +220,7 @@ HTMLWidgets.widget({
 
       resize: function(width, height) {
 
+        this.renderValue(this.x);
         // TODO: code to re-render the widget with a new size
 
       }
