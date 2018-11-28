@@ -197,21 +197,17 @@ HTMLWidgets.widget({
                   varName + " " + "<b>" + d.female + "</br>")
                   .style("left", d3.mouse(this)[0] + "px")
                   .style("top", (d3.mouse(this)[1] + 28) + "px");
-          }
+            }
 
           function hideTooltip() {
               toolTip.transition()
               .duration(tShort)
               .style('opacity', 0);
-
-          }
-
+            }
 
           dotFemale
             .on("mouseover", showTooltip)
             .on("mouseout", hideTooltip);
-
-
 
             chartArea.selectAll(".dotmale")
               .data(data)

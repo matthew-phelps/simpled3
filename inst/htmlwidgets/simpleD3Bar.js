@@ -109,47 +109,32 @@ HTMLWidgets.widget({
           .range(colors);
 
 
-          //Hide the tooltip when the mouse moves away
-        function removeTooltip() {
-
-
-        	//Hide tooltip
-        	$('.popover').each(function() {
-        		$(this).remove();
-        	});
-
-        }
-
-        //Show the tooltip on the hovered over slice
+        // Tooltip functions
         function showTooltip(d) {
-
-          // Function to return html styling for tooltip
-
-          function tooltipTitle() {
-            	return d.keyL2 ;
+              toolTip.transition()
+              .duration(tShort)
+              .style('opacity', 0.9);
+              toolTip.html(
+                "<b>" + "År " + "</b>" + d.keyL2 + "<br/><br/>" +
+                varName + " " + "<b>" + d.value + "</br>")
+                .style("left", d3.mouse(this)[0] + "px")
+                .style("top", (d3.mouse(this)[1] + 28) + "px");
           }
 
-          function tooltipContent() {
-            	return "<span text-align: left;'>" + varName + ": " + d.value + "</span>";
+        function hideTooltip() {
+            toolTip.transition()
+            .duration(tShort)
+            .style('opacity', 0);
           }
 
 
-        	//Define and show the tooltip
-        	$(this).popover({
-        		placement: 'auto top',
-        		container: '#container',
-        		trigger: 'manual',
-        		html : true,
-        		title: tooltipTitle,
-        		content: tooltipContent
-        	  });
-        	$(this).popover('show');
-          }
 
-             // Perform the data joins
-          var barGroupWithData = chartArea
-            .selectAll('g')
-            .data(newData, d => d.key);
+
+
+           // Perform the data joins
+        var barGroupWithData = chartArea
+          .selectAll('g')
+          .data(newData, d => d.key);
 
         // Remove any bar-groups not present in incoming data
          barGroupWithData.exit()
@@ -184,7 +169,7 @@ HTMLWidgets.widget({
             .merge(bars)
             .attr("x", (d) => scaleX1(d.keyL2))
             .on("mouseover", showTooltip)
-            .on("mouseout", removeTooltip)
+            .on("mouseout", hideTooltip)
               .transition()
               .duration(tLong)
               .ease(d3.easeLinear)
