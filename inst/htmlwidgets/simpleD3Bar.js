@@ -177,6 +177,7 @@ HTMLWidgets.widget({
             .merge(bars)
             .attr("x", (d) => scaleX1(d.keyL2))
             .on("mouseover", showTooltip)
+            .on("mousemove", moveTooltip)
             .on("mouseout", hideTooltip)
               .transition()
               .duration(tLong)
