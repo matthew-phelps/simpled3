@@ -24,41 +24,6 @@ HTMLWidgets.widget({
     var scaleColors = d3.scaleOrdinal()
         .range(colors);
 
-    var container = d3.select(el).style("position", "relative")
-      .append('div')
-      .attr("id", "container");
-
-    var svg = container.append('svg')
-      .attr("width", dim.width + margin.left + margin.right)
-      .attr("height", dim.height + margin.top + margin.bottom);
-
-    var topG = svg.append('g')
-      .attr('transform', 'translate(' + margin.left + ',' + margin.top +')');
-
-    var chartArea = topG.append("g");
-
-    // Initial axis
-    var yAxis = topG.append('g')
-      .attr("class", "y axis");
-
-    var xAxis = topG.append('g')
-        .attr("class", "x axis");
-
-
-    // Axis titles
-    topG.append("text")
-      .attr("x", dim.width / 2)
-      .attr("y", dim.height + margin.bottom)
-      .attr("class", "x axisTitle")
-      .text("Year")
-      .style("text-anchor", "middle");
-
-    topG.append("text")
-      .attr("transform", "rotate(-90)")
-      .attr("x", 0 - dim.height / 2)
-      .attr("y", 0 - margin.left + 20)
-      .attr("class", "y axisTitle")
-      .text("Total");
 
 
 
@@ -73,17 +38,52 @@ HTMLWidgets.widget({
 
       renderValue: function(x) {
 
+        var container = d3.select(el).style("position", "relative")
+          .append('div')
+          .attr("id", "container");
+
+        var svg = container.append('svg')
+          .attr("width", dim.width + margin.left + margin.right)
+          .attr("height", dim.height + margin.top + margin.bottom);
+
+        var topG = svg.append('g')
+          .attr('transform', 'translate(' + margin.left + ',' + margin.top +')');
+
+        var chartArea = topG.append("g");
+
+        // Initial axis
+        var yAxis = topG.append('g')
+          .attr("class", "y axis");
+
+        var xAxis = topG.append('g')
+            .attr("class", "x axis");
+
+
+        // Axis titles
+        topG.append("text")
+          .attr("x", dim.width / 2)
+          .attr("y", dim.height + margin.bottom)
+          .attr("class", "x axisTitle")
+          .text("Year")
+          .style("text-anchor", "middle");
+
+        topG.append("text")
+          .attr("transform", "rotate(-90)")
+          .attr("x", 0 - dim.height / 2)
+          .attr("y", 0 - margin.left + 20)
+          .attr("class", "y axisTitle")
+          .text("Total");
 
 
 
 
 
 
-          // Tooltip div
-    var toolTip = container.append("div")
-        .attr('class', 'tooltip')
-        .attr("width", dim.width + margin.left + margin.right)
-        .attr("height", dim.height + margin.top + margin.bottom);
+              // Tooltip div
+        var toolTip = container.append("div")
+            .attr('class', 'tooltip')
+            .attr("width", dim.width + margin.left + margin.right)
+            .attr("height", dim.height + margin.top + margin.bottom);
 
 
 
