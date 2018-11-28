@@ -132,7 +132,9 @@ HTMLWidgets.widget({
          // Perform the data joins
          var barGroupWithData = chartArea
             .selectAll('g')
-            .data(newData, d => d.key);
+            .data(newData, d => d.key)
+            .on("mouseover", showTooltip)
+            .on("mouseout", removeTooltip);
 
         // Remove any bar-groups not present in incoming data
          barGroupWithData.exit()
@@ -176,8 +178,7 @@ HTMLWidgets.widget({
           // Tooltip events
 
           barGroupWithData
-            .on("mouseover", showTooltip)
-            .on("mouseout", removeTooltip);
+
 
 
           // Udpate axes
