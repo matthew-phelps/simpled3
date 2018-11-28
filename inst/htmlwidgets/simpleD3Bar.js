@@ -21,7 +21,7 @@ HTMLWidgets.widget({
     return {
 
       renderValue: function(x) {
-        drawChart(x);
+        drawChart(x, wdith, height, el);
           this.x = x; // store for resize
 
       },
