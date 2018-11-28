@@ -1,48 +1,9 @@
-HTMLWidgets.widget({
+function drawChart(inData) {
 
-  name: 'simpleD3Bar',
-
-  type: 'output',
-
-  factory: function(el, width, height) {
-
-    var margin = ({top:10, right:10, bottom:40, left:60});
-    var barPadding = 0.2;
-    var colors = ['#bd6916', '#166abd '];
-
-    var tLong = 450;
-    var tShort = 200;
-
-    var scaleColors = d3.scaleOrdinal()
-        .range(colors);
-
-
-
-    return {
-
-      renderValue: function(x) {
-        drawChart(x);
-          this.x = x; // store for resize
-
-      },
-
-      resize: function(x, width, height) {
-
-
-        var barPadding = 0.2;
-        var colors = ['#bd6916', '#166abd '];
-
-        var tLong = 450;
-        var tShort = 200;
-
-        var scaleColors = d3.scaleOrdinal()
-            .range(colors);
-            var dim = {
+        var dim = {
           width: width - margin.left - margin.right,
           height: height - margin.top - margin.bottom
         };
-
-
 
         var container = d3.select(el).html("").style("position", "relative")
           .append('div')
@@ -87,12 +48,7 @@ HTMLWidgets.widget({
 
 
 
-
-
-
-
-
-        var data = HTMLWidgets.dataframeToD3(x.data);
+        var data = HTMLWidgets.dataframeToD3(inData.data);
         var groupingName = Object.keys(data[0])[1];
         var varName = Object.keys(data[0])[2];
         for (var i = 0; i<data.length; i++) {
@@ -234,10 +190,4 @@ HTMLWidgets.widget({
             .text(groupingName)
               .style("text-anchor", "middle");
 
-        // TODO: code to re-render the widget with a new size
-
       }
-
-    };
-  }
-});
