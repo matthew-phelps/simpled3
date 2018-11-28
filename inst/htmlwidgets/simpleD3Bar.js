@@ -56,11 +56,11 @@ HTMLWidgets.widget({
       .attr("class", "y axisTitle")
       .text("Total");
 
-   /* // Tooltip div
-    var div = Container.append("div")
-        .attr('id', 'popoverContainer')
-        .style("position", "relative");
-*/
+     // Tooltip div
+    var toolTip = Container.append("div")
+        .attr('class', 'tooltip')
+        .style("position", "absolute");
+
 
 
 
