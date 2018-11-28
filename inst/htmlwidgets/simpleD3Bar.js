@@ -55,7 +55,8 @@ HTMLWidgets.widget({
 
     // Tooltip div
     var div = svgContainer.append("div")
-        .attr('id', 'popoverContainer');
+        .attr('id', 'popoverContainer')
+        .style("position", "relative");
 
 
 
