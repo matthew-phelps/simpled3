@@ -20,11 +20,11 @@ HTMLWidgets.widget({
     var scaleColors = d3.scaleOrdinal()
         .range(colors);
 
-    var container = d3.select(el)
+    var container = d3.select(el).style("position", "relative")
       .append('div')
       .attr("id", "container")
 
-    var svg = container.append('svg').style("position", "relative")
+    var svg = container.append('svg')
       .attr("width", width + margin.left + margin.right)
       .attr("height", height + margin.top + margin.bottom);
 
@@ -59,7 +59,9 @@ HTMLWidgets.widget({
      // Tooltip div
     var toolTip = container.append("div")
         .attr('class', 'tooltip')
-        .style("position", "absolute");
+        .attr("width", width + margin.left + margin.right)
+        .attr("height", height + margin.top + margin.bottom);
+
 
 
 
