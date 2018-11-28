@@ -19,14 +19,6 @@ HTMLWidgets.widget({
 
 
 
-
-
-
-
-
-
-
-
     return {
 
       renderValue: function(x) {
@@ -37,15 +29,6 @@ HTMLWidgets.widget({
         };
 
 
-
-        var barPadding = 0.2;
-        var colors = ['#bd6916', '#166abd '];
-
-        var tLong = 450;
-        var tShort = 200;
-
-        var scaleColors = d3.scaleOrdinal()
-            .range(colors);
 
         var container = d3.select(el).html("").style("position", "relative")
           .append('div')
@@ -86,9 +69,8 @@ HTMLWidgets.widget({
 
               // Tooltip div
         var toolTip = container.append("div")
-            .attr('class', 'tooltip')
-            .attr("width", dim.width + margin.left + margin.right)
-            .attr("height", dim.height + margin.top + margin.bottom);
+            .attr('class', 'tooltip');
+
 
 
 
@@ -119,7 +101,7 @@ HTMLWidgets.widget({
         // Scales
         var scaleY = d3.scaleLinear()
           .domain([0, maxY])
-          .range([height, 0]);
+          .range([dim.height, 0]);
 
         var scaleX = d3.scaleBand()
           .domain(grouping1Names)
