@@ -35,7 +35,19 @@ HTMLWidgets.widget({
           width: width - margin.left - margin.right,
           height: height - margin.top - margin.bottom
         };
-        var container = d3.select(el).style("position", "relative")
+
+
+
+        var barPadding = 0.2;
+        var colors = ['#bd6916', '#166abd '];
+
+        var tLong = 450;
+        var tShort = 200;
+
+        var scaleColors = d3.scaleOrdinal()
+            .range(colors);
+
+        var container = d3.select(el).html("").style("position", "relative")
           .append('div')
           .attr("id", "container");
 
@@ -70,10 +82,6 @@ HTMLWidgets.widget({
           .attr("y", 0 - margin.left + 20)
           .attr("class", "y axisTitle")
           .text("Total");
-
-
-
-
 
 
               // Tooltip div
