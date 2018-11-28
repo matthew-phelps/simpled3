@@ -224,7 +224,7 @@ HTMLWidgets.widget({
 
       },
 
-      resize: function(width, height) {
+      resize: function(x, width, height) {
 
 
         var barPadding = 0.2;
