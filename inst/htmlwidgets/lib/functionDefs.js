@@ -1,4 +1,4 @@
-function drawChart(inData) {
+function drawChart(inData, width, height, el) {
 
         var dim = {
           width: width - margin.left - margin.right,
