@@ -74,7 +74,10 @@ HTMLWidgets.widget({
 
       // Function to return html styling for tooltip
       function tooltipContent() {
-        	return "<span style='font-size: 11px; text-align: center;'>" + d.keyL2 + "</span>";
+        	return "<span text-align: left;'>" + varName + ":" + d.value + "</span>";
+      }
+      function tooltipTitle() {
+        	return d.keyL2 ;
       }
 
     	//Define and show the tooltip
@@ -83,7 +86,7 @@ HTMLWidgets.widget({
     		container: '#tooltip',
     		trigger: 'manual',
     		html : true,
-    		title: "Title",
+    		title: tooltipTitle,
     		content: tooltipContent
     	  });
     	$(this).popover('show');
