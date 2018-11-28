@@ -126,8 +126,8 @@ HTMLWidgets.widget({
           }
 
           function tooltipContent() {
-            	return "<span text-align: left;'>" + varName + ":" + d.value + "</span>";
-          µ}
+            	return "<span text-align: left;'>" + varName + ": " + d.value + "</span>";
+          }
 
 
         	//Define and show the tooltip
@@ -180,20 +180,14 @@ HTMLWidgets.widget({
             .merge(bars)
             .attr("x", (d) => scaleX1(d.keyL2))
             .on("mouseover", showTooltip)
-            .on("mouseout", removeTooltip);
+            .on("mouseout", removeTooltip)
+              .transition()
+              .duration(tLong)
+              .ease(d3.easeLinear)
+              .attr("width", scaleX1.bandwidth())
+              .attr('y', d => scaleY(d.value))
+              .attr("height", d => scaleY(0) - scaleY(d.value));
 
-
-          barsEntered.transition()
-            .duration(tLong)
-            .ease(d3.easeLinear)
-            .attr("width", scaleX1.bandwidth())
-            .attr('y', d => scaleY(d.value))
-            .attr("height", d => scaleY(0) - scaleY(d.value));
-
-            barsEntered
-
-
-          // Tooltip events
 
 
 
