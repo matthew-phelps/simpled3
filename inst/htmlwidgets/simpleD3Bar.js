@@ -22,7 +22,7 @@ HTMLWidgets.widget({
 
     var container = d3.select(el).style("position", "relative")
       .append('div')
-      .attr("id", "container")
+      .attr("id", "container");
 
     var svg = container.append('svg')
       .attr("width", width + margin.left + margin.right)
@@ -113,7 +113,7 @@ HTMLWidgets.widget({
 
         // Tooltip functions
 
-        maxWidthwindow.innerWidth;
+
         function showTooltip(d) {
               toolTip.transition()
               .duration(tShort)
