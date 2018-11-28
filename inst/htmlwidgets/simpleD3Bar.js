@@ -38,6 +38,10 @@ HTMLWidgets.widget({
 
       renderValue: function(x) {
 
+        var dim = {
+          width: width - margin.left - margin.right,
+          height: height - margin.top - margin.bottom
+        };
         var container = d3.select(el).style("position", "relative")
           .append('div')
           .attr("id", "container");
