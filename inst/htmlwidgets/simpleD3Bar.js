@@ -8,13 +8,6 @@ HTMLWidgets.widget({
 
     var margin = ({top:10, right:10, bottom:40, left:60});
 
-    var dim = {
-      width: width - margin.left - margin.right,
-      height: height - margin.top - margin.bottom
-    };
-
-
-
     var barPadding = 0.2;
     var colors = ['#bd6916', '#166abd '];
 
