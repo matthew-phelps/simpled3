@@ -160,20 +160,24 @@ HTMLWidgets.widget({
               .duration(tLong)
               .attr("y", d=> scaleY(0)).remove();
 
-          bars.enter()
+          var barsEntered = bars.enter()
             .append("rect")
             .attr("fill", d => scaleColors(d.keyL2))
             .attr("y", d => scaleY(0))
             .merge(bars)
-            .attr("x", (d) => scaleX1(d.keyL2))
-            .transition()
+            .attr("x", (d) => scaleX1(d.keyL2));
+
+
+            barsEntered.transition()
               .duration(tLong)
               .ease(d3.easeLinear)
               .attr("width", scaleX1.bandwidth())
               .attr('y', d => scaleY(d.value))
-              .attr("height", d => scaleY(0) - scaleY(d.value))
+              .attr("height", d => scaleY(0) - scaleY(d.value));
+
+            barsEntered
               .on("mouseover", showTooltip)
-            .on("mouseout", removeTooltip);
+              .on("mouseout", removeTooltip);
 
           // Tooltip events
 
