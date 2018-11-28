@@ -1,12 +1,12 @@
 function drawChart(inData, width, height, el) {
+  var margin = ({top:10, right:10, bottom:40, left:60});
   var barPadding = 0.2;
-    var colors = ['#bd6916', '#166abd '];
-    var margin = ({top:10, right:10, bottom:40, left:60});
-    var tLong = 450;
-    var tShort = 200;
+  var colors = ['#bd6916', '#166abd '];
+  var tLong = 450;
+  var tShort = 200;
 
-    var scaleColors = d3.scaleOrdinal()
-        .range(colors);
+  var scaleColors = d3.scaleOrdinal()
+      .range(colors);
 
   var dim = {
     width: width - margin.left - margin.right,
