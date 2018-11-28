@@ -60,11 +60,6 @@ HTMLWidgets.widget({
       .attr("class", "y axisTitle")
       .text("Total");
 
-     // Tooltip div
-    var toolTip = container.append("div")
-        .attr('class', 'tooltip')
-        .attr("width", dim.width + margin.left + margin.right)
-        .attr("height", dim.height + margin.top + margin.bottom);
 
 
 
@@ -77,6 +72,25 @@ HTMLWidgets.widget({
     return {
 
       renderValue: function(x) {
+
+
+
+
+
+
+
+          // Tooltip div
+    var toolTip = container.append("div")
+        .attr('class', 'tooltip')
+        .attr("width", dim.width + margin.left + margin.right)
+        .attr("height", dim.height + margin.top + margin.bottom);
+
+
+
+
+
+
+
         var data = HTMLWidgets.dataframeToD3(x.data);
         var groupingName = Object.keys(data[0])[1];
         var varName = Object.keys(data[0])[2];
