@@ -6,24 +6,25 @@ HTMLWidgets.widget({
 
   factory: function(el, width, height) {
 
-    var margin = ({top:10, right:10, bottom:40, left:60});
 
-    var barPadding = 0.2;
-    var colors = ['#bd6916', '#166abd '];
 
-    var tLong = 450;
-    var tShort = 200;
 
-    var scaleColors = d3.scaleOrdinal()
-        .range(colors);
 
 
 
     return {
 
       renderValue: function(x) {
+        var margin = ({top:10, right:10, bottom:40, left:60});
+        var barPadding = 0.2;
+        var colors = ['#bd6916', '#166abd '];
 
-        var dim = {
+        var tLong = 450;
+        var tShort = 200;
+
+        var scaleColors = d3.scaleOrdinal()
+            .range(colors);
+            var dim = {
           width: width - margin.left - margin.right,
           height: height - margin.top - margin.bottom
         };
