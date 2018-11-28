@@ -6,10 +6,14 @@ HTMLWidgets.widget({
 
   factory: function(el, width, height) {
 
-    var initialized = false;
     var margin = ({top:10, right:10, bottom:40, left:60});
-    var width = width - margin.left - margin.right;
-    var height = height -margin.top - margin.bottom;
+
+    var dim = {
+      width: width - margin.left - margin.right,
+      height: height - margin.top - margin.bottom
+    };
+
+
 
     var barPadding = 0.2;
     var colors = ['#bd6916', '#166abd '];
@@ -25,8 +29,8 @@ HTMLWidgets.widget({
       .attr("id", "container");
 
     var svg = container.append('svg')
-      .attr("width", width + margin.left + margin.right)
-      .attr("height", height + margin.top + margin.bottom);
+      .attr("width", dim.width + margin.left + margin.right)
+      .attr("height", dim.height + margin.top + margin.bottom);
 
     var topG = svg.append('g')
       .attr('transform', 'translate(' + margin.left + ',' + margin.top +')');
@@ -43,15 +47,15 @@ HTMLWidgets.widget({
 
     // Axis titles
     topG.append("text")
-      .attr("x", width / 2)
-      .attr("y", height + margin.bottom)
+      .attr("x", dim.width / 2)
+      .attr("y", dim.height + margin.bottom)
       .attr("class", "x axisTitle")
       .text("Year")
       .style("text-anchor", "middle");
 
     topG.append("text")
       .attr("transform", "rotate(-90)")
-      .attr("x", 0 - height / 2)
+      .attr("x", 0 - dim.height / 2)
       .attr("y", 0 - margin.left + 20)
       .attr("class", "y axisTitle")
       .text("Total");
@@ -59,8 +63,8 @@ HTMLWidgets.widget({
      // Tooltip div
     var toolTip = container.append("div")
         .attr('class', 'tooltip')
-        .attr("width", width + margin.left + margin.right)
-        .attr("height", height + margin.top + margin.bottom);
+        .attr("width", dim.width + margin.left + margin.right)
+        .attr("height", dim.height + margin.top + margin.bottom);
 
 
 
@@ -100,7 +104,7 @@ HTMLWidgets.widget({
 
         var scaleX = d3.scaleBand()
           .domain(grouping1Names)
-          .range([0, width])
+          .range([0, dim.width])
           .padding(barPadding);
 
         var scaleX1 = d3.scaleBand()
