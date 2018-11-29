@@ -7,7 +7,7 @@ HTMLWidgets.widget({
   factory: function(el, width, height) {
     var chartExists = false;
     var margin = ({top:10, right:20, bottom:40, left:60});
-    rectPadding = 0.2;
+    var rectPadding = 0.2;
     return {
 
       renderValue: function(x) {
