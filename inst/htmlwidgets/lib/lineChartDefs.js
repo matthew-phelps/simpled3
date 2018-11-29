@@ -49,7 +49,7 @@ function drawLineChart(inData, width, height, el) {
     .attr('class', 'tooltip');
 
 
-  var data = HTMLWidgets.dataframeToD3(inDate.data);
+  var data = HTMLWidgets.dataframeToD3(inData.data);
   var varName = data[0].variable;
   var grouping1Names = data.map(d => d.year);
 
@@ -122,6 +122,26 @@ var scaleColors = d3.scaleOrdinal()
     .attr("r", cRadius)
     .attr("fill", colors[1]);
 
+   // Udpate axes
+  yAxis.transition()
+    .duration(tLong)
+    .call(d3.axisLeft(scaleY));
+
+  xAxis.transition()
+    .duration(tLong)
+    .call(d3.axisBottom(scaleX)
+      .tickFormat(d3.format("")));
+
+  // Update axis titles
+  topG.select(".y.axisTitle")
+    .transition()
+    .duration(tLong)
+    .text(varName)
+    .style("text-anchor", "middle");
+
+
+
+
 // Mouseover circles
 /* var circlesFemale = chartArea
   .selectAll(".dot")
@@ -161,6 +181,11 @@ function updateLineChart(inData, width, height, el){
 
   var svg = d3.selectAll('svg');
   var chartArea = svg.selectAll('.chartArea');
+  
+  var data = HTMLWidgets.dataframeToD3(inData.data);
+  var varName = data[0].variable;
+  var grouping1Names = data.map(d => d.year);
+
   // Update line paths with new data
   chartArea
     .select(".line.female")
@@ -213,21 +238,22 @@ function updateLineChart(inData, width, height, el){
     .attr("cx", d => scaleX(d.year))
     .attr("cy", d => scaleY(d.male));
 
-
   // Udpate axes
-  yAxis.transition()
-  .duration(tLong)
-  .call(d3.axisLeft(scaleY));
+  svg.select(".y.axis")
+    .transition()
+    .duration(tLong)
+    .call(d3.axisLeft(scaleY));
 
-  xAxis.transition()
-  .duration(tLong)
-  .call(d3.axisBottom(scaleX)
-    .tickFormat(d3.format("")));
+  svg.select(".x.axis")
+    .transition()
+    .duration(tLong)
+    .call(d3.axisBottom(scaleX)
+      .tickFormat(d3.format("")));
 
   // Update axis titles
-  topG.select(".y.axisTitle")
-  .transition()
-  .duration(tLong)
-  .text(varName)
-  .style("text-anchor", "middle");
+  svg.select(".y.axisTitle")
+    .transition()
+    .duration(tLong)
+    .text(varName)
+    .style("text-anchor", "middle");
 }
