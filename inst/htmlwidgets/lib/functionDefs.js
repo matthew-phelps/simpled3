@@ -35,16 +35,14 @@ function drawBarChart(inData, width, height, el) {
   topG.append("text")
     .attr("x", dim.width / 2)
     .attr("y", dim.height + margin.bottom)
-    .attr("class", "x axisTitle")
-    .text("Year")
-    .style("text-anchor", "middle");
+    .attr("class", "x axisTitle");
+    
 
   topG.append("text")
     .attr("transform", "rotate(-90)")
     .attr("x", 0 - dim.height / 2)
     .attr("y", 0 - margin.left + 20)
-    .attr("class", "y axisTitle")
-    .text("Total");
+    .attr("class", "y axisTitle");
 
 
       // Tooltip div
