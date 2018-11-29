@@ -19,19 +19,13 @@ HTMLWidgets.widget({
         } else {
           updateLineChart(x, width, height, el);
         }
-
-       
-
-
-
-
+        this.x = x
 
       },
 
       resize: function(width, height) {
 
-        console.log(width);
-        // TODO: code to re-render the widget with a new size
+        resizeLineChart(this.x, width, height, el)
 
       }
 

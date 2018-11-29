@@ -142,7 +142,7 @@ var scaleColors = d3.scaleOrdinal()
 // Larger invisible circles to trigger mouseover events
 var mRadius = (scaleX(d3.max(data, d=> d.year)) / data.length) / 2.5;
 var mouseCirclesFemale = chartArea
-  .selectAll(".dot")
+  .selectAll("g")
     .data(data)
     .enter().append("circle")
     .attr("class", "mouseSvg female")
@@ -154,7 +154,7 @@ var mouseCirclesFemale = chartArea
       .on("mouseout", hideTooltip);
 
 var mouseCirclesMale = chartArea
-  .selectAll(".dot")
+  .selectAll("g")
     .data(data)
     .enter().append("circle")
     .attr("class", "mouseSvg male")
@@ -197,7 +197,6 @@ var mouseCirclesMale = chartArea
 
 function updateLineChart(inData, width, height, el){
   var margin = ({top:10, right:10, bottom:40, left:60});
-  var barPadding = 0.2;
   var colors = ['#bd6916', '#166abd '];
   var tLong = 450;
   var tShort = 200;
@@ -269,6 +268,34 @@ function updateLineChart(inData, width, height, el){
     .attr("cx", d => scaleX(d.year))
     .attr("cy", d => scaleY(d.male));
 
+// Larger invisible circles to trigger mouseover events
+var mRadius = (scaleX(d3.max(data, d=> d.year)) / data.length) / 2.5;
+var mouseCirclesFemale = chartArea
+  .selectAll(".dot")
+    .data(data)
+    .enter().append("circle")
+    .attr("class", "mouseSvg female")
+    .attr("cx", d => scaleX(d.year))
+    .attr("cy", d => scaleY(d.female))
+    .attr("r", mRadius)
+      .on("mouseover", showTooltip)
+      .on("mousemove", moveTooltip)
+      .on("mouseout", hideTooltip);
+
+var mouseCirclesMale = chartArea
+  .selectAll(".dot")
+    .data(data)
+    .enter().append("circle")
+    .attr("class", "mouseSvg male")
+    .attr("cx", d => scaleX(d.year))
+    .attr("cy", d => scaleY(d.male))
+    .attr("r", mRadius)
+      .on("mouseover", showTooltip)
+      .on("mousemove", moveTooltip)
+      .on("mouseout", hideTooltip);
+
+
+
   // Udpate axes
   svg.select(".y.axis")
     .transition()
@@ -307,4 +334,54 @@ function updateLineChart(inData, width, height, el){
     .style('opacity', 0);
   }
 
+}
+
+///////////////////////////////////////////////////////////
+///////////////      RESIZE     ///////////////////////////
+///////////////////////////////////////////////////////////
+
+function resizeLineChart(inData, width, height, el){
+  var margin = ({top:10, right:10, bottom:40, left:60});
+  var colors = ['#bd6916', '#166abd '];
+  var tLong = 450;
+  var tShort = 200;
+
+  var dim = {
+    width: width - margin.left - margin.right,
+    height: height - margin.top - margin.bottom
+  };
+
+  var svg = d3.selectAll('svg')
+    .attr("width", dim.width + margin.left + margin.right)
+    .attr("height", dim.height + margin.top + margin.bottom);
+
+  d3.selectAll('.x.axisTitle')
+    .attr("x", dim.width / 2)
+    .attr("y", dim.height + margin.bottom);
+
+  d3.selectAll('.y.axisTitle')
+    .attr("x", 0 - dim.height / 2)
+    .attr("y", 0 - margin.left + 20);
+
+    // Line generators
+  var valueLine1 = d3.line()
+    .x(d => scaleX(d.year))
+    .y(d => scaleY(d.female));
+
+  var valueLine2 = d3.line()
+    .x(d => scaleX(d.year))
+    .y(d => scaleY(d.male));
+
+  // Scales
+  var maxY = d3.max(data, d=> Math.max(d.female, d.male));
+  var scaleX = d3.scaleLinear()
+    .domain(d3.extent(data, d => d.year))
+    .range([0, width]);
+
+  var scaleY = d3.scaleLinear()
+    .domain([0, maxY])
+    .range([height, 0]);
+
+  var scaleColors = d3.scaleOrdinal()
+   .range(colors);
 }
