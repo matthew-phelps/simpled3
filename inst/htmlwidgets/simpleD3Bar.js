@@ -13,7 +13,7 @@ HTMLWidgets.widget({
       renderValue: function(x) {
         if(!chartExists){
           chartExists = true;
-          drawBarChart(x, width, height, el);
+          drawBarChart(x, width, height, el, margin, colors);
         } else {
           updateBarChart(x, this.dim.width, this.dim.height, el);
         }
@@ -22,7 +22,7 @@ HTMLWidgets.widget({
       },
 
       resize: function(width, height) {
-        resizeBarChart(this.x, width, height, el);
+        resizeBarChart(this.x, width, height, el, margin, colors);
         var dim = {
                 width: width - margin.left - margin.right,
                 height: height - margin.top - margin.bottom
