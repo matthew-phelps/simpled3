@@ -158,6 +158,7 @@ var mouseRectsFemale = chartArea
     .enter().append("rect")
     .attr("class", "mouseSvg female")
     .attr("x", d => scaleXRects(d.year))
+    .attr("wdith", scaleXRects.bandwidth())
     .attr("y", 0)
     .attr("height", height)
       .on("mouseover", showTooltip)
