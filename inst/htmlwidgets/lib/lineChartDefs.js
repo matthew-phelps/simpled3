@@ -351,6 +351,12 @@ function resizeLineChart(inData, width, height, el){
     height: height - margin.top - margin.bottom
   };
 
+  var data = HTMLWidgets.dataframeToD3(inData.data);
+  var varName = data[0].variable;
+  var grouping1Names = data.map(d => d.year);
+
+
+
   var svg = d3.selectAll('svg')
     .attr("width", dim.width + margin.left + margin.right)
     .attr("height", dim.height + margin.top + margin.bottom);
