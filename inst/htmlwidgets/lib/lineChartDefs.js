@@ -140,7 +140,7 @@ var scaleColors = d3.scaleOrdinal()
     .style("text-anchor", "middle");
 
 // Larger invisible circles to trigger mouseover events
-var mRadius = (scaleX(d3.max(data, d=> d.year)) / data.length) / 3;
+var mRadius = (scaleX(d3.max(data, d=> d.year)) / data.length) / 2.5;
 var mouseCirclesFemale = chartArea
   .selectAll(".dot")
     .data(data)
