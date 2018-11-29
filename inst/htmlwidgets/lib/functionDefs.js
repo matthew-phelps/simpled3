@@ -12,7 +12,7 @@ function drawBarChart(inData, width, height, el) {
 
   var container = d3.select(el).html("").style("position", "relative")
     .append('div')
-    .attr("id", "container");
+    .attr("id", "containerBar");
 
   var svg = container.append('svg')
     .attr("width", dim.width + margin.left + margin.right)
@@ -200,7 +200,7 @@ function updateBarChart(inData, width, height, el) {
   };
 
 
-  svg = d3.selectAll('svg');
+  svg = d3.select('#containerBar').select('svg');
   var chartArea = svg.selectAll('.chartArea');
   var tooltip = d3.select("#tooltipBar");
 
@@ -360,7 +360,7 @@ function resizeBarChart(inData, width, height, el) {
     height: height - margin.top - margin.bottom
   };
 
-  var svg = d3.selectAll('svg')
+  var svg = d3.select('#containerBar').select('svg')
     .attr("width", dim.width + margin.left + margin.right)
     .attr("height", dim.height + margin.top + margin.bottom);
 

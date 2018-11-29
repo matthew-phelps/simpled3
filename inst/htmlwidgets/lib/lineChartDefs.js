@@ -12,7 +12,7 @@ function drawLineChart(inData, width, height, el) {
   
   var container = d3.select(el).html("").style("position", "relative")
     .append('div')
-    .attr('id', 'container')
+    .attr('id', 'containerLine')
 
   var svg = container.append('svg')
     .attr("width", width + margin.left + margin.right)
@@ -204,7 +204,7 @@ function updateLineChart(inData, width, height, el){
     height: height - margin.top - margin.bottom
   };
 
-  var svg = d3.selectAll('svg');
+  var svg = d3.select("#containerLine").select('svg');
   var chartArea = svg.selectAll('.chartArea');
   var tooltip = d3.select("#tooltipLine");
   
@@ -355,10 +355,10 @@ function resizeLineChart(inData, width, height, el){
 
 
 
-  var svg = d3.selectAll('svg')
+  var svg = d3.select("#containerLine").select('svg')
     .attr("width", dim.width + margin.left + margin.right)
     .attr("height", dim.height + margin.top + margin.bottom);
-  var chartArea = d3.selectAll(".chartArea")
+  var chartArea = svg.select(".chartArea")
 
 
   d3.selectAll('.x.axisTitle')
