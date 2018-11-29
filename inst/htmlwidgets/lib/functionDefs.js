@@ -37,20 +37,17 @@ function drawBarChart(inData, width, height, el) {
     .attr("y", dim.height + margin.bottom)
     .attr("class", "x axisTitle");
     
-
   topG.append("text")
     .attr("transform", "rotate(-90)")
     .attr("x", 0 - dim.height / 2)
     .attr("y", 0 - margin.left + 20)
     .attr("class", "y axisTitle");
 
-
-      // Tooltip div
+  // Tooltip div
   var toolTip = container.append("div")
     .attr('class', 'tooltip');
 
-
-
+  // Data management
   var data = HTMLWidgets.dataframeToD3(inData.data);
   var groupingName = Object.keys(data[0])[1];
   var varName = Object.keys(data[0])[2];
@@ -65,28 +62,26 @@ function drawBarChart(inData, width, height, el) {
   .key(d => d.grouping)
   .entries(data);
 
-
-  var maxY = d3.max(newData, d => d3.max(d.values, k => k.value));
   grouping1Names = newData.map(d => d.key);
   grouping2Names = newData[0].values.map(d => d.Sex);
 
-
   // Scales
+  var maxY = d3.max(newData, d => d3.max(d.values, k => k.value));
   var scaleY = d3.scaleLinear()
-  .domain([0, maxY])
-  .range([dim.height, 0]);
+    .domain([0, maxY])
+    .range([dim.height, 0]);
 
   var scaleX = d3.scaleBand()
-  .domain(grouping1Names)
-  .range([0, dim.width])
-  .padding(barPadding);
+    .domain(grouping1Names)
+    .range([0, dim.width])
+    .padding(barPadding);
 
   var scaleX1 = d3.scaleBand()
-  .domain(grouping2Names)
-  .rangeRound([0, scaleX.bandwidth()]);
+    .domain(grouping2Names)
+    .rangeRound([0, scaleX.bandwidth()]);
 
   var scaleColors = d3.scaleOrdinal()
-  .range(colors);
+    .range(colors);
 
 
   // Tooltip functions

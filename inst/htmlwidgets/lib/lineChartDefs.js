@@ -1,5 +1,8 @@
 function drawLineChart(inData, width, height, el) {
-  var initialized = true;
+  var colors = ['#bd6916', '#166abd '];
+  var tLong = 450;
+  var tShort = 200;
+  var cRadius = 7;
 
   var margin = ({top:10, right:10, bottom:40, left:60});
   var dim = {
@@ -7,32 +10,26 @@ function drawLineChart(inData, width, height, el) {
     height: height - margin.top - margin.bottom
   };
   
-  var width = width - margin.left - margin.right;
-  var height = height -margin.top - margin.bottom;
+  var container = d3.select(el).html("").style("position", "relative")
+    .append('div')
+    .attr('id', 'container')
 
-  var barPadding = 0.2;
-  var colors = ['#bd6916', '#166abd '];
-
-  var tLong = 450;
-  var tShort = 200;
-  var cRadius = 7;
-
-  var container = d3.select(el).html("").style("position", "relative");
   var svg = container.append('svg')
-  .attr("width", width + margin.left + margin.right)
-  .attr("height", height + margin.top + margin.bottom);
+    .attr("width", width + margin.left + margin.right)
+    .attr("height", height + margin.top + margin.bottom);
 
   var topG = svg.append('g')
-  .attr('transform', 'translate(' + margin.left + ',' + margin.top +')');
+    .attr('transform', 'translate(' + margin.left + ',' + margin.top +')');
 
-  var chartArea = topG.append("g");
+  var chartArea = topG.append("g")
+    .attr("class", "chartArea");
 
   // Initial axis
   var yAxis = topG.append('g')
-  .attr("class", "y axis");
+    .attr("class", "y axis");
 
   var xAxis = topG.append('g')
-  .attr("class", "x axis");
+    .attr("class", "x axis");
 
 
   // Axis titles
@@ -40,57 +37,52 @@ function drawLineChart(inData, width, height, el) {
     .attr("x", width / 2)
     .attr("y", height + margin.bottom)
     .attr("class", "x axisTitle")
-    .text("Year")
-    .style("text-anchor", "middle");
-
+    
   topG.append("text")
     .attr("transform", "rotate(-90)")
     .attr("x", 0 - height / 2)
     .attr("y", 0 - margin.left + 20)
     .attr("class", "y axisTitle")
-    .text("Total");
 
   // Tooltip container
-  var toolTip = svgContainer.append("div")
+  var toolTip = container.append("div")
     .attr('class', 'tooltip');
 
 
-  var data = HTMLWidgets.dataframeToD3(x.data);
+  var data = HTMLWidgets.dataframeToD3(inDate.data);
   var varName = data[0].variable;
   var grouping1Names = data.map(d => d.year);
 
   // Scales
-  var scaleColors = d3.scaleOrdinal()
-  .range(colors);
   var maxY = d3.max(data, d=> Math.max(d.female, d.male));
   var scaleX = d3.scaleLinear()
-  .domain(d3.extent(data, d => d.year))
-  .range([0, width]);
+    .domain(d3.extent(data, d => d.year))
+    .range([0, width]);
 
   var scaleY = d3.scaleLinear()
-  .domain([0, maxY])
-  .range([height, 0]);
+    .domain([0, maxY])
+    .range([height, 0]);
 
+var scaleColors = d3.scaleOrdinal()
+   .range(colors);
+  
   xAxis.call(d3.axisBottom(scaleX)
-  .tickFormat(d3.format("")))
-  .attr("transform", "translate(" + 0 + "," + height + ')');
+    .tickFormat(d3.format("")))
+    .attr("transform", "translate(" + 0 + "," + height + ')');
 
 
   // Mouseover area for each circle should extend halfway to next circle on x-axis. This will cause problems for nearby male/female circles
-  var bigRadius = scaleX(d3.max(data, d=> d.year)) / data.length;
+ // var bigRadius = scaleX(d3.max(data, d=> d.year)) / data.length;
   // Line generators
   var valueLine1 = d3.line()
-  .x(d => scaleX(d.year))
-  .y(d => scaleY(d.female));
+    .x(d => scaleX(d.year))
+    .y(d => scaleY(d.female));
 
   var valueLine2 = d3.line()
-  .x(d => scaleX(d.year))
-  .y(d => scaleY(d.male));
+    .x(d => scaleX(d.year))
+    .y(d => scaleY(d.male));
 
   // Add initial line paths
-  if (!initialized){
-  initialized = true;
-
   var line1 = chartArea
     .append("path")
     .datum(data) // use dataum() because appending to single svg element
@@ -151,23 +143,38 @@ var circlesMale = chartArea
     .attr("r", mRadius)
     .attr("fill", colors[1]);
     */
-  }
+
+}
 
 
-// Create the paths for each series of data
+function updateLineChart(inData, width, height, el){
+  var margin = ({top:10, right:10, bottom:40, left:60});
+  var barPadding = 0.2;
+  var colors = ['#bd6916', '#166abd '];
+  var tLong = 450;
+  var tShort = 200;
+
+  var dim = {
+    width: width - margin.left - margin.right,
+    height: height - margin.top - margin.bottom
+  };
+
+  var svg = d3.selectAll('svg');
+  var chartArea = svg.selectAll('.chartArea');
+  // Update line paths with new data
   chartArea
-    .select(".female")
+    .select(".line.female")
     .transition()
     .duration(tLong)
     .attr("d", valueLine1(data));
 
   chartArea
-    .select(".male")
+    .select(".line.male")
     .transition()
     .duration(tLong)
     .attr("d", valueLine2(data));
 
-  // Update circles
+  // Update circles with new datga
   var dotFemale = chartArea.selectAll(".dotfemale")
     .data(data);
 
