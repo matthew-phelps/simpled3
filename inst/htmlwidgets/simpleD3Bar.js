@@ -15,7 +15,7 @@ HTMLWidgets.widget({
           chartExists = true;
           drawBarChart(x, width, height, el, margin, colors);
         } else {
-          updateBarChart(x, this.dim.width, this.dim.height, el);
+          updateBarChart(x, this.dim.width, this.dim.height, el, margin, colors);
         }
         this.x = x; // store for resize
 
