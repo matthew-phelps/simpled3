@@ -6,8 +6,7 @@ HTMLWidgets.widget({
 
   factory: function(el, width, height) {
     var el = el;
-    var width  = width;
-    var height = height;
+    
     var chartExists = false;
     var margin = ({top:10, right:20, bottom:40, left:60});
     return {
