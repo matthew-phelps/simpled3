@@ -17,7 +17,7 @@ HTMLWidgets.widget({
           chartExists = true;
           drawLineChart(x, width, height, el);
         } else {
-          updateLineChart(x, width, heigt, el);
+          updateLineChart(x, width, height, el);
         }
 
        
