@@ -14,9 +14,9 @@ HTMLWidgets.widget({
       renderValue: function(x) {
         if(!chartExists){
           chartExists = true;
-          drawChart(x, width, height, el);
+          drawBarChart(x, width, height, el);
         } else {
-          updateChart(x, width, height, el);
+          updateBarChart(x, width, height, el);
         }
         this.x = x; // store for resize
 
@@ -24,7 +24,7 @@ HTMLWidgets.widget({
 
       resize: function(width, height) {
 
-        resizeChart(this.x, width, height, el);
+        resizeBarChart(this.x, width, height, el);
       }
 
     };

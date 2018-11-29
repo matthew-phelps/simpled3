@@ -1,12 +1,9 @@
-function drawChart(inData, width, height, el) {
+function drawBarChart(inData, width, height, el) {
   var margin = ({top:10, right:10, bottom:40, left:60});
   var barPadding = 0.2;
   var colors = ['#bd6916', '#166abd '];
   var tLong = 450;
   var tShort = 200;
-
-  var scaleColors = d3.scaleOrdinal()
-      .range(colors);
 
   var dim = {
     width: width - margin.left - margin.right,
@@ -199,7 +196,7 @@ function drawChart(inData, width, height, el) {
 //////////////////    UPDATE     /////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////
 
-function updateChart(inData, width, height, el) {
+function updateBarChart(inData, width, height, el) {
   var margin = ({top:10, right:10, bottom:40, left:60});
   var barPadding = 0.2;
   var colors = ['#bd6916', '#166abd '];
@@ -353,13 +350,11 @@ function updateChart(inData, width, height, el) {
   }
 
 
-
-
 //////////////////////////////////////////////////////////////////////////////
 //////////////////    RESIZE     /////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////
 
-function resizeChart(inData, width, height, el) {
+function resizeBarChart(inData, width, height, el) {
   var margin = ({top:10, right:10, bottom:40, left:60});
   var barPadding = 0.2;
   var colors = ['#bd6916', '#166abd '];
@@ -451,9 +446,6 @@ function resizeChart(inData, width, height, el) {
     .transition()
     .duration(tShort)
     .call(d3.axisLeft(scaleY));
-
-
-
 
   }
 
