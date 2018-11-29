@@ -5,15 +5,16 @@ HTMLWidgets.widget({
   type: 'output',
 
   factory: function(el, width, height) {
-
-    initialized = false;
-
+    var el = el;
+    var width  = width;
+    var height = height;
+    var chartExists = false;
     
     return {
 
       renderValue: function(x) {
         if(!initialized){
-          initialized = true;
+          chartExists = true;
           drawLineChart(x, width, height, el);
         } else {
           updateLineChart(x, width, heigt, el);
