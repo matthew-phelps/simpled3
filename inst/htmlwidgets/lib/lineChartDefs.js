@@ -16,8 +16,8 @@ function drawLineChart(inData, width, height, el) {
     .attr('id', 'containerLine');
 
   var svg = container.append('svg')
-    .attr("width", width + margin.left + margin.right)
-    .attr("height", height + margin.top + margin.bottom);
+    .attr("width", dim.width + margin.left + margin.right)
+    .attr("height", dim.height + margin.top + margin.bottom);
 
   var topG = svg.append('g')
     .attr('transform', 'translate(' + margin.left + ',' + margin.top +')');
@@ -35,13 +35,13 @@ function drawLineChart(inData, width, height, el) {
 
   // Axis titles
   topG.append("text")
-    .attr("x", width / 2)
-    .attr("y", height + margin.bottom)
+    .attr("x", dim.width / 2)
+    .attr("y", dim.height + margin.bottom)
     .attr("class", "x axisTitle");
     
   topG.append("text")
     .attr("transform", "rotate(-90)")
-    .attr("x", 0 - height / 2)
+    .attr("x", 0 - dim.height / 2)
     .attr("y", 0 - margin.left + 20)
     .attr("class", "y axisTitle");
 
@@ -58,18 +58,18 @@ function drawLineChart(inData, width, height, el) {
   var maxY = d3.max(data, d=> Math.max(d.female, d.male));
   var scaleX = d3.scaleLinear()
     .domain(d3.extent(data, d => d.year))
-    .range([0, width]);
+    .range([0, dim.width]);
 
   var scaleY = d3.scaleLinear()
     .domain([0, maxY])
-    .range([height, 0]);
+    .range([dim.height, 0]);
 
 var scaleColors = d3.scaleOrdinal()
    .range(colors);
   
   xAxis.call(d3.axisBottom(scaleX)
     .tickFormat(d3.format("")))
-    .attr("transform", "translate(" + 0 + "," + height + ')');
+    .attr("transform", "translate(" + 0 + "," + dim.height + ')');
 
 
   // Mouseover area for each circle should extend halfway to next circle on x-axis. This will cause problems for nearby male/female circles
@@ -226,11 +226,11 @@ function updateLineChart(inData, width, height, el){
   var maxY = d3.max(data, d=> Math.max(d.female, d.male));
   var scaleX = d3.scaleLinear()
     .domain(d3.extent(data, d => d.year))
-    .range([0, width]);
+    .range([0, dim.width]);
 
   var scaleY = d3.scaleLinear()
     .domain([0, maxY])
-    .range([height, 0]);
+    .range([dim.height, 0]);
 
   var scaleColors = d3.scaleOrdinal()
    .range(colors);
@@ -383,11 +383,11 @@ function resizeLineChart(inData, width, height, el){
   var maxY = d3.max(data, d=> Math.max(d.female, d.male));
   var scaleX = d3.scaleLinear()
     .domain(d3.extent(data, d => d.year))
-    .range([0, width]);
+    .range([0, dim.width]);
 
   var scaleY = d3.scaleLinear()
     .domain([0, maxY])
-    .range([height, 0]);
+    .range([dim.height, 0]);
 
   var scaleColors = d3.scaleOrdinal()
    .range(colors);
