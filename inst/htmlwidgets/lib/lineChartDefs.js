@@ -1,3 +1,4 @@
+/*jshint esversion: 6 */
 function drawLineChart(inData, width, height, el) {
   var colors = ['#bd6916', '#166abd '];
   var tLong = 450;
@@ -12,7 +13,7 @@ function drawLineChart(inData, width, height, el) {
   
   var container = d3.select(el).html("").style("position", "relative")
     .append('div')
-    .attr('id', 'containerLine')
+    .attr('id', 'containerLine');
 
   var svg = container.append('svg')
     .attr("width", width + margin.left + margin.right)
@@ -36,13 +37,13 @@ function drawLineChart(inData, width, height, el) {
   topG.append("text")
     .attr("x", width / 2)
     .attr("y", height + margin.bottom)
-    .attr("class", "x axisTitle")
+    .attr("class", "x axisTitle");
     
   topG.append("text")
     .attr("transform", "rotate(-90)")
     .attr("x", 0 - height / 2)
     .attr("y", 0 - margin.left + 20)
-    .attr("class", "y axisTitle")
+    .attr("class", "y axisTitle");
 
   // Tooltip container
   var tooltip = container.append("div")
@@ -358,14 +359,14 @@ function resizeLineChart(inData, width, height, el){
   var svg = d3.select("#containerLine").select('svg')
     .attr("width", dim.width + margin.left + margin.right)
     .attr("height", dim.height + margin.top + margin.bottom);
-  var chartArea = svg.select(".chartArea")
+  var chartArea = svg.select(".chartArea");
 
 
-  d3.selectAll('.x.axisTitle')
+  svg.select('.x.axisTitle')
     .attr("x", dim.width / 2)
     .attr("y", dim.height + margin.bottom);
 
-  d3.selectAll('.y.axisTitle')
+  svg.select('.y.axisTitle')
     .attr("x", 0 - dim.height / 2)
     .attr("y", 0 - margin.left + 20);
 
@@ -432,7 +433,6 @@ function resizeLineChart(inData, width, height, el){
       .attr("cy", d => scaleY(d.male))
       .attr("r", mRadius);
   
-
   // Udpate axes
   svg.select(".y.axis")
     .transition()

@@ -1,3 +1,4 @@
+/*jshint esversion: 6 */
 function drawBarChart(inData, width, height, el) {
   var margin = ({top:10, right:10, bottom:40, left:60});
   var barPadding = 0.2;
