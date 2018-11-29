@@ -45,7 +45,7 @@ function drawBarChart(inData, width, height, el) {
 
   // Tooltip div
   var tooltip = container.append("div")
-    .attr('class', 'tooltip');
+    .attr('id', 'tooltipBar');
 
   // Data management
   var data = HTMLWidgets.dataframeToD3(inData.data);
@@ -202,7 +202,7 @@ function updateBarChart(inData, width, height, el) {
 
   svg = d3.selectAll('svg');
   var chartArea = svg.selectAll('.chartArea');
-  var tooltip = d3.select(".tooltip");
+  var tooltip = d3.select("#tooltipBar");
 
   // Data management
   var data = HTMLWidgets.dataframeToD3(inData.data);

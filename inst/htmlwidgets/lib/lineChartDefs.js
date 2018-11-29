@@ -46,7 +46,7 @@ function drawLineChart(inData, width, height, el) {
 
   // Tooltip container
   var tooltip = container.append("div")
-    .attr('class', 'tooltip');
+    .attr('id', 'tooltipLine');
 
   var data = HTMLWidgets.dataframeToD3(inData.data);
   var varName = data[0].variable;
@@ -206,7 +206,7 @@ function updateLineChart(inData, width, height, el){
 
   var svg = d3.selectAll('svg');
   var chartArea = svg.selectAll('.chartArea');
-  var tooltip = d3.select(".tooltip");
+  var tooltip = d3.select("#tooltipLine");
   
   var data = HTMLWidgets.dataframeToD3(inData.data);
   var varName = data[0].variable;
