@@ -44,7 +44,7 @@ function drawBarChart(inData, width, height, el) {
     .attr("class", "y axisTitle");
 
   // Tooltip div
-  var toolTip = container.append("div")
+  var tooltip = container.append("div")
     .attr('class', 'tooltip');
 
   // Data management
@@ -88,14 +88,14 @@ function drawBarChart(inData, width, height, el) {
 
 
   function showTooltip(d) {
-      toolTip.transition()
+      tooltip.transition()
       .duration(tShort)
       .style('opacity', 0.9);
 
   }
 
   function moveTooltip(d) {
-     toolTip.html(
+     tooltip.html(
         "<b>" + "År " + "</b>" + d.keyL2 + "<br/><br/>" +
         varName + " " + "<b>" + d.value + "</br>")
         .style("left", d3.event.pageX + "px")
@@ -103,7 +103,7 @@ function drawBarChart(inData, width, height, el) {
 
   }
   function hideTooltip() {
-    toolTip.transition()
+    tooltip.transition()
     .duration(tShort)
     .style('opacity', 0);
   }
@@ -204,7 +204,7 @@ function updateBarChart(inData, width, height, el) {
 
   svg = d3.selectAll('svg');
   var chartArea = svg.selectAll('.chartArea');
-
+  var tooltip = svg.select(".tooltip")
 
   // Data management
   var data = HTMLWidgets.dataframeToD3(inData.data);
@@ -245,13 +245,13 @@ function updateBarChart(inData, width, height, el) {
 
   // Tooltip functions //
   function showTooltip(d) {
-    toolTip.transition()
+    tooltip.transition()
       .duration(tShort)
       .style('opacity', 0.9);
   }
 
   function moveTooltip(d) {
-    toolTip.html(
+    tooltip.html(
       "<b>" + "År " + "</b>" + d.keyL2 + "<br/><br/>" +
       varName + " " + "<b>" + d.value + "</br>")
       .style("left", d3.event.pageX + "px")
@@ -259,7 +259,7 @@ function updateBarChart(inData, width, height, el) {
   }
 
   function hideTooltip() {
-    toolTip.transition()
+    tooltip.transition()
       .duration(tShort)
       .style('opacity', 0);
   }
