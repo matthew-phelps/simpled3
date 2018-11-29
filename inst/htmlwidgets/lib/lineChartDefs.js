@@ -1,11 +1,10 @@
 /*jshint esversion: 6 */
-function drawLineChart(inData, width, height, el) {
+function drawLineChart(inData, width, height, el, margin) {
   var colors = ['#bd6916', '#166abd '];
   var tLong = 450;
   var tShort = 200;
   var cRadius = 7;
 
-  var margin = ({top:10, right:10, bottom:40, left:60});
   var dim = {
     width: width - margin.left - margin.right,
     height: height - margin.top - margin.bottom
@@ -194,8 +193,8 @@ var mouseCirclesMale = chartArea
 ///////////////      UPDATE     ///////////////////////////
 ///////////////////////////////////////////////////////////
 
-function updateLineChart(inData, width, height, el){
-  var margin = ({top:10, right:10, bottom:40, left:60});
+function updateLineChart(inData, width, height, el, margin){
+  
   var colors = ['#bd6916', '#166abd '];
   var tLong = 450;
   var tShort = 200;
@@ -339,8 +338,7 @@ var mouseCirclesMale = chartArea
 ///////////////      RESIZE     ///////////////////////////
 ///////////////////////////////////////////////////////////
 
-function resizeLineChart(inData, width, height, el){
-  var margin = ({top:10, right:10, bottom:40, left:60});
+function resizeLineChart(inData, width, height, el, margin){
   var colors = ['#bd6916', '#166abd '];
   var tLong = 450;
   var tShort = 200;
