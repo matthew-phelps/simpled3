@@ -13,7 +13,7 @@ HTMLWidgets.widget({
     return {
 
       renderValue: function(x) {
-        if(!initialized){
+        if(!chartExists){
           chartExists = true;
           drawLineChart(x, width, height, el);
         } else {
