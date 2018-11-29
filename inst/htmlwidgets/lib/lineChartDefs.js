@@ -165,7 +165,9 @@ var circlesMale = chartArea
     */
 
 }
-
+///////////////////////////////////////////////////////////
+///////////////      UPDATE     ///////////////////////////
+///////////////////////////////////////////////////////////
 
 function updateLineChart(inData, width, height, el){
   var margin = ({top:10, right:10, bottom:40, left:60});
@@ -185,6 +187,28 @@ function updateLineChart(inData, width, height, el){
   var data = HTMLWidgets.dataframeToD3(inData.data);
   var varName = data[0].variable;
   var grouping1Names = data.map(d => d.year);
+
+  // Line generators
+  var valueLine1 = d3.line()
+    .x(d => scaleX(d.year))
+    .y(d => scaleY(d.female));
+
+  var valueLine2 = d3.line()
+    .x(d => scaleX(d.year))
+    .y(d => scaleY(d.male));
+
+  // Scales
+  var maxY = d3.max(data, d=> Math.max(d.female, d.male));
+  var scaleX = d3.scaleLinear()
+    .domain(d3.extent(data, d => d.year))
+    .range([0, width]);
+
+  var scaleY = d3.scaleLinear()
+    .domain([0, maxY])
+    .range([height, 0]);
+
+  var scaleColors = d3.scaleOrdinal()
+   .range(colors);
 
   // Update line paths with new data
   chartArea
