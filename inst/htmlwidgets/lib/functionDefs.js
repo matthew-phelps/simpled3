@@ -204,7 +204,7 @@ function updateBarChart(inData, width, height, el) {
 
   svg = d3.selectAll('svg');
   var chartArea = svg.selectAll('.chartArea');
-  var tooltip = svg.select(".tooltip")
+  var tooltip = d3.select(".tooltip");
 
   // Data management
   var data = HTMLWidgets.dataframeToD3(inData.data);
