@@ -31,7 +31,6 @@ function drawLineChart(inData, width, height, el, margin) {
   var xAxis = topG.append('g')
     .attr("class", "x axis");
 
-
   // Axis titles
   topG.append("text")
     .attr("x", dim.width / 2)
@@ -122,7 +121,7 @@ var scaleColors = d3.scaleOrdinal()
     .attr("r", cRadius)
     .attr("fill", colors[1]);
 
-   // Udpate axes
+   // Add axes
   yAxis.transition()
     .duration(tLong)
     .call(d3.axisLeft(scaleY));
@@ -132,11 +131,17 @@ var scaleColors = d3.scaleOrdinal()
     .call(d3.axisBottom(scaleX)
       .tickFormat(d3.format("")));
 
-  // Update axis titles
+  // Add axis titles
   topG.select(".y.axisTitle")
     .transition()
     .duration(tLong)
     .text(varName)
+    .style("text-anchor", "middle");
+
+  topG.select(".x.axisTitle")
+    .transition()
+    .duration(tLong)
+    .text("År")
     .style("text-anchor", "middle");
 
 // Larger invisible circles to trigger mouseover events
@@ -449,5 +454,8 @@ function resizeLineChart(inData, width, height, el, margin){
     .duration(tLong)
     .text(varName)
     .style("text-anchor", "middle");
+  
+  
+
 
  }
