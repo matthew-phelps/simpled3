@@ -5,9 +5,12 @@ HTMLWidgets.widget({
   type: 'output',
 
   factory: function(el, width, height) {
-    var chartExists = false;
     var margin = ({top:10, right:20, bottom:40, left:60});
     var rectPadding = 0.2;
+
+    // State variables
+    var chartExists = false;
+    var resized = false;
     return {
 
       renderValue: function(x) {
