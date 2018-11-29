@@ -51,6 +51,7 @@ function drawLineChart(inData, width, height, el) {
   var data = HTMLWidgets.dataframeToD3(inData.data);
   var varName = data[0].variable;
   var grouping1Names = data.map(d => d.year);
+  var mRadius = scaleX(d3.max(data, d=> d.year)) / data.length;
 
   // Scales
   var maxY = d3.max(data, d=> Math.max(d.female, d.male));
@@ -146,7 +147,7 @@ var mouseCirclesFemale = chartArea
     .attr("class", "mouseSvg female")
     .attr("cx", d => scaleX(d.year))
     .attr("cy", d => scaleY(d.female))
-    .attr("r", cRadius)
+    .attr("r", mRadius)
       .on("mouseover", showTooltip)
       .on("mousemove", moveTooltip)
       .on("mouseout", hideTooltip);
