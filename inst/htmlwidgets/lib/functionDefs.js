@@ -1,8 +1,7 @@
 /*jshint esversion: 6 */
-function drawBarChart(inData, width, height, el) {
-  var margin = ({top:10, right:10, bottom:40, left:60});
+function drawBarChart(inData, width, height, el, margin, colors) {
   var barPadding = 0.2;
-  var colors = ['#bd6916', '#166abd '];
+
   var tLong = 450;
   var tShort = 200;
 
@@ -188,10 +187,8 @@ function drawBarChart(inData, width, height, el) {
 //////////////////    UPDATE     /////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////
 
-function updateBarChart(inData, width, height, el) {
-  var margin = ({top:10, right:10, bottom:40, left:60});
+function updateBarChart(inData, width, height, el, margin, colors) {
   var barPadding = 0.2;
-  var colors = ['#bd6916', '#166abd '];
   var tLong = 450;
   var tShort = 200;
 
@@ -346,10 +343,9 @@ function updateBarChart(inData, width, height, el) {
 //////////////////    RESIZE     /////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////
 
-function resizeBarChart(inData, width, height, el) {
-  var margin = ({top:10, right:10, bottom:40, left:60});
+function resizeBarChart(inData, width, height, el, margin, colors) {
+  
   var barPadding = 0.2;
-  var colors = ['#bd6916', '#166abd '];
   var tLong = 450;
   var tShort = 200;
 
