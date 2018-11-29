@@ -303,14 +303,15 @@ function updateChart(inData, width, height, el) {
       .attr("height", d => scaleY(0) - scaleY(d.value));
 
   // Update axes scales
-  yAxis.transition()
-    .duration(tLong)
-    .call(d3.axisLeft(scaleY));
+  svg.selectAll(".x.axis")
+    .transition()
+    .duration(tShort)
+    .call(d3.axisBottom(scaleX));
 
-  xAxis.transition()
-    .duration(tLong)
-    .call(d3.axisBottom(scaleX))
-    .attr("transform", 'translate(' + 0 + "," + dim.height + ')');
+  svg.selectAll(".y.axis")
+    .transition()
+    .duration(tShort)
+    .call(d3.axisLeft(scaleY));
 
 
   // Axis titles
@@ -443,13 +444,13 @@ function resizeChart(inData, width, height, el) {
   svg.selectAll(".x.axis")
     .transition()
     .duration(tShort)
-    .call(d3.axisBottom(scaleX))
+    .call(d3.axisBottom(scaleX));
 
 
   svg.selectAll(".y.axis")
     .transition()
     .duration(tShort)
-    .call(d3.axisLeft(scaleY))
+    .call(d3.axisLeft(scaleY));
 
 
 
