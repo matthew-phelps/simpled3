@@ -243,8 +243,28 @@ function updateBarChart(inData, width, height, el) {
   var scaleColors = d3.scaleOrdinal()
     .range(colors);
 
+  // Tooltip functions //
+  function showTooltip(d) {
+    toolTip.transition()
+      .duration(tShort)
+      .style('opacity', 0.9);
+  }
 
-   // Perform the data joins
+  function moveTooltip(d) {
+    toolTip.html(
+      "<b>" + "År " + "</b>" + d.keyL2 + "<br/><br/>" +
+      varName + " " + "<b>" + d.value + "</br>")
+      .style("left", d3.event.pageX + "px")
+      .style("top", (d3.mouse(this)[1] + 28) + "px");
+  }
+
+  function hideTooltip() {
+    toolTip.transition()
+      .duration(tShort)
+      .style('opacity', 0);
+  }
+
+  // Perform the data joins
   var barGroupWithData = chartArea
     .selectAll('g')
     .data(newData, d => d.key);
@@ -320,25 +340,7 @@ function updateBarChart(inData, width, height, el) {
 
   /* Tooltip functions. These should be hoisted to top of updateChart() function
   call, and therefore accessible at anytime from inside updateChart() */
-  function showTooltip(d) {
-    toolTip.transition()
-      .duration(tShort)
-      .style('opacity', 0.9);
-  }
 
-  function moveTooltip(d) {
-    toolTip.html(
-      "<b>" + "År " + "</b>" + d.keyL2 + "<br/><br/>" +
-      varName + " " + "<b>" + d.value + "</br>")
-      .style("left", d3.event.pageX + "px")
-      .style("top", (d3.mouse(this)[1] + 28) + "px");
-  }
-
-  function hideTooltip() {
-    toolTip.transition()
-      .duration(tShort)
-      .style('opacity', 0);
-  }
 
   }
 
