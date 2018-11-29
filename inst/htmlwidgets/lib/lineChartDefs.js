@@ -1,6 +1,6 @@
 /*jshint esversion: 6 */
-function drawLineChart(inData, width, height, el, margin) {
-  var colors = ['#bd6916', '#166abd '];
+function drawLineChart(inData, width, height, el, margin, rectPadding) {
+  var colors = ['#bd6916', '#166abd'];
   var tLong = 450;
   var tShort = 200;
   var cRadius = 7;
@@ -59,11 +59,16 @@ function drawLineChart(inData, width, height, el, margin) {
     .domain(d3.extent(data, d => d.year))
     .range([0, dim.width]);
 
+  var scaleXRects = d3.scaleBand()
+    .domain(grouping1Names)
+    .range([0, dim.width])
+    .padding(rectPadding);
+
   var scaleY = d3.scaleLinear()
     .domain([0, maxY])
     .range([dim.height, 0]);
 
-var scaleColors = d3.scaleOrdinal()
+  var scaleColors = d3.scaleOrdinal()
    .range(colors);
   
   xAxis.call(d3.axisBottom(scaleX)
@@ -145,24 +150,24 @@ var scaleColors = d3.scaleOrdinal()
     .text("År")
     .style("text-anchor", "middle");
 
-// Larger invisible circles to trigger mouseover events
+// Invisible rects to trigger mouseover events
 var mRadius = (scaleX(d3.max(data, d=> d.year)) / data.length) / 2.5;
-var mouseCirclesFemale = chartArea
+var mouseRectsFemale = chartArea
   .selectAll("g")
     .data(data)
-    .enter().append("circle")
+    .enter().append("rect")
     .attr("class", "mouseSvg female")
-    .attr("cx", d => scaleX(d.year))
-    .attr("cy", d => scaleY(d.female))
-    .attr("r", mRadius)
+    .attr("x", d => scaleXBand(d.year))
+    .attr("y", 0)
+    .attr("height", height)
       .on("mouseover", showTooltip)
       .on("mousemove", moveTooltip)
       .on("mouseout", hideTooltip);
 
-var mouseCirclesMale = chartArea
+var mouseRectsMale = chartArea
   .selectAll("g")
     .data(data)
-    .enter().append("circle")
+    .enter().append("rect")
     .attr("class", "mouseSvg male")
     .attr("cx", d => scaleX(d.year))
     .attr("cy", d => scaleY(d.male))
