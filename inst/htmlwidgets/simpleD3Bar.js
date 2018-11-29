@@ -21,6 +21,7 @@ HTMLWidgets.widget({
           updateBarChart(x, this.dim.width, this.dim.height, el, margin, colors);
         } else {
           updateBarChart(x, width, height, el, margin, colors);
+          
         }
         this.x = x; // store for resize
 
@@ -29,8 +30,8 @@ HTMLWidgets.widget({
       resize: function(width, height) {
         resizeBarChart(this.x, width, height, el, margin, colors);
         var dim = {
-                width: width - margin.left - margin.right,
-                height: height - margin.top - margin.bottom
+                width: width,
+                height: height
               };
           resized = true;
           this.dim = dim;

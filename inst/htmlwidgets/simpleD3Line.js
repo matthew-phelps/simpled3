@@ -25,10 +25,10 @@ HTMLWidgets.widget({
 
         resizeLineChart(this.x, width, height, el, margin, rectPadding);
           var dim = {
-                width: width - margin.left - margin.right,
-                height: height - margin.top - margin.bottom
+                width: width,
+                height: height
               };
-
+          resize = true;
           this.dim = dim;
 
 
