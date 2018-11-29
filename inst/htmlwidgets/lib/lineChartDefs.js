@@ -358,6 +358,8 @@ function resizeLineChart(inData, width, height, el){
   var svg = d3.selectAll('svg')
     .attr("width", dim.width + margin.left + margin.right)
     .attr("height", dim.height + margin.top + margin.bottom);
+  var chartArea = d3.selectAll(".chartArea")
+
 
   d3.selectAll('.x.axisTitle')
     .attr("x", dim.width / 2)
