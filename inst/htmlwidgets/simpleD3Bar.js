@@ -24,7 +24,7 @@ HTMLWidgets.widget({
 
       resize: function(width, height) {
 
-        updateChart(this.x, width, height, el);
+        resizeChart(this.x, width, height, el);
       }
 
     };
