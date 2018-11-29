@@ -165,8 +165,6 @@ var mouseCirclesMale = chartArea
       .on("mousemove", moveTooltip)
       .on("mouseout", hideTooltip);
 
-
-
 // Tooltip functions - these will be hoisted to top of fn call
   function showTooltip(d) {
     tooltip.transition()
@@ -208,6 +206,7 @@ function updateLineChart(inData, width, height, el){
 
   var svg = d3.selectAll('svg');
   var chartArea = svg.selectAll('.chartArea');
+  var tooltip = d3.select(".tooltip");
   
   var data = HTMLWidgets.dataframeToD3(inData.data);
   var varName = data[0].variable;
@@ -271,7 +270,7 @@ function updateLineChart(inData, width, height, el){
 // Larger invisible circles to trigger mouseover events
 var mRadius = (scaleX(d3.max(data, d=> d.year)) / data.length) / 2.5;
 var mouseCirclesFemale = chartArea
-  .selectAll(".dot")
+  .selectAll("g")
     .data(data)
     .enter().append("circle")
     .attr("class", "mouseSvg female")
@@ -316,11 +315,15 @@ var mouseCirclesMale = chartArea
     .style("text-anchor", "middle");
 
 
-  // Tooltip functions - these will be hoisted to top of fn call
+// Tooltip functions - these will be hoisted to top of fn call
   function showTooltip(d) {
     tooltip.transition()
     .duration(tShort)
     .style('opacity', 0.9);
+    
+  }
+
+  function moveTooltip(d){
     tooltip.html(
       "<b>" + "År " + "</b>" + d.year + "<br/><br/>" +
       varName + " " + "<b>" + d.female + "</br>")
@@ -333,7 +336,6 @@ var mouseCirclesMale = chartArea
     .duration(tShort)
     .style('opacity', 0);
   }
-
 }
 
 ///////////////////////////////////////////////////////////
@@ -390,4 +392,66 @@ function resizeLineChart(inData, width, height, el){
 
   var scaleColors = d3.scaleOrdinal()
    .range(colors);
-}
+
+// Resize line paths with new size
+  chartArea
+    .select(".line.female")
+    .transition()
+    .duration(tLong)
+    .attr("d", valueLine1(data));
+
+  chartArea
+    .select(".line.male")
+    .transition()
+    .duration(tLong)
+    .attr("d", valueLine2(data));
+
+  // Re-position circles with new size
+  chartArea.selectAll(".dotfemale")
+    .transition()
+    .duration(tLong)
+    .attr("cx", d => scaleX(d.year))
+    .attr("cy", d => scaleY(d.female));
+
+  chartArea.selectAll(".dotmale")
+    .transition()
+    .duration(tLong)
+    .attr("cx", d => scaleX(d.year))
+    .attr("cy", d => scaleY(d.male));
+
+// Larger invisible circles to trigger mouseover events
+  var mRadius = (scaleX(d3.max(data, d=> d.year)) / data.length) / 2.5;
+  var mouseCirclesFemale = chartArea
+    .selectAll(".mouseSvg.female")
+      .attr("cx", d => scaleX(d.year))
+      .attr("cy", d => scaleY(d.female))
+      .attr("r", mRadius);
+  
+  var mouseCirclesMale = chartArea
+    .selectAll(".mouseSvg.male")
+      .attr("class", "mouseSvg male")
+      .attr("cx", d => scaleX(d.year))
+      .attr("cy", d => scaleY(d.male))
+      .attr("r", mRadius);
+  
+
+  // Udpate axes
+  svg.select(".y.axis")
+    .transition()
+    .duration(tLong)
+    .call(d3.axisLeft(scaleY));
+
+  svg.select(".x.axis")
+    .transition()
+    .duration(tLong)
+    .call(d3.axisBottom(scaleX)
+      .tickFormat(d3.format("")));
+
+  // Update axis titles
+  svg.select(".y.axisTitle")
+    .transition()
+    .duration(tLong)
+    .text(varName)
+    .style("text-anchor", "middle");
+
+ }
