@@ -138,37 +138,42 @@ var scaleColors = d3.scaleOrdinal()
     .text(varName)
     .style("text-anchor", "middle");
 
-
-
-
-// Mouseover circles
-/* var circlesFemale = chartArea
+// Larger invisible circles to trigger mouseover events
+var mouseCirclesFemale = chartArea
   .selectAll(".dot")
     .data(data)
     .enter().append("circle")
-    .attr("class", "mousefemale")
+    .attr("class", "mouseSvg female")
     .attr("cx", d => scaleX(d.year))
     .attr("cy", d => scaleY(d.female))
     .attr("r", cRadius)
-    .attr("fill", colors[0]);
+      .on("mouseover", showTooltip)
+      .on("mousemove", moveTooltip)
+      .on("mouseout", hideTooltip);
 
-var circlesMale = chartArea
+var mouseCirclesMale = chartArea
   .selectAll(".dot")
     .data(data)
     .enter().append("circle")
-    .attr("class", "mouseMale")
+    .attr("class", "mouseSvg male")
     .attr("cx", d => scaleX(d.year))
     .attr("cy", d => scaleY(d.male))
     .attr("r", mRadius)
-    .attr("fill", colors[1]);
-    */
+      .on("mouseover", showTooltip)
+      .on("mousemove", moveTooltip)
+      .on("mouseout", hideTooltip);
 
 
-// Tooltip functions
+
+// Tooltip functions - these will be hoisted to top of fn call
   function showTooltip(d) {
     tooltip.transition()
     .duration(tShort)
     .style('opacity', 0.9);
+    
+  }
+
+  function moveTooltip(d){
     tooltip.html(
       "<b>" + "År " + "</b>" + d.year + "<br/><br/>" +
       varName + " " + "<b>" + d.female + "</br>")
@@ -251,25 +256,6 @@ function updateLineChart(inData, width, height, el){
     .attr("cx", d => scaleX(d.year))
     .attr("cy", d => scaleY(d.female));
 
-
-  // Tooltip functions
-  function showTooltip(d) {
-    tooltip.transition()
-    .duration(tShort)
-    .style('opacity', 0.9);
-    tooltip.html(
-      "<b>" + "År " + "</b>" + d.year + "<br/><br/>" +
-      varName + " " + "<b>" + d.female + "</br>")
-    .style("left", d3.mouse(this)[0] + "px")
-    .style("top", (d3.mouse(this)[1] + 28) + "px");
-  }
-
-  function hideTooltip() {
-    tooltip.transition()
-    .duration(tShort)
-    .style('opacity', 0);
-  }
-
   dotFemale
     .on("mouseover", showTooltip)
     .on("mouseout", hideTooltip);
@@ -299,4 +285,24 @@ function updateLineChart(inData, width, height, el){
     .duration(tLong)
     .text(varName)
     .style("text-anchor", "middle");
+
+
+  // Tooltip functions - these will be hoisted to top of fn call
+  function showTooltip(d) {
+    tooltip.transition()
+    .duration(tShort)
+    .style('opacity', 0.9);
+    tooltip.html(
+      "<b>" + "År " + "</b>" + d.year + "<br/><br/>" +
+      varName + " " + "<b>" + d.female + "</br>")
+    .style("left", d3.mouse(this)[0] + "px")
+    .style("top", (d3.mouse(this)[1] + 28) + "px");
+  }
+
+  function hideTooltip() {
+    tooltip.transition()
+    .duration(tShort)
+    .style('opacity', 0);
+  }
+
 }
