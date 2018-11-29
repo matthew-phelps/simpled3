@@ -5,7 +5,7 @@ HTMLWidgets.widget({
   type: 'output',
 
   factory: function(el, width, height) {
-    var el = el;
+    
     
     var chartExists = false;
     var margin = ({top:10, right:20, bottom:40, left:60});
@@ -16,15 +16,22 @@ HTMLWidgets.widget({
           chartExists = true;
           drawLineChart(x, width, height, el, margin);
         } else {
-          updateLineChart(x, width, height, el, margin);
+          updateLineChart(x, this.dim.width, this.dim.height, el, margin);
         }
-        this.x = x
+        this.x = x;
 
       },
 
       resize: function(width, height) {
 
-        resizeLineChart(this.x, width, height, el, margin)
+        resizeLineChart(this.x, width, height, el, margin);
+          var dim = {
+                width: width - margin.left - margin.right,
+                height: height - margin.top - margin.bottom
+              };
+
+          this.dim = dim;
+
 
       }
 
