@@ -45,7 +45,8 @@ function drawLineChart(inData, width, height, el, margin) {
 
   // Tooltip container
   var tooltip = container.append("div")
-    .attr('id', 'tooltipLine');
+    .attr('id', 'tooltipLine')
+    .attr("opacity", 0);
 
   var data = HTMLWidgets.dataframeToD3(inData.data);
   var varName = data[0].variable;

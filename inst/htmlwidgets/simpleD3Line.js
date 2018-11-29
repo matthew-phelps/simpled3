@@ -5,8 +5,6 @@ HTMLWidgets.widget({
   type: 'output',
 
   factory: function(el, width, height) {
-    
-    
     var chartExists = false;
     var margin = ({top:10, right:20, bottom:40, left:60});
     return {
