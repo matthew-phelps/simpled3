@@ -212,8 +212,7 @@ function updateChart(inData, width, height, el) {
   };
 
 
-
-
+  svg = d3.selectAll('svg');
   var chartArea = svg.selectAll('.chartArea');
 
 
