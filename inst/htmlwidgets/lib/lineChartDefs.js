@@ -45,9 +45,8 @@ function drawLineChart(inData, width, height, el) {
     .attr("class", "y axisTitle")
 
   // Tooltip container
-  var toolTip = container.append("div")
+  var tooltip = container.append("div")
     .attr('class', 'tooltip');
-
 
   var data = HTMLWidgets.dataframeToD3(inData.data);
   var varName = data[0].variable;
@@ -164,6 +163,26 @@ var circlesMale = chartArea
     .attr("fill", colors[1]);
     */
 
+
+// Tooltip functions
+  function showTooltip(d) {
+    tooltip.transition()
+    .duration(tShort)
+    .style('opacity', 0.9);
+    tooltip.html(
+      "<b>" + "År " + "</b>" + d.year + "<br/><br/>" +
+      varName + " " + "<b>" + d.female + "</br>")
+    .style("left", d3.mouse(this)[0] + "px")
+    .style("top", (d3.mouse(this)[1] + 28) + "px");
+  }
+
+  function hideTooltip() {
+    tooltip.transition()
+    .duration(tShort)
+    .style('opacity', 0);
+  }
+
+
 }
 ///////////////////////////////////////////////////////////
 ///////////////      UPDATE     ///////////////////////////
@@ -235,10 +254,10 @@ function updateLineChart(inData, width, height, el){
 
   // Tooltip functions
   function showTooltip(d) {
-    toolTip.transition()
+    tooltip.transition()
     .duration(tShort)
     .style('opacity', 0.9);
-    toolTip.html(
+    tooltip.html(
       "<b>" + "År " + "</b>" + d.year + "<br/><br/>" +
       varName + " " + "<b>" + d.female + "</br>")
     .style("left", d3.mouse(this)[0] + "px")
@@ -246,7 +265,7 @@ function updateLineChart(inData, width, height, el){
   }
 
   function hideTooltip() {
-    toolTip.transition()
+    tooltip.transition()
     .duration(tShort)
     .style('opacity', 0);
   }

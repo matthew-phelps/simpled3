@@ -84,32 +84,7 @@ function drawBarChart(inData, width, height, el) {
     .range(colors);
 
 
-  // Tooltip functions
-
-
-  function showTooltip(d) {
-      tooltip.transition()
-      .duration(tShort)
-      .style('opacity', 0.9);
-
-  }
-
-  function moveTooltip(d) {
-     tooltip.html(
-        "<b>" + "År " + "</b>" + d.keyL2 + "<br/><br/>" +
-        varName + " " + "<b>" + d.value + "</br>")
-        .style("left", d3.event.pageX + "px")
-        .style("top", (d3.mouse(this)[1] + 28) + "px");
-
-  }
-  function hideTooltip() {
-    tooltip.transition()
-    .duration(tShort)
-    .style('opacity', 0);
-  }
-
-
-   // Perform the data joins
+  // Perform the data joins
   var barGroupWithData = chartArea
   .selectAll('g')
   .data(newData, d => d.key);
@@ -181,6 +156,29 @@ function drawBarChart(inData, width, height, el) {
     .style('opacity', 1)
     .text(groupingName)
       .style("text-anchor", "middle");
+
+  // Tooltip functions
+  function showTooltip(d) {
+      tooltip.transition()
+      .duration(tShort)
+      .style('opacity', 0.9);
+
+  }
+
+  function moveTooltip(d) {
+     tooltip.html(
+        "<b>" + "År " + "</b>" + d.keyL2 + "<br/><br/>" +
+        varName + " " + "<b>" + d.value + "</br>")
+        .style("left", d3.event.pageX + "px")
+        .style("top", (d3.mouse(this)[1] + 28) + "px");
+
+  }
+  function hideTooltip() {
+    tooltip.transition()
+    .duration(tShort)
+    .style('opacity', 0);
+  }
+
 
   }
 
