@@ -247,7 +247,7 @@ function updateLineChart(inData, width, height, el){
     .duration(tLong)
     .attr("d", valueLine2(data));
 
-  // Update circles with new datga
+  // Update circles with new data
   var dotFemale = chartArea.selectAll(".dotfemale")
     .data(data);
 
@@ -270,10 +270,8 @@ function updateLineChart(inData, width, height, el){
 // Larger invisible circles to trigger mouseover events
 var mRadius = (scaleX(d3.max(data, d=> d.year)) / data.length) / 2.5;
 var mouseCirclesFemale = chartArea
-  .selectAll("g")
+  .selectAll("mouseSvg female")
     .data(data)
-    .enter().append("circle")
-    .attr("class", "mouseSvg female")
     .attr("cx", d => scaleX(d.year))
     .attr("cy", d => scaleY(d.female))
     .attr("r", mRadius)
@@ -282,10 +280,8 @@ var mouseCirclesFemale = chartArea
       .on("mouseout", hideTooltip);
 
 var mouseCirclesMale = chartArea
-  .selectAll(".dot")
+  .selectAll("mouseSvg male")
     .data(data)
-    .enter().append("circle")
-    .attr("class", "mouseSvg male")
     .attr("cx", d => scaleX(d.year))
     .attr("cy", d => scaleY(d.male))
     .attr("r", mRadius)
