@@ -206,7 +206,7 @@ var mouseRectsMale = chartArea
 ///////////////      UPDATE     ///////////////////////////
 ///////////////////////////////////////////////////////////
 
-function updateLineChart(inData, width, height, el, margin){
+function updateLineChart(inData, width, height, el, margin, rectPadding){
   
   var colors = ['#bd6916', '#166abd '];
   var tLong = 450;
@@ -357,7 +357,7 @@ var mouseRectsMale = chartArea
 ///////////////      RESIZE     ///////////////////////////
 ///////////////////////////////////////////////////////////
 
-function resizeLineChart(inData, width, height, el, margin){
+function resizeLineChart(inData, width, height, el, margin, rectPadding){
   var colors = ['#bd6916', '#166abd '];
   var tLong = 450;
   var tShort = 200;
