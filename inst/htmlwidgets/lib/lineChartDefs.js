@@ -111,7 +111,7 @@ function drawLineChart(inData, width, height, el, margin, rectPadding) {
     .selectAll(".dot")
     .data(data)
     .enter().append("circle")
-      .attr("class",  d => d.year + "dotfemale")
+      .attr("class",  d => d.year + " dotfemale")
       .attr("cx", d => scaleX(d.year))
       .attr("cy", d => scaleY(d.female))
       .attr("r", cRadius)
