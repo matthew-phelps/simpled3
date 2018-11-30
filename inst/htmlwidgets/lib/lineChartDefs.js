@@ -282,19 +282,19 @@ function updateLineChart(inData, width, height, el, margin){
 
 // Larger invisible circles to trigger mouseover events
 var mRadius = (scaleX(d3.max(data, d=> d.year)) / data.length) / 2.5;
-var mouseCirclesFemale = chartArea
+var mouseRectsFemale = chartArea
   .selectAll(".mouseSvg.female")
     .data(data)
-    .attr("cx", d => scaleX(d.year))
-    .attr("cy", d => scaleY(d.female))
-    .attr("r", mRadius)
+    .attr("x", d => scaleX(d.year) - (scaleXRects.bandwidth() / 2))
+    .attr("width", scaleXRects.bandwidth())
+    .attr("y", 0)
+    .attr("height", height)
       .on("mouseover", showTooltip)
       .on("mousemove", moveTooltip)
       .on("mouseout", hideTooltip);
 
-var mouseCirclesMale = chartArea
+var mouseRectsMale = chartArea
   .selectAll(".mouseSvg.male")
-    .data(data)
     .attr("cx", d => scaleX(d.year))
     .attr("cy", d => scaleY(d.male))
     .attr("r", mRadius)
