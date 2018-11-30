@@ -18,9 +18,9 @@ HTMLWidgets.widget({
           chartExists = true;
           drawLineChart(x, width, height, el, margin, rectPadding);
          } else if (resized){
-          updateLineChart(x, this.dim.width, this.dim.height, el, margin);
+          updateLineChart(x, this.dim.width, this.dim.height, el, margin, rectPadding);
         } else {
-          updateLineChart(x, width, height, el, margin);
+          updateLineChart(x, width, height, el, margin, rectPadding);
         }
         this.x = x;
 

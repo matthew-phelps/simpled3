@@ -402,6 +402,11 @@ function resizeLineChart(inData, width, height, el, margin){
     .domain(d3.extent(data, d => d.year))
     .range([0, dim.width]);
 
+var scaleXRects = d3.scaleBand()
+    .domain(grouping1Names)
+    .range([0, dim.width])
+    .padding(rectPadding);
+
   var scaleY = d3.scaleLinear()
     .domain([0, maxY])
     .range([dim.height, 0]);
@@ -436,19 +441,19 @@ function resizeLineChart(inData, width, height, el, margin){
     .attr("cy", d => scaleY(d.male));
 
 // Larger invisible circles to trigger mouseover events
-  var mRadius = (scaleX(d3.max(data, d=> d.year)) / data.length) / 2.5;
-  var mouseCirclesFemale = chartArea
-    .selectAll(".mouseSvg.female")
-      .attr("cx", d => scaleX(d.year))
-      .attr("cy", d => scaleY(d.female))
-      .attr("r", mRadius);
-  
-  var mouseCirclesMale = chartArea
-    .selectAll(".mouseSvg.male")
-      .attr("class", "mouseSvg male")
-      .attr("cx", d => scaleX(d.year))
-      .attr("cy", d => scaleY(d.male))
-      .attr("r", mRadius);
+  var mouseRectsFemale = chartArea
+  .selectAll(".mouseSvg.female")
+    .attr("x", d => scaleX(d.year) - (scaleXRects.bandwidth() / 2))
+    .attr("width", scaleXRects.bandwidth())
+    .attr("y", 0)
+    .attr("height", height);
+
+var mouseRectsMale = chartArea
+  .selectAll(".mouseSvg.male")
+    .attr("cx", d => scaleX(d.year))
+    .attr("cy", d => scaleY(d.male))
+    .attr("r", mRadius);
+
   
   // Udpate axes
   svg.select(".y.axis")
