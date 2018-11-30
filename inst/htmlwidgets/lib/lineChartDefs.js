@@ -111,11 +111,12 @@ function drawLineChart(inData, width, height, el, margin, rectPadding) {
     .selectAll(".dot")
     .data(data)
     .enter().append("circle")
-    .attr("class", "dotfemale")
-    .attr("cx", d => scaleX(d.year))
-    .attr("cy", d => scaleY(d.female))
-    .attr("r", cRadius)
-    .attr("fill", colors[0]);
+      .attr("class", "dotfemale")
+      .attr("id", d => d.year + "female")
+      .attr("cx", d => scaleX(d.year))
+      .attr("cy", d => scaleY(d.female))
+      .attr("r", cRadius)
+      .attr("fill", colors[0]);
 
   var circlesMale = chartArea
     .selectAll(".dot")
@@ -175,6 +176,7 @@ var mouseRectsFemale = chartArea
   }
 
   function moveTooltip(d){
+    d3.select()
     tooltip.html(
       varName + " i " +"<b>" + d.year + "</b>" + "<br/><br/>" +
        Object.keys(d)[1] + ": <b>" + d.female + "</b><br/>" +
