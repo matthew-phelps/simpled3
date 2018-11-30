@@ -240,6 +240,12 @@ function updateLineChart(inData, width, height, el, margin){
     .domain(d3.extent(data, d => d.year))
     .range([0, dim.width]);
 
+var scaleXRects = d3.scaleBand()
+    .domain(grouping1Names)
+    .range([0, dim.width])
+    .padding(rectPadding);
+
+
   var scaleY = d3.scaleLinear()
     .domain([0, maxY])
     .range([dim.height, 0]);
