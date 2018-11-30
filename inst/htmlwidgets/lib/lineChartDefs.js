@@ -165,17 +165,6 @@ var mouseRectsFemale = chartArea
       .on("mousemove", moveTooltip)
       .on("mouseout", hideTooltip);
 
-var mouseRectsMale = chartArea
-  .selectAll("g")
-    .data(data)
-    .enter().append("rect")
-    .attr("class", "mouseSvg male")
-    .attr("cx", d => scaleX(d.year))
-    .attr("cy", d => scaleY(d.male))
-    .attr("r", mRadius)
-      .on("mouseover", showTooltip)
-      .on("mousemove", moveTooltip)
-      .on("mouseout", hideTooltip);
 
 // Tooltip functions - these will be hoisted to top of fn call
   function showTooltip(d) {
@@ -287,7 +276,6 @@ var scaleXRects = d3.scaleBand()
     .attr("cy", d => scaleY(d.male));
 
 // Larger invisible circles to trigger mouseover events
-var mRadius = (scaleX(d3.max(data, d=> d.year)) / data.length) / 2.5;
 var mouseRectsFemale = chartArea
   .selectAll(".mouseSvg.female")
     .data(data)
@@ -298,16 +286,6 @@ var mouseRectsFemale = chartArea
       .on("mouseover", showTooltip)
       .on("mousemove", moveTooltip)
       .on("mouseout", hideTooltip);
-
-var mouseRectsMale = chartArea
-  .selectAll(".mouseSvg.male")
-    .attr("cx", d => scaleX(d.year))
-    .attr("cy", d => scaleY(d.male))
-    .attr("r", mRadius)
-      .on("mouseover", showTooltip)
-      .on("mousemove", moveTooltip)
-      .on("mouseout", hideTooltip);
-
 
 
   // Udpate axes
@@ -447,12 +425,6 @@ var scaleXRects = d3.scaleBand()
     .attr("width", scaleXRects.bandwidth())
     .attr("y", 0)
     .attr("height", height);
-
-var mouseRectsMale = chartArea
-  .selectAll(".mouseSvg.male")
-    .attr("cx", d => scaleX(d.year))
-    .attr("cy", d => scaleY(d.male))
-    .attr("r", mRadius);
 
   
   // Udpate axes
