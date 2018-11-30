@@ -187,8 +187,9 @@ var mouseRectsMale = chartArea
 
   function moveTooltip(d){
     tooltip.html(
-      "<b>" + d.year + "</b>" + "<br/><br/>" +
-      varName + " " + "<b>" + d.female + "</br>")
+      varName + " i " +"<b>" + d.year + "</b>" + "<br/><br/>" +
+       Object.keys(d)[1] + "<b>" + d.female + "</b><br/>" +
+       Object.keys(d)[2] + "<b>" + d.male + "</b>")
     .style("left", d3.mouse(this)[0] + "px")
     .style("top", (d3.mouse(this)[1] + 28) + "px");
   }
