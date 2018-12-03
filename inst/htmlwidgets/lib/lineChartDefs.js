@@ -187,7 +187,7 @@ var mouseRectsFemale = chartArea
     .style("top", (d3.mouse(this)[1] + 28) + "px");
   }
 
-  function hideTooltip() {
+  function hideTooltip(d) {
      d3.selectAll(".y" + d.year)
       .transition()
         .ease(d3.easeLinear)
