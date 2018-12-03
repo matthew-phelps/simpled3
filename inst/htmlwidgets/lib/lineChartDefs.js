@@ -370,6 +370,7 @@ function resizeLineChart(inData, width, height, el, margin, rectPadding, colors,
     .attr("width", dim.width + margin.left + margin.right)
     .attr("height", dim.height + margin.top + margin.bottom);
   var chartArea = svg.select(".chartArea");
+  var tooltip = d3.select("#tooltipLine");
 
 
   svg.select('.x.axisTitle')
@@ -473,6 +474,9 @@ var scaleXRects = d3.scaleBand()
         .ease(d3.easeLinear)
         .duration("200")
         .attr("r", bigRadius);
+    tooltip.transition()
+      .duration(tShort)
+      .style('opacity', 0.9);
     
   }
 
@@ -483,7 +487,12 @@ var scaleXRects = d3.scaleBand()
     svg.selectAll(".dotmale")
       .attr("cx", d => scaleX(d.year))
       .attr("cy", d => scaleY(d.male));
-
+    tooltip.html(
+      varName + " i " +"<b>" + d.year + "</b>" + "<br/><br/>" +
+       Object.keys(d)[1] + ": <b>" + d.female + "</b><br/>" +
+       Object.keys(d)[2] + ": <b>" + d.male + "</b>")
+        .style("left", d3.mouse(this)[0] + "px")
+        .style("top", (d3.mouse(this)[1] + 28) + "px");
 
  
   }
@@ -494,6 +503,9 @@ var scaleXRects = d3.scaleBand()
         .ease(d3.easeLinear)
         .duration("200")
         .attr("r", cRadius);
+    tooltip.transition()
+      .duration(tShort)
+      .style('opacity', 0);
  
   }
 
