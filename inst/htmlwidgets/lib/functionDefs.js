@@ -270,7 +270,7 @@ function updateBarChart(inData, width, height, el, margin, colors) {
     .merge(barGroupWithData)
     .attr("transform", d => "translate(" + scaleX(d.key) + ",0)");
 
-  barGroupWithData.selectAll('mouseSvg').remove();
+  barGroupWithData.selectAll('.mouseSvg').remove();
   var mouseRects = barGroupWithData
     .append("rect")
       .attr("class", "mouseSvg")
