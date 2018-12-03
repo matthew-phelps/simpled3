@@ -104,8 +104,16 @@ function drawBarChart(inData, width, height, el, margin, colors) {
     .merge(barGroupWithData)
     .attr("transform", d => "translate(" + scaleX(d.key) + ",0)");
 
-   //barsData.transition().duration(t).
+  // Rects for mousever events - note - inside bargroups 'g' element
+  var mouseRects = barsData.enter()
+    .append("rect")
+    .attr("class", "mouseSvg")
+    .merge(barGroupWithData)
+    .attr("width", scaleX.bandwidth())
+      .attr('y', 0)
+      .attr("height", height);
 
+  // Visible bars
   var	bars = barsData.selectAll("rect")
     .data(d => Object.keys(d.values)
     .map(k => ({
@@ -266,7 +274,6 @@ function updateBarChart(inData, width, height, el, margin, colors) {
     .attr("class", "mouseSvg")
     .merge(barGroupWithData)
     .attr("transform", d => "translate(" + scaleX(d.key) + ",0)");
-
 
 
   var	bars = barsData.selectAll("rect")
