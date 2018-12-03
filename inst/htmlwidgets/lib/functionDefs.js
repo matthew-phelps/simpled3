@@ -85,7 +85,7 @@ function drawBarChart(inData, width, height, el, margin, colors) {
     .range(colors);
 
 
-  // Perform the data joins
+  // Perform the data joins for visibile elements
   var barGroupWithData = chartArea
   .selectAll('g')
   .data(newData, d => d.key);
@@ -103,18 +103,6 @@ function drawBarChart(inData, width, height, el, margin, colors) {
     .attr("class", "barGroups")
     .merge(barGroupWithData)
     .attr("transform", d => "translate(" + scaleX(d.key) + ",0)");
-
-  // Rects for mousever events - note - inside bargroups 'g' element
-  var mouseRects = barGroupWithData.enter()
-    .append("rect")
-      .attr("class", "mouseSvg")
-      .attr("transform", d => "translate(" + scaleX(d.key) + ",0)")
-      .attr("width", scaleX.bandwidth())
-      .attr('y', 0)
-      .attr("height", height)
-        .on("mouseover", showTooltip)
-        .on("mousemove", moveTooltip)
-        .on("mouseout", hideTooltip);
 
   // Visible bars
   var	bars = barsData.selectAll("rect")
@@ -141,6 +129,25 @@ function drawBarChart(inData, width, height, el, margin, colors) {
       .attr("width", scaleX1.bandwidth())
       .attr('y', d => scaleY(d.value))
       .attr("height", d => scaleY(0) - scaleY(d.value));
+
+
+  // Data join for mouseover elements - invisible to user
+
+  var mouseSvg = chartArea
+    .selectAll('rect')
+    .data(d => d.key);
+  
+  mouseSvg.exit().remove();
+  mouseSvg.enter()
+    .append('rect')
+    .attr('class', 'mouseSvg')
+    .attr("transform", d => "translate(" + scaleX(d.key) + ",0)")
+    .attr("width", scaleX.bandwidth())
+    .attr('y', 0)
+    .attr("height", height)
+        .on("mouseover", showTooltip)
+        .on("mousemove", moveTooltip)
+        .on("mouseout", hideTooltip);
 
   // Udpate axes
   yAxis.transition()
