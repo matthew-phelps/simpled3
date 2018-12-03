@@ -1,9 +1,5 @@
 /*jshint esversion: 6 */
-function drawBarChart(inData, width, height, el, margin, colors) {
-  var barPadding = 0.2;
-
-  var tLong = 450;
-  var tShort = 200;
+function drawBarChart(inData, width, height, el, margin, colors, barPadding, tLong, tShort) {
 
   var dim = {
     width: width - margin.left - margin.right,
@@ -34,7 +30,7 @@ function drawBarChart(inData, width, height, el, margin, colors) {
   // Axis titles
   topG.append("text")
     .attr("x", dim.width / 2)
-    .attr("y", dim.height + margin.bottom)
+    .attr("y", dim.height + margin.bottom - 5)
     .attr("class", "x axisTitle");
     
   topG.append("text")
@@ -203,10 +199,7 @@ function drawBarChart(inData, width, height, el, margin, colors) {
 //////////////////    UPDATE     /////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////
 
-function updateBarChart(inData, width, height, el, margin, colors) {
-  var barPadding = 0.2;
-  var tLong = 450;
-  var tShort = 200;
+function updateBarChart(inData, width, height, el, margin, colors, barPadding, tLong, tShort) {
 
   var dim = {
     width: width - margin.left - margin.right,
@@ -382,15 +375,7 @@ function updateBarChart(inData, width, height, el, margin, colors) {
 //////////////////    RESIZE     /////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////
 
-function resizeBarChart(inData, width, height, el, margin, colors) {
-  
-  var barPadding = 0.2;
-  var tLong = 450;
-  var tShort = 200;
-
-/*  var scaleColors = d3.scaleOrdinal()
-      .range(colors);*/
-
+function resizeBarChart(inData, width, height, el, margin, colors, barPadding, tLong, tShort) {
   var dim = {
     width: width - margin.left - margin.right,
     height: height - margin.top - margin.bottom
