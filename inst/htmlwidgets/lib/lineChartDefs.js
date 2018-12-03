@@ -1,10 +1,5 @@
 /*jshint esversion: 6 */
-function drawLineChart(inData, width, height, el, margin, rectPadding) {
-  var colors = ['#bd6916', '#166abd'];
-  var tLong = 450;
-  var tShort = 200;
-  var cRadius = 7;
-  var bigRadius = 15;
+function drawLineChart(inData, width, height, el, margin, rectPadding, colors, tLong, tShort, cRadius, bigRadius) {
   var dim = {
     width: width - margin.left - margin.right,
     height: height - margin.top - margin.bottom
@@ -204,12 +199,7 @@ var mouseRectsFemale = chartArea
 ///////////////      UPDATE     ///////////////////////////
 ///////////////////////////////////////////////////////////
 
-function updateLineChart(inData, width, height, el, margin, rectPadding){
-  
-  var colors = ['#bd6916', '#166abd '];
-  var tLong = 450;
-  var tShort = 200;
-
+function updateLineChart(inData, width, height, el, margin, rectPadding, colors, tLong, tShort, cRadius, bigRadius) {
   var dim = {
     width: width - margin.left - margin.right,
     height: height - margin.top - margin.bottom
@@ -355,11 +345,8 @@ var mouseRectsFemale = chartArea
 ///////////////      RESIZE     ///////////////////////////
 ///////////////////////////////////////////////////////////
 
-function resizeLineChart(inData, width, height, el, margin, rectPadding){
-  var colors = ['#bd6916', '#166abd '];
-  var tLong = 450;
-  var tShort = 200;
-
+function resizeLineChart(inData, width, height, el, margin, rectPadding, colors, tLong, tShort, cRadius, bigRadius) {
+  
   var dim = {
     width: width - margin.left - margin.right,
     height: height - margin.top - margin.bottom

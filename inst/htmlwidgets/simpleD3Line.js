@@ -7,6 +7,11 @@ HTMLWidgets.widget({
   factory: function(el, width, height) {
     var margin = ({top:20, right:20, bottom:40, left:60});
     var rectPadding = 0.1;
+    var colors = ['#bd6916', '#166abd'];
+    var tLong = 450;
+    var tShort = 200;
+    var cRadius = 7;
+    var bigRadius = 15;
 
     // State variables
     var chartExists = false;
@@ -16,11 +21,11 @@ HTMLWidgets.widget({
       renderValue: function(x) {
         if(!chartExists){
           chartExists = true;
-          drawLineChart(x, width, height, el, margin, rectPadding);
+          drawLineChart(x, width, height, el, margin, rectPadding, colors, tLong, tShort, cRadius, bigRadius);
          } else if (resized){
-          updateLineChart(x, this.dim.width, this.dim.height, el, margin, rectPadding);
+          updateLineChart(x, this.dim.width, this.dim.height, el, margin, rectPadding, colors, tLong, tShort, cRadius, bigRadius);
         } else {
-          updateLineChart(x, width, height, el, margin, rectPadding);
+          updateLineChart(x, width, height, el, margin, rectPadding, colors, tLong, tShort, cRadius, bigRadius);
         }
         this.x = x;
 
@@ -28,7 +33,7 @@ HTMLWidgets.widget({
 
       resize: function(width, height) {
 
-        resizeLineChart(this.x, width, height, el, margin, rectPadding);
+        resizeLineChart(this.x, width, height, el, margin, rectPadding, colors, tLong, tShort, cRadius, bigRadius);
           var dim = {
                 width: width,
                 height: height
