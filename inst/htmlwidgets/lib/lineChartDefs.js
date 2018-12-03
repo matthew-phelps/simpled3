@@ -21,22 +21,22 @@ function drawLineChart(inData, width, height, el, margin, rectPadding, colors, t
 
   // Initial axis
   var yAxis = topG.append('g')
-    .attr("class", "y axis");
+    .attr("class", "line y axis");
 
   var xAxis = topG.append('g')
-    .attr("class", "x axis");
+    .attr("class", "line x axis");
 
   // Axis titles
   topG.append("text")
     .attr("x", dim.width / 2)
     .attr("y", dim.height + margin.bottom)
-    .attr("class", "x axisTitle");
+    .attr("class", "line x axisTitle");
     
   topG.append("text")
     .attr("transform", "rotate(-90)")
     .attr("x", 0 - dim.height / 2)
     .attr("y", 0 - margin.left + 20)
-    .attr("class", "y axisTitle");
+    .attr("class", "line y axisTitle");
 
   // Tooltip container
   var tooltip = container.append("div")
@@ -133,13 +133,13 @@ function drawLineChart(inData, width, height, el, margin, rectPadding, colors, t
       .tickFormat(d3.format("")));
 
   // Add axis titles
-  topG.select(".y.axisTitle")
+  topG.select(".line.y.axisTitle")
     .transition()
     .duration(tLong)
     .text(varName)
     .style("text-anchor", "middle");
 
-  topG.select(".x.axisTitle")
+  topG.select(".line.x.axisTitle")
     .transition()
     .duration(tLong)
     .text("År")
@@ -290,19 +290,19 @@ var mouseRectsFemale = chartArea
 
 
   // Udpate axes
-  svg.select(".y.axis")
+  svg.select(".line.y.axis")
     .transition()
     .duration(tLong)
     .call(d3.axisLeft(scaleY));
 
-  svg.select(".x.axis")
+  svg.select(".line.x.axis")
     .transition()
     .duration(tLong)
     .call(d3.axisBottom(scaleX)
       .tickFormat(d3.format("")));
 
   // Update axis titles
-  svg.select(".y.axisTitle")
+  svg.select(".line.y.axisTitle")
     .transition()
     .duration(tLong)
     .text(varName)
@@ -448,19 +448,19 @@ var scaleXRects = d3.scaleBand()
 
   
   // Udpate axes
-  svg.select(".y.axis")
+  svg.select(".line.y.axis")
     .transition()
     .duration(tLong)
     .call(d3.axisLeft(scaleY));
 
-  svg.select(".x.axis")
+  svg.select(".line.x.axis")
     .transition()
     .duration(tLong)
     .call(d3.axisBottom(scaleX)
       .tickFormat(d3.format("")));
 
   // Update axis titles
-  svg.select(".y.axisTitle")
+  svg.select(".line.y.axisTitle")
     .transition()
     .duration(tLong)
     .text(varName)

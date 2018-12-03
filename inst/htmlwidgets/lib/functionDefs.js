@@ -21,23 +21,23 @@ function drawBarChart(inData, width, height, el, margin, colors, barPadding, tLo
 
   // Initial axis
   var yAxis = topG.append('g')
-    .attr("class", "y axis");
+    .attr("class", "bar y axis");
 
   var xAxis = topG.append('g')
-    .attr("class", "x axis");
+    .attr("class", "bar x axis");
 
 
   // Axis titles
   topG.append("text")
     .attr("x", dim.width / 2)
     .attr("y", dim.height + margin.bottom - 5)
-    .attr("class", "x axisTitle");
+    .attr("class", "bar x axisTitle");
     
   topG.append("text")
     .attr("transform", "rotate(-90)")
     .attr("x", 0 - dim.height / 2)
     .attr("y", 0 - margin.left + 20)
-    .attr("class", "y axisTitle");
+    .attr("class", "bar y axisTitle");
 
   // Tooltip div
   var tooltip = container.append("div")
@@ -155,13 +155,13 @@ function drawBarChart(inData, width, height, el, margin, colors, barPadding, tLo
     .attr("transform", 'translate(' + 0 + "," + dim.height + ')');
 
 
-  topG.select(".y.axisTitle")
+  topG.select(".bar.y.axisTitle")
     .transition()
     .duration(tLong)
     .text(varName)
       .style("text-anchor", "middle");
 
-  topG.select(".x.axisTitle")
+  topG.select(".bar.x.axisTitle")
     .transition()
     .duration(tLong)
     .style('opacity', 1)
@@ -317,25 +317,25 @@ function updateBarChart(inData, width, height, el, margin, colors, barPadding, t
 
 
   // Update axes scales
-  svg.selectAll(".x.axis")
+  svg.selectAll(".bar.x.axis")
     .transition()
     .duration(tShort)
     .call(d3.axisBottom(scaleX));
 
-  svg.selectAll(".y.axis")
+  svg.selectAll(".bar.y.axis")
     .transition()
     .duration(tShort)
     .call(d3.axisLeft(scaleY));
 
 
   // Axis titles
-  d3.selectAll('.x.axisTitle')
+  d3.selectAll('.bar.x.axisTitle')
     .transition()
     .duration(tLong)
     .text(groupingName)
     .style("text-anchor", "middle");
 
-  d3.selectAll('.y.axisTitle')
+  d3.selectAll('.bar.y.axisTitle')
     .transition()
     .duration(tLong)
     .text(varName)
@@ -388,11 +388,11 @@ function resizeBarChart(inData, width, height, el, margin, colors, barPadding, t
 
 
   // Axis titles
-  d3.selectAll('.x.axisTitle')
+  d3.selectAll('.bar.x.axisTitle')
     .attr("x", dim.width / 2)
     .attr("y", dim.height + margin.bottom);
 
-    d3.selectAll('.y.axisTitle')
+    d3.selectAll('.bar.y.axisTitle')
     .attr("x", 0 - dim.height / 2)
     .attr("y", 0 - margin.left + 20);
 
@@ -457,13 +457,13 @@ function resizeBarChart(inData, width, height, el, margin, colors, barPadding, t
 
 
   // Resize Axes
-  svg.selectAll(".x.axis")
+  svg.selectAll(".bar.x.axis")
     .transition()
     .duration(tShort)
     .call(d3.axisBottom(scaleX));
 
 
-  svg.selectAll(".y.axis")
+  svg.selectAll(".bar.y.axis")
     .transition()
     .duration(tShort)
     .call(d3.axisLeft(scaleY));
