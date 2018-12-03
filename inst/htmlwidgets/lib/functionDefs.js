@@ -134,8 +134,8 @@ function drawBarChart(inData, width, height, el, margin, colors) {
   // Data join for mouseover elements - invisible to user
 
   var mouseSvg = chartArea
-    .selectAll('rect')
-    .data(d => d.key);
+    .selectAll('.mouseSvg')
+    .data(newData, d => d.key);
   
   mouseSvg.exit().remove();
   mouseSvg.enter()
