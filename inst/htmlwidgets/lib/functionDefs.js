@@ -135,7 +135,6 @@ function drawBarChart(inData, width, height, el, margin, colors) {
     .attr("y", d => scaleY(0))
     .merge(bars)
     .attr("x", (d) => scaleX1(d.keyL2))
-   
       .transition()
       .duration(tLong)
       .ease(d3.easeLinear)
@@ -177,7 +176,7 @@ function drawBarChart(inData, width, height, el, margin, colors) {
 
   function moveTooltip(d) {
      tooltip.html(
-        "<b>" + d.keys + "</b>" + "<br/><br/>" +
+        "<b>" + d.key + "</b>" + "<br/><br/>" +
         d.values[0].Sex + ": " + d.values[0].value + "</br>" +
         d.values[1].Sex + ": " + d.values[1].value + "</br>")
           .style("left", d3.event.pageX + "px")
@@ -271,11 +270,17 @@ function updateBarChart(inData, width, height, el, margin, colors) {
     .merge(barGroupWithData)
     .attr("transform", d => "translate(" + scaleX(d.key) + ",0)");
 
-  var mouseRects = barGroupWithData.enter()
+    d3.selectAll(".mouseSvg").remove(); // remove old mouseover elements
+    var mouseRects = barGroupWithData.enter()
     .append("rect")
-    .attr("class", "mouseSvg")
-    .merge(barGroupWithData)
-    .attr("transform", d => "translate(" + scaleX(d.key) + ",0)");
+      .attr("class", "mouseSvg")
+      .attr("transform", d => "translate(" + scaleX(d.key) + ",0)")
+      .attr("width", scaleX.bandwidth())
+      .attr('y', 0)
+      .attr("height", height)
+        .on("mouseover", showTooltip)
+        .on("mousemove", moveTooltip)
+        .on("mouseout", hideTooltip);
 
 
   var	bars = barsData.selectAll("rect")
@@ -296,9 +301,7 @@ function updateBarChart(inData, width, height, el, margin, colors) {
     .attr("y", d => scaleY(0))
     .merge(bars)
     .attr("x", (d) => scaleX1(d.keyL2))
-    .on("mouseover", showTooltip)
-    .on("mousemove", moveTooltip)
-    .on("mouseout", hideTooltip)
+   
       .transition()
       .duration(tLong)
       .ease(d3.easeLinear)
@@ -334,24 +337,27 @@ function updateBarChart(inData, width, height, el, margin, colors) {
 
   /* Tooltip functions. These should be hoisted to top of updateChart() function
   call, and therefore accessible at anytime from inside updateChart() */
+    // Tooltip functions
   function showTooltip(d) {
-    tooltip.transition()
+      tooltip.transition()
       .duration(tShort)
       .style('opacity', 0.9);
+
   }
 
   function moveTooltip(d) {
-    tooltip.html(
-      "<b>" + "År " + "</b>" + d.keyL2 + "<br/><br/>" +
-      varName + " " + "<b>" + d.value + "</br>")
-      .style("left", d3.event.pageX + "px")
-      .style("top", (d3.mouse(this)[1] + 28) + "px");
-  }
+     tooltip.html(
+        "<b>" + d.key + "</b>" + "<br/><br/>" +
+        d.values[0].Sex + ": " + d.values[0].value + "</br>" +
+        d.values[1].Sex + ": " + d.values[1].value + "</br>")
+          .style("left", d3.event.pageX + "px")
+          .style("top", (d3.mouse(this)[1] + 28) + "px");
 
+  }
   function hideTooltip() {
     tooltip.transition()
-      .duration(tShort)
-      .style('opacity', 0);
+    .duration(tShort)
+    .style('opacity', 0);
   }
 
 
@@ -431,6 +437,17 @@ function resizeBarChart(inData, width, height, el, margin, colors) {
     .duration(tShort)
     .attr("transform", d => "translate(" + scaleX(d.key) + ",0)");
 
+  svg.selectAll(".mouseSvg") // remove old mouseover elements
+  .transition()
+  .duration(tShort) 
+    .attr("transform", d => "translate(" + scaleX(d.key) + ",0)")
+    .attr("width", scaleX.bandwidth())
+    .attr('y', 0)
+    .attr("height", height)
+      .on("mouseover", showTooltip)
+      .on("mousemove", moveTooltip)
+      .on("mouseout", hideTooltip);
+
 
   // BARS
   svg.selectAll(".bars")
@@ -453,6 +470,30 @@ function resizeBarChart(inData, width, height, el, margin, colors) {
     .transition()
     .duration(tShort)
     .call(d3.axisLeft(scaleY));
+
+
+  // Tooltip functions
+  function showTooltip(d) {
+      tooltip.transition()
+      .duration(tShort)
+      .style('opacity', 0.9);
+
+  }
+
+  function moveTooltip(d) {
+     tooltip.html(
+        "<b>" + d.key + "</b>" + "<br/><br/>" +
+        d.values[0].Sex + ": " + d.values[0].value + "</br>" +
+        d.values[1].Sex + ": " + d.values[1].value + "</br>")
+          .style("left", d3.event.pageX + "px")
+          .style("top", (d3.mouse(this)[1] + 28) + "px");
+
+  }
+  function hideTooltip() {
+    tooltip.transition()
+    .duration(tShort)
+    .style('opacity', 0);
+  }
 
   }
 
