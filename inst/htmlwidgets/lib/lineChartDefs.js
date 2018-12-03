@@ -326,6 +326,10 @@ var mouseRectsFemale = chartArea
     svg.selectAll(".dotfemale")
       .attr("cx", d => scaleX(d.year))
       .attr("cy", d => scaleY(d.female));
+    svg.selectAll(".dotmale")
+      .attr("cx", d => scaleX(d.year))
+      .attr("cy", d => scaleY(d.male));
+
 
     tooltip.html(
       varName + " i " +"<b>" + d.year + "</b>" + "<br/><br/>" +
