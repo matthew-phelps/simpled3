@@ -442,7 +442,7 @@ function resizeBarChart(inData, width, height, el, margin, colors, barPadding, t
     .attr("transform", d => "translate(" + scaleX(d.key) + ",0)")
     .attr("width", scaleX.bandwidth())
     .attr('y', 0)
-    .attr("height", height)
+    .attr("height", height);
 
 
 

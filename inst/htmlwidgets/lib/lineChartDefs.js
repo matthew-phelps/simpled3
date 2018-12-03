@@ -373,11 +373,11 @@ function resizeLineChart(inData, width, height, el, margin, rectPadding, colors,
   var tooltip = d3.select("#tooltipLine");
 
 
-  svg.select('.x.axisTitle')
+  svg.select('line.x.axisTitle')
     .attr("x", dim.width / 2)
     .attr("y", dim.height + margin.bottom);
 
-  svg.select('.y.axisTitle')
+  svg.select('line.y.axisTitle')
     .attr("x", 0 - dim.height / 2)
     .attr("y", 0 - margin.left + 20);
 
