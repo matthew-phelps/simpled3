@@ -278,12 +278,12 @@ function updateBarChart(inData, width, height, el, margin, colors) {
       .attr("width", scaleX.bandwidth())
       .attr('y', 0)
       .attr("height", height)
-        .on("mouseover", showTooltip)
-        .on("mousemove", moveTooltip)
-        .on("mouseout", hideTooltip);
+        .on("mouseover", showTooltip2)
+        .on("mousemove", moveTooltip2)
+        .on("mouseout", hideTooltip2);
 
 
-  var	bars = barsData.selectAll("rect")
+  var bars = barsData.selectAll("rect")
     .data(d => Object.keys(d.values)
     .map(k => ({
         keyL2: grouping2Names[k],
@@ -338,14 +338,14 @@ function updateBarChart(inData, width, height, el, margin, colors) {
   /* Tooltip functions. These should be hoisted to top of updateChart() function
   call, and therefore accessible at anytime from inside updateChart() */
     // Tooltip functions
-  function showTooltip(d) {
+  function showTooltip2(d) {
       tooltip.transition()
       .duration(tShort)
       .style('opacity', 0.9);
 
   }
 
-  function moveTooltip(d) {
+  function moveTooltip2(d) {
      tooltip.html(
         "<b>" + d.key + "</b>" + "<br/><br/>" +
         d.values[0].Sex + ": " + d.values[0].value + "</br>" +
@@ -354,7 +354,7 @@ function updateBarChart(inData, width, height, el, margin, colors) {
           .style("top", (d3.mouse(this)[1] + 28) + "px");
 
   }
-  function hideTooltip() {
+  function hideTooltip2() {
     tooltip.transition()
     .duration(tShort)
     .style('opacity', 0);
