@@ -6,7 +6,7 @@ HTMLWidgets.widget({
 
   factory: function(el, width, height) {
     var margin = ({top:20, right:20, bottom:40, left:60});
-    var rectPadding = 0.2;
+    var rectPadding = 0.1;
 
     // State variables
     var chartExists = false;

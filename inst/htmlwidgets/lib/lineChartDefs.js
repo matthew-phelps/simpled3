@@ -319,6 +319,11 @@ var mouseRectsFemale = chartArea
 
 // Tooltip functions - these will be hoisted to top of fn call
   function showTooltip(d) {
+    d3.selectAll(".y" + d.year)
+      .transition()
+        .ease(d3.easeLinear)
+        .duration("200")
+        .attr("r", bigRadius);
     tooltip.transition()
     .duration(tShort)
     .style('opacity', 0.9);
@@ -334,7 +339,12 @@ var mouseRectsFemale = chartArea
     .style("top", (d3.mouse(this)[1] + 28) + "px");
   }
 
-  function hideTooltip() {
+  function hideTooltip(d) {
+     d3.selectAll(".y" + d.year)
+      .transition()
+        .ease(d3.easeLinear)
+        .duration("200")
+        .attr("r", cRadius);
     tooltip.transition()
     .duration(tShort)
     .style('opacity', 0);
@@ -456,7 +466,4 @@ var scaleXRects = d3.scaleBand()
     .text(varName)
     .style("text-anchor", "middle");
   
-  
-
-
  }
