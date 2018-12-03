@@ -479,12 +479,12 @@ var scaleXRects = d3.scaleBand()
   function moveTooltip(d){
     svg.selectAll(".dotfemale")
       .transition()
-      .duration(tLong)
+      .duration(tShort)
         .attr("cx", d => scaleX(d.year))
         .attr("cy", d => scaleY(d.female));
     svg.selectAll(".dotmale")
       .transition()
-      .duration(tLong)
+      .duration(tShort)
         .attr("cx", d => scaleX(d.year))
         .attr("cy", d => scaleY(d.male));
 
