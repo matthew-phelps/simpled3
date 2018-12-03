@@ -270,7 +270,7 @@ function updateBarChart(inData, width, height, el, margin, colors) {
     .merge(barGroupWithData)
     .attr("transform", d => "translate(" + scaleX(d.key) + ",0)");
 
-    d3.selectAll(".mouseSvg").remove(); // remove old mouseover elements
+    barGroupWithData.exit().selectAll(".mouseSvg").remove(); // remove old mouseover elements
     var mouseRects = barGroupWithData.enter()
     .append("rect")
       .attr("class", "mouseSvg")
@@ -437,16 +437,14 @@ function resizeBarChart(inData, width, height, el, margin, colors) {
     .duration(tShort)
     .attr("transform", d => "translate(" + scaleX(d.key) + ",0)");
 
-  svg.selectAll(".mouseSvg") // remove old mouseover elements
+  svg.selectAll(".mouseSvg")
   .transition()
   .duration(tShort) 
     .attr("transform", d => "translate(" + scaleX(d.key) + ",0)")
     .attr("width", scaleX.bandwidth())
     .attr('y', 0)
     .attr("height", height)
-      .on("mouseover", showTooltip)
-      .on("mousemove", moveTooltip)
-      .on("mouseout", hideTooltip);
+
 
 
   // BARS
