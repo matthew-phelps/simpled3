@@ -203,8 +203,8 @@ mouseRectsFemale
 
 function updateLineChart(inData, width, height, el, margin, rectPadding, colors, tLong, tShort, cRadius, bigRadius) {
   var dim = {
-    width: width - margin.left - margin.right,
-    height: height - margin.top - margin.bottom
+    width: width,
+    height: height
   };
 
   var svg = d3.select("#containerLine").select('svg');
@@ -358,8 +358,8 @@ var mouseRectsFemale = chartArea
 function resizeLineChart(inData, width, height, el, margin, rectPadding, colors, tLong, tShort, cRadius, bigRadius) {
   
   var dim = {
-    width: width - margin.left - margin.right,
-    height: height - margin.top - margin.bottom
+    width: width,
+    height: height
   };
 
   var data = HTMLWidgets.dataframeToD3(inData.data);
