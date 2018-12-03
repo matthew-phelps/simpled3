@@ -111,7 +111,10 @@ function drawBarChart(inData, width, height, el, margin, colors) {
       .attr("transform", d => "translate(" + scaleX(d.key) + ",0)")
       .attr("width", scaleX.bandwidth())
       .attr('y', 0)
-      .attr("height", height);
+      .attr("height", height)
+        .on("mouseover", showTooltip)
+        .on("mousemove", moveTooltip)
+        .on("mouseout", hideTooltip);
 
   // Visible bars
   var	bars = barsData.selectAll("rect")
@@ -132,9 +135,7 @@ function drawBarChart(inData, width, height, el, margin, colors) {
     .attr("y", d => scaleY(0))
     .merge(bars)
     .attr("x", (d) => scaleX1(d.keyL2))
-    .on("mouseover", showTooltip)
-    .on("mousemove", moveTooltip)
-    .on("mouseout", hideTooltip)
+   
       .transition()
       .duration(tLong)
       .ease(d3.easeLinear)
@@ -176,10 +177,11 @@ function drawBarChart(inData, width, height, el, margin, colors) {
 
   function moveTooltip(d) {
      tooltip.html(
-        "<b>" + "År " + "</b>" + d.keyL2 + "<br/><br/>" +
-        varName + " " + "<b>" + d.value + "</br>")
-        .style("left", d3.event.pageX + "px")
-        .style("top", (d3.mouse(this)[1] + 28) + "px");
+        "<b>" + d.keys + "</b>" + "<br/><br/>" +
+        d.values[0].Sex + ": " + d.values[0].value + "</br>" +
+        d.values[1].Sex + ": " + d.values[1].value + "</br>")
+          .style("left", d3.event.pageX + "px")
+          .style("top", (d3.mouse(this)[1] + 28) + "px");
 
   }
   function hideTooltip() {
