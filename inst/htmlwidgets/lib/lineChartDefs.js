@@ -111,7 +111,7 @@ function drawLineChart(inData, width, height, el, margin, rectPadding) {
     .selectAll(".dot")
     .data(data)
     .enter().append("circle")
-      .attr("class",  d => d.year + " dotfemale")
+      .attr("class",  d => "y" + d.year + " dotfemale")
       .attr("cx", d => scaleX(d.year))
       .attr("cy", d => scaleY(d.female))
       .attr("r", cRadius)
@@ -166,8 +166,8 @@ var mouseRectsFemale = chartArea
 
 
 // Tooltip functions - these will be hoisted to top of fn call
-  function showTooltip(d, i) {
-    d3.select("." + i + ".dotfemale")
+  function showTooltip(d) {
+    d3.select(".y" + d.year + ".dotfemale")
       .transition()
         .ease("cubic-out")
         .duration("200")
