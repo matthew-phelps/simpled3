@@ -4,7 +4,7 @@ function drawLineChart(inData, width, height, el, margin, rectPadding) {
   var tLong = 450;
   var tShort = 200;
   var cRadius = 7;
-
+  var bigRadius = 15;
   var dim = {
     width: width - margin.left - margin.right,
     height: height - margin.top - margin.bottom
@@ -151,7 +151,6 @@ function drawLineChart(inData, width, height, el, margin, rectPadding) {
     .style("text-anchor", "middle");
 
 // Invisible rects to trigger mouseover events
-var mRadius = (scaleX(d3.max(data, d=> d.year)) / data.length) / 2.5;
 var mouseRectsFemale = chartArea
   .selectAll("g")
     .data(data)
@@ -167,7 +166,12 @@ var mouseRectsFemale = chartArea
 
 
 // Tooltip functions - these will be hoisted to top of fn call
-  function showTooltip(d) {
+  function showTooltip(d, i) {
+    d3.select("." + i + ".dotfemale")
+      .transition()
+        .ease("cubic-out")
+        .duration("200")
+        .attr("r", bigRadius);
     tooltip.transition()
     .duration(tShort)
     .style('opacity', 0.9);
@@ -175,7 +179,6 @@ var mouseRectsFemale = chartArea
   }
 
   function moveTooltip(d){
-    d3.select()
     tooltip.html(
       varName + " i " +"<b>" + d.year + "</b>" + "<br/><br/>" +
        Object.keys(d)[1] + ": <b>" + d.female + "</b><br/>" +
