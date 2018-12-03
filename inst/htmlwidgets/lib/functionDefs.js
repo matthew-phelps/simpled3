@@ -190,7 +190,7 @@ function drawBarChart(inData, width, height, el, margin, colors) {
   }
 
 
-  }
+}
 
 
 //////////////////////////////////////////////////////////////////////////////
@@ -270,14 +270,16 @@ function updateBarChart(inData, width, height, el, margin, colors) {
     .merge(barGroupWithData)
     .attr("transform", d => "translate(" + scaleX(d.key) + ",0)");
 
-    barGroupWithData.exit().selectAll(".mouseSvg").remove(); // remove old mouseover elements
-    var mouseRects = barGroupWithData.enter()
+  var mouseRects = barGroupWithData.enter()
     .append("rect")
       .attr("class", "mouseSvg")
       .attr("transform", d => "translate(" + scaleX(d.key) + ",0)")
       .attr("width", scaleX.bandwidth())
       .attr('y', 0)
-      .attr("height", height)
+      .attr("height", height);
+
+
+  sd3.selectAll('.mouseSvg')
         .on("mouseover", showTooltip)
         .on("mousemove", moveTooltip)
         .on("mouseout", hideTooltip);
@@ -361,7 +363,7 @@ function updateBarChart(inData, width, height, el, margin, colors) {
   }
 
 
-  }
+}
 
 
 //////////////////////////////////////////////////////////////////////////////
