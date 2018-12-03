@@ -270,16 +270,14 @@ function updateBarChart(inData, width, height, el, margin, colors) {
     .merge(barGroupWithData)
     .attr("transform", d => "translate(" + scaleX(d.key) + ",0)");
 
-  var mouseRects = barGroupWithData.enter()
+  barGroupWithData.selectAll('mouseSvg').remove();
+  var mouseRects = barGroupWithData
     .append("rect")
       .attr("class", "mouseSvg")
       .attr("transform", d => "translate(" + scaleX(d.key) + ",0)")
       .attr("width", scaleX.bandwidth())
       .attr('y', 0)
-      .attr("height", height);
-
-
-  d3.selectAll('.mouseSvg')
+      .attr("height", height)
         .on("mouseover", showTooltip)
         .on("mousemove", moveTooltip)
         .on("mouseout", hideTooltip);
