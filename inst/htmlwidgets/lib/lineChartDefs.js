@@ -495,7 +495,7 @@ var scaleXRects = d3.scaleBand()
        Object.keys(d)[1] + ": <b>" + d.female + "</b><br/>" +
        Object.keys(d)[2] + ": <b>" + d.male + "</b>")
     .style("left", d3.mouse(this)[0] + "px")
-    .style("top", (d3.mouse(this)[1] + 28) + "px");
+    .style("top", (d3.mouse(this)[1] + 50) + "px");
   }
 
   function hideTooltip(d) {
