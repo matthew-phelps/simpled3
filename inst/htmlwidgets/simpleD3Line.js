@@ -38,7 +38,7 @@ HTMLWidgets.widget({
                 width: width,
                 height: height
               };
-          resize = true;
+          resized = true;
           this.dim = dim;
 
 

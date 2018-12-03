@@ -154,7 +154,9 @@ var mouseRectsFemale = chartArea
     .attr("x", d => scaleX(d.year) - (scaleXRects.bandwidth() / 2))
     .attr("width", scaleXRects.bandwidth())
     .attr("y", 0)
-    .attr("height", height)
+    .attr("height", height);
+
+mouseRectsFemale
       .on("mouseover", showTooltip)
       .on("mousemove", moveTooltip)
       .on("mouseout", hideTooltip);
@@ -355,8 +357,6 @@ function resizeLineChart(inData, width, height, el, margin, rectPadding, colors,
   var data = HTMLWidgets.dataframeToD3(inData.data);
   var varName = data[0].variable;
   var grouping1Names = data.map(d => d.year);
-
-
 
   var svg = d3.select("#containerLine").select('svg')
     .attr("width", dim.width + margin.left + margin.right)
