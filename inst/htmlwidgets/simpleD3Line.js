@@ -5,7 +5,7 @@ HTMLWidgets.widget({
   type: 'output',
 
   factory: function(el, width, height) {
-    var margin = ({top:10, right:20, bottom:40, left:60});
+    var margin = ({top:20, right:20, bottom:40, left:60});
     var rectPadding = 0.2;
 
     // State variables
