@@ -323,6 +323,10 @@ var mouseRectsFemale = chartArea
   }
 
   function moveTooltip(d){
+    svg.selectAll(".dotfemale")
+      .attr("cx", d => scaleX(d.year))
+      .attr("cy", d => scaleY(d.male));
+
     tooltip.html(
       varName + " i " +"<b>" + d.year + "</b>" + "<br/><br/>" +
        Object.keys(d)[1] + ": <b>" + d.female + "</b><br/>" +
