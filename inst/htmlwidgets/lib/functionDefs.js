@@ -352,14 +352,14 @@ function updateBarChart(inData, width, height, el, margin, colors) {
   /* Tooltip functions. These should be hoisted to top of updateChart() function
   call, and therefore accessible at anytime from inside updateChart() */
     // Tooltip functions
-  function showTooltip2(d) {
+  function showTooltip(d) {
       tooltip.transition()
       .duration(tShort)
       .style('opacity', 0.9);
 
   }
 
-  function moveTooltip2(d) {
+  function moveTooltip(d) {
      tooltip.html(
         "<b>" + d.key + "</b>" + "<br/><br/>" +
         d.values[0].Sex + ": " + d.values[0].value + "</br>" +
@@ -368,7 +368,7 @@ function updateBarChart(inData, width, height, el, margin, colors) {
           .style("top", (d3.mouse(this)[1] + 28) + "px");
 
   }
-  function hideTooltip2() {
+  function hideTooltip() {
     tooltip.transition()
     .duration(tShort)
     .style('opacity', 0);
