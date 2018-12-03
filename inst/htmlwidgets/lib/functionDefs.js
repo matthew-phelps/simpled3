@@ -279,7 +279,7 @@ function updateBarChart(inData, width, height, el, margin, colors) {
       .attr("height", height);
 
 
-  sd3.selectAll('.mouseSvg')
+  d3.selectAll('.mouseSvg')
         .on("mouseover", showTooltip)
         .on("mousemove", moveTooltip)
         .on("mouseout", hideTooltip);
