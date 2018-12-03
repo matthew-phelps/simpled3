@@ -121,7 +121,7 @@ function drawLineChart(inData, width, height, el, margin, rectPadding) {
     .selectAll(".dot")
     .data(data)
     .enter().append("circle")
-    .attr("class", "dotmale")
+    .attr("class",  d => "y" + d.year + " dotmale")
     .attr("cx", d => scaleX(d.year))
     .attr("cy", d => scaleY(d.male))
     .attr("r", cRadius)
@@ -188,6 +188,11 @@ var mouseRectsFemale = chartArea
   }
 
   function hideTooltip() {
+     d3.selectAll(".y" + d.year)
+      .transition()
+        .ease(d3.easeLinear)
+        .duration("200")
+        .attr("r", cRadius);
     tooltip.transition()
     .duration(tShort)
     .style('opacity', 0);
