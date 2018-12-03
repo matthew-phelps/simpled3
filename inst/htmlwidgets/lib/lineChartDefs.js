@@ -167,9 +167,9 @@ var mouseRectsFemale = chartArea
 
 // Tooltip functions - these will be hoisted to top of fn call
   function showTooltip(d) {
-    d3.select(".y" + d.year + ".dotfemale")
+    d3.selectAll(".y" + d.year)
       .transition()
-        .ease("cubic-out")
+        .ease(d3.easeLinear)
         .duration("200")
         .attr("r", bigRadius);
     tooltip.transition()
