@@ -105,7 +105,7 @@ function drawBarChart(inData, width, height, el, margin, colors) {
     .attr("transform", d => "translate(" + scaleX(d.key) + ",0)");
 
   // Rects for mousever events - note - inside bargroups 'g' element
-  var mouseRects = barsData
+  var mouseRects = barGroupWithData.enter()
     .append("rect")
     .attr("class", "mouseSvg")
     .attr("width", scaleX.bandwidth())
