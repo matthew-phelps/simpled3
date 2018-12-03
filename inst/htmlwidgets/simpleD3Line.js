@@ -13,6 +13,7 @@ HTMLWidgets.widget({
     var cRadius = 7;
     var bigRadius = 15;
 
+
     // State variables
     var chartExists = false;
     var resized = false;

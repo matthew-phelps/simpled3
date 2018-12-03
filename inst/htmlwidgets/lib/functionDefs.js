@@ -245,6 +245,8 @@ function updateBarChart(inData, width, height, el, margin, colors) {
     .selectAll('g')
     .data(newData, d => d.key);
 
+
+
   // Remove any bar-groups not present in incoming data
   barGroupWithData.exit()
     .transition()
@@ -258,6 +260,13 @@ function updateBarChart(inData, width, height, el, margin, colors) {
     .attr("class", "barGroups")
     .merge(barGroupWithData)
     .attr("transform", d => "translate(" + scaleX(d.key) + ",0)");
+
+  var mouseRects = barGroupWithData.enter()
+    .append("rect")
+    .attr("class", "mouseSvg")
+    .merge(barGroupWithData)
+    .attr("transform", d => "translate(" + scaleX(d.key) + ",0)");
+
 
 
   var	bars = barsData.selectAll("rect")
