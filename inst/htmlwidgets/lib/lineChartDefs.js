@@ -468,6 +468,7 @@ var scaleXRects = d3.scaleBand()
   
 
 // Mouse event functions
+  // Tooltip functions - these will be hoisted to top of fn call
   function showTooltip(d) {
     d3.selectAll(".y" + d.year)
       .transition()
@@ -475,26 +476,28 @@ var scaleXRects = d3.scaleBand()
         .duration("200")
         .attr("r", bigRadius);
     tooltip.transition()
-      .duration(tShort)
-      .style('opacity', 0.9);
+    .duration(tShort)
+    .style('opacity', 0.9);
     
   }
 
   function moveTooltip(d){
     svg.selectAll(".dotfemale")
-      .attr("cx", d => scaleX(d.year))
-      .attr("cy", d => scaleY(d.female));
+      .transition()
+      .duration(tShort)
+        .attr("cx", d => scaleX(d.year))
+        .attr("cy", d => scaleY(d.female));
     svg.selectAll(".dotmale")
       .attr("cx", d => scaleX(d.year))
       .attr("cy", d => scaleY(d.male));
+
+
     tooltip.html(
       varName + " i " +"<b>" + d.year + "</b>" + "<br/><br/>" +
        Object.keys(d)[1] + ": <b>" + d.female + "</b><br/>" +
        Object.keys(d)[2] + ": <b>" + d.male + "</b>")
-        .style("left", d3.mouse(this)[0] + "px")
-        .style("top", (d3.mouse(this)[1] + 28) + "px");
-
- 
+    .style("left", d3.mouse(this)[0] + "px")
+    .style("top", (d3.mouse(this)[1] + 28) + "px");
   }
 
   function hideTooltip(d) {
@@ -504,9 +507,8 @@ var scaleXRects = d3.scaleBand()
         .duration("200")
         .attr("r", cRadius);
     tooltip.transition()
-      .duration(tShort)
-      .style('opacity', 0);
- 
+    .duration(tShort)
+    .style('opacity', 0);
   }
 
 
