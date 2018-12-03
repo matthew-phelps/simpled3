@@ -132,7 +132,6 @@ function drawBarChart(inData, width, height, el, margin, colors) {
 
 
   // Data join for mouseover elements - invisible to user
-
   var mouseSvg = chartArea
     .selectAll('.mouseSvg')
     .data(newData, d => d.key);
@@ -278,17 +277,6 @@ function updateBarChart(inData, width, height, el, margin, colors) {
     .attr("transform", d => "translate(" + scaleX(d.key) + ",0)");
 
   barGroupWithData.selectAll('.mouseSvg').remove();
-  var mouseRects = barGroupWithData
-    .append("rect")
-      .attr("class", "mouseSvg")
-      .attr("transform", d => "translate(" + scaleX(d.key) + ",0)")
-      .attr("width", scaleX.bandwidth())
-      .attr('y', 0)
-      .attr("height", height)
-        .on("mouseover", showTooltip2)
-        .on("mousemove", moveTooltip2)
-        .on("mouseout", hideTooltip2);
-
 
   var bars = barsData.selectAll("rect")
     .data(d => Object.keys(d.values)
@@ -308,13 +296,32 @@ function updateBarChart(inData, width, height, el, margin, colors) {
     .attr("y", d => scaleY(0))
     .merge(bars)
     .attr("x", (d) => scaleX1(d.keyL2))
-   
       .transition()
       .duration(tLong)
       .ease(d3.easeLinear)
       .attr("width", scaleX1.bandwidth())
       .attr('y', d => scaleY(d.value))
       .attr("height", d => scaleY(0) - scaleY(d.value));
+
+
+// Data join for mouseover elements - invisible to user
+  var mouseSvg = chartArea
+    .selectAll('.mouseSvg')
+    .data(newData, d => d.key);
+  
+  mouseSvg.exit().remove();
+  mouseSvg.enter()
+    .append('rect')
+    .merge(mouseSvg)
+    .attr('class', 'mouseSvg')
+    .attr("transform", d => "translate(" + scaleX(d.key) + ",0)")
+    .attr("width", scaleX.bandwidth())
+    .attr('y', 0)
+    .attr("height", height)
+        .on("mouseover", showTooltip)
+        .on("mousemove", moveTooltip)
+        .on("mouseout", hideTooltip);
+
 
   // Update axes scales
   svg.selectAll(".x.axis")
