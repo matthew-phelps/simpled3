@@ -182,7 +182,7 @@ function drawBarChart(inData, width, height, el, margin, colors, barPadding, tLo
         d.values[0].Sex + ": " + d.values[0].value + "</br>" +
         d.values[1].Sex + ": " + d.values[1].value + "</br>")
           .style("left", d3.mouse(this)[0] + "px")
-          .style("top", (d3.mouse(this)[1] + 28) + "px");
+          .style("top", (d3.mouse(this)[1] + 50) + "px");
 
   }
   function hideTooltip() {
@@ -307,7 +307,7 @@ function updateBarChart(inData, width, height, el, margin, colors, barPadding, t
     .append('rect')
     .merge(mouseSvg)
     .attr('class', 'mouseSvg')
-    .attr("transform", d => "translate(" + scaleX(d.key) + ",0)")
+    .attr("x", d => scaleX(d.key))
     .attr("width", scaleX.bandwidth())
     .attr('y', 0)
     .attr("height", height)
@@ -357,8 +357,8 @@ function updateBarChart(inData, width, height, el, margin, colors, barPadding, t
         "<b>" + d.key + "</b>" + "<br/><br/>" +
         d.values[0].Sex + ": " + d.values[0].value + "</br>" +
         d.values[1].Sex + ": " + d.values[1].value + "</br>")
-          .style("left", d3.event.pageX + "px")
-          .style("top", (d3.mouse(this)[1] + 28) + "px");
+          .style("left", d3.mouse(this)[0] + "px")
+          .style("top", (d3.mouse(this)[1] + 50) + "px");
 
   }
   function hideTooltip() {
@@ -436,15 +436,6 @@ function resizeBarChart(inData, width, height, el, margin, colors, barPadding, t
     .duration(tShort)
     .attr("transform", d => "translate(" + scaleX(d.key) + ",0)");
 
-  svg.selectAll(".mouseSvg")
-  .transition()
-  .duration(tShort) 
-    .attr("transform", d => "translate(" + scaleX(d.key) + ",0)")
-    .attr("width", scaleX.bandwidth())
-    .attr('y', 0)
-    .attr("height", height);
-
-
 
   // BARS
   svg.selectAll(".bars")
@@ -454,6 +445,15 @@ function resizeBarChart(inData, width, height, el, margin, colors, barPadding, t
     .attr("width", scaleX1.bandwidth())
     .attr('y', d => scaleY(d.value))
     .attr("height", d => scaleY(0) - scaleY(d.value));
+
+  // MOUSE SVG RECT
+  svg.selectAll(".mouseSvg")
+  .transition()
+  .duration(tShort) 
+    .attr("x", d => scaleX(d.key))
+    .attr("width", scaleX.bandwidth())
+    .attr('y', 0)
+    .attr("height", height);
 
 
   // Resize Axes
@@ -482,8 +482,8 @@ function resizeBarChart(inData, width, height, el, margin, colors, barPadding, t
         "<b>" + d.key + "</b>" + "<br/><br/>" +
         d.values[0].Sex + ": " + d.values[0].value + "</br>" +
         d.values[1].Sex + ": " + d.values[1].value + "</br>")
-          .style("left", d3.event.pageX + "px")
-          .style("top", (d3.mouse(this)[1] + 28) + "px");
+          .style("left", d3.mouse(this)[0] + "px")
+          .style("top", (d3.mouse(this)[1] + 50) + "px");
 
   }
   function hideTooltip() {
