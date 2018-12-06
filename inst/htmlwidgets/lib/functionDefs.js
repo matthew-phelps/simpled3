@@ -171,8 +171,11 @@ function drawBarChart(inData, width, height, el, margin, colors, barPadding, tLo
   // Tooltip functions
   function showTooltip(d) {
       tooltip.transition()
-      .duration(tShort)
-      .style('opacity', 0.9);
+        .duration(tShort)
+        .style('opacity', 0.9);
+      mouseSvgBarChart
+        .style('opacity', 0.2);
+
 
   }
 
