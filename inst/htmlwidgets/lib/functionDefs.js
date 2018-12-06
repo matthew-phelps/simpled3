@@ -135,8 +135,8 @@ function drawBarChart(inData, width, height, el, margin, colors, barPadding, tLo
   mouseSvg.exit().remove();
   mouseSvg.enter()
     .append('rect')
-    .attr('class', d => d.key + ' mouseSvg')
-   .attr("x", d => scaleX(d.key))
+    .attr('class', d => 'mouseSvg ' + d.key)
+    .attr("x", d => scaleX(d.key))
     .attr("width", scaleX.bandwidth())
     .attr('y', 0)
     .attr("height", height)
@@ -173,7 +173,7 @@ function drawBarChart(inData, width, height, el, margin, colors, barPadding, tLo
       tooltip.transition()
         .duration(tShort)
         .style('opacity', 0.9);
-      d3.select(d.key + ".mouseSvg")
+      d3.select(".mouseSvg." + d.key)
         .style('opacity', 0.2);
 
 
