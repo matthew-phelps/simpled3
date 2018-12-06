@@ -12,7 +12,7 @@ HTMLWidgets.widget({
 
       renderValue: function(x) {
 
-        drawLegend(x, width, height, el);
+        drawLegend(x, width, height, el, margin);
       },
 
       resize: function(width, height) {
