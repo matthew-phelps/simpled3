@@ -11,6 +11,8 @@ HTMLWidgets.widget({
     var tLong = 450;
     var tShort = 200;
     var mOpacity = 0.25;
+    legendWidth = 100;
+    legendHeight = 300;
 
     // State variables
     var chartExists = false;
@@ -20,7 +22,7 @@ HTMLWidgets.widget({
       renderValue: function(x) {
         if(!chartExists){
           chartExists = true;
-          drawBarChart(x, width, height, el, margin, colors, barPadding, tLong, tShort, mOpacity);
+          drawBarChart(x, width-legendWidth, height, el, margin, colors, barPadding, tLong, tShort, mOpacity);
         } else if (resized){
           updateBarChart(x, this.dim.width, this.dim.height, el, margin, colors, barPadding, tLong, tShort, mOpacity);
         } else {
