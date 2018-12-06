@@ -23,7 +23,6 @@ HTMLWidgets.widget({
         if(!chartExists){
           chartExists = true;
           drawBarChart(x, width, height, el, margin, colors, barPadding, tLong, tShort, mOpacity);
-          drawLegend("containerBar", width, margin, legendWidth, legendHeight, colors);
         } else if (resized){
           updateBarChart(x, this.dim.width, this.dim.height, el, margin, colors, barPadding, tLong, tShort, mOpacity);
         } else {

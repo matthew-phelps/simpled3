@@ -5,7 +5,6 @@ function drawBarChart(inData, width, height, el, margin, colors, barPadding, tLo
     width: width - margin.left - margin.right - legendWidth,
     height: height - margin.top - margin.bottom
   };
-
   var container = d3.select(el).style("position", "relative")
     .append('div')
     .attr("id", "containerBar");
@@ -501,18 +500,3 @@ function resizeBarChart(inData, width, height, el, margin, colors, barPadding, t
   }
 
 
-//////////////////////////////////////////////////////////////////////////////
-//////////////////    DRAW LEGEND     ////////////////////////////////////////
-//////////////////////////////////////////////////////////////////////////////
-
-function drawLegend(svgContainerName, width, margin, legendWidth, legendHeight, colors) {
- var dim = {
-    width: width - margin.left - margin.right - legendWidth
-  };
-
-  svgLegend = d3.select("#" + svgContainerName)
-    .append('svg')
-    .attr('width', legendWidth)
-    .attr('height', legendHeight)
-    .attr('transform', 'translate(' + dim.width + ",0)");
-}

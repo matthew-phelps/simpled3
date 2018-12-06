@@ -6,15 +6,13 @@ HTMLWidgets.widget({
 
   factory: function(el, width, height) {
 
-    // TODO: define shared variables for this instance
+    var margin = ({top:10, right:10, bottom:10, left:60});
 
     return {
 
       renderValue: function(x) {
 
-        // TODO: code to render the widget, e.g.
-        el.innerText = x.message;
-
+        drawLegend(x, width, height, el);
       },
 
       resize: function(width, height) {

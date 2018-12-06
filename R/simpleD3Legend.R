@@ -5,11 +5,11 @@
 #' @import htmlwidgets
 #'
 #' @export
-simpleD3Legend <- function(message, width = NULL, height = NULL, elementId = NULL) {
+simpleD3Legend <- function(colors, width = NULL, height = NULL, elementId = NULL) {
 
   # forward options using x
   x = list(
-    message = message
+    colors = colors
   )
 
   # create widget
