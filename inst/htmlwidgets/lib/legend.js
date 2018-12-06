@@ -10,12 +10,11 @@ function drawLegend(x, width, height, el, margin) {
 var container = d3.select(el).style("position", "relative")
     .append('div')
     .attr("id", "containerBarLegend");
-
+// ADD LEGEND BOXES
   svgLegend = container
     .append('svg')
-    .attr('width', legendWidth)
-    .attr('height', legendHeight)
-    .attr('transform', 'translate(' + dim.width + ",0)");
+    .attr('width', dim.width)
+    .attr('height', dim.height);
 
 
 
