@@ -512,7 +512,7 @@ function drawLegend(svgContainerName, width, margin, legendWidth, legendHeight, 
 
   svgLegend = d3.select("#" + svgContainerName)
     .append('svg')
-    .attr('wdith', legendWidth)
+    .attr('width', legendWidth)
     .attr('height', legendHeight)
     .attr('transform', 'translate(' + dim.width + ",0)");
 }
