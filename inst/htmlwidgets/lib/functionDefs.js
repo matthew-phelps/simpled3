@@ -188,7 +188,7 @@ function drawBarChart(inData, width, height, el, margin, colors, barPadding, tLo
           .style("top", (d3.mouse(this)[1] + 50) + "px");
 
   }
-  function hideTooltip() {
+  function hideTooltip(d) {
     tooltip.transition()
       .duration(tShort)
       .style('opacity', 0);
@@ -366,7 +366,7 @@ function updateBarChart(inData, width, height, el, margin, colors, barPadding, t
           .style("top", (d3.mouse(this)[1] + 50) + "px");
 
   }
-  function hideTooltip() {
+  function hideTooltip(d) {
     tooltip.transition()
       .duration(tShort)
       .style('opacity', 0);
@@ -496,7 +496,7 @@ function resizeBarChart(inData, width, height, el, margin, colors, barPadding, t
           .style("top", (d3.mouse(this)[1] + 50) + "px");
 
   }
-  function hideTooltip() {
+  function hideTooltip(d) {
     tooltip.transition()
       .duration(tShort)
       .style('opacity', 0);
