@@ -26,7 +26,7 @@ HTMLWidgets.widget({
         } else if (resized){
           updateBarChart(x, this.dim.width, this.dim.height, el, margin, colors, barPadding, tLong, tShort, mOpacity);
         } else {
-          updateBarChart(x, width, height, el, margin, colors, barPadding, tLong, tShort, mOpacity);
+          updateBarChart(x, width - legendWidth, height, el, margin, colors, barPadding, tLong, tShort, mOpacity);
 
         }
         this.x = x; // store for resize
