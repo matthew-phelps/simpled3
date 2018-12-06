@@ -34,7 +34,7 @@ HTMLWidgets.widget({
       },
 
       resize: function(width, height) {
-        resizeBarChart(this.x, width, height, el, margin, colors, barPadding, tLong, tShort, mOpacity);
+        resizeBarChart(this.x, width - legendWidth, height, el, margin, colors, barPadding, tLong, tShort, mOpacity);
         var dim = {
                 width: width,
                 height: height
