@@ -1,5 +1,5 @@
 /*jshint esversion: 6 */
-function drawBarChart(inData, width, height, el, margin, colors, barPadding, tLong, tShort) {
+function drawBarChart(inData, width, height, el, margin, colors, barPadding, tLong, tShort, mOpacity) {
 
   var dim = {
     width: width - margin.left - margin.right,
@@ -171,14 +171,12 @@ function drawBarChart(inData, width, height, el, margin, colors, barPadding, tLo
       .style("text-anchor", "middle");
 
   // Tooltip functions
-  function showTooltip(d, i) {
+  function showTooltip(d) {
       tooltip.transition()
         .duration(tShort)
         .style('opacity', 0.9);
       d3.select('.mouseSvg' + ".i" + d.key.slice(0,1))
-        .style('opacity', 0.2);
-
-
+        .style('opacity', mOpacity);
   }
 
   function moveTooltip(d) {
@@ -192,8 +190,10 @@ function drawBarChart(inData, width, height, el, margin, colors, barPadding, tLo
   }
   function hideTooltip() {
     tooltip.transition()
-    .duration(tShort)
-    .style('opacity', 0);
+      .duration(tShort)
+      .style('opacity', 0);
+    d3.select('.mouseSvg' + ".i" + d.key.slice(0,1))
+        .style('opacity', 0.0);
   }
 
 }
@@ -310,7 +310,8 @@ function updateBarChart(inData, width, height, el, margin, colors, barPadding, t
   mouseSvg.enter()
     .append('rect')
     .merge(mouseSvg)
-    .attr('class', 'mouseSvg')
+    // Need to give unique non-numeric class to each rect
+    .attr('class', d => 'mouseSvg ' + "i" + d.key.slice(0,1))
     .attr("x", d => scaleX(d.key))
     .attr("width", scaleX.bandwidth())
     .attr('y', 0)
@@ -348,12 +349,12 @@ function updateBarChart(inData, width, height, el, margin, colors, barPadding, t
 
   /* Tooltip functions. These should be hoisted to top of updateChart() function
   call, and therefore accessible at anytime from inside updateChart() */
-    // Tooltip functions
   function showTooltip(d) {
       tooltip.transition()
-      .duration(tShort)
-      .style('opacity', 0.9);
-
+        .duration(tShort)
+        .style('opacity', 0.9);
+      d3.select('.mouseSvg' + ".i" + d.key.slice(0,1))
+        .style('opacity', mOpacity);
   }
 
   function moveTooltip(d) {
@@ -367,9 +368,12 @@ function updateBarChart(inData, width, height, el, margin, colors, barPadding, t
   }
   function hideTooltip() {
     tooltip.transition()
-    .duration(tShort)
-    .style('opacity', 0);
+      .duration(tShort)
+      .style('opacity', 0);
+    d3.select('.mouseSvg' + ".i" + d.key.slice(0,1))
+        .style('opacity', 0.0);
   }
+
 
 
 }
@@ -473,12 +477,14 @@ function resizeBarChart(inData, width, height, el, margin, colors, barPadding, t
     .call(d3.axisLeft(scaleY));
 
 
+
   // Tooltip functions
   function showTooltip(d) {
       tooltip.transition()
-      .duration(tShort)
-      .style('opacity', 0.9);
-
+        .duration(tShort)
+        .style('opacity', 0.9);
+      d3.select('.mouseSvg' + ".i" + d.key.slice(0,1))
+        .style('opacity', mOpacity);
   }
 
   function moveTooltip(d) {
@@ -492,8 +498,10 @@ function resizeBarChart(inData, width, height, el, margin, colors, barPadding, t
   }
   function hideTooltip() {
     tooltip.transition()
-    .duration(tShort)
-    .style('opacity', 0);
+      .duration(tShort)
+      .style('opacity', 0);
+    d3.select('.mouseSvg' + ".i" + d.key.slice(0,1))
+        .style('opacity', 0.0);
   }
 
   }

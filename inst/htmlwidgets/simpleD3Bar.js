@@ -10,6 +10,7 @@ HTMLWidgets.widget({
     var barPadding = 0.2;
     var tLong = 450;
     var tShort = 200;
+    var mOpacity = 0.25;
 
     // State variables
     var chartExists = false;
@@ -19,11 +20,11 @@ HTMLWidgets.widget({
       renderValue: function(x) {
         if(!chartExists){
           chartExists = true;
-          drawBarChart(x, width, height, el, margin, colors, barPadding, tLong, tShort);
+          drawBarChart(x, width, height, el, margin, colors, barPadding, tLong, tShort, mOpacity);
         } else if (resized){
-          updateBarChart(x, this.dim.width, this.dim.height, el, margin, colors, barPadding, tLong, tShort);
+          updateBarChart(x, this.dim.width, this.dim.height, el, margin, colors, barPadding, tLong, tShort, mOpacity);
         } else {
-          updateBarChart(x, width, height, el, margin, colors, barPadding, tLong, tShort);
+          updateBarChart(x, width, height, el, margin, colors, barPadding, tLong, tShort, mOpacity);
 
         }
         this.x = x; // store for resize
@@ -31,7 +32,7 @@ HTMLWidgets.widget({
       },
 
       resize: function(width, height) {
-        resizeBarChart(this.x, width, height, el, margin, colors, barPadding, tLong, tShort);
+        resizeBarChart(this.x, width, height, el, margin, colors, barPadding, tLong, tShort, mOpacity);
         var dim = {
                 width: width,
                 height: height
