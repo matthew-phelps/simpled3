@@ -6,7 +6,7 @@ function drawBarChart(inData, width, height, el, margin, colors, barPadding, tLo
     height: height - margin.top - margin.bottom
   };
 
-  var container = d3.select(el).html("").style("position", "relative")
+  var container = d3.select(el).style("position", "relative")
     .append('div')
     .attr("id", "containerBar");
 
@@ -373,9 +373,6 @@ function updateBarChart(inData, width, height, el, margin, colors, barPadding, t
     d3.select('.mouseSvg' + ".i" + d.key.slice(0,1))
         .style('opacity', 0.0);
   }
-
-
-
 }
 
 
@@ -424,7 +421,7 @@ function resizeBarChart(inData, width, height, el, margin, colors, barPadding, t
   grouping2Names = newData[0].values.map(d => d.Sex);
 
 
-  // Scales
+  // SCALES
   var scaleY = d3.scaleLinear()
     .domain([0, maxY])
     .range([dim.height, 0]);
@@ -475,8 +472,6 @@ function resizeBarChart(inData, width, height, el, margin, colors, barPadding, t
     .transition()
     .duration(tShort)
     .call(d3.axisLeft(scaleY));
-
-
 
   // Tooltip functions
   function showTooltip(d) {
