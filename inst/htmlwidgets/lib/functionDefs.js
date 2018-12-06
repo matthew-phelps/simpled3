@@ -169,7 +169,7 @@ function drawBarChart(inData, width, height, el, margin, colors, barPadding, tLo
     .text(groupingName)
       .style("text-anchor", "middle");
 
-  // Tooltip functions
+  //// Tooltip functions
   function showTooltip(d) {
       tooltip.transition()
         .duration(tShort)
@@ -500,3 +500,19 @@ function resizeBarChart(inData, width, height, el, margin, colors, barPadding, t
 
   }
 
+
+//////////////////////////////////////////////////////////////////////////////
+//////////////////    DRAW LEGEND     ////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////
+
+function drawLegend(svgContainerName, width, margin, legendWidth, legendHeight, colors) {
+ var dim = {
+    width: width - margin.left - margin.right - legendWidth
+  };
+
+  svgLegend = d3.select("#" + svgContainerName)
+    .append('svg')
+    .attr('wdith', legendWidth)
+    .attr('height', legendHeight)
+    .attr('transform', 'translate(' + dim.width + ",0)");
+}
