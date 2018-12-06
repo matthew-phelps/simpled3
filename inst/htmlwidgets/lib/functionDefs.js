@@ -173,7 +173,7 @@ function drawBarChart(inData, width, height, el, margin, colors, barPadding, tLo
       tooltip.transition()
         .duration(tShort)
         .style('opacity', 0.9);
-      d3.select(".mouseSvg." + i)
+      d3.select(".mouseSvg." + "i" + i)
         .style('opacity', 0.2);
 
 
