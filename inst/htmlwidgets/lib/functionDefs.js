@@ -2,7 +2,7 @@
 function drawBarChart(inData, width, height, el, margin, colors, barPadding, tLong, tShort, mOpacity) {
 
   var dim = {
-    width: width - margin.left - margin.right,
+    width: width - margin.left - margin.right - legendWidth,
     height: height - margin.top - margin.bottom
   };
 
@@ -381,7 +381,7 @@ function updateBarChart(inData, width, height, el, margin, colors, barPadding, t
 
 function resizeBarChart(inData, width, height, el, margin, colors, barPadding, tLong, tShort, mOpacity) {
   var dim = {
-    width: width - margin.left - margin.right,
+    width: width - margin.left - margin.right - legendWidth,
     height: height - margin.top - margin.bottom
   };
 

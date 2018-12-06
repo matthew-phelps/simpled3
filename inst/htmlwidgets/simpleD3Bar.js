@@ -22,11 +22,11 @@ HTMLWidgets.widget({
       renderValue: function(x) {
         if(!chartExists){
           chartExists = true;
-          drawBarChart(x, width-legendWidth, height, el, margin, colors, barPadding, tLong, tShort, mOpacity);
+          drawBarChart(x, width, height, el, margin, colors, barPadding, tLong, tShort, mOpacity);
         } else if (resized){
           updateBarChart(x, this.dim.width, this.dim.height, el, margin, colors, barPadding, tLong, tShort, mOpacity);
         } else {
-          updateBarChart(x, width - legendWidth, height, el, margin, colors, barPadding, tLong, tShort, mOpacity);
+          updateBarChart(x, width, height, el, margin, colors, barPadding, tLong, tShort, mOpacity);
 
         }
         this.x = x; // store for resize
@@ -34,7 +34,7 @@ HTMLWidgets.widget({
       },
 
       resize: function(width, height) {
-        resizeBarChart(this.x, width - legendWidth, height, el, margin, colors, barPadding, tLong, tShort, mOpacity);
+        resizeBarChart(this.x, width, height, el, margin, colors, barPadding, tLong, tShort, mOpacity);
         var dim = {
                 width: width,
                 height: height
