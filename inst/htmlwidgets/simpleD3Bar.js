@@ -11,8 +11,6 @@ HTMLWidgets.widget({
     var tLong = 450;
     var tShort = 200;
     var mOpacity = 0.25;
-    legendWidth = 100;
-    legendHeight = 300;
 
     // State variables
     var chartExists = false;

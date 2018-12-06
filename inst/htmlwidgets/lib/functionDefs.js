@@ -2,7 +2,7 @@
 function drawBarChart(inData, width, height, el, margin, colors, barPadding, tLong, tShort, mOpacity) {
 
   var dim = {
-    width: width - margin.left - margin.right - legendWidth,
+    width: width - margin.left - margin.right,
     height: height - margin.top - margin.bottom
   };
   var container = d3.select(el).style("position", "relative")
@@ -204,7 +204,7 @@ function drawBarChart(inData, width, height, el, margin, colors, barPadding, tLo
 function updateBarChart(inData, width, height, el, margin, colors, barPadding, tLong, tShort, mOpacity) {
 
   var dim = {
-    width: width - margin.left - margin.right - legendWidth,
+    width: width - margin.left - margin.right,
     height: height - margin.top - margin.bottom
   };
 
@@ -380,7 +380,7 @@ function updateBarChart(inData, width, height, el, margin, colors, barPadding, t
 
 function resizeBarChart(inData, width, height, el, margin, colors, barPadding, tLong, tShort, mOpacity) {
   var dim = {
-    width: width - margin.left - margin.right - legendWidth,
+    width: width - margin.left - margin.right,
     height: height - margin.top - margin.bottom
   };
 
