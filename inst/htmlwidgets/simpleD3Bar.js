@@ -5,7 +5,7 @@ HTMLWidgets.widget({
   type: 'output',
 
   factory: function(el, width, height) {
-    var margin = ({top:10, right:20, bottom:40, left:40});
+    var margin = ({top:10, right:20, bottom:40, left:60});
     var colors = ['#bd6916', '#166abd '];
     var barPadding = 0.2;
     var tLong = 450;
