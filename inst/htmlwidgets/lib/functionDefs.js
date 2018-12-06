@@ -142,22 +142,20 @@ function drawBarChart(inData, width, height, el, margin, colors, barPadding, tLo
     .attr("x", d => scaleX(d.key))
     .attr("width", scaleX.bandwidth())
     .attr('y', 0)
-    .attr("height", height)
+    .attr("height", dim.height)
         .on("mouseover", showTooltip)
         .on("mousemove", moveTooltip)
         .on("mouseout", hideTooltip);
 
-  // Udpate axes
+  // Add axes
   yAxis.transition()
-    .duration(tLong)
     .call(d3.axisLeft(scaleY));
-
+  
   xAxis.transition()
-    .duration(tLong)
     .call(d3.axisBottom(scaleX))
-    .attr("transform", 'translate(' + 0 + "," + dim.height + ')');
+    .attr("transform", 'translate(0,' + dim.height + ')');
 
-
+  // Add axes titles
   topG.select(".bar.y.axisTitle")
     .transition()
     .duration(tLong)
