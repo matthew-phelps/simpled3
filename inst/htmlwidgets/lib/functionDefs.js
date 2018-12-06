@@ -135,7 +135,7 @@ function drawBarChart(inData, width, height, el, margin, colors, barPadding, tLo
   mouseSvg.exit().remove();
   mouseSvg.enter()
     .append('rect')
-    .attr('class', (d,i) => 'mouseSvg ' + i)
+    .attr('class', (d,i) => 'mouseSvg ' + "i" + i)
     .attr("x", d => scaleX(d.key))
     .attr("width", scaleX.bandwidth())
     .attr('y', 0)
