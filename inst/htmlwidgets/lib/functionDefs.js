@@ -12,7 +12,8 @@ function drawBarChart(inData, width, height, el, margin, colors, barPadding, tLo
 
   var svg = container.append('svg')
     .attr("width", dim.width + margin.left + margin.right)
-    .attr("height", dim.height + margin.top + margin.bottom);
+    .attr("height", dim.height + margin.top + margin.bottom)
+    .attr('transform', 'translate(' + (0-legendWidth) + ',' + 0 +')');
 
   var topG = svg.append('g')
     .attr('transform', 'translate(' + margin.left + ',' + margin.top +')');
@@ -203,7 +204,7 @@ function drawBarChart(inData, width, height, el, margin, colors, barPadding, tLo
 //////////////////    UPDATE     /////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////
 
-function updateBarChart(inData, width, height, el, margin, colors, barPadding, tLong, tShort) {
+function updateBarChart(inData, width, height, el, margin, colors, barPadding, tLong, tShort, mOpacity) {
 
   var dim = {
     width: width - margin.left - margin.right,
@@ -380,7 +381,7 @@ function updateBarChart(inData, width, height, el, margin, colors, barPadding, t
 //////////////////    RESIZE     /////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////
 
-function resizeBarChart(inData, width, height, el, margin, colors, barPadding, tLong, tShort) {
+function resizeBarChart(inData, width, height, el, margin, colors, barPadding, tLong, tShort, mOpacity) {
   var dim = {
     width: width - margin.left - margin.right,
     height: height - margin.top - margin.bottom
