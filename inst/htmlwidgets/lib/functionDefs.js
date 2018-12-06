@@ -128,14 +128,14 @@ function drawBarChart(inData, width, height, el, margin, colors, barPadding, tLo
 
 
   // Data join for mouseover elements - invisible to user
-  var mouseSvg = chartArea
-    .selectAll('.mouseSvg')
+  var mouseSvgBarChart = chartArea
+    .selectAll('.mouseSvgBarChart')
     .data(newData, d => d.key);
   
-  mouseSvg.exit().remove();
-  mouseSvg.enter()
+  mouseSvgBarChart.exit().remove();
+  mouseSvgBarChart.enter()
     .append('rect')
-    .attr('class', 'mouseSvg')
+    .attr('class', 'mouseSvgBarChart')
    .attr("x", d => scaleX(d.key))
     .attr("width", scaleX.bandwidth())
     .attr('y', 0)
@@ -190,7 +190,6 @@ function drawBarChart(inData, width, height, el, margin, colors, barPadding, tLo
     .duration(tShort)
     .style('opacity', 0);
   }
-
 
 }
 
@@ -269,7 +268,7 @@ function updateBarChart(inData, width, height, el, margin, colors, barPadding, t
     .merge(barGroupWithData)
     .attr("transform", d => "translate(" + scaleX(d.key) + ",0)");
 
-  barGroupWithData.selectAll('.mouseSvg').remove();
+  barGroupWithData.selectAll('.mouseSvgBarChart').remove();
 
   var bars = barsData.selectAll("rect")
     .data(d => Object.keys(d.values)
@@ -298,15 +297,15 @@ function updateBarChart(inData, width, height, el, margin, colors, barPadding, t
 
 
 // Data join for mouseover elements - invisible to user
-  var mouseSvg = chartArea
-    .selectAll('.mouseSvg')
+  var mouseSvgBarChart = chartArea
+    .selectAll('.mouseSvgBarChart')
     .data(newData, d => d.key);
   
-  mouseSvg.exit().remove();
-  mouseSvg.enter()
+  mouseSvgBarChart.exit().remove();
+  mouseSvgBarChart.enter()
     .append('rect')
-    .merge(mouseSvg)
-    .attr('class', 'mouseSvg')
+    .merge(mouseSvgBarChart)
+    .attr('class', 'mouseSvgBarChart')
     .attr("x", d => scaleX(d.key))
     .attr("width", scaleX.bandwidth())
     .attr('y', 0)
@@ -447,7 +446,7 @@ function resizeBarChart(inData, width, height, el, margin, colors, barPadding, t
     .attr("height", d => scaleY(0) - scaleY(d.value));
 
   // MOUSE SVG RECT
-  svg.selectAll(".mouseSvg")
+  svg.selectAll(".mouseSvgBarChart")
   .transition()
   .duration(tShort) 
     .attr("x", d => scaleX(d.key))
