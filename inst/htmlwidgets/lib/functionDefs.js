@@ -13,7 +13,7 @@ function drawBarChart(inData, width, height, el, margin, colors, barPadding, tLo
   var svg = container.append('svg')
     .attr("width", dim.width + margin.left + margin.right)
     .attr("height", dim.height + margin.top + margin.bottom)
-    .attr('transform', 'translate(' + (0-legendWidth) + ',' + 0 +')');
+    .attr('transform', 'translate(' + (0-legendWidth/2) + ',' + 0 +')');
 
   var topG = svg.append('g')
     .attr('transform', 'translate(' + margin.left + ',' + margin.top +')');
