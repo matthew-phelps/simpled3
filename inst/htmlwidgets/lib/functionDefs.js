@@ -64,7 +64,7 @@ function drawBarChart(inData, width, height, el, margin, colors, barPadding, tLo
   .entries(data);
 
   grouping1Names = newData.map(d => d.key);
-  grouping2Names = newData[0].values.map(d => d.Sex);
+  grouping2Names = newData[0].values.map(d => d.sex);
 
   // Scales
   var maxY = d3.max(newData, d => d3.max(d.values, k => k.value));
@@ -184,8 +184,8 @@ function drawBarChart(inData, width, height, el, margin, colors, barPadding, tLo
   function moveTooltip(d) {
      tooltip.html(
         "<b>" + d.key + "</b>" + "<br/><br/>" +
-        d.values[0].Sex + ": " + d.values[0].value + "</br>" +
-        d.values[1].Sex + ": " + d.values[1].value + "</br>")
+        d.values[0].sex + ": " + d.values[0].value + "</br>" +
+        d.values[1].sex + ": " + d.values[1].value + "</br>")
           .style("left", d3.mouse(this)[0] + "px")
           .style("top", (d3.mouse(this)[1] + 50) + "px");
 
@@ -217,13 +217,18 @@ function updateBarChart(inData, width, height, el, margin, colors, barPadding, t
   var chartArea = svg.selectAll('.chartArea');
   var tooltip = d3.select("#tooltipBar");
 
-  // Data management
+ // Data management
   var data = HTMLWidgets.dataframeToD3(inData.data);
   var groupingName = Object.keys(data[0])[1];
   var varName = Object.keys(data[0])[2];
+  var sexName = Object.keys(data[0])[0];
+
+  // Variable/key names may changes, so standardized them
   for (var i = 0; i<data.length; i++) {
+    data[i].sex = data[i][sexName];
     data[i].grouping = data[i][groupingName];
     data[i].value = data[i][varName];
+    delete data[i][sexName];
     delete data[i][varName];
     delete data[i][groupingName];
     }
@@ -234,7 +239,7 @@ function updateBarChart(inData, width, height, el, margin, colors, barPadding, t
 
   var maxY = d3.max(newData, d => d3.max(d.values, k => k.value));
   grouping1Names = newData.map(d => d.key);
-  grouping2Names = newData[0].values.map(d => d.Sex);
+  grouping2Names = newData[0].values.map(d => d.sex);
 
 
   // Scales
@@ -362,8 +367,8 @@ function updateBarChart(inData, width, height, el, margin, colors, barPadding, t
   function moveTooltip(d) {
      tooltip.html(
         "<b>" + d.key + "</b>" + "<br/><br/>" +
-        d.values[0].Sex + ": " + d.values[0].value + "</br>" +
-        d.values[1].Sex + ": " + d.values[1].value + "</br>")
+        d.values[0].sex + ": " + d.values[0].value + "</br>" +
+        d.values[1].sex + ": " + d.values[1].value + "</br>")
           .style("left", d3.mouse(this)[0] + "px")
           .style("top", (d3.mouse(this)[1] + 50) + "px");
 
@@ -420,7 +425,7 @@ function resizeBarChart(inData, width, height, el, margin, colors, barPadding, t
 
   var maxY = d3.max(newData, d => d3.max(d.values, k => k.value));
   grouping1Names = newData.map(d => d.key);
-  grouping2Names = newData[0].values.map(d => d.Sex);
+  grouping2Names = newData[0].values.map(d => d.sex);
 
 
   // SCALES
@@ -487,8 +492,8 @@ function resizeBarChart(inData, width, height, el, margin, colors, barPadding, t
   function moveTooltip(d) {
      tooltip.html(
         "<b>" + d.key + "</b>" + "<br/><br/>" +
-        d.values[0].Sex + ": " + d.values[0].value + "</br>" +
-        d.values[1].Sex + ": " + d.values[1].value + "</br>")
+        d.values[0].sex + ": " + d.values[0].value + "</br>" +
+        d.values[1].sex + ": " + d.values[1].value + "</br>")
           .style("left", d3.mouse(this)[0] + "px")
           .style("top", (d3.mouse(this)[1] + 50) + "px");
 
