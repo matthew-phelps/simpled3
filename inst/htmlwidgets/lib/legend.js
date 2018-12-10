@@ -21,13 +21,11 @@ function drawLegend(x, width, height, el, margin) {
   		.attr("transform" + 'translate(' + (dim.width/2 - entryWidth) + 0 + ')');
   	
 
-  
 
-
-	legendWrapper.append("rect")
-  		.attr("width", rectSize)
-	  	.attr("height", rectSize)
-	  	.style("fill", "red");
+	legendWrapper.append("text")
+  		.attr("x", rectSize)
+	  	.attr("y", 10);
+	  	
 
 
 
