@@ -19,15 +19,19 @@ function drawLegend(fromR, width, height, el, margin) {
 
 	var legendWrapper = svgLegend.append('g')
   		.attr("class", "legendWrapper")
-  		.attr("transform" , 'translate(' + (dim.width/2 - entryWidth) + ',' + 0 + ')');
+  		.attr("transform" , 'translate(' + margin.left + ',' + margin.top + ')');
+  		
+
+  	var legend = legendWrapper.append('g')
+  		.attr("transform" , 'translate(' + (dim.width/2 - entryWidth) + ',' + 0 + ')');	
   	
 
 
-	legendWrapper.append("rect")
+	legend.append("rect")
   		.attr("width", rectSize)
 	  	.attr("height", 10)
 	  	.style("fill", fromR.data.color[0]);
-	 legendWrapper.append("text")
+	 legend.append("text")
 	 	.attr('transform', 'translate(' + (rectSize + padding) +',' + 0 + ')')
 	 	.text(fromR.data.sex[0]);
 	  	
