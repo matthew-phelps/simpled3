@@ -18,14 +18,14 @@ function drawLegend(x, width, height, el, margin) {
 
   var legendWrapper = svgLegend.append('g')
   		.attr("class", "legendWrapper")
-  		.attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+  		.attr("transform" + 'translate(' + (width/2 - entryWidth) + 0 + ')');
   	
 
-  var legend = legendWrapper.append('g');
+  /*var legend = legendWrapper.append('g');*/
   	/*.data(x.colors).enter()
   		.append('g')
   		.attr('class', 'entries')
-  		.attr("transform" + 'translate(' + (width/2 - entryWidth) + 0 + ')');
+  		.
   	*/
 
   	/*.append("rect")
