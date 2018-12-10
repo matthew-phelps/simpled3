@@ -7,13 +7,13 @@ HTMLWidgets.widget({
   factory: function(el, width, height) {
 
     var margin = ({top:10, right:10, bottom:10, left:60});
-    
+
 
     return {
 
       renderValue: function(x) {
 
-        drawLegend(x, width, height, el, margin);
+        drawLegend(data, width, height, el, margin);
       },
 
       resize: function(width, height) {
