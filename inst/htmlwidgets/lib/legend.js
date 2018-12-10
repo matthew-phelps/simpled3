@@ -24,7 +24,8 @@ function drawLegend(x, width, height, el, margin) {
 
 	legendWrapper.append("text")
   		.attr("x", rectSize)
-	  	.attr("y", 10);
+	  	.attr("y", 10)
+	  	.text('df')
 	  	
 
 
