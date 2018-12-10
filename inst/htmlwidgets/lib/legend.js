@@ -21,12 +21,12 @@ function drawLegend(x, width, height, el, margin) {
   		.attr("transform", "translate(" + margin.left + "," + margin.top + ")");
   	
 
-  legendWrapper.selectAll('.entries')
-  	.data(x.colors).enter()
+  var legend = legendWrapper.append('g');
+  	/*.data(x.colors).enter()
   		.append('g')
   		.attr('class', 'entries')
   		.attr("transform" + 'translate(' + (width/2 - entryWidth) + 0 + ')');
-  	
+  	*/
 
   	/*.append("rect")
   	.attr("width", rectSize)
