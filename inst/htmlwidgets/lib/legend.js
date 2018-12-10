@@ -2,7 +2,7 @@
 //////////////////    DRAW LEGEND     ////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////
 
-function drawLegend(data, width, height, el, margin) {
+function drawLegend(fromR, width, height, el, margin) {
  var dim = {
     width: width - margin.left - margin.right,
     height: height - margin.top - margin.bottom
@@ -26,10 +26,10 @@ function drawLegend(data, width, height, el, margin) {
 	legendWrapper.append("rect")
   		.attr("width", rectSize)
 	  	.attr("height", 10)
-	  	.style("fill", data[0].color);
+	  	.style("fill", fromR.data.color[0]);
 	 legendWrapper.append("text")
 	 	.attr('transform', 'translate(' + (rectSize + padding) +',' + 0 + ')')
-	 	.text(data[0].sex);
+	 	.text(fromR.data.sex[0]);
 	  	
 
 
