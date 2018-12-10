@@ -7,7 +7,7 @@ HTMLWidgets.widget({
   factory: function(el, width, height) {
 
     var margin = ({top:10, right:10, bottom:10, left:60});
-    height = 100;
+    
 
     return {
 
