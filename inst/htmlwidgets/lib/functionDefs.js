@@ -47,9 +47,14 @@ function drawBarChart(inData, width, height, el, margin, colors, barPadding, tLo
   var data = HTMLWidgets.dataframeToD3(inData.data);
   var groupingName = Object.keys(data[0])[1];
   var varName = Object.keys(data[0])[2];
+  var sexName = Object.keys(data[0])[0];
+
+  // Variable/key names may changes, so standardized them
   for (var i = 0; i<data.length; i++) {
+    data[i].sex = data[i][sexName];
     data[i].grouping = data[i][groupingName];
     data[i].value = data[i][varName];
+    delete data[i][sexName];
     delete data[i][varName];
     delete data[i][groupingName];
     }
