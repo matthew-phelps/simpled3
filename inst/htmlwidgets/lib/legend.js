@@ -26,10 +26,10 @@ function drawLegend(data, width, height, el, margin) {
 	legendWrapper.append("rect")
   		.attr("width", rectSize)
 	  	.attr("height", 10)
-	  	.style("fill", "red");
+	  	.style("fill", data[0].color);
 	 legendWrapper.append("text")
 	 	.attr('transform', 'translate(' + (rectSize + padding) +',' + 0 + ')')
-	 	.text(data[0][0]);
+	 	.text(data[0].sex);
 	  	
 
 
