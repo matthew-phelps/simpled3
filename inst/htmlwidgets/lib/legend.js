@@ -17,13 +17,12 @@ function drawLegend(x, width, height, el, margin) {
     .attr('height', dim.height + margin.top + margin.bottom);
 
   var legendWrapper = svgLegend.append('g')
-  	.attr("class", "legendWrapper")
-  	.attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+  		.attr("class", "legendWrapper")
+  		.attr("transform", "translate(" + margin.left + "," + margin.top + ")")
+  	.append('g')
+  		.attr("transform" + 'translate(' + (width/2 - entryWidth) + 0 + ')');
 
-  var legend = legendWrapper.append('g')
-  	.attr("transform" + 'translate(' + (width/2 - entryWidth) + 0 + ')');
-
-  legend.selectAll("rect")
+  legendWrapper
   	.append("rect")
   	.attr("width", rectSize)
   	.attr("height", rectSize)
