@@ -29,10 +29,10 @@ function drawLegend(fromR, width, height, el, margin) {
 
 	legend.append("rect")
   		.attr("width", rectSize)
-	  	.attr("height", 10)
+	  	.attr("height", rectSize)
 	  	.style("fill", fromR.data.color[0]);
 	 legend.append("text")
-	 	.attr('transform', 'translate(' + (rectSize + padding) +',' + 0 + ')')
+	 	.attr('transform', 'translate(' + (rectSize + padding) +',' + rectSize + ')')
 	 	.text(fromR.data.sex[0]);
 	  	
 
