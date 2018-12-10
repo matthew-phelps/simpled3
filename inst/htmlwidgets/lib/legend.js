@@ -23,7 +23,8 @@ function drawLegend(x, width, height, el, margin) {
   var legend = legendWrapper.append('g')
   	.attr("transform" + 'translate(' + (width/2 - entryWidth) + 0 + ')');
 
-  legend.append("rect")
+  legend.selectAll("rect")
+  	.append("rect")
   	.attr("width", rectSize)
   	.attr("height", rectSize)
   	.style("fill", "red");
