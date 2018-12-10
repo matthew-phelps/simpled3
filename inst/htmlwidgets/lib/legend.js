@@ -32,7 +32,7 @@ function drawLegend(fromR, width, height, el, margin) {
 	  	.attr("height", rectSize)
 	  	.style("fill", fromR.data.color[0]);
 	 legend.append("text")
-	 	.attr('transform', 'translate(' + (rectSize + padding) +',' + rectSize + ')')
+	 	.attr('transform', 'translate(' + (rectSize + padding) +',' + rectSize/2 + ')')
 	 	.text(fromR.data.sex[0]);
 	  	
 
