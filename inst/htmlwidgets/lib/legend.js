@@ -18,20 +18,16 @@ function drawLegend(x, width, height, el, margin) {
 
   var legendWrapper = svgLegend.append('g')
   		.attr("class", "legendWrapper")
-  		.attr("transform" + 'translate(' + (width/2 - entryWidth) + 0 + ')');
+  		.attr("transform" + 'translate(' + (dim.width/2 - entryWidth) + 0 + ')');
   	
 
-  /*var legend = legendWrapper.append('g');*/
-  	/*.data(x.colors).enter()
-  		.append('g')
-  		.attr('class', 'entries')
-  		.
-  	*/
+  
 
-  	/*.append("rect")
-  	.attr("width", rectSize)
-  	.attr("height", rectSize)
-  	.style("fill", "red");*/
+
+	legendWrapper.append("rect")
+  		.attr("width", rectSize)
+	  	.attr("height", rectSize)
+	  	.style("fill", "red");
 
 
 
