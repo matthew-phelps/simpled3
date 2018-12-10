@@ -141,7 +141,7 @@ function drawBarChart(inData, width, height, el, margin, colors, barPadding, tLo
   mouseSvg.enter()
     .append('rect')
     // Need to give unique non-numeric class to each rect
-    .attr('class', d => 'mouseSvg ' + "i" + d.key.slice(0,1))
+    .attr('class', d => 'mouseSvg ' + "i" + d.key.slice(0,2))
     .attr("x", d => scaleX(d.key))
     .attr("width", scaleX.bandwidth())
     .attr('y', 0)
@@ -177,7 +177,7 @@ function drawBarChart(inData, width, height, el, margin, colors, barPadding, tLo
       tooltip.transition()
         .duration(tShort)
         .style('opacity', 0.9);
-      d3.select('.mouseSvg' + ".i" + d.key.slice(0,1))
+      d3.select('.mouseSvg' + ".i" + d.key.slice(0,2))
         .style('opacity', mOpacity);
   }
 
@@ -194,7 +194,7 @@ function drawBarChart(inData, width, height, el, margin, colors, barPadding, tLo
     tooltip.transition()
       .duration(tShort)
       .style('opacity', 0);
-    d3.select('.mouseSvg' + ".i" + d.key.slice(0,1))
+    d3.select('.mouseSvg' + ".i" + d.key.slice(0,2))
         .style('opacity', 0.0);
   }
 
@@ -318,7 +318,7 @@ function updateBarChart(inData, width, height, el, margin, colors, barPadding, t
     .append('rect')
     .merge(mouseSvg)
     // Need to give unique non-numeric class to each rect
-    .attr('class', d => 'mouseSvg ' + "i" + d.key.slice(0,1))
+    .attr('class', d => 'mouseSvg ' + "i" + d.key.slice(0,2))
     .attr("x", d => scaleX(d.key))
     .attr("width", scaleX.bandwidth())
     .attr('y', 0)
@@ -360,7 +360,7 @@ function updateBarChart(inData, width, height, el, margin, colors, barPadding, t
       tooltip.transition()
         .duration(tShort)
         .style('opacity', 0.9);
-      d3.select('.mouseSvg' + ".i" + d.key.slice(0,1))
+      d3.select('.mouseSvg' + ".i" + d.key.slice(0,2))
         .style('opacity', mOpacity);
   }
 
@@ -377,7 +377,7 @@ function updateBarChart(inData, width, height, el, margin, colors, barPadding, t
     tooltip.transition()
       .duration(tShort)
       .style('opacity', 0);
-    d3.select('.mouseSvg' + ".i" + d.key.slice(0,1))
+    d3.select('.mouseSvg' + ".i" + d.key.slice(0,2))
         .style('opacity', 0.0);
   }
 }
@@ -485,7 +485,7 @@ function resizeBarChart(inData, width, height, el, margin, colors, barPadding, t
       tooltip.transition()
         .duration(tShort)
         .style('opacity', 0.9);
-      d3.select('.mouseSvg' + ".i" + d.key.slice(0,1))
+      d3.select('.mouseSvg' + ".i" + d.key.slice(0,2))
         .style('opacity', mOpacity);
   }
 
@@ -502,7 +502,7 @@ function resizeBarChart(inData, width, height, el, margin, colors, barPadding, t
     tooltip.transition()
       .duration(tShort)
       .style('opacity', 0);
-    d3.select('.mouseSvg' + ".i" + d.key.slice(0,1))
+    d3.select('.mouseSvg' + ".i" + d.key.slice(0,2))
         .style('opacity', 0.0);
   }
 
