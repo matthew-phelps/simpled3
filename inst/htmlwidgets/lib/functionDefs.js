@@ -412,8 +412,10 @@ function resizeBarChart(inData, width, height, el, margin, colors, barPadding, t
   var groupingName = Object.keys(data[0])[1];
   var varName = Object.keys(data[0])[2];
   for (var i = 0; i<data.length; i++) {
+    data[i].sex = data[i][sexName];
     data[i].grouping = data[i][groupingName];
     data[i].value = data[i][varName];
+    delete data[i][sexName];
     delete data[i][varName];
     delete data[i][groupingName];
     }

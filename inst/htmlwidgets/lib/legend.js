@@ -25,11 +25,11 @@ function drawLegend(fromR, width, height, el, margin) {
 
   	var legendFemale = legendWrapper.append('g')
   		.attr('class', 'legend female')
-  		.attr("transform" , 'translate(' + (dim.width/2 - entryWidth) + ',' + 0 + ')');	
+  		.attr("transform" , 'translate(' + (dim.width/2 - entryWidth + padding) + ',' + 0 + ')');	
   	
   	var legendMale = legendWrapper.append('g')
   		.attr('class', 'legend male')
-  		.attr("transform" , 'translate(' + (dim.width/2) + ',' + 0 + ')');	
+  		.attr("transform" , 'translate(' + (dim.width/2 + padding) + ',' + 0 + ')');	
   	
 
 
