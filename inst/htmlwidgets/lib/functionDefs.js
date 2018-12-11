@@ -206,7 +206,7 @@ function drawBarChart(inData, width, height, el, margin, colors, barPadding, tLo
     d3.select('.mouseSvg' + ".i" + d.key.slice(0,2))
         .transition().duration(tShort)
         .style('opacity', 0.0);
-    d3.select('guide')
+    d3.selectAll('.guide')
       .transition().duration(tShort)
       .remove();
   }
