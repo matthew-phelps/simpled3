@@ -195,7 +195,7 @@ function drawBarChart(inData, width, height, el, margin, colors, barPadding, tLo
         "<b>" + d.key + "</b>" + "<br/><br/>" +
         d.values[0].sex + ": " + d.values[0].value + "</br>" +
         d.values[1].sex + ": " + d.values[1].value + "</br>")
-          .style("left", d3.mouse(this)[0] + "px")
+          .style("left", d3.event.pageX[0] + "px")
           .style("top", (d3.mouse(this)[1] + 50) + "px");
 
   }
