@@ -411,6 +411,8 @@ function resizeBarChart(inData, width, height, el, margin, colors, barPadding, t
   var data = HTMLWidgets.dataframeToD3(inData.data);
   var groupingName = Object.keys(data[0])[1];
   var varName = Object.keys(data[0])[2];
+  var sexName = Object.keys(data[0])[0];
+  
   for (var i = 0; i<data.length; i++) {
     data[i].sex = data[i][sexName];
     data[i].grouping = data[i][groupingName];
