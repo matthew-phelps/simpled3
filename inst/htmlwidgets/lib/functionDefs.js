@@ -204,7 +204,11 @@ function drawBarChart(inData, width, height, el, margin, colors, barPadding, tLo
       .duration(tShort)
       .style('opacity', 0);
     d3.select('.mouseSvg' + ".i" + d.key.slice(0,2))
+        .transition().duration()
         .style('opacity', 0.0);
+    d3.select('.barGroups' + ".i" + d.key.slice(0,2))
+      .transition().duration(tShort)
+      .remove();
   }
 
 }
