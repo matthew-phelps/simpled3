@@ -185,7 +185,6 @@ function drawBarChart(inData, width, height, el, margin, colors, barPadding, tLo
         .attr("y2", dim.height)
         .style('opacity', 0)
         .style("stroke", "black")
-        .style
         .transition().duration(tShort)
         .style('opacity', 0.9);
 
