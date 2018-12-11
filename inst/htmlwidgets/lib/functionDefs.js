@@ -177,8 +177,21 @@ function drawBarChart(inData, width, height, el, margin, colors, barPadding, tLo
       tooltip.transition()
         .duration(tShort)
         .style('opacity', 0.9);
-      d3.select('.mouseSvg' + ".i" + d.key.slice(0,2))
+      selectedMouseSvg = d3.select('.mouseSvg' + ".i" + d.key.slice(0,2));
+      
+      selectedMouseSvg.transition().duration(tShort)
         .style('opacity', mOpacity);
+      
+      selectedMouseSvg.append('line')
+        .attr("class", 'guide')
+        .attr("x1", scaleX1.bandwidth())
+        .attr("x2", scaleX1.bandwidth())
+        .attr("y1", 0)
+        .attr("y2", dim.height)
+        .style('opacity', 0)
+        .transition().duration(tShort)
+        .style('opacity', 0.9);
+
   }
 
   function moveTooltip(d) {
@@ -412,7 +425,7 @@ function resizeBarChart(inData, width, height, el, margin, colors, barPadding, t
   var groupingName = Object.keys(data[0])[1];
   var varName = Object.keys(data[0])[2];
   var sexName = Object.keys(data[0])[0];
-  
+
   for (var i = 0; i<data.length; i++) {
     data[i].sex = data[i][sexName];
     data[i].grouping = data[i][groupingName];
