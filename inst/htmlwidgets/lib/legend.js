@@ -33,6 +33,7 @@ function drawLegend(fromR, width, height, el, margin) {
 	  	.style("fill", fromR.data.color[0]);
 	 legend.append("text")
 	 	.attr('transform', 'translate(' + (rectSize + padding) +',' + rectSize/2 + ')')
+	 	.attr('alignment-baseline', 'middle') // verticle alignment?
 	 	.text(fromR.data.sex[0]);
 	  	
 
