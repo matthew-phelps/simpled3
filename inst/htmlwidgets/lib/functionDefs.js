@@ -290,7 +290,7 @@ function updateBarChart(inData, width, height, el, margin, colors, barPadding, t
 
   var barsData = barGroupWithData.enter()
     .append("g")
-    .attr("class", "barGroups")
+    .attr('class', d => 'barGroups ' + "i" + d.key.slice(0,2))
     .merge(barGroupWithData)
     .attr("transform", d => "translate(" + scaleX(d.key) + ",0)");
 
@@ -376,6 +376,15 @@ function updateBarChart(inData, width, height, el, margin, colors, barPadding, t
         .style('opacity', 0.9);
       d3.select('.mouseSvg' + ".i" + d.key.slice(0,2))
         .style('opacity', mOpacity);
+
+      d3.select('.barGroups' + ".i" + d.key.slice(0,2))
+        .append('line')
+        .attr("class", 'guide')
+        .attr("x1", scaleX1.bandwidth())
+        .attr("x2", scaleX1.bandwidth())
+        .attr("y1", 0)
+        .attr("y2", dim.height);
+
   }
 
   function moveTooltip(d) {
@@ -392,7 +401,12 @@ function updateBarChart(inData, width, height, el, margin, colors, barPadding, t
       .duration(tShort)
       .style('opacity', 0);
     d3.select('.mouseSvg' + ".i" + d.key.slice(0,2))
+        .transition().duration(tShort)
         .style('opacity', 0.0);
+    d3.selectAll('.guide')
+      .transition().duration(tShort)
+      .style('opacity', 0)
+      .remove();
   }
 }
 
@@ -498,13 +512,22 @@ function resizeBarChart(inData, width, height, el, margin, colors, barPadding, t
     .duration(tShort)
     .call(d3.axisLeft(scaleY));
 
-  // Tooltip functions
+  //// Tooltip functions
   function showTooltip(d) {
       tooltip.transition()
         .duration(tShort)
         .style('opacity', 0.9);
       d3.select('.mouseSvg' + ".i" + d.key.slice(0,2))
         .style('opacity', mOpacity);
+
+      d3.select('.barGroups' + ".i" + d.key.slice(0,2))
+        .append('line')
+        .attr("class", 'guide')
+        .attr("x1", scaleX1.bandwidth())
+        .attr("x2", scaleX1.bandwidth())
+        .attr("y1", 0)
+        .attr("y2", dim.height);
+
   }
 
   function moveTooltip(d) {
@@ -521,7 +544,12 @@ function resizeBarChart(inData, width, height, el, margin, colors, barPadding, t
       .duration(tShort)
       .style('opacity', 0);
     d3.select('.mouseSvg' + ".i" + d.key.slice(0,2))
+        .transition().duration(tShort)
         .style('opacity', 0.0);
+    d3.selectAll('.guide')
+      .transition().duration(tShort)
+      .style('opacity', 0)
+      .remove();
   }
 
   }
