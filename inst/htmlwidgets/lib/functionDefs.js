@@ -100,7 +100,7 @@ function drawBarChart(inData, width, height, el, margin, colors, barPadding, tLo
 
   var barsData = barGroupWithData.enter()
     .append("g")
-    .attr("class", d => 'gGroup ' + "i" + d.key.slice(0,2))
+    .attr('class', d => 'barGroups ' + "i" + d.key.slice(0,2))
     .merge(barGroupWithData)
     .attr("transform", d => "translate(" + scaleX(d.key) + ",0)");
 
@@ -132,18 +132,23 @@ function drawBarChart(inData, width, height, el, margin, colors, barPadding, tLo
 
 
   // Data join for mouseover elements - invisible to user
-  var mouseSvg = barsData
-    .append("rect")
-    .attr("class", d => 'mouseSvg ' + "i" + d.key.slice(0,2))
-    .attr("x", 0)
+  var mouseSvg = chartArea
+    .selectAll('.mouseSvg')
+    .data(newData, d => d.key);
+  
+
+  mouseSvg.exit().remove();
+  mouseSvg.enter()
+    .append('rect')
+    // Need to give unique non-numeric class to each rect
+    .attr('class', d => 'mouseSvg ' + "i" + d.key.slice(0,2))
+    .attr("x", d => scaleX(d.key))
     .attr("width", scaleX.bandwidth())
     .attr('y', 0)
     .attr("height", dim.height)
         .on("mouseover", showTooltip)
         .on("mousemove", moveTooltip)
         .on("mouseout", hideTooltip);
-  
-    
 
   // Add axes
   yAxis.transition()
@@ -173,20 +178,15 @@ function drawBarChart(inData, width, height, el, margin, colors, barPadding, tLo
         .duration(tShort)
         .style('opacity', 0.9);
       d3.select('.mouseSvg' + ".i" + d.key.slice(0,2))
-        .transition().duration(tShort)
         .style('opacity', mOpacity);
-      
-      d3.select('.gGroup' + '.i' + d.key.slice(0,2))
+
+      d3.select('.barGroups' + ".i" + d.key.slice(0,2))
         .append('line')
         .attr("class", 'guide')
         .attr("x1", scaleX1.bandwidth())
         .attr("x2", scaleX1.bandwidth())
         .attr("y1", 0)
-        .attr("y2", dim.height)
-        .style('opacity', 0)
-        .style("stroke", "black")
-        .transition().duration(tShort)
-        .style('opacity', 0.9);
+        .attr("y2", dim.height);
 
   }
 
@@ -195,7 +195,7 @@ function drawBarChart(inData, width, height, el, margin, colors, barPadding, tLo
         "<b>" + d.key + "</b>" + "<br/><br/>" +
         d.values[0].sex + ": " + d.values[0].value + "</br>" +
         d.values[1].sex + ": " + d.values[1].value + "</br>")
-          .style("left", d3.event.pageX + "px")
+          .style("left", d3.mouse(this)[0] + "px")
           .style("top", (d3.mouse(this)[1] + 50) + "px");
 
   }
