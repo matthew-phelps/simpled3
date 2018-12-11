@@ -18,7 +18,7 @@ HTMLWidgets.widget({
 
       resize: function(width, height) {
 
-        resizeLegend(x, width, height, el, margin);
+        resizeLegend(width, height, margin);
 
       }
 

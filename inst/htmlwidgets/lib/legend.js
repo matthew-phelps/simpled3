@@ -55,7 +55,7 @@ function drawLegend(fromR, width, height, el, margin) {
 
 
 
-function resizeLegend(fromR, width, height, el, margin) {
+function resizeLegend(width, height, margin) {
  var dim = {
     width: width - margin.left - margin.right,
     height: height - margin.top - margin.bottom
