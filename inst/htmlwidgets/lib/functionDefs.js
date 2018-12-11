@@ -132,23 +132,18 @@ function drawBarChart(inData, width, height, el, margin, colors, barPadding, tLo
 
 
   // Data join for mouseover elements - invisible to user
-  var mouseSvg = chartArea
-    .selectAll('.mouseSvg')
-    .data(newData, d => d.key);
-  
-
-  mouseSvg.exit().remove();
-  mouseSvg.enter()
-    .append('rect')
-    // Need to give unique non-numeric class to each rect
-    .attr('class', d => 'mouseSvg ' + "i" + d.key.slice(0,2))
-    .attr("x", d => scaleX(d.key))
+  var mouseSvg = barsData
+    .append("rect")
+    .attr("class", d => 'mouseSvg ' + "i" + d.key.slice(0,2))
+    .attr("x", 0)
     .attr("width", scaleX.bandwidth())
     .attr('y', 0)
     .attr("height", dim.height)
         .on("mouseover", showTooltip)
         .on("mousemove", moveTooltip)
         .on("mouseout", hideTooltip);
+  
+    
 
   // Add axes
   yAxis.transition()
@@ -190,6 +185,7 @@ function drawBarChart(inData, width, height, el, margin, colors, barPadding, tLo
         .attr("y2", dim.height)
         .style('opacity', 0)
         .style("stroke", "black")
+        .style
         .transition().duration(tShort)
         .style('opacity', 0.9);
 
