@@ -208,6 +208,7 @@ function drawBarChart(inData, width, height, el, margin, colors, barPadding, tLo
         .style('opacity', 0.0);
     d3.selectAll('.guide')
       .transition().duration(tShort)
+      .style('opacity', 0)
       .remove();
   }
 
