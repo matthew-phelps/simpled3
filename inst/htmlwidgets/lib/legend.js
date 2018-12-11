@@ -73,7 +73,7 @@ function resizeLegend(width, height, margin) {
   		.attr("transform" , 'translate(' + margin.left + ',' + margin.top + ')');
   		
   	legendWrapper.select('.legend.female')
-  		.attr("transform" , 'translate(' + (dim.width/2 - entryWidth + 1.5 * ppadding) + ',' + 0 + ')');	
+  		.attr("transform" , 'translate(' + (dim.width/2 - entryWidth + 1.5 * padding) + ',' + 0 + ')');	
   	
   	legendWrapper.select('.legend.male')
   		.attr("transform" , 'translate(' + (dim.width/2 + 1.5 * padding) + ',' + 0 + ')');	
