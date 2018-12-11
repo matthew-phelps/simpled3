@@ -100,7 +100,7 @@ function drawBarChart(inData, width, height, el, margin, colors, barPadding, tLo
 
   var barsData = barGroupWithData.enter()
     .append("g")
-    .attr("class", "barGroups")
+    .attr("class", d => 'gGroup ' + "i" + d.key.slice(0,2))
     .merge(barGroupWithData)
     .attr("transform", d => "translate(" + scaleX(d.key) + ",0)");
 
@@ -172,12 +172,12 @@ function drawBarChart(inData, width, height, el, margin, colors, barPadding, tLo
       tooltip.transition()
         .duration(tShort)
         .style('opacity', 0.9);
-      selectedMouseSvg = d3.select('.mouseSvg' + ".i" + d.key.slice(0,2));
-      
-      selectedMouseSvg.transition().duration(tShort)
+      d3.select('.mouseSvg' + ".i" + d.key.slice(0,2))
+        .transition().duration(tShort)
         .style('opacity', mOpacity);
       
-      selectedMouseSvg.append('line')
+      d3.select('.gGroup' + '.i' + d.key.slice(0,2))
+        .append('line')
         .attr("class", 'guide')
         .attr("x1", scaleX1.bandwidth())
         .attr("x2", scaleX1.bandwidth())
