@@ -5,6 +5,13 @@ function drawLineChart(inData, width, height, el, margin, rectPadding, colors, t
     height: height - margin.top - margin.bottom
   };
   
+  // Data management 
+  // Make sure variable name is consistent for 
+  // different variables/languages
+
+  
+
+
   var container = d3.select(el).html("").style("position", "relative")
     .append('div')
     .attr('id', 'containerLine');
@@ -43,10 +50,17 @@ function drawLineChart(inData, width, height, el, margin, rectPadding, colors, t
     .attr('id', 'tooltipLine')
     .style('opacity', 0);
 
+  // Data management
   var data = HTMLWidgets.dataframeToD3(inData.data);
   var varName = data[0].variable;
+  var yearName = Object.keys(data[0])[0];
   var grouping1Names = data.map(d => d.year);
   
+  for (var i = 0; i<data.length; i++) {
+    data[i].year = data[i][yearName];
+    delete data[i][yearName];
+    }
+
 
   // Scales
   var maxY = d3.max(data, d=> Math.max(d.female, d.male));
@@ -178,8 +192,8 @@ mouseRectsFemale
   function moveTooltip(d){
     tooltip.html(
       varName + " i " +"<b>" + d.year + "</b>" + "<br/><br/>" +
-       Object.keys(d)[1] + ": <b>" + d.female + "</b><br/>" +
-       Object.keys(d)[2] + ": <b>" + d.male + "</b>")
+       Object.keys(d)[0] + ": <b>" + d.female + "</b><br/>" +
+       Object.keys(d)[1] + ": <b>" + d.male + "</b>")
     .style("left", d3.mouse(this)[0] + "px")
     .style("top", (d3.mouse(this)[1] + 50) + "px");
   }
@@ -213,7 +227,14 @@ var dim = {
   
   var data = HTMLWidgets.dataframeToD3(inData.data);
   var varName = data[0].variable;
+  var yearName = Object.keys(data[0])[0];
   var grouping1Names = data.map(d => d.year);
+  
+  for (var i = 0; i<data.length; i++) {
+    data[i].year = data[i][yearName];
+    delete data[i][yearName];
+    }
+
 
   // Line generators
   var valueLine1 = d3.line()
@@ -333,8 +354,8 @@ var mouseRectsFemale = chartArea
 
     tooltip.html(
       varName + " i " +"<b>" + d.year + "</b>" + "<br/><br/>" +
-       Object.keys(d)[1] + ": <b>" + d.female + "</b><br/>" +
-       Object.keys(d)[2] + ": <b>" + d.male + "</b>")
+       Object.keys(d)[0] + ": <b>" + d.female + "</b><br/>" +
+       Object.keys(d)[1] + ": <b>" + d.male + "</b>")
     .style("left", d3.mouse(this)[0] + "px")
     .style("top", (d3.mouse(this)[1] + 50) + "px");
   }
@@ -362,9 +383,15 @@ var dim = {
     height: height - margin.top - margin.bottom
   };
 
-  var data = HTMLWidgets.dataframeToD3(inData.data);
+    var data = HTMLWidgets.dataframeToD3(inData.data);
   var varName = data[0].variable;
+  var yearName = Object.keys(data[0])[0];
   var grouping1Names = data.map(d => d.year);
+  
+  for (var i = 0; i<data.length; i++) {
+    data[i].year = data[i][yearName];
+    delete data[i][yearName];
+    }
 
   var svg = d3.select("#containerLine").select('svg')
     .attr("width", dim.width + margin.left + margin.right)
@@ -492,8 +519,8 @@ var scaleXRects = d3.scaleBand()
 
     tooltip.html(
       varName + " i " +"<b>" + d.year + "</b>" + "<br/><br/>" +
-       Object.keys(d)[1] + ": <b>" + d.female + "</b><br/>" +
-       Object.keys(d)[2] + ": <b>" + d.male + "</b>")
+       Object.keys(d)[0] + ": <b>" + d.female + "</b><br/>" +
+       Object.keys(d)[1] + ": <b>" + d.male + "</b>")
     .style("left", d3.mouse(this)[0] + "px")
     .style("top", (d3.mouse(this)[1] + 50) + "px");
   }
