@@ -54,13 +54,13 @@ function drawLineChart(inData, width, height, el, margin, rectPadding, colors, t
   var data = HTMLWidgets.dataframeToD3(inData.data);
   var varName = data[0].variable;
   var yearName = Object.keys(data[0])[0];
-  var grouping1Names = data.map(d => d.year);
+  
   
   for (var i = 0; i<data.length; i++) {
     data[i].year = data[i][yearName];
     delete data[i][yearName];
     }
-
+var grouping1Names = data.map(d => d.year);
 
   // Scales
   var maxY = d3.max(data, d=> Math.max(d.female, d.male));
@@ -156,7 +156,7 @@ function drawLineChart(inData, width, height, el, margin, rectPadding, colors, t
   topG.select(".line.x.axisTitle")
     .transition()
     .duration(tLong)
-    .text("År")
+    .text("yearName")
     .style("text-anchor", "middle");
 
 // Invisible rects to trigger mouseover events
@@ -228,13 +228,12 @@ var dim = {
   var data = HTMLWidgets.dataframeToD3(inData.data);
   var varName = data[0].variable;
   var yearName = Object.keys(data[0])[0];
-  var grouping1Names = data.map(d => d.year);
   
   for (var i = 0; i<data.length; i++) {
     data[i].year = data[i][yearName];
     delete data[i][yearName];
     }
-
+  var grouping1Names = data.map(d => d.year);
 
   // Line generators
   var valueLine1 = d3.line()
@@ -383,15 +382,16 @@ var dim = {
     height: height - margin.top - margin.bottom
   };
 
-    var data = HTMLWidgets.dataframeToD3(inData.data);
+  var data = HTMLWidgets.dataframeToD3(inData.data);
   var varName = data[0].variable;
   var yearName = Object.keys(data[0])[0];
-  var grouping1Names = data.map(d => d.year);
+  
   
   for (var i = 0; i<data.length; i++) {
     data[i].year = data[i][yearName];
     delete data[i][yearName];
     }
+  var grouping1Names = data.map(d => d.year);
 
   var svg = d3.select("#containerLine").select('svg')
     .attr("width", dim.width + margin.left + margin.right)
