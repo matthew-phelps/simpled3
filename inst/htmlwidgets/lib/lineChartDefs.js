@@ -156,7 +156,7 @@ var grouping1Names = data.map(d => d.year);
   topG.select(".line.x.axisTitle")
     .transition()
     .duration(tLong)
-    .text("yearName")
+    .text(yearName)
     .style("text-anchor", "middle");
 
 // Invisible rects to trigger mouseover events
