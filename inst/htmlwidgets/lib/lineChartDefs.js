@@ -105,7 +105,7 @@ var grouping1Names = data.map(d => d.year);
     .attr("fill", "none")
     .attr("stroke", colors[0])
     .attr("stroke-width", 3)
-    .attr("class", "line female");
+    .attr("class", "line male");
 
   var line2 = chartArea
     .append("path")
@@ -114,19 +114,9 @@ var grouping1Names = data.map(d => d.year);
     .attr("fill", "none")
     .attr("stroke", colors[1])
     .attr("stroke-width", "3")
-    .attr("class", "line male");
+    .attr("class", "line female");
 
   // Add initial circles
-  var circlesFemale = chartArea
-    .selectAll(".dot")
-    .data(data)
-    .enter().append("circle")
-      .attr("class",  d => "y" + d.year + " dotfemale")
-      .attr("cx", d => scaleX(d.year))
-      .attr("cy", d => scaleY(d.female))
-      .attr("r", cRadius)
-      .attr("fill", colors[0]);
-
   var circlesMale = chartArea
     .selectAll(".dot")
     .data(data)
@@ -135,7 +125,18 @@ var grouping1Names = data.map(d => d.year);
     .attr("cx", d => scaleX(d.year))
     .attr("cy", d => scaleY(d.male))
     .attr("r", cRadius)
-    .attr("fill", colors[1]);
+    .attr("fill", colors[0]);
+
+  var circlesFemale = chartArea
+    .selectAll(".dot")
+    .data(data)
+    .enter().append("circle")
+      .attr("class",  d => "y" + d.year + " dotfemale")
+      .attr("cx", d => scaleX(d.year))
+      .attr("cy", d => scaleY(d.female))
+      .attr("r", cRadius)
+      .attr("fill", colors[1]);
+
 
    // Add axes
   yAxis.transition()
@@ -239,11 +240,11 @@ var dim = {
   // Line generators
   var valueLine1 = d3.line()
     .x(d => scaleX(d.year))
-    .y(d => scaleY(d.female));
+    .y(d => scaleY(d.male));
 
   var valueLine2 = d3.line()
     .x(d => scaleX(d.year))
-    .y(d => scaleY(d.male));
+    .y(d => scaleY(d.female));
 
   // Scales
   var maxY = d3.max(data, d=> Math.max(d.female, d.male));
@@ -266,13 +267,13 @@ var scaleXRects = d3.scaleBand()
 
   // Update line paths with new data
   chartArea
-    .select(".line.female")
+    .select(".line.male")
     .transition()
     .duration(tLong)
     .attr("d", valueLine1(data));
 
   chartArea
-    .select(".line.male")
+    .select(".line.female")
     .transition()
     .duration(tLong)
     .attr("d", valueLine2(data));
@@ -417,7 +418,7 @@ var dim = {
   var valueLine2 = d3.line()
     .x(d => scaleX(d.year))
     .y(d => scaleY(d.female));
-    
+
 
   // Scales
   var maxY = d3.max(data, d=> Math.max(d.female, d.male));
