@@ -90,11 +90,12 @@ var grouping1Names = data.map(d => d.year);
   // Line generators
   var valueLine1 = d3.line()
     .x(d => scaleX(d.year))
-    .y(d => scaleY(d.female));
+    .y(d => scaleY(d.male));
 
   var valueLine2 = d3.line()
     .x(d => scaleX(d.year))
-    .y(d => scaleY(d.male));
+    .y(d => scaleY(d.female));
+
 
   // Add initial line paths
   var line1 = chartArea
@@ -411,11 +412,12 @@ var dim = {
     // Line generators
   var valueLine1 = d3.line()
     .x(d => scaleX(d.year))
-    .y(d => scaleY(d.female));
+    .y(d => scaleY(d.male));
 
   var valueLine2 = d3.line()
     .x(d => scaleX(d.year))
-    .y(d => scaleY(d.male));
+    .y(d => scaleY(d.female));
+    
 
   // Scales
   var maxY = d3.max(data, d=> Math.max(d.female, d.male));
