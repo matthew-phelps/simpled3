@@ -6,7 +6,7 @@ HTMLWidgets.widget({
 
   factory: function(el, width, height) {
     var margin = ({top:10, right:20, bottom:40, left:60});
-    var colors = ['#bd6916', '#166abd'];
+    var colors = [ '#166abd', '#bd6916'];
     var barPadding = 0.2;
     var tLong = 450;
     var tShort = 200;

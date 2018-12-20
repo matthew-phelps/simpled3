@@ -7,7 +7,7 @@ HTMLWidgets.widget({
   factory: function(el, width, height) {
     var margin = ({top:20, right:20, bottom:40, left:60});
     var rectPadding = 0.0;
-    var colors = ['#bd6916', '#166abd'];
+    var colors = ['#166abd', '#bd6916'];
     var tLong = 450;
     var tShort = 200;
     var cRadius = 7;
