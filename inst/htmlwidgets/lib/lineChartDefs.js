@@ -192,10 +192,10 @@ mouseRectsFemale
   }
 
   function moveTooltip(d){
-    tooltip.html(
+     tooltip.html(
       varName + " i " +"<b>" + d.year + "</b>" + "<br/><br/>" +
-       Object.keys(d)[0] + ": <b>" + d.female + "</b><br/>" +
-       Object.keys(d)[1] + ": <b>" + d.male + "</b>")
+       Object.keys(d)[1] + ": <b>" + d.male + "</b><br/>" +
+       Object.keys(d)[0] + ": <b>" + d.female + "</b>")
     .style("left", d3.mouse(this)[0] + "px")
     .style("top", (d3.mouse(this)[1] + 50) + "px");
   }
@@ -355,8 +355,8 @@ var mouseRectsFemale = chartArea
 
     tooltip.html(
       varName + " i " +"<b>" + d.year + "</b>" + "<br/><br/>" +
-       Object.keys(d)[0] + ": <b>" + d.female + "</b><br/>" +
-       Object.keys(d)[1] + ": <b>" + d.male + "</b>")
+       Object.keys(d)[1] + ": <b>" + d.male + "</b><br/>" +
+       Object.keys(d)[0] + ": <b>" + d.female + "</b>")
     .style("left", d3.mouse(this)[0] + "px")
     .style("top", (d3.mouse(this)[1] + 50) + "px");
   }
