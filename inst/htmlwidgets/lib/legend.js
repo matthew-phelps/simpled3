@@ -33,24 +33,26 @@ function drawLegend(fromR, width, height, el, margin) {
   	
 
 
-	legendFemale.append("rect")
-  		.attr("width", rectSize)
-	  	.attr("height", rectSize)
-	  	.style("fill", fromR.data.color[0]);
-	 legendFemale.append("text")
-	 	.attr('transform', 'translate(' + (rectSize + padding) +',' + rectSize/2 + ')')
-	 	.attr('alignment-baseline', 'middle') // verticle alignment?
-	 	.text(fromR.data.sex[0]);
 
 	 legendMale.append("rect")
   		.attr("width", rectSize)
 	  	.attr("height", rectSize)
-	  	.style("fill", fromR.data.color[1]);
+	  	.style("fill", fromR.data.color[0]);
+
 	 legendMale.append("text")
 	 	.attr('transform', 'translate(' + (rectSize + padding) +',' + rectSize/2 + ')')
 	 	.attr('alignment-baseline', 'middle') // verticle alignment?
-	 	.text(fromR.data.sex[1]);
+	 	.text(fromR.data.sex[0]);
+
 	  	
+	legendFemale.append("rect")
+  		.attr("width", rectSize)
+	  	.attr("height", rectSize)
+	  	.style("fill", fromR.data.color[1]);
+	 legendFemale.append("text")
+	 	.attr('transform', 'translate(' + (rectSize + padding) +',' + rectSize/2 + ')')
+	 	.attr('alignment-baseline', 'middle') // verticle alignment?
+	 	.text(fromR.data.sex[1]);
 }
 
 
@@ -72,12 +74,12 @@ function resizeLegend(width, height, margin) {
 	var legendWrapper = svgLegend.select('.legendWrapper')
   		.attr("transform" , 'translate(' + margin.left + ',' + margin.top + ')');
   		
-  	legendWrapper.select('.legend.female')
-  		.attr("transform" , 'translate(' + (dim.width/2 - entryWidth + 1.5 * padding) + ',' + 0 + ')');	
   	
   	legendWrapper.select('.legend.male')
-  		.attr("transform" , 'translate(' + (dim.width/2 + 1.5 * padding) + ',' + 0 + ')');	
+  		.attr("transform" , 'translate(' + (dim.width/2 - entryWidth + 1.5 * padding) + ',' + 0 + ')');	
 
+  	legendWrapper.select('.legend.female')
+  		.attr("transform" , 'translate(' + (dim.width/2 + 1.5 * padding) + ',' + 0 + ')');	
 
 	  	
 }
