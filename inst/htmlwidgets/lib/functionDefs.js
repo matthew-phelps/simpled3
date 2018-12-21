@@ -179,7 +179,11 @@ function drawBarChart(inData, width, height, el, margin, colors, barPadding, tLo
   //// Tooltip functions
   var cellSvgWidth = "20%";
   var cellTextWidth = "80%";
-  var thead = tooltipTable.append('thead').append('tr').append('th');
+  var thead = tooltipTable
+      .append('thead')
+      .append('tr')
+      .append('th')
+      .attr("colspan", 2);
   var tbody = tooltipTable.append('tbody');
   var rowMale = tbody.append('tr');
   rowMale.append('td').attr('width', cellSvgWidth)
