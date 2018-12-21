@@ -179,13 +179,13 @@ function drawBarChart(inData, width, height, el, margin, colors, barPadding, tLo
 
   //// Tooltip functions
   function showTooltip(d) {
-      tooltip.transition()
-        .duration(tShort)
-        .style('opacity', 0.9)
-        .html(
+      tooltip.html(
         "<b>" + d.key + "</b>" + "<br/><br/>" +
         d.values[0].sex + ": " + d.values[0].value + "</br>" +
         d.values[1].sex + ": " + d.values[1].value + "</br>");
+      tooltip.transition()
+        .duration(tShort)
+        .style('opacity', 0.9);
      
       d3.select('.mouseSvg' + ".i" + d.key.slice(0,2))
         .style('opacity', mOpacity);
