@@ -183,15 +183,22 @@ function drawBarChart(inData, width, height, el, margin, colors, barPadding, tLo
   .append('tr')
   .append('td')
   .append('svg')
+      .attr('height', rectSize)
+  .append('rect')
+      .attr('height', rectSize)
+      .style('fill', colors[0]);
+var tbodyFemale = tooltipTable.append('tbody')
+  .append('tr')
+  .append('td')
+  .append('svg')
+      .attr('width', rectSize)
+      .attr('height', rectSize)
   .append('rect')
       .attr('width', rectSize)
       .attr('height', rectSize)
-      .style('fill', colors[0]);
-var tbodyFemale = tooltipTable.append('tr').append('td').append('svg').append('rect')
-      .attr('width', rectSize)
-      .attr('height', rectSize)
       .style('fill', colors[1]);
-  function showTooltip(d) {
+
+function showTooltip(d) {
     thead.text(groupingName + ": " + d.key);
 
     tooltip.transition()
