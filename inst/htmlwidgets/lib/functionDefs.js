@@ -194,7 +194,7 @@ function drawBarChart(inData, width, height, el, margin, colors, barPadding, tLo
   .append('rect')
       .attr('width', rectSize)
       .attr('height', rectSize)
-      .style('fill', colors[0]);
+      .style('fill', colors[1]);
 var maleCell = rowMale
       .append('td')
       .attr("class", 'maleCell')
@@ -208,7 +208,7 @@ rowFemale.append('td').attr("width", cellSvgWidth)
   .append('rect')
       .attr('width', rectSize)
       .attr('height', rectSize)
-      .style('fill', colors[1]);
+      .style('fill', colors[0]);
 var femaleCell = rowFemale
       .append('td')
       .attr("class", 'femaleCell')
