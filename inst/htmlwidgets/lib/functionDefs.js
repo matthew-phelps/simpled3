@@ -181,7 +181,12 @@ function drawBarChart(inData, width, height, el, margin, colors, barPadding, tLo
   function showTooltip(d) {
       tooltip.transition()
         .duration(tShort)
-        .style('opacity', 0.9);
+        .style('opacity', 0.9)
+        .html(
+        "<b>" + d.key + "</b>" + "<br/><br/>" +
+        d.values[0].sex + ": " + d.values[0].value + "</br>" +
+        d.values[1].sex + ": " + d.values[1].value + "</br>");
+     
       d3.select('.mouseSvg' + ".i" + d.key.slice(0,2))
         .style('opacity', mOpacity);
 
@@ -196,12 +201,9 @@ function drawBarChart(inData, width, height, el, margin, colors, barPadding, tLo
   }
 
   function moveTooltip(d) {
-     tooltip.html(
-        "<b>" + d.key + "</b>" + "<br/><br/>" +
-        d.values[0].sex + ": " + d.values[0].value + "</br>" +
-        d.values[1].sex + ": " + d.values[1].value + "</br>")
-          .style("left", d3.mouse(this)[0] + "px")
-          .style("top", (d3.mouse(this)[1] + 50) + "px");
+          tooltip
+            .style("left", d3.mouse(this)[0] + "px")
+            .style("top", (d3.mouse(this)[1] + 50) + "px");
 
   }
   function hideTooltip(d) {
