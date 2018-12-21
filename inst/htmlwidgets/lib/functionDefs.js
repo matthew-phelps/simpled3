@@ -179,15 +179,16 @@ function drawBarChart(inData, width, height, el, margin, colors, barPadding, tLo
   //// Tooltip functions
 
   var thead = tooltipTable.append('thead').append('tr').append('th');
-  var tbody = tooltipTable.append('tbody');
-
-
-  function showTooltip(d) {
-    thead.text(groupingName + ": " + d.key);
-    tbody.append('tr').append('rect')
+  var tbodyMale = tooltipTable.append('tr').append('rect')
       .attr('width', rectSize)
       .attr('height', rectSize)
       .style('fill', colors[0]);
+var tbodyFemale = tooltipTable.append('tr').append('rect')
+      .attr('width', rectSize)
+      .attr('height', rectSize)
+      .style('fill', colors[1]);
+  function showTooltip(d) {
+    thead.text(groupingName + ": " + d.key);
 
     tooltip.transition()
         .duration(tShort)
