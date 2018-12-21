@@ -41,7 +41,9 @@ function drawBarChart(inData, width, height, el, margin, colors, barPadding, tLo
   // Tooltip div
   var tooltip = container.append("div")
     .attr('id', 'tooltipBar')
-    .style('opacity', 0);
+    .style('opacity', 0)
+    .append("table")
+    .classed("table", true);
 
   // Data management
   var data = HTMLWidgets.dataframeToD3(inData.data);
