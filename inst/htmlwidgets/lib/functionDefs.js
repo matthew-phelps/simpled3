@@ -42,8 +42,9 @@ function drawBarChart(inData, width, height, el, margin, colors, barPadding, tLo
   var tooltip = container.append("div")
     .attr('id', 'tooltipBar')
     .style('opacity', 0);
-  tooltipTable = tooltip.append("table")
-      .classed("table", true);
+  tableBar = tooltip.append("table")
+      .classed("table", true)
+      .attr('id', "tableBar");
 
   
 
@@ -179,12 +180,12 @@ function drawBarChart(inData, width, height, el, margin, colors, barPadding, tLo
   //// Tooltip functions
   var cellSvgWidth = "20%";
   var cellTextWidth = "80%";
-  var thead = tooltipTable
+  var thead = tableBar
       .append('thead')
       .append('tr')
       .append('th')
       .attr("colspan", 2);
-  var tbody = tooltipTable.append('tbody');
+  var tbody = tableBar.append('tbody');
   var rowMale = tbody.append('tr');
   rowMale.append('td').attr('width', cellSvgWidth)
   .append('svg')
@@ -274,6 +275,7 @@ function updateBarChart(inData, width, height, el, margin, colors, barPadding, t
   svg = d3.select('#containerBar').select('svg');
   var chartArea = svg.selectAll('.chartArea');
   var tooltip = d3.select("#tooltipBar");
+  var tableBar = d3.select("#tableBar");
 
  // Data management
   var data = HTMLWidgets.dataframeToD3(inData.data);
@@ -414,14 +416,20 @@ function updateBarChart(inData, width, height, el, margin, colors, barPadding, t
 
   /* Tooltip functions. These should be hoisted to top of updateChart() function
   call, and therefore accessible at anytime from inside updateChart() */
+  var thead = tableBar.select('th');
+  var maleCell = d3.select('.maleCell');
+  var femaleCell = d3.select('.femaleCell');
   function showTooltip(d) {
-      tooltip.transition()
+    thead.text(groupingName + ": " + d.key);
+    maleCell.text(d.values[0].sex + ": " + d.values[0].value);
+    femaleCell.text(d.values[1].sex + ": " + d.values[1].value);
+    tooltip.transition()
         .duration(tShort)
         .style('opacity', 0.9);
-      d3.select('.mouseSvg' + ".i" + d.key.slice(0,2))
+    d3.select('.mouseSvg' + ".i" + d.key.slice(0,2))
         .style('opacity', mOpacity);
 
-      d3.select('.barGroups' + ".i" + d.key.slice(0,2))
+    d3.select('.barGroups' + ".i" + d.key.slice(0,2))
         .append('line')
         .attr("class", 'guide')
         .attr("x1", scaleX1.bandwidth())
