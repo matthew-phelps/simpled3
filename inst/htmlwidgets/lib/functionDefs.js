@@ -1,5 +1,5 @@
 /*jshint esversion: 6 */
-function drawBarChart(inData, width, height, el, margin, colors, barPadding, tLong, tShort, mOpacity) {
+function drawBarChart(inData, width, height, el, margin, colors, barPadding, tLong, tShort, mOpacity, rectSize, tablePadding) {
 
   var dim = {
     width: width - margin.left - margin.right,
@@ -183,7 +183,11 @@ function drawBarChart(inData, width, height, el, margin, colors, barPadding, tLo
 
 
   function showTooltip(d) {
-    thead.text(groupingName + ":" + d.key);
+    thead.text(groupingName + ": " + d.key);
+    tbody.append('tr').append('rect')
+      .attr('width', rectSize)
+      .attr('height', rectSize)
+      .style('fill', colors[0]);
 
     tooltip.transition()
         .duration(tShort)

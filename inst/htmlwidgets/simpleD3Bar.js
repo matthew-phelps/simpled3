@@ -11,7 +11,8 @@ HTMLWidgets.widget({
     var tLong = 450;
     var tShort = 200;
     var mOpacity = 0.25;
-
+    var rectSize = 20; //dimension of colored square
+    var tablePadding = 10; 
     // State variables
     var chartExists = false;
     var resized = false;
@@ -20,7 +21,7 @@ HTMLWidgets.widget({
       renderValue: function(x) {
         if(!chartExists){
           chartExists = true;
-          drawBarChart(x, width, height, el, margin, colors, barPadding, tLong, tShort, mOpacity);
+          drawBarChart(x, width, height, el, margin, colors, barPadding, tLong, tShort, mOpacity, rectSize, tablePadding);
         } else if (resized){
           updateBarChart(x, this.dim.width, this.dim.height, el, margin, colors, barPadding, tLong, tShort, mOpacity);
         } else {
