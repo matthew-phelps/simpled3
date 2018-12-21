@@ -188,6 +188,8 @@ function drawBarChart(inData, width, height, el, margin, colors, barPadding, tLo
       .attr('width', rectSize)
       .attr('height', rectSize)
       .style('fill', colors[0]);
+var maleCell = rowMale.append('td').attr("class", 'maleCell');
+
 var rowFemale = tbody.append('tr');
 rowFemale.append('td')
   .append('svg')
@@ -196,9 +198,13 @@ rowFemale.append('td')
       .attr('width', rectSize)
       .attr('height', rectSize)
       .style('fill', colors[1]);
+var femaleCell = rowFemale.append('td').attr("class", 'femaleCell');
 
 function showTooltip(d) {
     thead.text(groupingName + ": " + d.key);
+    maleCell.text(d.values[0].sex + ": " + d.values[0].value);
+    femaleCell.text(d.values[1].sex + ": " + d.values[1].value);
+
     tooltip.transition()
         .duration(tShort)
         .style('opacity', 0.9);
