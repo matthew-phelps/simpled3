@@ -183,7 +183,7 @@ function drawBarChart(inData, width, height, el, margin, colors, barPadding, tLo
 
 
   function showTooltip(d) {
-    thead.text(d.key);
+    thead.text(groupingName + ":" + d.key);
 
     tooltip.transition()
         .duration(tShort)
