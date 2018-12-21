@@ -178,7 +178,7 @@ function drawBarChart(inData, width, height, el, margin, colors, barPadding, tLo
 
   //// Tooltip functions
 
-  var thead = tooltip.append('thead').append('tr').appedn('th');
+  var thead = tooltip.append('thead').append('tr').append('th');
   var tbody = tooltip.append('tbody');
 
 
