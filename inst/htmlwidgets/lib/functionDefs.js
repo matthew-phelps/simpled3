@@ -189,17 +189,23 @@ function drawBarChart(inData, width, height, el, margin, colors, barPadding, tLo
       .attr('width', rectSize)
       .attr('height', rectSize)
       .style('fill', colors[0]);
-var maleCell = rowMale.append('td').attr("class", 'maleCell');
+var maleCell = rowMale
+      .append('td')
+      .attr("class", 'maleCell')
+      .attr("width", cellTextWidth);
 
 var rowFemale = tbody.append('tr');
-rowFemale.append('td')
+rowFemale.append('td').attr("width", cellSvgWidth)
   .append('svg')
       .attr('height', rectSize)
   .append('rect')
       .attr('width', rectSize)
       .attr('height', rectSize)
       .style('fill', colors[1]);
-var femaleCell = rowFemale.append('td').attr("class", 'femaleCell');
+var femaleCell = rowFemale
+      .append('td')
+      .attr("class", 'femaleCell')
+      .attr('width', cellTextWidth);
 
 function showTooltip(d) {
     thead.text(groupingName + ": " + d.key);
