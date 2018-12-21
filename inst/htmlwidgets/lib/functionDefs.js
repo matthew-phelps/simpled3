@@ -38,13 +38,16 @@ function drawBarChart(inData, width, height, el, margin, colors, barPadding, tLo
     .attr("y", 0 - margin.left + 20)
     .attr("class", "bar y axisTitle");
 
-  // Tooltip div
+  // TOOLTIP
   var tooltip = container.append("div")
     .attr('id', 'tooltipBar')
-    .style('opacity', 0)
-    .append("table")
-    .classed("table", true);
+    .style('opacity', 0);
+/*      .append("table")
+      .classed("table", true);
 
+  var thead = tooltip.append('thead').append('tr');
+  var tbody = tooltip.append('tbody');
+*/
   // Data management
   var data = HTMLWidgets.dataframeToD3(inData.data);
   var groupingName = Object.keys(data[0])[1];
