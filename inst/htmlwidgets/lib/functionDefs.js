@@ -185,13 +185,13 @@ function drawBarChart(inData, width, height, el, margin, colors, barPadding, tLo
   .append('svg')
       .attr('height', rectSize)
   .append('rect')
+      .attr('width', rectSize)
       .attr('height', rectSize)
       .style('fill', colors[0]);
 tbody
   .append('tr')
   .append('td')
   .append('svg')
-      .attr('width', rectSize)
       .attr('height', rectSize)
   .append('rect')
       .attr('width', rectSize)
