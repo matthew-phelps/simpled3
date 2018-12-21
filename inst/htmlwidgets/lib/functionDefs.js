@@ -41,8 +41,8 @@ function drawBarChart(inData, width, height, el, margin, colors, barPadding, tLo
   // TOOLTIP
   var tooltip = container.append("div")
     .attr('id', 'tooltipBar')
-    .style('opacity', 0)
-      .append("table")
+    .style('opacity', 0);
+  tooltipTable = tooltip.append("table")
       .classed("table", true);
 
   
@@ -178,8 +178,8 @@ function drawBarChart(inData, width, height, el, margin, colors, barPadding, tLo
 
   //// Tooltip functions
 
-  var thead = tooltip.append('thead').append('tr').append('th');
-  var tbody = tooltip.append('tbody');
+  var thead = tooltipTable.append('thead').append('tr').append('th');
+  var tbody = tooltipTable.append('tbody');
 
 
   function showTooltip(d) {
