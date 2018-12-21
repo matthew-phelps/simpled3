@@ -184,6 +184,7 @@ function drawBarChart(inData, width, height, el, margin, colors, barPadding, tLo
   var rowMale = tbody.append('tr');
   rowMale.append('td').attr('width', cellSvgWidth)
   .append('svg')
+      .attr("width", rectSize)
       .attr('height', rectSize)
   .append('rect')
       .attr('width', rectSize)
@@ -197,6 +198,7 @@ var maleCell = rowMale
 var rowFemale = tbody.append('tr');
 rowFemale.append('td').attr("width", cellSvgWidth)
   .append('svg')
+      .attr('width', rectSize)
       .attr('height', rectSize)
   .append('rect')
       .attr('width', rectSize)
