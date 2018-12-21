@@ -180,17 +180,16 @@ function drawBarChart(inData, width, height, el, margin, colors, barPadding, tLo
 
   var thead = tooltipTable.append('thead').append('tr').append('th');
   var tbody = tooltipTable.append('tbody');
-  tbody.append('tr')
-  .append('td')
+  var rowMale = tbody.append('tr');
+  rowMale.append('td')
   .append('svg')
       .attr('height', rectSize)
   .append('rect')
       .attr('width', rectSize)
       .attr('height', rectSize)
       .style('fill', colors[0]);
-tbody
-  .append('tr')
-  .append('td')
+var rowFemale = tbody.append('tr');
+rowFemale.append('td')
   .append('svg')
       .attr('height', rectSize)
   .append('rect')
@@ -200,15 +199,12 @@ tbody
 
 function showTooltip(d) {
     thead.text(groupingName + ": " + d.key);
-
     tooltip.transition()
         .duration(tShort)
         .style('opacity', 0.9);
-     
-      d3.select('.mouseSvg' + ".i" + d.key.slice(0,2))
+    d3.select('.mouseSvg' + ".i" + d.key.slice(0,2))
         .style('opacity', mOpacity);
-
-      d3.select('.barGroups' + ".i" + d.key.slice(0,2))
+    d3.select('.barGroups' + ".i" + d.key.slice(0,2))
         .append('line')
         .attr("class", 'guide')
         .attr("x1", scaleX1.bandwidth())
