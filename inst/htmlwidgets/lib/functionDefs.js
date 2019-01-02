@@ -540,16 +540,20 @@ function resizeBarChart(inData, width, height, el, margin, colors, barPadding, t
     .attr("height", d => scaleY(0) - scaleY(d.value));
 
   // MOUSE SVG RECT
-  svg.selectAll(".mouseSvg")
-  .transition()
-  .duration(tShort) 
-    .attr("x", d => scaleX(d.key))
-    .attr("width", scaleX.bandwidth())
-    .attr('y', 0)
-    .attr("height", dim.height)
+  var mouseSvg = svg.selectAll(".mouseSvg");
+  
+  mouseSvg.transition()
+    .duration(tShort) 
+      .attr("x", d => scaleX(d.key))
+      .attr("width", scaleX.bandwidth())
+      .attr('y', 0)
+      .attr("height", dim.height);
+
+  mouseSvg
       .on("mouseover", showTooltip)
       .on("mousemove", moveTooltip)
       .on("mouseout", hideTooltip);
+
 
 
 
