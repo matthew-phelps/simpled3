@@ -474,7 +474,8 @@ function resizeBarChart(inData, width, height, el, margin, colors, barPadding, t
     .attr("width", dim.width + margin.left + margin.right)
     .attr("height", dim.height + margin.top + margin.bottom);
 
-
+  var tooltip = d3.select("#tooltipBar");
+  var tableBar = d3.select("#tableBar");
 
   // Axis titles
   d3.selectAll('.bar.x.axisTitle')
@@ -569,15 +570,22 @@ function resizeBarChart(inData, width, height, el, margin, colors, barPadding, t
     .duration(tShort)
     .call(d3.axisLeft(scaleY));
 
-  //// Tooltip functions
+    /* Tooltip functions. These should be hoisted to top of resizeChart() function
+  call, and therefore accessible at anytime from inside resizeChart() */
+  var thead = tableBar.select('th');
+  var maleCell = d3.select('.maleCell');
+  var femaleCell = d3.select('.femaleCell');
   function showTooltip(d) {
-      tooltip.transition()
+    thead.text(groupingName + ": " + d.key);
+    maleCell.text(d.values[0].sex + ": " + d.values[0].value);
+    femaleCell.text(d.values[1].sex + ": " + d.values[1].value);
+    tooltip.transition()
         .duration(tShort)
         .style('opacity', 0.9);
-      d3.select('.mouseSvg' + ".i" + d.key.slice(0,2))
+    d3.select('.mouseSvg' + ".i" + d.key.slice(0,2))
         .style('opacity', mOpacity);
 
-      d3.select('.barGroups' + ".i" + d.key.slice(0,2))
+    d3.select('.barGroups' + ".i" + d.key.slice(0,2))
         .append('line')
         .attr("class", 'guide')
         .attr("x1", scaleX1.bandwidth())
@@ -588,10 +596,7 @@ function resizeBarChart(inData, width, height, el, margin, colors, barPadding, t
   }
 
   function moveTooltip(d) {
-     tooltip.html(
-        "<b>" + d.key + "</b>" + "<br/><br/>" +
-        d.values[0].sex + ": " + d.values[0].value + "</br>" +
-        d.values[1].sex + ": " + d.values[1].value + "</br>")
+     tooltip
           .style("left", d3.mouse(this)[0] + "px")
           .style("top", (d3.mouse(this)[1] + 50) + "px");
 
