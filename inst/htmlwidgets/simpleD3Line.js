@@ -12,6 +12,8 @@ HTMLWidgets.widget({
     var tShort = 200;
     var cRadius = 7;
     var bigRadius = 15;
+    var rectSize = 20; //dimension of colored square
+    var tablePadding = 10; 
 
 
     // State variables

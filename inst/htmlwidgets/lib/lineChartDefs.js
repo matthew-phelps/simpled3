@@ -1,5 +1,5 @@
 /*jshint esversion: 6 */
-function drawLineChart(inData, width, height, el, margin, rectPadding, colors, tLong, tShort, cRadius, bigRadius) {
+function drawLineChart(inData, width, height, el, margin, rectPadding, colors, tLong, tShort, cRadius, bigRadius, rectSize, tablePadding) {
   var dim = {
     width: width - margin.left - margin.right,
     height: height - margin.top - margin.bottom
@@ -220,7 +220,7 @@ mouseRectsFemale
 
  // Tooltip functions  - these will be hoisted to top of fn call
   function showTooltip(d) {
-    thead.text(groupingName + ": " + d.year);
+    thead.text(d.year);
     maleCell.text(Object.keys(d)[0] + ": <b>" + d.male);
     femaleCell.text(Object.keys(d)[0] + ": <b>" + d.female);
 
