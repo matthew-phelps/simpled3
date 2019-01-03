@@ -479,13 +479,13 @@ var scaleXRects = d3.scaleBand()
 
 // Resize line paths with new size
   chartArea
-    .select(".line.female")
+    .select(".line.male")
     .transition()
     .duration(tLong)
     .attr("d", valueLine1(data));
 
   chartArea
-    .select(".line.male")
+    .select(".line.female")
     .transition()
     .duration(tLong)
     .attr("d", valueLine2(data));
@@ -546,7 +546,7 @@ var scaleXRects = d3.scaleBand()
     thead.text(d.year);
     maleCell.text(Object.keys(d)[1] + ": " + d.male);
     femaleCell.text(Object.keys(d)[0] + ": " + d.female);
-    
+
     d3.selectAll(".y" + d.year)
       .transition()
         .ease(d3.easeLinear)
@@ -555,7 +555,6 @@ var scaleXRects = d3.scaleBand()
     tooltip.transition()
     .duration(tShort)
     .style('opacity', 0.9);
-    
   }
 
   function moveTooltip(d){
