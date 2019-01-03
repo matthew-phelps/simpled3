@@ -232,15 +232,14 @@ function showTooltip(d) {
         .attr("x2", scaleX1.bandwidth())
         .attr("y1", 0)
         .attr("y2", dim.height);
-
   }
 
   function moveTooltip(d) {
           tooltip
             .style("left", d3.mouse(this)[0] + "px")
             .style("top", (d3.mouse(this)[1] + 50) + "px");
-
   }
+  
   function hideTooltip(d) {
     tooltip.transition()
       .duration(tShort)

@@ -221,7 +221,7 @@ mouseRectsFemale
  // Tooltip functions  - these will be hoisted to top of fn call
   function showTooltip(d) {
     thead.text(d.year);
-    maleCell.text(Object.keys(d)[0] + ": " + d.male);
+    maleCell.text(Object.keys(d)[1] + ": " + d.male);
     femaleCell.text(Object.keys(d)[0] + ": " + d.female);
 
     d3.selectAll(".y" + d.year)
@@ -258,7 +258,7 @@ mouseRectsFemale
 ///////////////      UPDATE     ///////////////////////////
 ///////////////////////////////////////////////////////////
 
-function updateLineChart(inData, width, height, el, margin, rectPadding, colors, tLong, tShort, cRadius, bigRadius) {
+function updateLineChart(inData, width, height, el, margin, rectPadding, colors, tLong, tShort, cRadius, bigRadius, rectSize, tablePadding) {
 var dim = {
     width: width - margin.left - margin.right,
     height: height - margin.top - margin.bottom
@@ -373,7 +373,16 @@ var mouseRectsFemale = chartArea
 
 
 // Tooltip functions - these will be hoisted to top of fn call
+  var thead = tableLine.select('th');
+  var maleCell = d3.select('.maleCell');
+  var femaleCell = d3.select('.femaleCell');
+
+
   function showTooltip(d) {
+    thead.text(d.year);
+    maleCell.text(Object.keys(d)[1] + ": " + d.male);
+    femaleCell.text(Object.keys(d)[0] + ": " + d.female);
+
     d3.selectAll(".y" + d.year)
       .transition()
         .ease(d3.easeLinear)
@@ -386,18 +395,7 @@ var mouseRectsFemale = chartArea
   }
 
   function moveTooltip(d){
-/*    svg.selectAll(".dotfemale")
-      .attr("cx", d => scaleX(d.year))
-      .attr("cy", d => scaleY(d.female));
-    svg.selectAll(".dotmale")
-      .attr("cx", d => scaleX(d.year))
-      .attr("cy", d => scaleY(d.male));*/
-
-
-    tooltip.html(
-      varName + " i " +"<b>" + d.year + "</b>" + "<br/><br/>" +
-       Object.keys(d)[1] + ": <b>" + d.male + "</b><br/>" +
-       Object.keys(d)[0] + ": <b>" + d.female + "</b>")
+    tooltip
     .style("left", d3.mouse(this)[0] + "px")
     .style("top", (d3.mouse(this)[1] + 50) + "px");
   }
@@ -418,7 +416,7 @@ var mouseRectsFemale = chartArea
 ///////////////      RESIZE     ///////////////////////////
 ///////////////////////////////////////////////////////////
 
-function resizeLineChart(inData, width, height, el, margin, rectPadding, colors, tLong, tShort, cRadius, bigRadius) {
+function resizeLineChart(inData, width, height, el, margin, rectPadding, colors, tLong, tShort, cRadius, bigRadius, rectSize, tablePadding) {
   
 var dim = {
     width: width - margin.left - margin.right,
@@ -540,7 +538,15 @@ var scaleXRects = d3.scaleBand()
 
 // Mouse event functions
   // Tooltip functions - these will be hoisted to top of fn call
+  var thead = tableLine.select('th');
+  var maleCell = d3.select('.maleCell');
+  var femaleCell = d3.select('.femaleCell');
+
   function showTooltip(d) {
+    thead.text(d.year);
+    maleCell.text(Object.keys(d)[1] + ": " + d.male);
+    femaleCell.text(Object.keys(d)[0] + ": " + d.female);
+    
     d3.selectAll(".y" + d.year)
       .transition()
         .ease(d3.easeLinear)
@@ -553,18 +559,7 @@ var scaleXRects = d3.scaleBand()
   }
 
   function moveTooltip(d){
-  /*  svg.selectAll(".dotfemale")
-      .attr("cx", d => scaleX(d.year))
-      .attr("cy", d => scaleY(d.female));
-    svg.selectAll(".dotmale")
-      .attr("cx", d => scaleX(d.year))
-      .attr("cy", d => scaleY(d.male));
-*/
-
-    tooltip.html(
-      varName + " i " +"<b>" + d.year + "</b>" + "<br/><br/>" +
-       Object.keys(d)[0] + ": <b>" + d.female + "</b><br/>" +
-       Object.keys(d)[1] + ": <b>" + d.male + "</b>")
+    tooltip
     .style("left", d3.mouse(this)[0] + "px")
     .style("top", (d3.mouse(this)[1] + 50) + "px");
   }
