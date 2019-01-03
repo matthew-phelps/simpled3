@@ -177,7 +177,7 @@ function drawBarChart(inData, width, height, el, margin, colors, barPadding, tLo
     .text(groupingName)
       .style("text-anchor", "middle");
 
-  //// Tooltip functions
+  // Tooltip table setup
   var cellSvgWidth = "20%";
   var cellTextWidth = "80%";
   var thead = tableBar
@@ -214,6 +214,7 @@ var femaleCell = rowFemale
       .attr("class", 'femaleCell')
       .attr('width', cellTextWidth);
 
+// Tooltip functions - hoisted to top of fn call
 function showTooltip(d) {
     thead.text(groupingName + ": " + d.key);
     maleCell.text(d.values[0].sex + ": " + d.values[0].value);

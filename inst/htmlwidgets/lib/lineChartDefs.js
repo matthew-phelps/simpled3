@@ -45,10 +45,13 @@ function drawLineChart(inData, width, height, el, margin, rectPadding, colors, t
     .attr("y", 0 - margin.left + 20)
     .attr("class", "line y axisTitle");
 
-  // Tooltip container
+   // TOOLTIP
   var tooltip = container.append("div")
     .attr('id', 'tooltipLine')
     .style('opacity', 0);
+  tableBar = tooltip.append("table")
+      .classed("table", true)
+      .attr('id', "tableLine");
 
   // Data management
   var data = HTMLWidgets.dataframeToD3(inData.data);
@@ -178,8 +181,49 @@ mouseRectsFemale
       .on("mouseout", hideTooltip);
 
 
-// Tooltip functions - these will be hoisted to top of fn call
+// Table setup
+    var cellSvgWidth = "20%";
+    var cellTextWidth = "80%";
+    var thead = tableBar
+        .append('thead')
+        .append('tr')
+        .append('th')
+        .attr("colspan", 2);
+    var tbody = tableBar.append('tbody');
+    var rowMale = tbody.append('tr');
+    rowMale.append('td').attr('width', cellSvgWidth)
+    .append('svg')
+        .attr("width", rectSize)
+        .attr('height', rectSize)
+    .append('rect')
+        .attr('width', rectSize)
+        .attr('height', rectSize)
+        .style('fill', colors[0]);
+  var maleCell = rowMale
+        .append('td')
+        .attr("class", 'maleCell')
+        .attr("width", cellTextWidth);
+
+  var rowFemale = tbody.append('tr');
+  rowFemale.append('td').attr("width", cellSvgWidth)
+    .append('svg')
+        .attr('width', rectSize)
+        .attr('height', rectSize)
+    .append('rect')
+        .attr('width', rectSize)
+        .attr('height', rectSize)
+        .style('fill', colors[1]);
+  var femaleCell = rowFemale
+        .append('td')
+        .attr("class", 'femaleCell')
+        .attr('width', cellTextWidth);
+
+ // Tooltip functions  - these will be hoisted to top of fn call
   function showTooltip(d) {
+    thead.text(groupingName + ": " + d.year);
+    maleCell.text(Object.keys(d)[0] + ": <b>" + d.male);
+    femaleCell.text(Object.keys(d)[0] + ": <b>" + d.female);
+
     d3.selectAll(".y" + d.year)
       .transition()
         .ease(d3.easeLinear)
@@ -192,10 +236,7 @@ mouseRectsFemale
   }
 
   function moveTooltip(d){
-     tooltip.html(
-      varName + " i " +"<b>" + d.year + "</b>" + "<br/><br/>" +
-       Object.keys(d)[1] + ": <b>" + d.male + "</b><br/>" +
-       Object.keys(d)[0] + ": <b>" + d.female + "</b>")
+     tooltip
     .style("left", d3.mouse(this)[0] + "px")
     .style("top", (d3.mouse(this)[1] + 50) + "px");
   }
