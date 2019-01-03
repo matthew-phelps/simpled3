@@ -49,7 +49,7 @@ function drawLineChart(inData, width, height, el, margin, rectPadding, colors, t
   var tooltip = container.append("div")
     .attr('id', 'tooltipLine')
     .style('opacity', 0);
-  tableBar = tooltip.append("table")
+  tableLine = tooltip.append("table")
       .classed("table", true)
       .attr('id', "tableLine");
 
@@ -184,12 +184,12 @@ mouseRectsFemale
 // Table setup
     var cellSvgWidth = "20%";
     var cellTextWidth = "80%";
-    var thead = tableBar
+    var thead = tableLine
         .append('thead')
         .append('tr')
         .append('th')
         .attr("colspan", 2);
-    var tbody = tableBar.append('tbody');
+    var tbody = tableLine.append('tbody');
     var rowMale = tbody.append('tr');
     rowMale.append('td').attr('width', cellSvgWidth)
     .append('svg')
@@ -221,8 +221,8 @@ mouseRectsFemale
  // Tooltip functions  - these will be hoisted to top of fn call
   function showTooltip(d) {
     thead.text(d.year);
-    maleCell.text(Object.keys(d)[0] + ": <b>" + d.male);
-    femaleCell.text(Object.keys(d)[0] + ": <b>" + d.female);
+    maleCell.text(Object.keys(d)[0] + ": " + d.male);
+    femaleCell.text(Object.keys(d)[0] + ": " + d.female);
 
     d3.selectAll(".y" + d.year)
       .transition()
