@@ -1,6 +1,6 @@
 #' D3 legend
 #'
-#' Just a simple legend
+#' Just a simple legendT.
 #'
 #' @import htmlwidgets
 #'

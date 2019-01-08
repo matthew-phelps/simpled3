@@ -7,5 +7,5 @@
 simpleD3Legend(data, width = NULL, height = NULL, elementId = NULL)
 }
 \description{
-Just a simple legend
+Just a simple legendT
 }

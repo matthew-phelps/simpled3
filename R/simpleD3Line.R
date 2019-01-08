@@ -1,6 +1,6 @@
 #' D3 line
 #'
-#' Just a simple legend
+#' Just a simple legend.
 #'
 #' @import htmlwidgets
 #'
@@ -52,7 +52,7 @@ simpleD3LineOutput <- function(outputId, width = '100%', height = '400px'){
   htmlwidgets::shinyWidgetOutput(outputId, 'simpleD3Line', width, height, package = 'simpled3')
 }
 
-#' @rdname simpled3-shiny
+#' @rdname simpleD3Line-shiny
 #' @export
 renderSimpleD3Line <- function(expr, env = parent.frame(), quoted = FALSE) {
   if (!quoted) { expr <- substitute(expr) } # force quoted

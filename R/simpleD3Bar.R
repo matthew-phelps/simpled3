@@ -1,6 +1,6 @@
 #' D3 bar chart
 #'
-#'  Just a simple bar chart
+#'  Just a simple bar chart.
 #'
 #' @import htmlwidgets
 #'

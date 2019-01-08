@@ -3,9 +3,12 @@
 \name{simpleD3Line-shiny}
 \alias{simpleD3Line-shiny}
 \alias{simpleD3LineOutput}
+\alias{renderSimpleD3Line}
 \title{Shiny bindings for simpled3}
 \usage{
 simpleD3LineOutput(outputId, width = "100\%", height = "400px")
+
+renderSimpleD3Line(expr, env = parent.frame(), quoted = FALSE)
 }
 \arguments{
 \item{outputId}{output variable to read from}
