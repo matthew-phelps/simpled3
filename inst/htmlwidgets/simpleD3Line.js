@@ -36,7 +36,7 @@ HTMLWidgets.widget({
 
       resize: function(width, height) {
 
-        resizeLineChart(this.x, width, height, el, margin, rectPadding, colors, tLong, tShort, cRadius, bigRadius);
+        resizeLineChart(this.x, width, height, el, margin, rectPadding, colors, tLong, tShort, cRadius, bigRadius, rectSize, tablePadding);
           var dim = {
                 width: width,
                 height: height

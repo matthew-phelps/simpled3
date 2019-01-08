@@ -13,6 +13,13 @@ HTMLWidgets.widget({
     var mOpacity = 0.25;
     var rectSize = 20; //dimension of colored square
     var tablePadding = 10; 
+    var localeFormatter = d3.locale({
+      "decimal": ",",
+      "thousands": ".",
+      "grouping": [3],
+      "currency": ["", "€"]
+    });
+    var numberFormat = localeFormatter.numberFormat(",");
     // State variables
     var chartExists = false;
     var resized = false;
@@ -21,11 +28,11 @@ HTMLWidgets.widget({
       renderValue: function(x) {
         if(!chartExists){
           chartExists = true;
-          drawBarChart(x, width, height, el, margin, colors, barPadding, tLong, tShort, mOpacity, rectSize, tablePadding);
+          drawBarChart(x, width, height, el, margin, colors, barPadding, tLong, tShort, mOpacity, rectSize, tablePadding, numberFormat);
         } else if (resized){
-          updateBarChart(x, this.dim.width, this.dim.height, el, margin, colors, barPadding, tLong, tShort, mOpacity);
+          updateBarChart(x, this.dim.width, this.dim.height, el, margin, colors, barPadding, tLong, tShort, mOpacity, numberFormat);
         } else {
-          updateBarChart(x, width, height, el, margin, colors, barPadding, tLong, tShort, mOpacity);
+          updateBarChart(x, width, height, el, margin, colors, barPadding, tLong, tShort, mOpacity, numberFormat);
 
         }
         this.x = x; // store for resize
@@ -33,7 +40,7 @@ HTMLWidgets.widget({
       },
 
       resize: function(width, height) {
-        resizeBarChart(this.x, width, height, el, margin, colors, barPadding, tLong, tShort, mOpacity);
+        resizeBarChart(this.x, width, height, el, margin, colors, barPadding, tLong, tShort, mOpacity, numberFormat);
         var dim = {
                 width: width,
                 height: height

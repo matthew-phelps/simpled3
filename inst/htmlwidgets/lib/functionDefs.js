@@ -1,5 +1,5 @@
 /*jshint esversion: 6 */
-function drawBarChart(inData, width, height, el, margin, colors, barPadding, tLong, tShort, mOpacity, rectSize, tablePadding) {
+function drawBarChart(inData, width, height, el, margin, colors, barPadding, tLong, tShort, mOpacity, rectSize, tablePadding, numberFormat) {
 
   var dim = {
     width: width - margin.left - margin.right,
@@ -217,7 +217,7 @@ var femaleCell = rowFemale
 // Tooltip functions - hoisted to top of fn call
 function showTooltip(d) {
     thead.text(groupingName + ": " + d.key);
-    maleCell.text(d.values[0].sex + ": " + d.values[0].value);
+    maleCell.text(d.values[0].sex + ": " + numberFormat(d.values[0].value));
     femaleCell.text(d.values[1].sex + ": " + d.values[1].value);
 
     tooltip.transition()
@@ -239,7 +239,7 @@ function showTooltip(d) {
             .style("left", d3.mouse(this)[0] + "px")
             .style("top", (d3.mouse(this)[1] + 50) + "px");
   }
-  
+
   function hideTooltip(d) {
     tooltip.transition()
       .duration(tShort)
@@ -592,15 +592,14 @@ function resizeBarChart(inData, width, height, el, margin, colors, barPadding, t
         .attr("x2", scaleX1.bandwidth())
         .attr("y1", 0)
         .attr("y2", dim.height);
-
   }
 
   function moveTooltip(d) {
      tooltip
           .style("left", d3.mouse(this)[0] + "px")
           .style("top", (d3.mouse(this)[1] + 50) + "px");
-
   }
+
   function hideTooltip(d) {
     tooltip.transition()
       .duration(tShort)
