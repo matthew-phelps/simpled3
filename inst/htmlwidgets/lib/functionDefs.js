@@ -264,7 +264,7 @@ function showTooltip(d) {
 //////////////////    UPDATE     /////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////
 
-function updateBarChart(inData, width, height, el, margin, colors, barPadding, tLong, tShort, mOpacity) {
+function updateBarChart(inData, width, height, el, margin, colors, barPadding, tLong, tShort, mOpacity, numberFormat) {
 
   var dim = {
     width: width - margin.left - margin.right,
@@ -464,7 +464,7 @@ function updateBarChart(inData, width, height, el, margin, colors, barPadding, t
 //////////////////    RESIZE     /////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////
 
-function resizeBarChart(inData, width, height, el, margin, colors, barPadding, tLong, tShort, mOpacity) {
+function resizeBarChart(inData, width, height, el, margin, colors, barPadding, tLong, tShort, mOpacity, numberFormat) {
   var dim = {
     width: width - margin.left - margin.right,
     height: height - margin.top - margin.bottom
