@@ -1,6 +1,6 @@
-#' <Add Title>
+#' D3 line
 #'
-#' <Add Description>
+#' Just a simple legend
 #'
 #' @import htmlwidgets
 #'

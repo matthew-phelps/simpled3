@@ -1,6 +1,6 @@
-#' <Add Title>
+#' D3 bar chart
 #'
-#' <Add Description>
+#'  Just a simple bar chart
 #'
 #' @import htmlwidgets
 #'
