@@ -17,7 +17,15 @@ HTMLWidgets.widget({
       "decimal": ",",
       "thousands": ".",
       "grouping": [3],
-      "currency": ["", "€"]
+      "currency": ["", "€"],
+      "dateTime": "%a, %e %b %Y, %X",
+                "date": "%d.%m.%Y",
+                "time": "%H:%M:%S",
+                "periods": ["", ""],
+                "days": ["Sonntag", "Montag", "Dienstag", "Mittwoch", "Donnerstag", "Freitag", "Samstag"],
+                "shortDays": ["So", "Mo", "Di", "Mi", "Do", "Fr", "Sa"],
+                "months": ["Januar", "Februar", "März", "April", "Mai", "Juni", "Juli", "August", "September", "Oktober", "November", "Dezember"],
+                "shortMonths": ["Jan", "Feb", "Mär", "Apr", "Mai", "Jun", "Jul", "Aug", "Sep", "Okt", "Nov", "Dec"]
     });
     var numberFormat = localeFormatter.numberFormat(",");
     // State variables
