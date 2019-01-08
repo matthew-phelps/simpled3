@@ -221,8 +221,8 @@ mouseRectsFemale
  // Tooltip functions  - these will be hoisted to top of fn call
   function showTooltip(d) {
     thead.text(d.year);
-    maleCell.text(Object.keys(d)[1] + ": " + d.male);
-    femaleCell.text(Object.keys(d)[0] + ": " + d.female);
+    maleCell.text(Object.keys(d)[1] + ": " + numberFormat(d.male));
+    femaleCell.text(Object.keys(d)[0] + ": " + numberFormat(d.female));
 
     d3.selectAll(".y" + d.year)
       .transition()
