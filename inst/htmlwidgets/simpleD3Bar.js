@@ -27,7 +27,7 @@ HTMLWidgets.widget({
                 "months": ["Januar", "Februar", "März", "April", "Mai", "Juni", "Juli", "August", "September", "Oktober", "November", "Dezember"],
                 "shortMonths": ["Jan", "Feb", "Mär", "Apr", "Mai", "Jun", "Jul", "Aug", "Sep", "Okt", "Nov", "Dec"]
     });
-    var numberFormat = localeFormatter.numberFormat(",");
+    var numberFormat = localeFormatter.format(",");
     // State variables
     var chartExists = false;
     var resized = false;
