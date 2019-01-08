@@ -13,7 +13,7 @@ HTMLWidgets.widget({
     var mOpacity = 0.25;
     var rectSize = 20; //dimension of colored square
     var tablePadding = 10; 
-    var localeFormatter = d3.locale({
+    var localeFormatter = d3.formatLocale({
       "decimal": ",",
       "thousands": ".",
       "grouping": [3],
