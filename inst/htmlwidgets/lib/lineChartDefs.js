@@ -1,5 +1,5 @@
 /*jshint esversion: 6 */
-function drawLineChart(inData, width, height, el, margin, rectPadding, colors, tLong, tShort, cRadius, bigRadius, rectSize, tablePadding) {
+function drawLineChart(inData, width, height, el, margin, rectPadding, colors, tLong, tShort, cRadius, bigRadius, rectSize, tablePadding, numberFormat) {
   var dim = {
     width: width - margin.left - margin.right,
     height: height - margin.top - margin.bottom
@@ -258,7 +258,7 @@ mouseRectsFemale
 ///////////////      UPDATE     ///////////////////////////
 ///////////////////////////////////////////////////////////
 
-function updateLineChart(inData, width, height, el, margin, rectPadding, colors, tLong, tShort, cRadius, bigRadius, rectSize, tablePadding) {
+function updateLineChart(inData, width, height, el, margin, rectPadding, colors, tLong, tShort, cRadius, bigRadius, rectSize, tablePadding, numberFormat) {
 var dim = {
     width: width - margin.left - margin.right,
     height: height - margin.top - margin.bottom
@@ -416,7 +416,7 @@ var mouseRectsFemale = chartArea
 ///////////////      RESIZE     ///////////////////////////
 ///////////////////////////////////////////////////////////
 
-function resizeLineChart(inData, width, height, el, margin, rectPadding, colors, tLong, tShort, cRadius, bigRadius, rectSize, tablePadding) {
+function resizeLineChart(inData, width, height, el, margin, rectPadding, colors, tLong, tShort, cRadius, bigRadius, rectSize, tablePadding, numberFormat) {
   
 var dim = {
     width: width - margin.left - margin.right,
