@@ -218,7 +218,7 @@ var femaleCell = rowFemale
 function showTooltip(d) {
     thead.text(groupingName + ": " + d.key);
     maleCell.text(d.values[0].sex + ": " + numberFormat(d.values[0].value));
-    femaleCell.text(d.values[1].sex + ": " + d.values[1].value);
+    femaleCell.text(d.values[1].sex + ": " + numberFormat(d.values[1].value));
 
     tooltip.transition()
         .duration(tShort)
@@ -421,8 +421,8 @@ function updateBarChart(inData, width, height, el, margin, colors, barPadding, t
   var femaleCell = d3.select('.femaleCell');
   function showTooltip(d) {
     thead.text(groupingName + ": " + d.key);
-    maleCell.text(d.values[0].sex + ": " + d.values[0].value);
-    femaleCell.text(d.values[1].sex + ": " + d.values[1].value);
+    maleCell.text(d.values[0].sex + ": " + numberFormat(d.values[0].value));
+    femaleCell.text(d.values[1].sex + ": " + numberFormat(d.values[1].value));
     tooltip.transition()
         .duration(tShort)
         .style('opacity', 0.9);
@@ -577,8 +577,8 @@ function resizeBarChart(inData, width, height, el, margin, colors, barPadding, t
   var femaleCell = d3.select('.femaleCell');
   function showTooltip(d) {
     thead.text(groupingName + ": " + d.key);
-    maleCell.text(d.values[0].sex + ": " + d.values[0].value);
-    femaleCell.text(d.values[1].sex + ": " + d.values[1].value);
+    maleCell.text(d.values[0].sex + ": " + numberFormat(d.values[0].value));
+    femaleCell.text(d.values[1].sex + ": " + numberFormat(d.values[1].value));
     tooltip.transition()
         .duration(tShort)
         .style('opacity', 0.9);
