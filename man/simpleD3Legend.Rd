@@ -6,6 +6,15 @@
 \usage{
 simpleD3Legend(data, width = NULL, height = NULL, elementId = NULL)
 }
+\arguments{
+\item{data}{data to be sent to JS}
+
+\item{width}{Width if specified}
+
+\item{height}{Height if specified}
+
+\item{elementId}{Id if specified}
+}
 \description{
-Just a simple legendT
+Just a simple legendT.
 }

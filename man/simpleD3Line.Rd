@@ -7,6 +7,17 @@
 simpleD3Line(data, colors = NULL, width = NULL, height = NULL,
   elementId = NULL)
 }
+\arguments{
+\item{data}{data to be sent to JS}
+
+\item{colors}{Colors to be sent to JS}
+
+\item{width}{Width if specified}
+
+\item{height}{Height if specified}
+
+\item{elementId}{Id if specified}
+}
 \description{
-Just a simple legend
+Just a simple legend.
 }

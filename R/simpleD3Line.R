@@ -4,6 +4,12 @@
 #'
 #' @import htmlwidgets
 #'
+#' @param data data to be sent to JS
+#' @param colors Colors to be sent to JS
+#' @param width Width if specified
+#' @param height Height if specified
+#' @param elementId Id if specified
+#'
 #' @export
 simpleD3Line <- function(data, colors = NULL, width = NULL, height = NULL, elementId = NULL) {
 
