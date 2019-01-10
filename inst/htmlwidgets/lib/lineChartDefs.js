@@ -485,7 +485,7 @@ var scaleXRects = d3.scaleBand()
     .attr("d", valueLine1(data));
 
   chartArea
-    .select(".line.females")
+    .select(".line.female")
     .transition()
     .duration(tLong)
     .attr("d", valueLine2(data));
