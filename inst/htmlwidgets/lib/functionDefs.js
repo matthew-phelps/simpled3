@@ -417,8 +417,8 @@ function updateBarChart(inData, width, height, el, margin, colors, barPadding, t
   /* Tooltip functions. These should be hoisted to top of updateChart() function
   call, and therefore accessible at anytime from inside updateChart() */
   var thead = tableBar.select('th');
-  var maleCell = d3.select('.maleCell');
-  var femaleCell = d3.select('.femaleCell');
+  var maleCell = tableBar.select('.maleCell');
+  var femaleCell = tableBar.select('.femaleCell');
   function showTooltip(d) {
     thead.text(groupingName + ": " + d.key);
     maleCell.text(d.values[0].sex + ": " + numberFormat(d.values[0].value));
@@ -573,8 +573,8 @@ function resizeBarChart(inData, width, height, el, margin, colors, barPadding, t
     /* Tooltip functions. These should be hoisted to top of resizeChart() function
   call, and therefore accessible at anytime from inside resizeChart() */
   var thead = tableBar.select('th');
-  var maleCell = d3.select('.maleCell');
-  var femaleCell = d3.select('.femaleCell');
+  var maleCell = tableBar.select('.maleCell');
+  var femaleCell = tableBar.select('.femaleCell');
   function showTooltip(d) {
     thead.text(groupingName + ": " + d.key);
     maleCell.text(d.values[0].sex + ": " + numberFormat(d.values[0].value));
