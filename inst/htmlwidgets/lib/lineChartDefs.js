@@ -374,8 +374,8 @@ var mouseRectsFemale = chartArea
 
 // Tooltip functions - these will be hoisted to top of fn call
   var thead = tableLine.select('th');
-  var maleCell = d3.select('.maleCell');
-  var femaleCell = d3.select('.femaleCell');
+  var maleCell = tableLine.select('.maleCell');
+  var femaleCell = tableLine.select('.femaleCell');
 
 
   function showTooltip(d) {
