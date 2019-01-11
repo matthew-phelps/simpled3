@@ -8,30 +8,32 @@ function drawLegend(topG, inData, dim, margin, legendHeight) {
   var rectSize = 20; //dimension of colored square
   var padding = 10; 
   var entryWidth = 100; // width of square and text combined
+  var legendWidth = rectSize + 2*padding + entryWidth;
 // ADD LEGEND BOXES
- 	var svgLegend = topG
+ 	
+var legendWrapper = topG.append('g')
+      .attr("class", "legendWrapper")
+      .attr("transform" , 'translate(' + (dim.width / 2 - legendWidth / 2) + ',' + (dim.height - legendHeight) + ')');
+
+  var svgLegend = legendWrapper
     	.append('svg')
     	.attr('class', 'svgLegendBar')
-	    .attr('width', dim.width + margin.left + margin.right)
-	    .attr('height', legendHeight)
-      .attr('transform', 'translate(' + 0 + ',' + (dim.height - legendHeight) + ')');
+	    .attr('width', legendWidth)
+	    .attr('height', legendHeight);
+      
 
-	var legendWrapper = svgLegend.append('g')
-  		.attr("class", "legendWrapper")
-  		.attr("transform" , 'translate(' + margin.left + ',' + margin.top + ')');
-  		
-
-  	var legendFemale = legendWrapper.append('g')
-  		.attr('class', 'legend female')
-  		.attr("transform" , 'translate(' + (dim.width/2 - entryWidth + 2 * padding) + ',' + 0 + ')');	
-  	
+	
+  	// Wrappers for each gender	
   	var legendMale = legendWrapper.append('g')
   		.attr('class', 'legend male')
-  		.attr("transform" , 'translate(' + (dim.width/2 + 2 * padding) + ',' + 0 + ')');	
+  		.attr("transform" , 'translate(' + (0) + ',' + 0 + ')');	
   	
+    var legendFemale = legendWrapper.append('g')
+      .attr('class', 'legend female')
+      .attr("transform" , 'translate(' + (legendWidth + padding) + ',' + 0 + ')');  
+    
 
-
-
+  // Append rect and text for each gender
 	 legendMale.append("rect")
   		.attr("width", rectSize)
 	  	.attr("height", rectSize)
