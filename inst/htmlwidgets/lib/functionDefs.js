@@ -155,7 +155,10 @@ function drawBarChart(inData, width, height, el, margin, colors, barPadding, tLo
         .on("mouseover", showTooltip)
         .on("mousemove", moveTooltip)
         .on("mouseout", hideTooltip)
-        .on("click", saveSvgAsPng(document.getElementById("barSvg"), "diagram.png"));
+        .on("click", function(){
+          saveSvgAsPng(document.getElementsByTagName("barSvg")[0], "plot.png", {scale: 2, backgroundColor: "#FFFFFF"});
+});
+
 
   // Add axes
   yAxis.transition()
