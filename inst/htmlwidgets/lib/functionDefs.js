@@ -5,6 +5,7 @@ function drawBarChart(inData, width, height, el, margin, colors, barPadding, tLo
     width: width - margin.left - margin.right,
     height: height - margin.top - margin.bottom
   };
+  legendHeight = 60;
   var container = d3.select(el).style("position", "relative")
     .append('div')
     .attr("id", "containerBar");
@@ -30,12 +31,12 @@ function drawBarChart(inData, width, height, el, margin, colors, barPadding, tLo
   // Axis titles
   topG.append("text")
     .attr("x", dim.width / 2)
-    .attr("y", dim.height + margin.bottom - 5)
+    .attr("y", dim.height + margin.bottom - 5 - legendHeight)
     .attr("class", "bar x axisTitle");
     
   topG.append("text")
     .attr("transform", "rotate(-90)")
-    .attr("x", 0 - dim.height / 2)
+    .attr("x", 0 - (dim.height - legendHeight) / 2)
     .attr("y", 0 - margin.left + 20)
     .attr("class", "bar y axisTitle");
 
@@ -76,7 +77,7 @@ function drawBarChart(inData, width, height, el, margin, colors, barPadding, tLo
   var maxY = d3.max(newData, d => d3.max(d.values, k => k.value));
   var scaleY = d3.scaleLinear()
     .domain([0, maxY])
-    .range([dim.height-60, 0]);
+    .range([dim.height - legendHeight, 0]);
 
   var scaleX = d3.scaleBand()
     .domain(grouping1Names)
@@ -166,7 +167,7 @@ function drawBarChart(inData, width, height, el, margin, colors, barPadding, tLo
   
   xAxis.transition()
     .call(d3.axisBottom(scaleX))
-    .attr("transform", 'translate(0,' + dim.height + ')');
+    .attr("transform", 'translate(0,' + (dim.height - legendHeight) + ')');
 
   // Add axes titles
   topG.select(".bar.y.axisTitle")
