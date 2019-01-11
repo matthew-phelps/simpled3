@@ -21,7 +21,7 @@ simpleD3Bar <- function(data, colors, legendData, width = NULL, height = NULL, e
   # forward options using x
   x = list(
     data = data,
-    setting = settings
+    legend = legend
   )
 
   # create widget
