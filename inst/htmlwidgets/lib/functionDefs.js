@@ -580,6 +580,9 @@ function resizeBarChart(inData, width, height, el, margin, colors, barPadding, t
     .duration(tShort)
     .call(d3.axisLeft(scaleY));
 
+  // Resize legend
+  resizeLegend();
+
     /* Tooltip functions. These should be hoisted to top of resizeChart() function
   call, and therefore accessible at anytime from inside resizeChart() */
   var thead = tableBar.select('th');

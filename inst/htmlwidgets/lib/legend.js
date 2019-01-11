@@ -57,15 +57,15 @@ var legendWrapper = topG.append('g')
 
 
 
-function resizeLegend(dim) {
+function resizeLegend() {
  
   var rectSize = 20; //dimension of colored square
   var padding = 10; 
   var entryWidth = 100; // width of square and text combined
   var legendWidth = rectSize + 2*padding + entryWidth;
-  
+
 // ADD LEGEND BOXES
-	var legendWrapper = svgLegend.select('.legendWrapperBar')
+	var legendWrapper = d3.select('.legendWrapperBar')
   		.attr("transform" , 'translate(' + (dim.width / 2 - legendWidth / 2) + ',' + (dim.height) + ')');
   		
   /*var svgLegend = d3.select('.svgLegendBar')
