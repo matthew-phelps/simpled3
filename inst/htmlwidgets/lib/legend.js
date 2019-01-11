@@ -39,7 +39,7 @@ function drawLegend(inData, dim, margin, legendHeight) {
 	 legendMale.append("text")
 	 	.attr('transform', 'translate(' + (rectSize + padding) +',' + rectSize/2 + ')')
 	 	.attr('alignment-baseline', 'middle') // verticle alignment?
-	 	.text(inData.legend.sex[0]);
+	 	.text(inData.legend.legendData.sex[0]);
 
 	  	
 	legendFemale.append("rect")
@@ -49,7 +49,7 @@ function drawLegend(inData, dim, margin, legendHeight) {
 	 legendFemale.append("text")
 	 	.attr('transform', 'translate(' + (rectSize + padding) +',' + rectSize/2 + ')')
 	 	.attr('alignment-baseline', 'middle') // verticle alignment?
-	 	.text(inData.legend.sex[1]);
+	 	.text(inData.legend.legendData.sex[1]);
 }
 
 
