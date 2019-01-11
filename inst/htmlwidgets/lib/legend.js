@@ -45,7 +45,7 @@ function drawLegend(inData, dim, margin, legendHeight) {
 	legendFemale.append("rect")
   		.attr("width", rectSize)
 	  	.attr("height", rectSize)
-	  	.style("fill", fromR.data.colors[1]);
+	  	.style("fill", inData.legend.colors[1]);
 	 legendFemale.append("text")
 	 	.attr('transform', 'translate(' + (rectSize + padding) +',' + rectSize/2 + ')')
 	 	.attr('alignment-baseline', 'middle') // verticle alignment?
