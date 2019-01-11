@@ -57,7 +57,7 @@ var legendWrapper = topG.append('g')
 
 
 
-function resizeLegend() {
+function resizeLegend(dim) {
  
   var rectSize = 20; //dimension of colored square
   var padding = 10; 
