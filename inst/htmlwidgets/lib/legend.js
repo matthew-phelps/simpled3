@@ -2,7 +2,7 @@
 //////////////////    DRAW LEGEND     ////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////
 
-function drawLegend(inData, dim) {
+function drawLegend(inData, dim, legendHeight) {
  
 
   var rectSize = 20; //dimension of colored square
@@ -13,7 +13,7 @@ function drawLegend(inData, dim) {
     	.append('svg')
     	.attr('class', 'svgLegendBar')
 	    .attr('width', dim.width + margin.left + margin.right)
-	    .attr('height', dim.height + margin.top + margin.bottom);
+	    .attr('height', legendHeight);
 
 	var legendWrapper = svgLegend.append('g')
   		.attr("class", "legendWrapper")

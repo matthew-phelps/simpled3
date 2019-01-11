@@ -1,5 +1,5 @@
 /*jshint esversion: 6 */
-function drawBarChart(inData, width, height, el, margin, colors, barPadding, tLong, tShort, mOpacity, rectSize, tablePadding, numberFormat) {
+function drawBarChart(inData, width, height, el, margin, colors, barPadding, tLong, tShort, mOpacity, rectSize, tablePadding, numberFormat, legendHeight) {
 
   var dim = {
     width: width - margin.left - margin.right,

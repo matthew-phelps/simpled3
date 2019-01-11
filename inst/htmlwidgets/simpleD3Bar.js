@@ -12,6 +12,7 @@ HTMLWidgets.widget({
     var tShort = 200;
     var mOpacity = 0.25;
     var rectSize = 20; //dimension of colored square
+    legendHeight = 60;
     var tablePadding = 10; 
     var localeFormatter = d3.formatLocale({
       "decimal": ",",
@@ -36,11 +37,11 @@ HTMLWidgets.widget({
       renderValue: function(x) {
         if(!chartExists){
           chartExists = true;
-          drawBarChart(x, width, height, el, margin, colors, barPadding, tLong, tShort, mOpacity, rectSize, tablePadding, numberFormat);
+          drawBarChart(x, width, height, el, margin, colors, barPadding, tLong, tShort, mOpacity, rectSize, tablePadding, numberFormat, legendHeight);
         } else if (resized){
-          updateBarChart(x, this.dim.width, this.dim.height, el, margin, colors, barPadding, tLong, tShort, mOpacity, numberFormat);
+          updateBarChart(x, this.dim.width, this.dim.height, el, margin, colors, barPadding, tLong, tShort, mOpacity, numberFormat, legendHeight);
         } else {
-          updateBarChart(x, width, height, el, margin, colors, barPadding, tLong, tShort, mOpacity, numberFormat);
+          updateBarChart(x, width, height, el, margin, colors, barPadding, tLong, tShort, mOpacity, numberFormat, legendHeight);
 
         }
         this.x = x; // store for resize
@@ -48,7 +49,7 @@ HTMLWidgets.widget({
       },
 
       resize: function(width, height) {
-        resizeBarChart(this.x, width, height, el, margin, colors, barPadding, tLong, tShort, mOpacity, numberFormat);
+        resizeBarChart(this.x, width, height, el, margin, colors, barPadding, tLong, tShort, mOpacity, numberFormat, legendHeight);
         var dim = {
                 width: width,
                 height: height
