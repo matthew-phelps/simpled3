@@ -185,7 +185,7 @@ function drawBarChart(inData, width, height, el, margin, colors, barPadding, tLo
 
 
   /// ADD LEGEND
-  drawLegend(inData, dim, margin, legendHeight);
+  drawLegend(topG, inData, dim, margin, legendHeight);
 
   // Tooltip table setup
   var cellSvgWidth = "20%";
