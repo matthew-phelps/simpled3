@@ -156,8 +156,12 @@ function drawBarChart(inData, width, height, el, margin, colors, barPadding, tLo
         .on("mousemove", moveTooltip)
         .on("mouseout", hideTooltip)
         .on("click", function(){
-          saveSvgAsPng(document.getElementById("barSvg"), "plot.png", {scale: 2, backgroundColor: "#FFFFFF"});
+          var config = {
+    filename: 'customFileName'
+  };
+  d3_save_svg.save(d3.select('svg').node(), config);
 });
+
 
 
   // Add axes

@@ -11,3 +11,7 @@ dependencies:
   src: htmlwidgets/lib/saveSvgAsPng
   script: ./saveSvgAsPng.js
   version: 1.4.6
+- name: d3SaveSvg
+  src: htmlwidgets/lib/d3SaveSvg
+  script: ./d3-save-svg.js
+  version: 0.0.2
