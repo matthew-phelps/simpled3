@@ -12,7 +12,7 @@ HTMLWidgets.widget({
     var tShort = 200;
     var mOpacity = 0.25;
     var rectSize = 20; //dimension of colored square
-    legendHeight = 60;
+    legendHeight = 50;
     var tablePadding = 10; 
     var localeFormatter = d3.formatLocale({
       "decimal": ",",
