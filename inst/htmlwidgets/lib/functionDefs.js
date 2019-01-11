@@ -76,7 +76,7 @@ function drawBarChart(inData, width, height, el, margin, colors, barPadding, tLo
   var maxY = d3.max(newData, d => d3.max(d.values, k => k.value));
   var scaleY = d3.scaleLinear()
     .domain([0, maxY])
-    .range([dim.height, 0]);
+    .range([dim.height-60, 0]);
 
   var scaleX = d3.scaleBand()
     .domain(grouping1Names)
