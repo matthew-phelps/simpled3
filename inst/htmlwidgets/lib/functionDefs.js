@@ -10,6 +10,7 @@ function drawBarChart(inData, width, height, el, margin, colors, barPadding, tLo
     .attr("id", "containerBar");
 
   var svg = container.append('svg')
+    .attr("id", "barSvg")
     .attr("width", dim.width + margin.left + margin.right)
     .attr("height", dim.height + margin.top + margin.bottom);
 
@@ -153,7 +154,8 @@ function drawBarChart(inData, width, height, el, margin, colors, barPadding, tLo
     .attr("height", dim.height)
         .on("mouseover", showTooltip)
         .on("mousemove", moveTooltip)
-        .on("mouseout", hideTooltip);
+        .on("mouseout", hideTooltip)
+        .on("click", saveSvgAsPng(document.getElementById("barSvg"), "diagram.png"));
 
   // Add axes
   yAxis.transition()
