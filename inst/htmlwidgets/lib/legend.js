@@ -13,7 +13,8 @@ function drawLegend(topG, inData, dim, margin, legendHeight) {
     	.append('svg')
     	.attr('class', 'svgLegendBar')
 	    .attr('width', dim.width + margin.left + margin.right)
-	    .attr('height', legendHeight);
+	    .attr('height', legendHeight)
+      .attr('transform', 'translate(' + 0 + ',' + (dim.height + legendHeight) + ')');
 
 	var legendWrapper = svgLegend.append('g')
   		.attr("class", "legendWrapper")
