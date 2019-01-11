@@ -2,14 +2,14 @@
 //////////////////    DRAW LEGEND     ////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////
 
-function drawLegend(inData, dim, margin, legendHeight) {
+function drawLegend(topG, inData, dim, margin, legendHeight) {
  
 
   var rectSize = 20; //dimension of colored square
   var padding = 10; 
   var entryWidth = 100; // width of square and text combined
 // ADD LEGEND BOXES
- 	var svgLegend = d3.select(".svgBar")
+ 	var svgLegend = topG
     	.append('svg')
     	.attr('class', 'svgLegendBar')
 	    .attr('width', dim.width + margin.left + margin.right)
