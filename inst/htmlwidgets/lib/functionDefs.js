@@ -263,10 +263,6 @@ function showTooltip(d) {
       .remove();
   }
 
-//// LEGEND ////
-var rectSize = 20; //dimension of colored square
-var padding = 10; 
-var entryWidth = 100; // width of square and text combined
 
 
 }
