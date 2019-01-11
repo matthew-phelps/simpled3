@@ -185,7 +185,9 @@ function drawBarChart(inData, width, height, el, margin, colors, barPadding, tLo
 
 
   /// ADD LEGEND
-  drawLegend(topG, inData, dim, margin, legendHeight);
+ var wrapperName = "legendWrapperBar";
+ var svgName = "svgLegendBar";
+  drawLegend(topG, inData, dim, margin, legendHeight, wrapperName, svgName);
 
   // Tooltip table setup
   var cellSvgWidth = "20%";
@@ -490,7 +492,7 @@ function resizeBarChart(inData, width, height, el, margin, colors, barPadding, t
   // Axis titles
   d3.selectAll('.bar.x.axisTitle')
     .attr("x", dim.width / 2)
-    .attr("y", dim.height + margin.bottom - 5);
+    .attr("y", dim.height + margin.bottom - 5 - legendHeight);
 
     d3.selectAll('.bar.y.axisTitle')
     .attr("x", 0 - dim.height / 2)
@@ -581,7 +583,8 @@ function resizeBarChart(inData, width, height, el, margin, colors, barPadding, t
     .call(d3.axisLeft(scaleY));
 
   // Resize legend
-  resizeLegend(dim);
+  var wrapperName = "legendWrapperBar";
+  resizeLegend(dim, wrapperName);
 
     /* Tooltip functions. These should be hoisted to top of resizeChart() function
   call, and therefore accessible at anytime from inside resizeChart() */

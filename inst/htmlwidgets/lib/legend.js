@@ -2,22 +2,24 @@
 //////////////////    DRAW LEGEND     ////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////
 
-function drawLegend(topG, inData, dim, margin, legendHeight) {
+function drawLegend(topG, inData, dim, margin, legendHeight, wrapperName, svgName) {
  
 
   var rectSize = 20; //dimension of colored square
   var padding = 10; 
   var entryWidth = 100; // width of square and text combined
   var legendWidth = rectSize + 2*padding + entryWidth;
+
+
 // ADD LEGEND BOXES
  	
 var legendWrapper = topG.append('g')
-      .attr("class", "legendWrapperBar")
+      .attr("class", wrapperName)
       .attr("transform" , 'translate(' + (dim.width / 2 - legendWidth / 2) + ',' + (dim.height) + ')');
 
   var svgLegend = legendWrapper
     	.append('svg')
-    	.attr('class', 'svgLegendBar')
+    	.attr('class', svgName)
 	    .attr('width', legendWidth)
 	    .attr('height', legendHeight);
       
@@ -57,7 +59,7 @@ var legendWrapper = topG.append('g')
 
 
 
-function resizeLegend(dim) {
+function resizeLegend(dim, wrapperName) {
  
   var rectSize = 20; //dimension of colored square
   var padding = 10; 
@@ -65,7 +67,7 @@ function resizeLegend(dim) {
   var legendWidth = rectSize + 2*padding + entryWidth;
 
 // ADD LEGEND BOXES
-	var legendWrapper = d3.select('.legendWrapperBar')
+	var legendWrapper = d3.select('.' + wrapperName)
   		.attr("transform" , 'translate(' + (dim.width / 2 - legendWidth / 2) + ',' + (dim.height) + ')');
   		
   /*var svgLegend = d3.select('.svgLegendBar')
