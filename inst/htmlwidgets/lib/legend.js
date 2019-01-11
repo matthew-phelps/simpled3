@@ -12,7 +12,7 @@ function drawLegend(topG, inData, dim, margin, legendHeight) {
 // ADD LEGEND BOXES
  	
 var legendWrapper = topG.append('g')
-      .attr("class", "legendWrapper")
+      .attr("class", "legendWrapperBar")
       .attr("transform" , 'translate(' + (dim.width / 2 - legendWidth / 2) + ',' + (dim.height) + ')');
 
   var svgLegend = legendWrapper
@@ -62,20 +62,22 @@ function resizeLegend(dim) {
   var rectSize = 20; //dimension of colored square
   var padding = 10; 
   var entryWidth = 100; // width of square and text combined
+  var legendWidth = rectSize + 2*padding + entryWidth;
+  
 // ADD LEGEND BOXES
- 	var svgLegend = d3.select('.svgLegendBar')
-	    .attr('width', dim.width + margin.left + margin.right)
-	    .attr('height', dim.height + margin.top + margin.bottom);
-
-	var legendWrapper = svgLegend.select('.legendWrapper')
-  		.attr("transform" , 'translate(' + margin.left + ',' + margin.top + ')');
+	var legendWrapper = svgLegend.select('.legendWrapperBar')
+  		.attr("transform" , 'translate(' + (dim.width / 2 - legendWidth / 2) + ',' + (dim.height) + ')');
   		
+  /*var svgLegend = d3.select('.svgLegendBar')
+      .attr('width', dim.width + margin.left + margin.right)
+      .attr('height', dim.height + margin.top + margin.bottom);
+
   	
   	legendWrapper.select('.legend.male')
   		.attr("transform" , 'translate(' + (dim.width/2 - entryWidth + 1.5 * padding) + ',' + 0 + ')');	
 
   	legendWrapper.select('.legend.female')
   		.attr("transform" , 'translate(' + (dim.width/2 + 1.5 * padding) + ',' + 0 + ')');	
-
+*/
 	  	
 }
