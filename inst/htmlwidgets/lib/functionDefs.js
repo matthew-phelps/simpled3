@@ -581,7 +581,7 @@ function resizeBarChart(inData, width, height, el, margin, colors, barPadding, t
     .call(d3.axisLeft(scaleY));
 
   // Resize legend
-  resizeLegend();
+  resizeLegend(dim);
 
     /* Tooltip functions. These should be hoisted to top of resizeChart() function
   call, and therefore accessible at anytime from inside resizeChart() */
