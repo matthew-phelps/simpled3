@@ -5,7 +5,7 @@ function drawBarChart(inData, width, height, el, margin, colors, barPadding, tLo
     width: width - margin.left - margin.right,
     height: height - margin.top - margin.bottom
   };
-  legendHeight = 60;
+
   var container = d3.select(el).style("position", "relative")
     .append('div')
     .attr("id", "containerBar");
@@ -183,6 +183,10 @@ function drawBarChart(inData, width, height, el, margin, colors, barPadding, tLo
     .text(groupingName)
       .style("text-anchor", "middle");
 
+
+  /// ADD LEGEND
+  drawLegend(inData, dim);
+
   // Tooltip table setup
   var cellSvgWidth = "20%";
   var cellTextWidth = "80%";
@@ -259,13 +263,17 @@ function showTooltip(d) {
       .remove();
   }
 
+//// LEGEND ////
+var rectSize = 20; //dimension of colored square
+var padding = 10; 
+var entryWidth = 100; // width of square and text combined
+
+
 }
 
-/*html(
-        "<b>" + d.key + "</b>" + "<br/><br/>" +
-        d.values[0].sex + ": " + d.values[0].value + "</br>" +
-        d.values[1].sex + ": " + d.values[1].value + "</br>");
-*/
+
+
+
 //////////////////////////////////////////////////////////////////////////////
 //////////////////    UPDATE     /////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////

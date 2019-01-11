@@ -2,19 +2,16 @@
 //////////////////    DRAW LEGEND     ////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////
 
-function drawLegend(fromR, width, height, el, margin) {
- var dim = {
-    width: width - margin.left - margin.right,
-    height: height - margin.top - margin.bottom
-  };
+function drawLegend(inData, dim) {
+ 
 
   var rectSize = 20; //dimension of colored square
   var padding = 10; 
   var entryWidth = 100; // width of square and text combined
 // ADD LEGEND BOXES
- 	var svgLegend = d3.select(el)
+ 	var svgLegend = d3.select(".svgBar")
     	.append('svg')
-    	.attr('class', 'svgLegend')
+    	.attr('class', 'svgLegendBar')
 	    .attr('width', dim.width + margin.left + margin.right)
 	    .attr('height', dim.height + margin.top + margin.bottom);
 
@@ -37,12 +34,12 @@ function drawLegend(fromR, width, height, el, margin) {
 	 legendMale.append("rect")
   		.attr("width", rectSize)
 	  	.attr("height", rectSize)
-	  	.style("fill", fromR.data.color[0]);
+	  	.style("fill", inData.legend.color[0]);
 
 	 legendMale.append("text")
 	 	.attr('transform', 'translate(' + (rectSize + padding) +',' + rectSize/2 + ')')
 	 	.attr('alignment-baseline', 'middle') // verticle alignment?
-	 	.text(fromR.data.sex[0]);
+	 	.text(inData.legend.sex[0]);
 
 	  	
 	legendFemale.append("rect")
@@ -52,7 +49,7 @@ function drawLegend(fromR, width, height, el, margin) {
 	 legendFemale.append("text")
 	 	.attr('transform', 'translate(' + (rectSize + padding) +',' + rectSize/2 + ')')
 	 	.attr('alignment-baseline', 'middle') // verticle alignment?
-	 	.text(fromR.data.sex[1]);
+	 	.text(inData.legend.sex[1]);
 }
 
 
@@ -67,7 +64,7 @@ function resizeLegend(width, height, margin) {
   var padding = 10; 
   var entryWidth = 100; // width of square and text combined
 // ADD LEGEND BOXES
- 	var svgLegend = d3.select('.svgLegend')
+ 	var svgLegend = d3.select('.svgLegendBar')
 	    .attr('width', dim.width + margin.left + margin.right)
 	    .attr('height', dim.height + margin.top + margin.bottom);
 
