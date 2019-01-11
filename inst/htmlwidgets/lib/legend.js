@@ -13,7 +13,7 @@ function drawLegend(topG, inData, dim, margin, legendHeight) {
  	
 var legendWrapper = topG.append('g')
       .attr("class", "legendWrapper")
-      .attr("transform" , 'translate(' + (dim.width / 2 - legendWidth / 2) + ',' + (dim.height - legendHeight) + ')');
+      .attr("transform" , 'translate(' + (dim.width / 2 - legendWidth / 2) + ',' + (dim.height) + ')');
 
   var svgLegend = legendWrapper
     	.append('svg')
@@ -30,29 +30,29 @@ var legendWrapper = topG.append('g')
   	
     var legendFemale = legendWrapper.append('g')
       .attr('class', 'legend female')
-      .attr("transform" , 'translate(' + (legendWidth + padding) + ',' + 0 + ')');  
+      .attr("transform" , 'translate(' + (legendWidth/2 + 2*padding) + ',' + 0 + ')');  
     
 
   // Append rect and text for each gender
 	 legendMale.append("rect")
   		.attr("width", rectSize)
 	  	.attr("height", rectSize)
-	  	.style("fill", inData.legend.colors[0]);
+	  	.style("fill", inData.legend.colors[1]);
 
 	 legendMale.append("text")
 	 	.attr('transform', 'translate(' + (rectSize + padding) +',' + rectSize/2 + ')')
 	 	.attr('alignment-baseline', 'middle') // verticle alignment?
-	 	.text(inData.legend.legendData.sex[0]);
+	 	.text(inData.legend.legendData.sex[1]);
 
 	  	
 	legendFemale.append("rect")
   		.attr("width", rectSize)
 	  	.attr("height", rectSize)
-	  	.style("fill", inData.legend.colors[1]);
+	  	.style("fill", inData.legend.colors[0]);
 	 legendFemale.append("text")
 	 	.attr('transform', 'translate(' + (rectSize + padding) +',' + rectSize/2 + ')')
 	 	.attr('alignment-baseline', 'middle') // verticle alignment?
-	 	.text(inData.legend.legendData.sex[1]);
+	 	.text(inData.legend.legendData.sex[0]);
 }
 
 
