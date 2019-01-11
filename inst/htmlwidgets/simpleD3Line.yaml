@@ -7,4 +7,11 @@ dependencies:
   src: htmlwidgets/lib
   script: ./lineChartDefs.js
   version: 0.0.1
-
+- name: legend
+  src: htmlwidgets/lib
+  script: ./legend.js
+  version: 0.0.1
+- name: saveSvgAsPng
+  src: htmlwidgets/lib/saveSvgAsPng
+  script: ./saveSvgAsPng.js
+  version: 1.4.6

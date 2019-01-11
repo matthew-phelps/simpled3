@@ -13,6 +13,7 @@ HTMLWidgets.widget({
     var cRadius = 7;
     var bigRadius = 15;
     var rectSize = 20; //dimension of colored square
+    legendHeight = 50;
     var tablePadding = 10; 
     var localeFormatter = d3.formatLocale({
       "decimal": ",",
@@ -38,11 +39,11 @@ HTMLWidgets.widget({
       renderValue: function(x) {
         if(!chartExists){
           chartExists = true;
-          drawLineChart(x, width, height, el, margin, rectPadding, colors, tLong, tShort, cRadius, bigRadius, rectSize, tablePadding, numberFormat);
+          drawLineChart(x, width, height, el, margin, rectPadding, colors, tLong, tShort, cRadius, bigRadius, rectSize, tablePadding, numberFormat, legendHeight);
          } else if (resized){
-          updateLineChart(x, this.dim.width, this.dim.height, el, margin, rectPadding, colors, tLong, tShort, cRadius, bigRadius,rectSize, tablePadding, numberFormat);
+          updateLineChart(x, this.dim.width, this.dim.height, el, margin, rectPadding, colors, tLong, tShort, cRadius, bigRadius,rectSize, tablePadding, numberFormat, legendHeight);
         } else {
-          updateLineChart(x, width, height, el, margin, rectPadding, colors, tLong, tShort, cRadius, bigRadius, rectSize, tablePadding, numberFormat);
+          updateLineChart(x, width, height, el, margin, rectPadding, colors, tLong, tShort, cRadius, bigRadius, rectSize, tablePadding, numberFormat, legendHeight);
         }
         this.x = x;
 
@@ -50,7 +51,7 @@ HTMLWidgets.widget({
 
       resize: function(width, height) {
 
-        resizeLineChart(this.x, width, height, el, margin, rectPadding, colors, tLong, tShort, cRadius, bigRadius, rectSize, tablePadding, numberFormat);
+        resizeLineChart(this.x, width, height, el, margin, rectPadding, colors, tLong, tShort, cRadius, bigRadius, rectSize, tablePadding, numberFormat, legendHeight);
           var dim = {
                 width: width,
                 height: height

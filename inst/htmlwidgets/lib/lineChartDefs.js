@@ -17,6 +17,7 @@ function drawLineChart(inData, width, height, el, margin, rectPadding, colors, t
     .attr('id', 'containerLine');
 
   var svg = container.append('svg')
+    .attr("id", "svgLine")
     .attr("width", dim.width + margin.left + margin.right)
     .attr("height", dim.height + margin.top + margin.bottom);
 
@@ -36,12 +37,12 @@ function drawLineChart(inData, width, height, el, margin, rectPadding, colors, t
   // Axis titles
   topG.append("text")
     .attr("x", dim.width / 2)
-    .attr("y", dim.height + margin.bottom)
+    .attr("y", dim.height + margin.bottom - 5 - legendHeight)
     .attr("class", "line x axisTitle");
     
   topG.append("text")
     .attr("transform", "rotate(-90)")
-    .attr("x", 0 - dim.height / 2)
+    .attr("x", 0 - (dim.height  - legendHeight)/ 2)
     .attr("y", 0 - margin.left + 20)
     .attr("class", "line y axisTitle");
 
@@ -78,7 +79,7 @@ var grouping1Names = data.map(d => d.year);
 
   var scaleY = d3.scaleLinear()
     .domain([0, maxY])
-    .range([dim.height, 0]);
+    .range([dim.height - legendHeight, 0]);
 
   var scaleColors = d3.scaleOrdinal()
    .range(colors);
@@ -179,6 +180,12 @@ mouseRectsFemale
       .on("mouseover", showTooltip)
       .on("mousemove", moveTooltip)
       .on("mouseout", hideTooltip);
+
+  /// ADD LEGEND
+ var wrapperName = "legendWrapperBar";
+ var svgName = "svgLegendBar";
+  drawLegend(topG, inData, dim, margin, legendHeight, wrapperName, svgName);
+
 
 
 // Table setup
@@ -301,7 +308,7 @@ var scaleXRects = d3.scaleBand()
 
   var scaleY = d3.scaleLinear()
     .domain([0, maxY])
-    .range([dim.height, 0]);
+    .range([dim.height - legendHeight, 0]);
 
   var scaleColors = d3.scaleOrdinal()
    .range(colors);
@@ -443,10 +450,10 @@ var dim = {
 
   svg.select('line.x.axisTitle')
     .attr("x", dim.width / 2)
-    .attr("y", dim.height + margin.bottom);
+   .attr("y", dim.height + margin.bottom - 5 - legendHeight);
 
   svg.select('line.y.axisTitle')
-    .attr("x", 0 - dim.height / 2)
+    .attr("x", 0 - (dim.height - legendHeight) / 2)
     .attr("y", 0 - margin.left + 20);
 
     // Line generators
@@ -472,7 +479,7 @@ var scaleXRects = d3.scaleBand()
 
   var scaleY = d3.scaleLinear()
     .domain([0, maxY])
-    .range([dim.height, 0]);
+    .range([dim.height - legendHeight, 0]);
 
   var scaleColors = d3.scaleOrdinal()
    .range(colors);
@@ -535,6 +542,9 @@ var scaleXRects = d3.scaleBand()
     .text(varName)
     .style("text-anchor", "middle");
   
+// Resize legend
+  var wrapperName = "legendWrapperBar";
+  resizeLegend(dim, wrapperName);
 
 // Mouse event functions
   // Tooltip functions - these will be hoisted to top of fn call
