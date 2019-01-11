@@ -159,7 +159,7 @@ function drawBarChart(inData, width, height, el, margin, colors, barPadding, tLo
           var config = {
     filename: 'customFileName'
   };
-  d3_save_svg.save(d3.select('svg').node(), config);
+  save(d3.select('barSvg').node(), config);
 });
 
 
