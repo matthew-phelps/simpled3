@@ -11,7 +11,7 @@ function drawBarChart(inData, width, height, el, margin, colors, barPadding, tLo
     .attr("id", "containerBar");
 
   var svg = container.append('svg')
-    .attr("id", "barSvg")
+    .attr("id", "svgBar")
     .attr("width", dim.width + margin.left + margin.right)
     .attr("height", dim.height + margin.top + margin.bottom);
 
@@ -157,7 +157,7 @@ function drawBarChart(inData, width, height, el, margin, colors, barPadding, tLo
         .on("mousemove", moveTooltip)
         .on("mouseout", hideTooltip)
         .on("click", function(){
-          saveSvgAsPng(document.getElementById("barSvg"), "plot.png", {scale: 2, backgroundColor: "#FFFFFF"});
+          saveSvgAsPng(document.getElementById("svgBar"), "plot.png", {scale: 2, backgroundColor: "#FFFFFF"});
 });
 
 
