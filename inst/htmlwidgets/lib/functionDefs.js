@@ -315,7 +315,7 @@ function updateBarChart(inData, width, height, el, margin, colors, barPadding, t
   // Scales
   var scaleY = d3.scaleLinear()
     .domain([0, maxY])
-    .range([dim.height, 0]);
+    .range([dim.height - legendHeight, 0]);
 
   var scaleX = d3.scaleBand()
     .domain(grouping1Names)
@@ -523,7 +523,7 @@ function resizeBarChart(inData, width, height, el, margin, colors, barPadding, t
   // SCALES
   var scaleY = d3.scaleLinear()
     .domain([0, maxY])
-    .range([dim.height, 0]);
+    .range([dim.height - legendHeight, 0]);
 
   var scaleX = d3.scaleBand()
     .domain(grouping1Names)
