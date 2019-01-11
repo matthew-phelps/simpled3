@@ -54,12 +54,8 @@ function drawLegend(inData, dim) {
 
 
 
-function resizeLegend(width, height, margin) {
- var dim = {
-    width: width - margin.left - margin.right,
-    height: height - margin.top - margin.bottom
-  };
-
+function resizeLegend(dim) {
+ 
   var rectSize = 20; //dimension of colored square
   var padding = 10; 
   var entryWidth = 100; // width of square and text combined
