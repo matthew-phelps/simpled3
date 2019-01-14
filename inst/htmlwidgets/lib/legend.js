@@ -9,6 +9,7 @@ function drawLegend(topG, inData, dim, margin, legendHeight, wrapperName, svgNam
   var padding = 10; 
   var entryWidth = 100; // width of square and text combined
   var legendWidth = rectSize + 2*padding + entryWidth;
+  var downloadButtonWidth = rectSize * 3;
 
 
 // ADD LEGEND BOXES
@@ -52,16 +53,18 @@ var legendWrapper = topG.append('g')
 /// ADD DOWNLOAD BUTTON
 var downloadButtonWrapper = topG.append('g')
   .attr("class", wrapperName + "downloadButton")
-  .attr("transform" , 'translate(' + (dim.width - 10) + ',' + (dim.height) + ')');
+  .attr("transform" , 'translate(' + (dim.width - downloadButtonWidth) + ',' + (dim.height) + ')');
 
 var downloadButton = downloadButtonWrapper
   .append('rect')
   .attr('class', 'download button')
-  .attr("width", rectSize * 3)
+  .attr("width", downloadButtonWidth)
   .attr("height", rectSize * 1.2)
   .style("fill", "white")
   .style("stroke", "black")
-  .text("Download");
+  .text("Download")
+    .attr("fill", "black");
+
 
 
 }
