@@ -55,7 +55,7 @@ function drawLegend(topG, inData, dim, margin, legendHeight, wrapperName, svgNam
   .attr("class", wrapperName + "downloadButton")
   .attr("transform" , 'translate(' + (dim.width - downloadButtonWidth) + ',' + (dim.height) + ')');
 
-  var downloadButton = downloadButtonWrapper
+  /*var downloadButton = downloadButtonWrapper
   .append('rect')
   .attr('class', 'download button')
   .attr("width", downloadButtonWidth)
@@ -66,7 +66,7 @@ function drawLegend(topG, inData, dim, margin, legendHeight, wrapperName, svgNam
   downloadButtonWrapper
   .append("text")
   .text("Download")
-  .attr("fill", "black");
+  .attr("fill", "black");*/
 
 
 

@@ -32,6 +32,15 @@ HTMLWidgets.widget({
     // State variables
     var chartExists = false;
     var resized = false;
+
+
+    // download function
+    d3.select("#download").on("click", function(){
+      d3.select(this)
+        .attr("href", 'data:application/octet-stream;base64,' + btoa(d3.select("#d3_plot_bar").html()))
+        .attr("download", "viz.svg") ;
+
+
     return {
 
       renderValue: function(x) {
