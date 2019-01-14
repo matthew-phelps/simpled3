@@ -54,7 +54,7 @@ HTMLWidgets.widget({
         this.x = x; // store for resize
 
         // download function - needs to be called on every call of renderValue?
-          d3.select("#download_bar").on("click", function(){
+          d3.select("#download_bar").on("click", function(x){
                 saveSvgAsPng(document.getElementById("svgBar"), "HjerteTal_chart.png", {scale: 2, backgroundColor: "#FFFFFF"});
             });
       },
