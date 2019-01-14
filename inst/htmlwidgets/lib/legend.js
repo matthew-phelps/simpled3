@@ -64,6 +64,7 @@ function drawLegend(topG, inData, dim, margin, legendHeight, wrapperName, svgNam
   .style("stroke", "black");
 
   downloadButtonWrapper
+  .append("text")
   .text("Download")
   .attr("fill", "black");
 
