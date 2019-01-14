@@ -17,12 +17,12 @@ var legendWrapper = topG.append('g')
       .attr("class", wrapperName)
       .attr("transform" , 'translate(' + (dim.width / 2 - legendWidth / 2) + ',' + (dim.height) + ')');
 
-  var svgLegend = legendWrapper
+  /*var svgLegend = legendWrapper
     	.append('svg')
     	.attr('class', svgName)
 	    .attr('width', legendWidth)
 	    .attr('height', legendHeight);
-      
+  */    
 
 	
   	// Wrappers for each gender	
