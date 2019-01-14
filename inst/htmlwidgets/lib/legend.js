@@ -55,7 +55,12 @@ var downloadButtonWrapper = topG.append('g')
   .attr("transform" , 'translate(' + (dim.width - 10) + ',' + (dim.height) + ')');
 
 var downloadButton = downloadButtonWrapper
-  .append('button')
+  .append('rect')
+  .attr('class', 'download button')
+  .attr("width", rectSize * 3)
+  .attr("height", rectSize * 1.2)
+  .style("fill", "white")
+  .style("stroke", "black")
   .text("Download");
 
 
