@@ -1,5 +1,5 @@
 //////////////////////////////////////////////////////////////////////////////
-//////////////////    DRAW LEGEND     ////////////////////////////////////////
+//////////////////    DRAW LEGEND  & DOWNLOAD ////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////
 
 function drawLegend(topG, inData, dim, margin, legendHeight, wrapperName, svgName) {
@@ -17,14 +17,6 @@ var legendWrapper = topG.append('g')
       .attr("class", wrapperName)
       .attr("transform" , 'translate(' + (dim.width / 2 - legendWidth / 2) + ',' + (dim.height) + ')');
 
-  /*var svgLegend = legendWrapper
-    	.append('svg')
-    	.attr('class', svgName)
-	    .attr('width', legendWidth)
-	    .attr('height', legendHeight);
-  */    
-
-	
   	// Wrappers for each gender	
   	var legendMale = legendWrapper.append('g')
   		.attr('class', 'legend male')
@@ -55,6 +47,18 @@ var legendWrapper = topG.append('g')
 	 	.attr('transform', 'translate(' + (rectSize + padding) +',' + rectSize/2 + ')')
 	 	.attr('alignment-baseline', 'middle') // verticle alignment?
 	 	.text(inData.legend.legendData.sex[0]);
+
+
+/// ADD DOWNLOAD BUTTON
+var downloadButtonWrapper = topG.append('g')
+  .attr("class", wrapperName + "downloadButton")
+  .attr("transform" , 'translate(' + (dim.width - 10) + ',' + (dim.height) + ')');
+
+var downloadButton = downloadButtonWrapper
+  .append('button')
+  .text("Download");
+
+
 }
 
 
@@ -70,16 +74,6 @@ function resizeLegend(dim, wrapperName) {
 	var legendWrapper = d3.select('.' + wrapperName)
   		.attr("transform" , 'translate(' + (dim.width / 2 - legendWidth / 2) + ',' + (dim.height) + ')');
   		
-  /*var svgLegend = d3.select('.svgLegendBar')
-      .attr('width', dim.width + margin.left + margin.right)
-      .attr('height', dim.height + margin.top + margin.bottom);
-
-  	
-  	legendWrapper.select('.legend.male')
-  		.attr("transform" , 'translate(' + (dim.width/2 - entryWidth + 1.5 * padding) + ',' + 0 + ')');	
-
-  	legendWrapper.select('.legend.female')
-  		.attr("transform" , 'translate(' + (dim.width/2 + 1.5 * padding) + ',' + 0 + ')');	
-*/
+ 
 	  	
 }
