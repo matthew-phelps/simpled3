@@ -34,6 +34,12 @@ HTMLWidgets.widget({
     // State variables
     var chartExists = false;
     var resized = false;
+    
+    // download function
+    d3.select("#download_line").on("click", function(){
+          saveSvgAsPng(document.getElementById("svgLine"), "HjerteTal_chart.png", {scale: 2, backgroundColor: "#FFFFFF"});
+      });
+
     return {
 
       renderValue: function(x) {

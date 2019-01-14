@@ -35,8 +35,8 @@ HTMLWidgets.widget({
 
 
     // download function
-    d3.select("#download").on("click", function(){
-          saveSvgAsPng(document.getElementById("svgBar"), "plot.png", {scale: 2, backgroundColor: "#FFFFFF"});
+    d3.select("#download_bar").on("click", function(){
+          saveSvgAsPng(document.getElementById("svgBar"), "HjerteTal_chart.png", {scale: 2, backgroundColor: "#FFFFFF"});
       });
 
 
