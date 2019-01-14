@@ -198,7 +198,7 @@
 			"file": "inst/htmlwidgets/lib/lineChartDefs.js",
 			"settings":
 			{
-				"buffer_size": 15640,
+				"buffer_size": 15655,
 				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
@@ -384,8 +384,7 @@
 	},
 	"expanded_folders":
 	[
-		"/C/git/simpled3/inst/htmlwidgets",
-		"/C/git/simpled3/inst/htmlwidgets/lib"
+		"/C/git/simpled3"
 	],
 	"file_history":
 	[
@@ -420,6 +419,7 @@
 		"case_sensitive": true,
 		"find_history":
 		[
+			"height",
 			"dim.height",
 			"dim.height - legendHeight",
 			"chartHeight",
@@ -643,6 +643,7 @@
 							[
 								"sublime_linter.protected_regions"
 							],
+							"history_list_is_closing": true,
 							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax",
 							"tab_size": 2,
 							"translate_tabs_to_spaces": true
@@ -667,8 +668,8 @@
 						"selection":
 						[
 							[
-								874,
-								874
+								1662,
+								1662
 							]
 						],
 						"settings":
@@ -685,6 +686,12 @@
 							"SL.53.region_keys":
 							[
 								"sublime_linter.protected_regions"
+							],
+							"SL.58.region_keys":
+							[
+							],
+							"SL.99.region_keys":
+							[
 							],
 							"history_list_is_closing": true,
 							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax",
@@ -717,6 +724,7 @@
 						],
 						"settings":
 						{
+							"history_list_is_closing": true,
 							"syntax": "Packages/YAML/YAML.sublime-syntax",
 							"tab_size": 2,
 							"translate_tabs_to_spaces": true
@@ -747,6 +755,9 @@
 						],
 						"settings":
 						{
+							"SL.101.region_keys":
+							[
+							],
 							"SL.16.region_keys":
 							[
 							],
@@ -759,6 +770,9 @@
 							"SL.53.region_keys":
 							[
 								"sublime_linter.protected_regions"
+							],
+							"SL.60.region_keys":
+							[
 							],
 							"history_list_is_closing": true,
 							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax",
@@ -775,7 +789,6 @@
 			]
 		},
 		{
-			"selected": 0,
 			"sheets":
 			[
 				{
@@ -784,15 +797,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 15640,
+						"buffer_size": 15655,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1231,
-								1231
+								11479,
+								11485
 							]
 						],
 						"settings":
@@ -808,6 +821,9 @@
 							"SL.21.region_keys":
 							[
 							],
+							"SL.61.region_keys":
+							[
+							],
 							"SL.81.region_keys":
 							[
 							],
@@ -817,7 +833,7 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 180.0,
+						"translation.y": 5523.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 0,
@@ -997,14 +1013,14 @@
 		],
 		"width": 0.0
 	},
-	"selected_group": 1,
+	"selected_group": 0,
 	"settings":
 	{
 	},
 	"show_minimap": false,
 	"show_open_files": false,
 	"show_tabs": true,
-	"side_bar_visible": false,
+	"side_bar_visible": true,
 	"side_bar_width": 140.0,
 	"status_bar_visible": false,
 	"template_settings":

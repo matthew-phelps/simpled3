@@ -3,7 +3,6 @@
 #' Just a simple legend.
 #'
 #' @import htmlwidgets
-#'
 #' @param data data to be sent to JS
 #' @param colors Colors to be sent to JS
 #' @param width Width if specified
@@ -12,7 +11,6 @@
 #'
 #' @export
 simpleD3Line <- function(data, colors, legendData, width = NULL, height = NULL, elementId = NULL) {
-
 
   # List of settings to pass to d3
  legend = list(

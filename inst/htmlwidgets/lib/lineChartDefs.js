@@ -271,7 +271,7 @@ var dim = {
     width: width - margin.left - margin.right,
     height: height - margin.top - margin.bottom
   };
-
+  var chartHeight = dim.height  - legendHeight;
   var svg = d3.select("#containerLine").select('svg');
   var chartArea = svg.selectAll('.chartArea');
   var tooltip = d3.select("#tooltipLine");
@@ -430,7 +430,7 @@ var dim = {
     width: width - margin.left - margin.right,
     height: height - margin.top - margin.bottom
   };
-
+  var chartHeight = dim.height  - legendHeight;
   var data = HTMLWidgets.dataframeToD3(inData.data);
   var varName = data[0].variable;
   var yearName = Object.keys(data[0])[0];
