@@ -36,7 +36,7 @@ HTMLWidgets.widget({
 
     // download function
     d3.select("#download").on("click", function(){
-          saveSvgAsPng(document.getElementById("barSvg"), "plot.png", {scale: 2, backgroundColor: "#FFFFFF"});
+          saveSvgAsPng(document.getElementById("svgBar"), "plot.png", {scale: 2, backgroundColor: "#FFFFFF"});
       });
 
 
