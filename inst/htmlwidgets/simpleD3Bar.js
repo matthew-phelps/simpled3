@@ -33,6 +33,12 @@ HTMLWidgets.widget({
     var chartExists = false;
     var resized = false;
 
+    // Download function - not sure why this can site outidethe render functions, but it works
+      d3.select("#download_bar").on("click", function(){
+            saveSvgAsPng(document.getElementById("svgBar"), "HjerteTal_chart.png", {scale: 2, backgroundColor: "#FFFFFF"});
+        });
+
+
 
  
 
@@ -53,10 +59,6 @@ HTMLWidgets.widget({
         }
         this.x = x; // store for resize
 
-        // download function - needs to be called on every call of renderValue?
-          d3.select("#download_bar").on("click", function(x){
-                saveSvgAsPng(document.getElementById("svgBar"), "HjerteTal_chart.png", {scale: 2, backgroundColor: "#FFFFFF"});
-            });
       },
 
       resize: function(width, height) {

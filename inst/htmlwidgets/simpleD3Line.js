@@ -35,7 +35,7 @@ HTMLWidgets.widget({
     var chartExists = false;
     var resized = false;
     
-    // download function
+        // Download function - not sure why this can site outidethe render functions, but it works
     d3.select("#download_line").on("click", function(){
           saveSvgAsPng(document.getElementById("svgLine"), "HjerteTal_chart.png", {scale: 2, backgroundColor: "#FFFFFF"});
       });
