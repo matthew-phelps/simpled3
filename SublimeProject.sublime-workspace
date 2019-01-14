@@ -1,0 +1,1013 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"cahrt",
+				"chartHeight"
+			],
+			[
+				"chart",
+				"chartHeight"
+			],
+			[
+				"legend",
+				"legendHeight"
+			],
+			[
+				"legen",
+				"legendHeight"
+			],
+			[
+				"svg",
+				"svgName"
+			],
+			[
+				"leg",
+				"legendWidth"
+			],
+			[
+				"len",
+				"legendWidth"
+			],
+			[
+				"lege",
+				"legendHeight"
+			],
+			[
+				"see",
+				"select"
+			],
+			[
+				"select",
+				"select"
+			],
+			[
+				"table",
+				"tableBar"
+			],
+			[
+				"tool",
+				"tooltipBar"
+			],
+			[
+				"cell",
+				"cellTextWidth"
+			],
+			[
+				"Ce",
+				"cellSvgWidth"
+			],
+			[
+				"val",
+				"value"
+			],
+			[
+				"tob",
+				"tbody"
+			],
+			[
+				"a",
+				"attr"
+			],
+			[
+				"to",
+				"tooltip"
+			],
+			[
+				"yea",
+				"yearName"
+			],
+			[
+				"bar",
+				"barGroups"
+			],
+			[
+				"trans",
+				"transition"
+			],
+			[
+				"selec",
+				"selectedMouseSvg"
+			],
+			[
+				"tran",
+				"transition"
+			],
+			[
+				"scale",
+				"scaleX1"
+			],
+			[
+				"tr",
+				"translate"
+			],
+			[
+				"rect",
+				"rectSize"
+			],
+			[
+				"sex",
+				"sexName"
+			],
+			[
+				"leng",
+				"legendWidth"
+			],
+			[
+				"mouse",
+				"mouseSvgBarChart"
+			],
+			[
+				"bars",
+				"barsData"
+			],
+			[
+				"valu",
+				"values"
+			],
+			[
+				"barg",
+				"barGroupWithData"
+			],
+			[
+				"dotfe",
+				"dotfemale"
+			],
+			[
+				"dotf",
+				"dotfemale"
+			],
+			[
+				"scaleX",
+				"scaleXRects"
+			],
+			[
+				"container",
+				"containerBar"
+			],
+			[
+				"tooltip",
+				"toolTip"
+			],
+			[
+				"secl",
+				"selectAll"
+			]
+		]
+	},
+	"buffers":
+	[
+		{
+			"file": "inst/htmlwidgets/simpleD3Bar.js",
+			"settings":
+			{
+				"buffer_size": 2259,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "inst/htmlwidgets/lib/functionDefs.js",
+			"settings":
+			{
+				"buffer_size": 17802,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "inst/htmlwidgets/lib/legend.js",
+			"settings":
+			{
+				"buffer_size": 2860,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "inst/htmlwidgets/simpleD3Bar.yaml",
+			"settings":
+			{
+				"buffer_size": 358,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "inst/htmlwidgets/lib/lineChartDefs.js",
+			"settings":
+			{
+				"buffer_size": 15640,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			}
+		}
+	],
+	"build_system": "",
+	"build_system_choices":
+	[
+	],
+	"build_varint": "",
+	"command_palette":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+			[
+				"push",
+				"Git: Push"
+			],
+			[
+				"qui",
+				"Git: Quick Commit (repo)"
+			],
+			[
+				"git",
+				"Git: Gui"
+			],
+			[
+				"pus",
+				"Git: Push"
+			],
+			[
+				"quick",
+				"Git: Quick Commit (repo)"
+			],
+			[
+				"Push",
+				"Git: Push"
+			],
+			[
+				"qu",
+				"Git: Quick Commit (repo)"
+			],
+			[
+				"quic",
+				"Git: Quick Commit (repo)"
+			],
+			[
+				"pu",
+				"Git: Push"
+			],
+			[
+				"\tqui",
+				"Git: Quick Commit (repo)"
+			],
+			[
+				"pus\t",
+				"Git: Push"
+			],
+			[
+				"git com",
+				"Git: Commit"
+			],
+			[
+				"git pus",
+				"Git: Push"
+			],
+			[
+				"ip",
+				"Package Control: Install Package"
+			],
+			[
+				"insta",
+				"Package Control: Install Package"
+			],
+			[
+				"pac",
+				"Package Control: Install Package"
+			],
+			[
+				"q",
+				"Git: Quick Commit (repo)"
+			],
+			[
+				"quio",
+				"Git: Quick Commit (repo)"
+			],
+			[
+				"quik",
+				"Git: Quick Commit (repo)"
+			],
+			[
+				"com",
+				"Git: Commit"
+			],
+			[
+				"QUI",
+				"Git: Quick Commit (repo)"
+			],
+			[
+				"QUICK",
+				"Git: Quick Commit (repo)"
+			],
+			[
+				"gitq",
+				"Git: Quick Commit (repo)"
+			],
+			[
+				"qiu",
+				"Git: Quick Commit (repo)"
+			],
+			[
+				"qui\t\t",
+				"Git: Quick Commit (repo)"
+			],
+			[
+				"quick ",
+				"Git: Quick Commit (repo)"
+			],
+			[
+				"qui\t",
+				"Git: Quick Commit (repo)"
+			],
+			[
+				"add",
+				"Git: Add All"
+			],
+			[
+				"quick\t",
+				"Git: Quick Commit (repo)"
+			],
+			[
+				"qi",
+				"Git: Quick Commit (repo)"
+			],
+			[
+				"quo",
+				"Git: Quick Commit (repo)"
+			],
+			[
+				"git p",
+				"Git: Push"
+			],
+			[
+				"ad",
+				"Git: Add All"
+			],
+			[
+				"linter",
+				"Preferences: SublimeLinter Settings"
+			],
+			[
+				"sublimelinter",
+				"Preferences: SublimeLinter Settings"
+			],
+			[
+				"inst",
+				"Package Control: Install Package"
+			],
+			[
+				"prv",
+				"PackageResourceViewer: Open Resource"
+			]
+		],
+		"width": 0.0
+	},
+	"console":
+	{
+		"height": 0.0,
+		"history":
+		[
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"expanded_folders":
+	[
+		"/C/git/simpled3/inst/htmlwidgets",
+		"/C/git/simpled3/inst/htmlwidgets/lib"
+	],
+	"file_history":
+	[
+		"/C/git/simpled3/inst/htmlwidgets/simpleD3Line.js",
+		"/C/git/simpled3/inst/htmlwidgets/simpleD3Line.yaml",
+		"/C/git/simpled3/R/simpleD3Line.R",
+		"/C/git/simpled3/inst/htmlwidgets/simpleD3Bar.yaml",
+		"/C/git/simpled3/R/simpleD3Bar.R",
+		"/C/git/simpled3/inst/htmlwidgets/simpleD3Bar.js",
+		"/C/git/simpled3/inst/htmlwidgets/lib/d3SaveSvg/d3-save-svg.js",
+		"/C/git/simpled3/inst/htmlwidgets/lib/lineChartDefs.js",
+		"/C/git/simpled3/inst/htmlwidgets/lib/legend.js",
+		"/C/git/ht2/server.R",
+		"/C/git/simpled3/inst/htmlwidgets/simpleD3Legend.js",
+		"/C/git/simpled3/inst/htmlwidgets/lib/functionDefs.js",
+		"/C/git/simpled3/inst/htmlwidgets/lib/d3/d3.js",
+		"/C/git/simpled3/inst/htmlwidgets/simpled3.js"
+	],
+	"find":
+	{
+		"height": 40.0
+	},
+	"find_in_files":
+	{
+		"height": 0.0,
+		"where_history":
+		[
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": true,
+		"find_history":
+		[
+			"dim.height",
+			"dim.height - legendHeight",
+			"chartHeight",
+			" .attr(\"height\",",
+			"dim.height",
+			"dim.heigh",
+			"legendHeight",
+			"legend",
+			".range([d",
+			".range(dim",
+			"leg",
+			"svgLegendBar",
+			"legendWrapperBar",
+			"wrapperName",
+			".attr(\"y\", dim.he",
+			"legend",
+			"resizeleg",
+			".range",
+			"topG",
+			"barSvg",
+			"data",
+			"sex",
+			"color",
+			"lege",
+			"legendHeight",
+			"settings",
+			"legendHeight",
+			"width",
+			"t",
+			"d3",
+			"numberFormat",
+			"numberF",
+			"numberfor",
+			"format",
+			"bar",
+			"tooltipBar",
+			"tableBar",
+			"groupingName",
+			"functions",
+			"tool",
+			"tooltipTable",
+			"tooltiptable",
+			"appedn",
+			"apped",
+			"var",
+			"valueLine1",
+			"male",
+			"År",
+			"yearName",
+			"groupingName",
+			"mouseSvg",
+			"selectedMouseSvg",
+			"ppa",
+			"legend",
+			"legendFemale",
+			"append",
+			"legendWrapper",
+			"data",
+			"text",
+			"rectSize",
+			"height",
+			"slice",
+			"Sex",
+			"container",
+			"legendWidth",
+			" - legendWidth",
+			"container",
+			"containerBar",
+			"svgContainerName",
+			"RESIZE",
+			"width",
+			"Udpate",
+			"Scales",
+			"mOpacity",
+			"mouseSvgBarChart",
+			"mouseSvg",
+			"axisTitle",
+			"bar",
+			"sd3",
+			"().",
+			"varName",
+			"barGroupWithData",
+			", tooltipOffsetY",
+			"tooltipOffsetY",
+			"28",
+			"tooltipOffsetY",
+			"tLong",
+			"mouseRectsFemale",
+			"barpadd",
+			"barpaddo",
+			"inData",
+			"bigRadius",
+			"female",
+			"mradius",
+			"rectPadding",
+			"mRadius",
+			"circle",
+			"mouseCirclesMale",
+			"mouseRectsFemale",
+			"margin",
+			"varName",
+			"Udpate",
+			"margin",
+			"width",
+			"height",
+			"d3.select",
+			"container",
+			"tooltip",
+			"tooltipBar",
+			"var tool",
+			"UPDATE",
+			"mouseover",
+			"toolTip",
+			"svg.select('.to",
+			"toolTip",
+			"indate",
+			"functionDefs",
+			"initialized",
+			"chartExists",
+			"initialized",
+			"chartExists",
+			"resizeChart",
+			"resizeBarChart"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+			"chartHeight",
+			"legendData.sex",
+			"colors",
+			"tableLine",
+			"sex",
+			"",
+			"mouseSvg",
+			"mouseSvgBarChart",
+			"",
+			"tooltip"
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"selected": 2,
+			"sheets":
+			[
+				{
+					"buffer": 0,
+					"file": "inst/htmlwidgets/simpleD3Bar.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 2259,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								376,
+								358
+							]
+						],
+						"settings":
+						{
+							"SL.109.region_keys":
+							[
+							],
+							"SL.14.region_keys":
+							[
+							],
+							"SL.29.region_keys":
+							[
+							],
+							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 6,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "inst/htmlwidgets/lib/functionDefs.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 17802,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								12708,
+								12708
+							]
+						],
+						"settings":
+						{
+							"SL.14.region_keys":
+							[
+								"sublime_linter.protected_regions"
+							],
+							"SL.15.region_keys":
+							[
+								"sublime_linter.protected_regions"
+							],
+							"SL.30.region_keys":
+							[
+								"sublime_linter.protected_regions"
+							],
+							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 5983.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 3,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "inst/htmlwidgets/lib/legend.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 2860,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"SL.16.region_keys":
+							[
+							],
+							"SL.17.region_keys":
+							[
+							],
+							"SL.26.region_keys":
+							[
+							],
+							"SL.53.region_keys":
+							[
+								"sublime_linter.protected_regions"
+							],
+							"history_list_is_closing": true,
+							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 2,
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "inst/htmlwidgets/simpleD3Bar.yaml",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 358,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								358,
+								358
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/YAML/YAML.sublime-syntax",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 4,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "inst/htmlwidgets/lib/legend.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 2860,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								515,
+								515
+							]
+						],
+						"settings":
+						{
+							"SL.16.region_keys":
+							[
+							],
+							"SL.17.region_keys":
+							[
+							],
+							"SL.26.region_keys":
+							[
+							],
+							"SL.53.region_keys":
+							[
+								"sublime_linter.protected_regions"
+							],
+							"history_list_is_closing": true,
+							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 5,
+					"type": "text"
+				}
+			]
+		},
+		{
+			"selected": 1,
+			"sheets":
+			[
+				{
+					"buffer": 4,
+					"file": "inst/htmlwidgets/lib/lineChartDefs.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 15640,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1231,
+								1231
+							]
+						],
+						"settings":
+						{
+							"SL.18.region_keys":
+							[
+								"sublime_linter.protected_regions"
+							],
+							"SL.20.region_keys":
+							[
+								"sublime_linter.protected_regions"
+							],
+							"SL.21.region_keys":
+							[
+							],
+							"SL.81.region_keys":
+							[
+							],
+							"history_list_is_closing": true,
+							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 180.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 0,
+					"file": "inst/htmlwidgets/simpleD3Bar.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 2259,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"SL.109.region_keys":
+							[
+							],
+							"SL.14.region_keys":
+							[
+							],
+							"SL.29.region_keys":
+							[
+							],
+							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				}
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 38.0
+	},
+	"input":
+	{
+		"height": 36.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			],
+			[
+				1,
+				0,
+				2,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			0.447222222222,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.SublimeLinter":
+	{
+		"height": 0.0
+	},
+	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"output.git":
+	{
+		"height": 90.0
+	},
+	"pinned_build_system": "",
+	"project": "SublimeProject.sublime-project",
+	"replace":
+	{
+		"height": 72.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+			[
+				"",
+				"simpleD3Bar.js"
+			],
+			[
+				"le\t",
+				"lib\\legend.js"
+			],
+			[
+				"sim",
+				"simpleD3Bar.yaml"
+			],
+			[
+				"bar\t",
+				"simpleD3Bar.yaml"
+			],
+			[
+				"line",
+				"simpleD3Line.yaml"
+			],
+			[
+				"bar",
+				"simpleD3Bar.js"
+			],
+			[
+				"le",
+				"lib\\legend.js"
+			],
+			[
+				"d3-",
+				"lib\\d3SaveSvg\\d3-save-svg.js"
+			],
+			[
+				"lin",
+				"lib\\lineChartDefs.js"
+			],
+			[
+				"len",
+				"lib\\legend.js"
+			],
+			[
+				"fun",
+				"lib\\functionDefs.js"
+			],
+			[
+				"linya",
+				"simpleD3Line.yaml"
+			]
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_symbol":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"selected_group": 1,
+	"settings":
+	{
+	},
+	"show_minimap": false,
+	"show_open_files": false,
+	"show_tabs": true,
+	"side_bar_visible": false,
+	"side_bar_width": 140.0,
+	"status_bar_visible": false,
+	"template_settings":
+	{
+	}
+}
