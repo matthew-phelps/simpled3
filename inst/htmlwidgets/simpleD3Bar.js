@@ -36,9 +36,8 @@ HTMLWidgets.widget({
 
     // download function
     d3.select("#download").on("click", function(){
-      d3.select(this)
-        .attr("href", 'data:application/octet-stream;base64,' + btoa(d3.select("#svgBar").html()))
-        .attr("download", "viz.svg");
+      save(d3.select('barSvg').node(), config);
+          saveSvgAsPng(document.getElementById("barSvg"), "plot.png", {scale: 2, backgroundColor: "#FFFFFF"});
       });
 
 
