@@ -447,7 +447,7 @@ function updateBarChart(inData, width, height, el, margin, colors, barPadding, t
         .attr("x1", scaleX1.bandwidth())
         .attr("x2", scaleX1.bandwidth())
         .attr("y1", 0)
-        .attr("y2", dim.height - legendHeight;
+        .attr("y2", dim.height - legendHeight);
 
   }
 
