@@ -35,10 +35,7 @@ HTMLWidgets.widget({
     var chartExists = false;
     var resized = false;
     
-        // Download function - not sure why this can site outidethe render functions, but it works
-    d3.select("#download_line").on("click", function(){
-          saveSvgAsPng(document.getElementById("svgLine"), "HjerteTal_chart.png", {scale: 2, backgroundColor: "#FFFFFF"});
-      });
+    
 
     return {
 
@@ -52,7 +49,11 @@ HTMLWidgets.widget({
           updateLineChart(x, width, height, el, margin, rectPadding, colors, tLong, tShort, cRadius, bigRadius, rectSize, tablePadding, numberFormat, legendHeight);
         }
         this.x = x;
-
+        
+        // Download function
+        d3.select("#download_line").on("click", function(){
+              saveSvgAsPng(document.getElementById("svgLine"), "HjerteTal_chart.png", {scale: 2, backgroundColor: "#FFFFFF"});
+          });
       },
 
       resize: function(width, height) {

@@ -58,7 +58,11 @@ HTMLWidgets.widget({
 
         }
         this.x = x; // store for resize
-
+        
+        // Download function
+          d3.select("#download_bar").on("click", function(){
+                saveSvgAsPng(document.getElementById("svgBar"), "HjerteTal_chart.png", {scale: 2, backgroundColor: "#FFFFFF"});
+            });
       },
 
       resize: function(width, height) {
