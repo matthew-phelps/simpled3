@@ -4,7 +4,7 @@ HTMLWidgets.widget({
 
   type: 'output',
 
-  factory: function(el, width, height, x) {
+  factory: function(el, width, height) {
     var margin = ({top:10, right:20, bottom:40, left:60});
     var colors = [ '#166abd', '#bd6916'];
     var barPadding = 0.2;
@@ -34,11 +34,7 @@ HTMLWidgets.widget({
     var resized = false;
 
 
-    // download function
-    d3.select("#download_bar").on("click", function(){
-          saveSvgAsPng(document.getElementById("svgBar"), "HjerteTal_chart.png", {scale: 2, backgroundColor: "#FFFFFF"});
-      });
-
+ 
 
     return {
 
@@ -46,6 +42,12 @@ HTMLWidgets.widget({
         if(!chartExists){
           chartExists = true;
           drawBarChart(x, width, height, el, margin, colors, barPadding, tLong, tShort, mOpacity, rectSize, tablePadding, numberFormat, legendHeight);
+
+          // download function
+          d3.select("#download_bar").on("click", function(){
+                saveSvgAsPng(document.getElementById("svgBar"), "HjerteTal_chart.png", {scale: 2, backgroundColor: "#FFFFFF"});
+            });
+
         } else if (resized){
           updateBarChart(x, this.dim.width, this.dim.height, el, margin, colors, barPadding, tLong, tShort, mOpacity, numberFormat, legendHeight);
         } else {
