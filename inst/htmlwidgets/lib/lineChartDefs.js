@@ -4,7 +4,8 @@ function drawLineChart(inData, width, height, el, margin, rectPadding, colors, t
     width: width - margin.left - margin.right,
     height: height - margin.top - margin.bottom
   };
-  
+
+  var chartHeight = dim.height  - legendHeight;
   // Data management 
   // Make sure variable name is consistent for 
   // different variables/languages
@@ -37,12 +38,12 @@ function drawLineChart(inData, width, height, el, margin, rectPadding, colors, t
   // Axis titles
   topG.append("text")
     .attr("x", dim.width / 2)
-    .attr("y", dim.height + margin.bottom - 5 - legendHeight)
+    .attr("y", chartHeight + margin.bottom - 5)
     .attr("class", "line x axisTitle");
     
   topG.append("text")
     .attr("transform", "rotate(-90)")
-    .attr("x", 0 - (dim.height  - legendHeight)/ 2)
+    .attr("x", 0 - chartHeight/ 2)
     .attr("y", 0 - margin.left + 20)
     .attr("class", "line y axisTitle");
 
@@ -79,14 +80,14 @@ var grouping1Names = data.map(d => d.year);
 
   var scaleY = d3.scaleLinear()
     .domain([0, maxY])
-    .range([dim.height - legendHeight, 0]);
+    .range([chartHeight, 0]);
 
   var scaleColors = d3.scaleOrdinal()
    .range(colors);
   
   xAxis.call(d3.axisBottom(scaleX)
     .tickFormat(d3.format("")))
-    .attr("transform", "translate(" + 0 + "," + dim.height + ')');
+    .attr("transform", "translate(" + 0 + "," + chartHeight + ')');
 
 
   // Mouseover area for each circle should extend halfway to next circle on x-axis. This will cause problems for nearby male/female circles
@@ -308,7 +309,7 @@ var scaleXRects = d3.scaleBand()
 
   var scaleY = d3.scaleLinear()
     .domain([0, maxY])
-    .range([dim.height - legendHeight, 0]);
+    .range([chartHeight, 0]);
 
   var scaleColors = d3.scaleOrdinal()
    .range(colors);
@@ -450,10 +451,10 @@ var dim = {
 
   svg.select('line.x.axisTitle')
     .attr("x", dim.width / 2)
-   .attr("y", dim.height + margin.bottom - 5 - legendHeight);
+   .attr("y", chartHeight + margin.bottom - 5);
 
   svg.select('line.y.axisTitle')
-    .attr("x", 0 - (dim.height - legendHeight) / 2)
+    .attr("x", 0 - chartHeight / 2)
     .attr("y", 0 - margin.left + 20);
 
     // Line generators
@@ -479,7 +480,7 @@ var scaleXRects = d3.scaleBand()
 
   var scaleY = d3.scaleLinear()
     .domain([0, maxY])
-    .range([dim.height - legendHeight, 0]);
+    .range([chartHeight, 0]);
 
   var scaleColors = d3.scaleOrdinal()
    .range(colors);
