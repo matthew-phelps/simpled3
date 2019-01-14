@@ -43,10 +43,7 @@ HTMLWidgets.widget({
           chartExists = true;
           drawBarChart(x, width, height, el, margin, colors, barPadding, tLong, tShort, mOpacity, rectSize, tablePadding, numberFormat, legendHeight);
 
-          // download function
-          d3.select("#download_bar").on("click", function(){
-                saveSvgAsPng(document.getElementById("svgBar"), "HjerteTal_chart.png", {scale: 2, backgroundColor: "#FFFFFF"});
-            });
+          
 
         } else if (resized){
           updateBarChart(x, this.dim.width, this.dim.height, el, margin, colors, barPadding, tLong, tShort, mOpacity, numberFormat, legendHeight);
@@ -56,6 +53,10 @@ HTMLWidgets.widget({
         }
         this.x = x; // store for resize
 
+        // download function - needs to be called on every call of renderValue?
+          d3.select("#download_bar").on("click", function(){
+                saveSvgAsPng(document.getElementById("svgBar"), "HjerteTal_chart.png", {scale: 2, backgroundColor: "#FFFFFF"});
+            });
       },
 
       resize: function(width, height) {
