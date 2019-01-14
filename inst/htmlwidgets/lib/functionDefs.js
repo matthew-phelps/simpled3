@@ -152,7 +152,7 @@ function drawBarChart(inData, width, height, el, margin, colors, barPadding, tLo
     .attr("x", d => scaleX(d.key))
     .attr("width", scaleX.bandwidth())
     .attr('y', 0)
-    .attr("height", dim.height)
+    .attr("height", dim.height - legendHeight)
         .on("mouseover", showTooltip)
         .on("mousemove", moveTooltip)
         .on("mouseout", hideTooltip)
@@ -243,7 +243,7 @@ function showTooltip(d) {
         .attr("x1", scaleX1.bandwidth())
         .attr("x2", scaleX1.bandwidth())
         .attr("y1", 0)
-        .attr("y2", dim.height);
+        .attr("y2", dim.height - legendHeight);
   }
 
   function moveTooltip(d) {
@@ -394,7 +394,7 @@ function updateBarChart(inData, width, height, el, margin, colors, barPadding, t
     .attr("x", d => scaleX(d.key))
     .attr("width", scaleX.bandwidth())
     .attr('y', 0)
-    .attr("height", height)
+    .attr("height", dim.height - legendHeight)
         .on("mouseover", showTooltip)
         .on("mousemove", moveTooltip)
         .on("mouseout", hideTooltip);
@@ -447,7 +447,7 @@ function updateBarChart(inData, width, height, el, margin, colors, barPadding, t
         .attr("x1", scaleX1.bandwidth())
         .attr("x2", scaleX1.bandwidth())
         .attr("y1", 0)
-        .attr("y2", dim.height);
+        .attr("y2", dim.height - legendHeight;
 
   }
 
@@ -495,7 +495,7 @@ function resizeBarChart(inData, width, height, el, margin, colors, barPadding, t
     .attr("y", dim.height + margin.bottom - 5 - legendHeight);
 
     d3.selectAll('.bar.y.axisTitle')
-    .attr("x", 0 - dim.height / 2)
+    .attr("x", 0 - (dim.height - legendHeight) / 2)
     .attr("y", 0 - margin.left + 20);
 
   var data = HTMLWidgets.dataframeToD3(inData.data);
@@ -560,7 +560,7 @@ function resizeBarChart(inData, width, height, el, margin, colors, barPadding, t
       .attr("x", d => scaleX(d.key))
       .attr("width", scaleX.bandwidth())
       .attr('y', 0)
-      .attr("height", dim.height);
+      .attr("height",  dim.height - legendHeight);
 
   mouseSvg
       .on("mouseover", showTooltip)
@@ -607,7 +607,7 @@ function resizeBarChart(inData, width, height, el, margin, colors, barPadding, t
         .attr("x1", scaleX1.bandwidth())
         .attr("x2", scaleX1.bandwidth())
         .attr("y1", 0)
-        .attr("y2", dim.height);
+        .attr("y2", dim.height - legendHeight);
   }
 
   function moveTooltip(d) {
