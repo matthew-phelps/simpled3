@@ -175,7 +175,7 @@ var mouseRectsFemale = chartArea
     .attr("x", d => scaleX(d.year) - (scaleXRects.bandwidth() / 2))
     .attr("width", scaleXRects.bandwidth())
     .attr("y", 0)
-    .attr("height", height);
+    .attr("height", chartHeight);
 
 mouseRectsFemale
       .on("mouseover", showTooltip)
@@ -354,7 +354,7 @@ var mouseRectsFemale = chartArea
     .attr("x", d => scaleX(d.year) - (scaleXRects.bandwidth() / 2))
     .attr("width", scaleXRects.bandwidth())
     .attr("y", 0)
-    .attr("height", height)
+    .attr("height", chartHeight)
       .on("mouseover", showTooltip)
       .on("mousemove", moveTooltip)
       .on("mouseout", hideTooltip);
@@ -517,7 +517,7 @@ var scaleXRects = d3.scaleBand()
     .attr("x", d => scaleX(d.year) - (scaleXRects.bandwidth() / 2))
     .attr("width", scaleXRects.bandwidth())
     .attr("y", 0)
-    .attr("height", height)
+    .attr("height", chartHeight)
       .on("mouseover", showTooltip)
       .on("mousemove", moveTooltip)
       .on("mouseout", hideTooltip);
