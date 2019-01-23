@@ -43,7 +43,7 @@ function drawBarChart(inData, width, height, el,
   chartAxes.append("text")
     .attr("transform", "rotate(-90)")
     .attr("x", 0 - (chartAreaHeight) / 2)
-    .attr("y", 0 - margin.left + 20)
+    .attr("y", 0 - margin.left + 15)
     .attr("class", "bar y axisTitle plot_text");
 
   // TOOLTIP
@@ -161,7 +161,7 @@ function drawBarChart(inData, width, height, el,
     .attr("height", chartAreaHeight)
         .on("mouseover", showTooltip)
         .on("mousemove", moveTooltip)
-        .on("mouseout", hideTooltip);\
+        .on("mouseout", hideTooltip);
         
 
 
