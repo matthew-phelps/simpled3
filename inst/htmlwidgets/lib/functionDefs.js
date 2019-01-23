@@ -7,6 +7,7 @@ function drawBarChart(inData, width, height, el,
     height: height - margin.top - margin.bottom
   };
 
+  var chartAreaHeight = dim.height - legendHeight - titleHeight;
   var container = d3.select(el).style("position", "relative")
     .append('div')
     .attr("id", "containerBar");
@@ -22,23 +23,26 @@ function drawBarChart(inData, width, height, el,
   var chartArea = topG.append("g").attr("class", "chartArea")
     .attr('transform', 'translate(' + 0 + ',' + titleHeight +')');
 
+  var chartAxes = togG.append("g")
+    .attr('transform', 'translate(' + 0 + ',' + titleHeight +')');
+
   // Initial axis
-  var yAxis = chartArea.append('g')
+  var yAxis = chartAxes.append('g')
     .attr("class", "bar y axis");
 
-  var xAxis = chartArea.append('g')
+  var xAxis = chartAxes.append('g')
     .attr("class", "bar x axis");
 
 
   // Axis titles
-  chartArea.append("text")
+  chartAxes.append("text")
     .attr("x", dim.width / 2)
-    .attr("y", dim.height + margin.bottom - 5 - legendHeight)
+    .attr("y", dim.height + margin.bottom - 5)
     .attr("class", "bar x axisTitle");
     
-  chartArea.append("text")
+  chartAxes.append("text")
     .attr("transform", "rotate(-90)")
-    .attr("x", 0 - (dim.height - legendHeight) / 2)
+    .attr("x", 0 - (chartAreaHeight) / 2)
     .attr("y", 0 - margin.left + 20)
     .attr("class", "bar y axisTitle");
 
@@ -79,7 +83,7 @@ function drawBarChart(inData, width, height, el,
   var maxY = d3.max(newData, d => d3.max(d.values, k => k.value));
   var scaleY = d3.scaleLinear()
     .domain([0, maxY])
-    .range([dim.height - legendHeight, 0]);
+    .range([chartAreaHeight, 0]);
 
   var scaleX = d3.scaleBand()
     .domain(grouping1Names)
@@ -154,7 +158,7 @@ function drawBarChart(inData, width, height, el,
     .attr("x", d => scaleX(d.key))
     .attr("width", scaleX.bandwidth())
     .attr('y', 0)
-    .attr("height", dim.height - legendHeight)
+    .attr("height", chartAreaHeight)
         .on("mouseover", showTooltip)
         .on("mousemove", moveTooltip)
         .on("mouseout", hideTooltip)
@@ -169,7 +173,7 @@ function drawBarChart(inData, width, height, el,
   
   xAxis.transition()
     .call(d3.axisBottom(scaleX))
-    .attr("transform", 'translate(0,' + (dim.height - legendHeight) + ')');
+    .attr("transform", 'translate(0,' + (chartAreaHeight) + ')');
 
   // Add axes titles
   topG.select(".bar.y.axisTitle")
