@@ -5,7 +5,7 @@ HTMLWidgets.widget({
   type: 'output',
 
   factory: function(el, width, height) {
-    var margin = ({top:10, right:20, bottom:40, left:60});
+    var margin = ({top:5, right:20, bottom:40, left:60});
     var colors = [ '#166abd', '#bd6916'];
     var barPadding = 0.2;
     var tLong = 450;
@@ -13,7 +13,7 @@ HTMLWidgets.widget({
     var mOpacity = 0.25;
     var rectSize = 20; //dimension of colored square
     legendHeight = 50;
-    titleHeight = 20;
+    titleHeight = 25;
     var tablePadding = 10; 
 
     /*Format requires defining formats for several data types even though they will not be uses - apparently*/
