@@ -5,7 +5,7 @@ HTMLWidgets.widget({
   type: 'output',
 
   factory: function(el, width, height) {
-    var margin = ({top:20, right:20, bottom:40, left:60});
+    var margin = ({top:1, right:20, bottom:40, left:70});
     var rectPadding = 0.0;
     var colors = ['#166abd', '#bd6916'];
     var tLong = 450;
@@ -14,6 +14,7 @@ HTMLWidgets.widget({
     var bigRadius = 15;
     var rectSize = 20; //dimension of colored square
     legendHeight = 50;
+    titleHeight = 30;
     var tablePadding = 10; 
     var localeFormatter = d3.formatLocale({
       "decimal": ",",
@@ -26,7 +27,7 @@ HTMLWidgets.widget({
                 "periods": ["", ""],
                 "days": ["Sonntag", "Montag", "Dienstag", "Mittwoch", "Donnerstag", "Freitag", "Samstag"],
                 "shortDays": ["So", "Mo", "Di", "Mi", "Do", "Fr", "Sa"],
-                "months": ["Januar", "Februar", "März", "April", "Mai", "Juni", "Juli", "August", "September", "Oktober", "November", "Dezember"],
+                "months": ["Januar", "Februar", "März", "April", "Mai", "Juni", "Juli", "August", "September", "Oktober", "November", "December"],
                 "shortMonths": ["Jan", "Feb", "Mär", "Apr", "Mai", "Jun", "Jul", "Aug", "Sep", "Okt", "Nov", "Dec"]
     });
     var numberFormat = localeFormatter.format(",");
@@ -42,11 +43,11 @@ HTMLWidgets.widget({
       renderValue: function(x) {
         if(!chartExists){
           chartExists = true;
-          drawLineChart(x, width, height, el, margin, rectPadding, colors, tLong, tShort, cRadius, bigRadius, rectSize, tablePadding, numberFormat, legendHeight);
+          drawLineChart(x, width, height, el, margin, rectPadding, colors, tLong, tShort, cRadius, bigRadius, rectSize, tablePadding, numberFormat, legendHeight, titleHeight);
          } else if (resized){
-          updateLineChart(x, this.dim.width, this.dim.height, el, margin, rectPadding, colors, tLong, tShort, cRadius, bigRadius,rectSize, tablePadding, numberFormat, legendHeight);
+          updateLineChart(x, this.dim.width, this.dim.height, el, margin, rectPadding, colors, tLong, tShort, cRadius, bigRadius,rectSize, tablePadding, numberFormat, legendHeight,titleHeight);
         } else {
-          updateLineChart(x, width, height, el, margin, rectPadding, colors, tLong, tShort, cRadius, bigRadius, rectSize, tablePadding, numberFormat, legendHeight);
+          updateLineChart(x, width, height, el, margin, rectPadding, colors, tLong, tShort, cRadius, bigRadius, rectSize, tablePadding, numberFormat, legendHeight,titleHeight);
         }
         this.x = x;
         
@@ -58,7 +59,7 @@ HTMLWidgets.widget({
 
       resize: function(width, height) {
 
-        resizeLineChart(this.x, width, height, el, margin, rectPadding, colors, tLong, tShort, cRadius, bigRadius, rectSize, tablePadding, numberFormat, legendHeight);
+        resizeLineChart(this.x, width, height, el, margin, rectPadding, colors, tLong, tShort, cRadius, bigRadius, rectSize, tablePadding, numberFormat, legendHeight,titleHeight);
           var dim = {
                 width: width,
                 height: height

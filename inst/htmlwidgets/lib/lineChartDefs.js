@@ -1,11 +1,12 @@
 /*jshint esversion: 6 */
-function drawLineChart(inData, width, height, el, margin, rectPadding, colors, tLong, tShort, cRadius, bigRadius, rectSize, tablePadding, numberFormat) {
+function drawLineChart(inData, width, height, el, margin, rectPadding, colors, tLong, tShort, cRadius, bigRadius, rectSize, tablePadding, numberFormat, legendHeight, titleHeight) {
   var dim = {
     width: width - margin.left - margin.right,
     height: height - margin.top - margin.bottom
   };
 
-  var chartHeight = dim.height  - legendHeight;
+  
+  var chartAreaHeight = dim.height - legendHeight - titleHeight;
 
   var container = d3.select(el).html("").style("position", "relative")
     .append('div')
@@ -32,12 +33,12 @@ function drawLineChart(inData, width, height, el, margin, rectPadding, colors, t
   // Axis titles
   topG.append("text")
     .attr("x", dim.width / 2)
-    .attr("y", chartHeight + margin.bottom - 5)
+    .attr("y", chartAreaHeight + margin.bottom - 5)
     .attr("class", "line x axisTitle");
     
   topG.append("text")
     .attr("transform", "rotate(-90)")
-    .attr("x", 0 - chartHeight/ 2)
+    .attr("x", 0 - chartAreaHeight/ 2)
     .attr("y", 0 - margin.left + 20)
     .attr("class", "line y axisTitle");
 
@@ -74,14 +75,14 @@ var grouping1Names = data.map(d => d.year);
 
   var scaleY = d3.scaleLinear()
     .domain([0, maxY])
-    .range([chartHeight, 0]);
+    .range([chartAreaHeight, 0]);
 
   var scaleColors = d3.scaleOrdinal()
    .range(colors);
   
   xAxis.call(d3.axisBottom(scaleX)
     .tickFormat(d3.format("")))
-    .attr("transform", "translate(" + 0 + "," + chartHeight + ')');
+    .attr("transform", "translate(" + 0 + "," + chartAreaHeight + ')');
 
   
   // Line generators
@@ -167,7 +168,7 @@ var mouseRectsFemale = chartArea
     .attr("x", d => scaleX(d.year) - (scaleXRects.bandwidth() / 2))
     .attr("width", scaleXRects.bandwidth())
     .attr("y", 0)
-    .attr("height", chartHeight);
+    .attr("height", chartAreaHeight);
 
 mouseRectsFemale
       .on("mouseover", showTooltip)
@@ -263,7 +264,8 @@ var dim = {
     width: width - margin.left - margin.right,
     height: height - margin.top - margin.bottom
   };
-  var chartHeight = dim.height  - legendHeight;
+
+  var chartAreaHeight = dim.height  - legendHeight;
   var svg = d3.select("#containerLine").select('svg');
   var chartArea = svg.selectAll('.chartArea');
   var tooltip = d3.select("#tooltipLine");
@@ -301,7 +303,7 @@ var scaleXRects = d3.scaleBand()
 
   var scaleY = d3.scaleLinear()
     .domain([0, maxY])
-    .range([chartHeight, 0]);
+    .range([chartAreaHeight, 0]);
 
   var scaleColors = d3.scaleOrdinal()
    .range(colors);
@@ -346,7 +348,7 @@ var mouseRectsFemale = chartArea
     .attr("x", d => scaleX(d.year) - (scaleXRects.bandwidth() / 2))
     .attr("width", scaleXRects.bandwidth())
     .attr("y", 0)
-    .attr("height", chartHeight)
+    .attr("height", chartAreaHeight)
       .on("mouseover", showTooltip)
       .on("mousemove", moveTooltip)
       .on("mouseout", hideTooltip);
@@ -422,7 +424,8 @@ var dim = {
     width: width - margin.left - margin.right,
     height: height - margin.top - margin.bottom
   };
-  var chartHeight = dim.height  - legendHeight;
+ 
+  var chartAreaHeight = dim.height  - legendHeight;
   var data = HTMLWidgets.dataframeToD3(inData.data);
   var varName = data[0].variable;
   var yearName = Object.keys(data[0])[0];
@@ -443,10 +446,10 @@ var dim = {
 
   svg.select('line.x.axisTitle')
     .attr("x", dim.width / 2)
-   .attr("y", chartHeight + margin.bottom - 5);
+   .attr("y", chartAreaHeight + margin.bottom - 5);
 
   svg.select('line.y.axisTitle')
-    .attr("x", 0 - chartHeight / 2)
+    .attr("x", 0 - chartAreaHeight / 2)
     .attr("y", 0 - margin.left + 20);
 
     // Line generators
@@ -472,7 +475,7 @@ var scaleXRects = d3.scaleBand()
 
   var scaleY = d3.scaleLinear()
     .domain([0, maxY])
-    .range([chartHeight, 0]);
+    .range([chartAreaHeight, 0]);
 
   var scaleColors = d3.scaleOrdinal()
    .range(colors);
@@ -509,7 +512,7 @@ var scaleXRects = d3.scaleBand()
     .attr("x", d => scaleX(d.year) - (scaleXRects.bandwidth() / 2))
     .attr("width", scaleXRects.bandwidth())
     .attr("y", 0)
-    .attr("height", chartHeight)
+    .attr("height", chartAreaHeight)
       .on("mouseover", showTooltip)
       .on("mousemove", moveTooltip)
       .on("mouseout", hideTooltip);
