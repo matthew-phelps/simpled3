@@ -58,7 +58,7 @@ function drawLegend(topG, inData, dim, titleHeight, legendHeight, wrapperName, s
 
 titleWrapper.append("text")
   .text(inData.metaData.plotTitle)
-  .attr("alignment-baseline", "ideaographic");
+  .attr("alignment-baseline", "hanging");
   /*var downloadButton = downloadButtonWrapper
   .append('rect')
   .attr('class', 'download button')
