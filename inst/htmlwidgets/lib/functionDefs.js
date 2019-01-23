@@ -1,5 +1,6 @@
 /*jshint esversion: 6 */
-function drawBarChart(inData, width, height, el, margin, colors, barPadding, tLong, tShort, mOpacity, rectSize, tablePadding, numberFormat, legendHeight) {
+function drawBarChart(inData, width, height, el,
+ margin, colors, barPadding, tLong, tShort, mOpacity, rectSize, tablePadding, numberFormat, legendHeight, titleHeight) {
 
   var dim = {
     width: width - margin.left - margin.right,
@@ -187,7 +188,7 @@ function drawBarChart(inData, width, height, el, margin, colors, barPadding, tLo
   /// ADD LEGEND
  var wrapperName = "legendWrapperBar";
  var svgName = "svgLegendBar";
-  drawLegend(topG, inData, dim, margin, legendHeight, wrapperName, svgName);
+  drawLegend(topG, inData, dim, titleHeight, legendHeight, wrapperName, svgName);
 
   // Tooltip table setup
   var cellSvgWidth = "20%";

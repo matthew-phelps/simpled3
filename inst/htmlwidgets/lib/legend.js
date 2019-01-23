@@ -2,14 +2,14 @@
 //////////////////    DRAW LEGEND  & TITLE ////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////
 
-function drawLegend(topG, inData, dim, margin, legendHeight, wrapperName, svgName) {
+function drawLegend(topG, inData, dim, titleHeight, legendHeight, wrapperName, svgName) {
 
 
   var rectSize = 20; //dimension of colored square
   var padding = 10; 
   var entryWidth = 100; // width of square and text combined
   var legendWidth = rectSize + 2*padding + entryWidth;
-  var titleHeight = 20;
+  
 
 
 // ADD LEGEND BOXES

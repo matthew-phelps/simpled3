@@ -13,6 +13,7 @@ HTMLWidgets.widget({
     var mOpacity = 0.25;
     var rectSize = 20; //dimension of colored square
     legendHeight = 50;
+    titleHeight = 20;
     var tablePadding = 10; 
     var localeFormatter = d3.formatLocale({
       "decimal": ",",
@@ -47,7 +48,8 @@ HTMLWidgets.widget({
       renderValue: function(x) {
         if(!chartExists){
           chartExists = true;
-          drawBarChart(x, width, height, el, margin, colors, barPadding, tLong, tShort, mOpacity, rectSize, tablePadding, numberFormat, legendHeight);
+          drawBarChart(x, width, height, el, margin, colors, barPadding, tLong, tShort, mOpacity, rectSize, tablePadding, numberFormat,
+           legendHeight, titleHeight);
 
           
 
