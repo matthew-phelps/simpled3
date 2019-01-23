@@ -52,7 +52,7 @@ HTMLWidgets.widget({
         
         // Download function
         d3.select("#download_line").on("click", function(){
-              saveSvgAsPng(document.getElementById("svgLine"), "HjerteTal_chart.png", {scale: 1, width: "600px", height:"400px", backgroundColor: "#FFFFFF"});
+              saveSvgAsPng(document.getElementById("svgLine"), "HjerteTal_chart.png", {scale: 1, width: "600", height:"400", backgroundColor: "#FFFFFF"});
           });
       },
 
