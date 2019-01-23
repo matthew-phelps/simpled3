@@ -60,6 +60,7 @@ function drawLegend(topG, inData, dim, titleHeight, legendHeight, wrapperName, s
 titleWrapper.append("text")
   .text(inData.metaData.plotTitle)
   .attr("alignment-baseline", "hanging")
+  .attr("text-anchor", "start")
   .attr("id", "plotTitleDownload");
   /*var downloadButton = downloadButtonWrapper
   .append('rect')
