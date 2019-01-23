@@ -174,13 +174,13 @@ function drawBarChart(inData, width, height, el,
     .attr("transform", 'translate(0,' + (chartAreaHeight) + ')');
 
   // Add axes titles
-  topG.select(".bar.y.axisTitle")
+  chartAxes.select(".bar.y.axisTitle")
     .transition()
     .duration(tLong)
     .text(varName)
       .style("text-anchor", "middle");
 
-  topG.select(".bar.x.axisTitle")
+  chartAxes.select(".bar.x.axisTitle")
     .transition()
     .duration(tLong)
     .style('opacity', 1)
@@ -481,12 +481,14 @@ function updateBarChart(inData, width, height, el, margin, colors, barPadding, t
 //////////////////    RESIZE     /////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////
 
-function resizeBarChart(inData, width, height, el, margin, colors, barPadding, tLong, tShort, mOpacity, numberFormat) {
+function resizeBarChart(inData, width, height, el, margin, colors, barPadding, tLong, tShort, mOpacity, numberFormat, legendHeight, titleHeight) {
   var dim = {
     width: width - margin.left - margin.right,
     height: height - margin.top - margin.bottom
   };
 
+  var chartAreaHeight = dim.height - legendHeight - titleHeight;
+  
   var svg = d3.select('#containerBar').select('svg')
     .attr("width", dim.width + margin.left + margin.right)
     .attr("height", dim.height + margin.top + margin.bottom);
@@ -497,10 +499,10 @@ function resizeBarChart(inData, width, height, el, margin, colors, barPadding, t
   // Axis titles
   d3.selectAll('.bar.x.axisTitle')
     .attr("x", dim.width / 2)
-    .attr("y", dim.height + margin.bottom - 5 - legendHeight);
+    .attr("y", chartAreaHeight + margin.bottom - 5);
 
     d3.selectAll('.bar.y.axisTitle')
-    .attr("x", 0 - (dim.height - legendHeight) / 2)
+    .attr("x", 0 - (chartAreaHeight) / 2)
     .attr("y", 0 - margin.left + 20);
 
   var data = HTMLWidgets.dataframeToD3(inData.data);
@@ -530,7 +532,7 @@ function resizeBarChart(inData, width, height, el, margin, colors, barPadding, t
   // SCALES
   var scaleY = d3.scaleLinear()
     .domain([0, maxY])
-    .range([dim.height - legendHeight, 0]);
+    .range([chartAreaHeight, 0]);
 
   var scaleX = d3.scaleBand()
     .domain(grouping1Names)
@@ -565,7 +567,7 @@ function resizeBarChart(inData, width, height, el, margin, colors, barPadding, t
       .attr("x", d => scaleX(d.key))
       .attr("width", scaleX.bandwidth())
       .attr('y', 0)
-      .attr("height",  dim.height - legendHeight);
+      .attr("height", chartAreaHeight);
 
   mouseSvg
       .on("mouseover", showTooltip)
