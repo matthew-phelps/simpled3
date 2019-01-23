@@ -53,7 +53,7 @@ function drawLegend(topG, inData, dim, titleHeight, legendHeight, wrapperName, s
   /// ADD TITLE
   var titleWrapper = topG.append('g')
   .attr("class", wrapperName + " title")
-  .attr("transform" , 'translate(' + 0 + ',' + (titleHeight) + ')');
+  .attr("transform" , 'translate(' + 0 + ',' + 2 + ')');
 
 
 titleWrapper.append("text")
