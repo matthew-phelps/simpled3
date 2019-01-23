@@ -56,10 +56,11 @@ function drawLegend(topG, inData, dim, titleHeight, legendHeight, wrapperName, s
   .attr("transform" , 'translate(' + 0 + ',' + 0 + ')');
 
 
+/*Style text white with CSS - then CSS is ignored in saveSvgAsPng function - so it will turn back to black!*/
 titleWrapper.append("text")
   .text(inData.metaData.plotTitle)
   .attr("alignment-baseline", "hanging")
-  .style("fill", "white");
+  .attr("id", "plotTitleDownload");
   /*var downloadButton = downloadButtonWrapper
   .append('rect')
   .attr('class', 'download button')
