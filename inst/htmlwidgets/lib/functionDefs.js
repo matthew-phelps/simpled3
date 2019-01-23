@@ -162,9 +162,7 @@ function drawBarChart(inData, width, height, el,
         .on("mouseover", showTooltip)
         .on("mousemove", moveTooltip)
         .on("mouseout", hideTooltip)
-        .on("click", function(){
-          saveSvgAsPng(document.getElementById("svgBar"), "plot.png", {scale: 2, backgroundColor: "#FFFFFF"});
-});
+        
 
 
   // Add axes
