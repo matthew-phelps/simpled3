@@ -21,7 +21,8 @@ function drawLineChart(inData, width, height, el, margin, rectPadding, colors, t
     .attr('transform', 'translate(' + margin.left + ',' + margin.top +')');
 
   var chartArea = topG.append("g")
-    .attr("class", "chartArea");
+    .attr("class", "chartArea")
+    .attr('transform', 'translate(' + 0 + ',' + titleHeight +')');
 
   var chartAxes = topG.append("g").attr("class", "chartAxes")
       .attr('transform', 'translate(' + 0 + ',' + titleHeight +')');
