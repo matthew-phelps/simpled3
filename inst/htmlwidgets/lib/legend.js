@@ -2,7 +2,7 @@
 //////////////////    DRAW LEGEND  & TITLE ////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////
 
-function drawLegend(topG, inData, dim, margin, LegendHeight, wrapperName, svgName) {
+function drawLegend(topG, inData, dim, margin, legendHeight, wrapperName, svgName) {
 
 
   var rectSize = 20; //dimension of colored square
@@ -32,22 +32,22 @@ function drawLegend(topG, inData, dim, margin, LegendHeight, wrapperName, svgNam
     legendMale.append("rect")
     .attr("width", rectSize)
     .attr("height", rectSize)
-    .style("fill", inData.legend.colors[1]);
+    .style("fill", inData.metaData.colors[1]);
 
     legendMale.append("text")
     .attr('transform', 'translate(' + (rectSize + padding) +',' + rectSize/2 + ')')
   	 	.attr('alignment-baseline', 'middle') // verticle alignment?
-  	 	.text(inData.legend.legendData.sex[1]);
+  	 	.text(inData.legend.metaData.sex[1]);
 
 
      legendFemale.append("rect")
      .attr("width", rectSize)
      .attr("height", rectSize)
-     .style("fill", inData.legend.colors[0]);
+     .style("fill", inData.metaData.colors[0]);
      legendFemale.append("text")
      .attr('transform', 'translate(' + (rectSize + padding) +',' + rectSize/2 + ')')
   	 	.attr('alignment-baseline', 'middle') // verticle alignment?
-  	 	.text(inData.legend.legendData.sex[0]);
+  	 	.text(inData.legend.metaData.sex[0]);
 
 
   /// ADD TITLE
@@ -57,7 +57,7 @@ function drawLegend(topG, inData, dim, margin, LegendHeight, wrapperName, svgNam
 
 
 titleWrapper.append("text")
-  .text(inData.legend.plotTitle);
+  .text(inData.metaData.plotTitle);
   /*var downloadButton = downloadButtonWrapper
   .append('rect')
   .attr('class', 'download button')

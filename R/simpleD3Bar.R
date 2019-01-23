@@ -10,19 +10,19 @@
 #' @param elementId Id if specified
 #'
 #' @export
-simpleD3Bar <- function(data, colors, plotTitle, metaData, width = NULL, height = NULL, elementId = NULL) {
+simpleD3Bar <- function(data, colors, plotTitle, sexVars, width = NULL, height = NULL, elementId = NULL) {
 
   # List of settings to pass to d3
-  legend = list(
+  metaData = list(
     colors = colors,
     plotTitle = plotTitle,
-    metaData = metaData
+    sexVars = sexVars
   )
 
   # forward options using x
   x = list(
     data = data,
-    legend = legend
+    metaData = metaData
   )
 
   # create widget
