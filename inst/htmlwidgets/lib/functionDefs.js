@@ -28,23 +28,23 @@ function drawBarChart(inData, width, height, el,
 
   // Initial axis
   var yAxis = chartAxes.append('g')
-    .attr("class", "bar y axis font_text");
+    .attr("class", "bar y axis plot_text");
 
   var xAxis = chartAxes.append('g')
-    .attr("class", "bar x axis font_text");
+    .attr("class", "bar x axis plot_text");
 
 
   // Axis titles
   chartAxes.append("text")
     .attr("x", dim.width / 2)
     .attr("y", dim.height + margin.bottom - 5)
-    .attr("class", "bar x axisTitle font_text");
+    .attr("class", "bar x axisTitle plot_text");
     
   chartAxes.append("text")
     .attr("transform", "rotate(-90)")
     .attr("x", 0 - (chartAreaHeight) / 2)
     .attr("y", 0 - margin.left + 20)
-    .attr("class", "bar y axisTitle font_text");
+    .attr("class", "bar y axisTitle plot_text");
 
   // TOOLTIP
   var tooltip = container.append("div")
