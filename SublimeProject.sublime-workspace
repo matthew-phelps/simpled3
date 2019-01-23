@@ -187,7 +187,7 @@
 			"file": "inst/htmlwidgets/lib/functionDefs.js",
 			"settings":
 			{
-				"buffer_size": 18047,
+				"buffer_size": 17950,
 				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
@@ -205,7 +205,7 @@
 			"file": "inst/htmlwidgets/lib/legend.js",
 			"settings":
 			{
-				"buffer_size": 3017,
+				"buffer_size": 3048,
 				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
@@ -245,7 +245,7 @@
 				"Git: Push"
 			],
 			[
-				"quick",
+				"quic",
 				"Git: Quick Commit (repo)"
 			],
 			[
@@ -253,7 +253,7 @@
 				"Git: Quick Commit (repo)"
 			],
 			[
-				"quic",
+				"quick",
 				"Git: Quick Commit (repo)"
 			],
 			[
@@ -445,6 +445,9 @@
 		"case_sensitive": true,
 		"find_history":
 		[
+			"font_text",
+			"plot_text",
+			"font_text",
 			"chartAreaHeight",
 			"topG",
 			"chartAxes",
@@ -569,10 +572,7 @@
 			"bigRadius",
 			"female",
 			"mradius",
-			"rectPadding",
-			"mRadius",
-			"circle",
-			"mouseCirclesMale"
+			"rectPadding"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -580,6 +580,7 @@
 		"regex": false,
 		"replace_history":
 		[
+			"plot_text",
 			".sexVars[",
 			"metaData",
 			"chartHeight",
@@ -602,7 +603,7 @@
 	"groups":
 	[
 		{
-			"selected": 2,
+			"selected": 1,
 			"sheets":
 			[
 				{
@@ -611,15 +612,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 18047,
+						"buffer_size": 17950,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								970,
-								970
+								4751,
+								4751
 							]
 						],
 						"settings":
@@ -648,16 +649,22 @@
 							"SL.84.region_keys":
 							[
 							],
+							"SL.98.region_keys":
+							[
+								"sublime_linter.protected_regions",
+								"SL.jshint.Gutter.|region.redish markup.error.sublime_linter|dot",
+								"SL.jshint.Highlights.|796c0ebe26a8bb97e8d139c932d73779549341e91677a573309ce67ab5bb876d|region.redish markup.error.sublime_linter|1316"
+							],
 							"history_list_is_closing": true,
 							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax",
 							"tab_size": 2,
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.y": 1287.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 2,
+					"stack_index": 1,
 					"type": "text"
 				},
 				{
@@ -673,8 +680,8 @@
 						"selection":
 						[
 							[
-								130,
-								130
+								396,
+								396
 							]
 						],
 						"settings":
@@ -689,6 +696,10 @@
 							"SL.85.region_keys":
 							[
 							],
+							"SL.99.region_keys":
+							[
+								"sublime_linter.protected_regions"
+							],
 							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax",
 							"tab_size": 2,
 							"translate_tabs_to_spaces": true
@@ -697,7 +708,7 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 1,
+					"stack_index": 0,
 					"type": "text"
 				},
 				{
@@ -706,19 +717,23 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 3017,
+						"buffer_size": 3048,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								2250,
-								2250
+								2285,
+								2285
 							]
 						],
 						"settings":
 						{
+							"SL.100.region_keys":
+							[
+								"sublime_linter.protected_regions"
+							],
 							"SL.16.region_keys":
 							[
 								"sublime_linter.protected_regions"
@@ -763,7 +778,7 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 0,
+					"stack_index": 2,
 					"type": "text"
 				},
 				{
@@ -818,6 +833,9 @@
 						],
 						"settings":
 						{
+							"SL.102.region_keys":
+							[
+							],
 							"SL.18.region_keys":
 							[
 							],
