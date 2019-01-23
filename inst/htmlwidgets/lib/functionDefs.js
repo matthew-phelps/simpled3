@@ -161,7 +161,7 @@ function drawBarChart(inData, width, height, el,
     .attr("height", chartAreaHeight)
         .on("mouseover", showTooltip)
         .on("mousemove", moveTooltip)
-        .on("mouseout", hideTooltip)
+        .on("mouseout", hideTooltip);
         
 
 
