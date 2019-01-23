@@ -1,3 +1,4 @@
+/*jshint esversion: 6 */
 //////////////////////////////////////////////////////////////////////////////
 //////////////////    DRAW LEGEND  & TITLE ////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////
@@ -57,31 +58,18 @@ function drawLegend(topG, inData, dim, titleHeight, legendHeight, wrapperName, s
 
 
 /*Style text white with CSS - then CSS is ignored in saveSvgAsPng function - so it will turn back to black!*/
-titleWrapper.append("text")
-  .text(inData.metaData.plotTitle)
+titleWrapper.selectAll('text').data(inData.metaData.plotTitle)
+  .enter().append('text')
+  .text(d => d)
   .attr("alignment-baseline", "hanging")
   .attr("text-anchor", "start")
-  .attr("id", "plotTitleDownload")
+  .attr("id", "plot_title")
   .attr("class", "plot_text");
-
-  /*var downloadButton = downloadButtonWrapper
-  .append('rect')
-  .attr('class', 'download button')
-  .attr("width", downloadButtonWidth)
-  .attr("height", rectSize * 1.2)
-  .style("fill", "white")
-  .style("stroke", "black");
-
-  downloadButtonWrapper
-  .append("text")
-  .text("Download")
-  .attr("fill", "black");*/
-
-
-
 }
 
-
+function updateLegend(inData, wrapperName, svgName){
+  topG.select('#plot_title');
+}
 
 function resizeLegend(dim, wrapperName) {
 
