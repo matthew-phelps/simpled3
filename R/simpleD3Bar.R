@@ -10,12 +10,13 @@
 #' @param elementId Id if specified
 #'
 #' @export
-simpleD3Bar <- function(data, colors, legendData, width = NULL, height = NULL, elementId = NULL) {
+simpleD3Bar <- function(data, colors, plotTitle, LegendData, width = NULL, height = NULL, elementId = NULL) {
 
   # List of settings to pass to d3
   legend = list(
     colors = colors,
     legendData = legendData
+    plotTitle = plotTitle
   )
 
   # forward options using x

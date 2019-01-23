@@ -1,15 +1,15 @@
 //////////////////////////////////////////////////////////////////////////////
-//////////////////    DRAW LEGEND  & DOWNLOAD ////////////////////////////////
+//////////////////    DRAW LEGEND  & TITLE ////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////
 
-function drawLegend(topG, inData, dim, margin, legendHeight, wrapperName, svgName) {
+function drawLegend(topG, inData, dim, margin, LegendHeight, wrapperName, svgName) {
 
 
   var rectSize = 20; //dimension of colored square
   var padding = 10; 
   var entryWidth = 100; // width of square and text combined
   var legendWidth = rectSize + 2*padding + entryWidth;
-  var downloadButtonWidth = rectSize * 3;
+  var titleHeight = 20;
 
 
 // ADD LEGEND BOXES
@@ -50,11 +50,14 @@ function drawLegend(topG, inData, dim, margin, legendHeight, wrapperName, svgNam
   	 	.text(inData.legend.legendData.sex[0]);
 
 
-  /// ADD DOWNLOAD BUTTON
-  var downloadButtonWrapper = topG.append('g')
-  .attr("class", wrapperName + "downloadButton")
-  .attr("transform" , 'translate(' + (dim.width - downloadButtonWidth) + ',' + (dim.height) + ')');
+  /// ADD TITLE
+  var titleWrapper = topG.append('g')
+  .attr("class", wrapperName + " title")
+  .attr("transform" , 'translate(' + 0 + ',' + (titleHeight) + ')');
 
+
+titleWrapper.append("text")
+  .text(inData.legend.plotTitle);
   /*var downloadButton = downloadButtonWrapper
   .append('rect')
   .attr('class', 'download button')
