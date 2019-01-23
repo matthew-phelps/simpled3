@@ -15,6 +15,8 @@ HTMLWidgets.widget({
     legendHeight = 50;
     titleHeight = 20;
     var tablePadding = 10; 
+
+    /*Format requires defining formats for several data types even though they will not be uses - apparently*/
     var localeFormatter = d3.formatLocale({
       "decimal": ",",
       "thousands": ".",
@@ -26,7 +28,7 @@ HTMLWidgets.widget({
                 "periods": ["", ""],
                 "days": ["Sonntag", "Montag", "Dienstag", "Mittwoch", "Donnerstag", "Freitag", "Samstag"],
                 "shortDays": ["So", "Mo", "Di", "Mi", "Do", "Fr", "Sa"],
-                "months": ["Januar", "Februar", "März", "April", "Mai", "Juni", "Juli", "August", "September", "Oktober", "November", "Dezember"],
+                "months": ["Januar", "Februar", "März", "April", "Mai", "Juni", "Juli", "August", "September", "Oktober", "November", "December"],
                 "shortMonths": ["Jan", "Feb", "Mär", "Apr", "Mai", "Jun", "Jul", "Aug", "Sep", "Okt", "Nov", "Dec"]
     });
     var numberFormat = localeFormatter.format(",");

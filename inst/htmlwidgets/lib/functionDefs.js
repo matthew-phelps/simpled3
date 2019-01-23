@@ -19,7 +19,8 @@ function drawBarChart(inData, width, height, el,
   var topG = svg.append('g')
     .attr('transform', 'translate(' + margin.left + ',' + margin.top +')');
 
-  var chartArea = topG.append("g").attr("class", "chartArea");
+  var chartArea = topG.append("g").attr("class", "chartArea")
+    .attr('transform', 'translate(' + 0 + ',' + titleHeight +')');
 
   // Initial axis
   var yAxis = topG.append('g')
