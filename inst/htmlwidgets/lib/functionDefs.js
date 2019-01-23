@@ -430,6 +430,11 @@ function updateBarChart(inData, width, height, el, margin, colors, barPadding, t
     .text(varName)
     .style("text-anchor", "middle");
 
+/*Update plot title*/
+var wrapperName = "legendWrapperBar";
+var svgName = "svgLegendBar";
+updateLegend(inData, wrapperName, svgName, tLong);
+
 
   /* Tooltip functions. These should be hoisted to top of updateChart() function
   call, and therefore accessible at anytime from inside updateChart() */

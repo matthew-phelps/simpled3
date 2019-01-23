@@ -5,7 +5,7 @@
 
 function drawLegend(topG, inData, dim, titleHeight, legendHeight, wrapperName, svgName) {
 
-
+  
   var rectSize = 20; //dimension of colored square
   var padding = 10; 
   var entryWidth = 100; // width of square and text combined
@@ -58,17 +58,19 @@ function drawLegend(topG, inData, dim, titleHeight, legendHeight, wrapperName, s
 
 
 /*Style text white with CSS - then CSS is ignored in saveSvgAsPng function - so it will turn back to black!*/
-titleWrapper.selectAll('text').data([inData.metaData.plotTitle])
-  .enter().append('text')
-  .text(d => d)
+titleWrapper.append('text')
+  .text(inData.metaData.plotTitle)
   .attr("alignment-baseline", "hanging")
   .attr("text-anchor", "start")
   .attr("id", "plot_title")
   .attr("class", "plot_text");
 }
 
-function updateLegend(inData, wrapperName, svgName){
-  topG.select('#plot_title');
+function updateLegend(inData, wrapperName, svgName, tDuration){
+  d3.select('#plot_title')
+    .transition()
+    .duration(tDuration)
+    .text(inData.metaData.plotTitle);
 }
 
 function resizeLegend(dim, wrapperName) {
