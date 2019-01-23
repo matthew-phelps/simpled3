@@ -31,12 +31,12 @@ function drawBarChart(inData, width, height, el,
 
 
   // Axis titles
-  topG.append("text")
+  chartArea.append("text")
     .attr("x", dim.width / 2)
     .attr("y", dim.height + margin.bottom - 5 - legendHeight)
     .attr("class", "bar x axisTitle");
     
-  topG.append("text")
+  chartArea.append("text")
     .attr("transform", "rotate(-90)")
     .attr("x", 0 - (dim.height - legendHeight) / 2)
     .attr("y", 0 - margin.left + 20)
