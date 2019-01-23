@@ -13,7 +13,7 @@ HTMLWidgets.widget({
     var mOpacity = 0.25;
     var rectSize = 20; //dimension of colored square
     legendHeight = 50;
-    titleHeight = 30;
+    titleHeight = 40;
     var tablePadding = 10; 
 
     /*Format requires defining formats for several data types even though they will not be uses - apparently*/
