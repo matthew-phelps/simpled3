@@ -23,7 +23,7 @@ function drawBarChart(inData, width, height, el,
   var chartArea = topG.append("g").attr("class", "chartArea")
     .attr('transform', 'translate(' + 0 + ',' + titleHeight +')');
 
-  var chartAxes = topG.append("g")
+  var chartAxes = topG.append("g").attr("class", "chartAxes")
     .attr('transform', 'translate(' + 0 + ',' + titleHeight +')');
 
   // Initial axis
