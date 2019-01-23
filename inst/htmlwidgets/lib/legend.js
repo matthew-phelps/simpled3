@@ -62,12 +62,12 @@ titleWrapper.append('text')
   .text(inData.metaData.plotTitle)
   .attr("alignment-baseline", "hanging")
   .attr("text-anchor", "start")
-  .attr("id", "plot_title")
+  .attr("id", "plot_titleD3")
   .attr("class", "plot_text");
 }
 
 function updateLegend(inData, wrapperName, svgName, tDuration){
-  d3.select("." + wrapperName + ".title")
+  d3.select("#plot_titleD3")
     .transition()
     .duration(tDuration)
     .text(inData.metaData.plotTitle);
