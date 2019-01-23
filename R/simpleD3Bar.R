@@ -15,7 +15,7 @@ simpleD3Bar <- function(data, colors, plotTitle, LegendData, width = NULL, heigh
   # List of settings to pass to d3
   legend = list(
     colors = colors,
-    legendData = legendData
+    legendData = legendData,
     plotTitle = plotTitle
   )
 
