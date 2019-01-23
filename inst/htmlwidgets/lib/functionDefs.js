@@ -43,7 +43,7 @@ function drawBarChart(inData, width, height, el,
   chartAxes.append("text")
     .attr("transform", "rotate(-90)")
     .attr("x", 0 - (chartAreaHeight) / 2)
-    .attr("y", 0 - margin.left + 10)
+    .attr("y", 0 - margin.left + 20)
     .attr("class", "bar y axisTitle plot_text");
 
   // TOOLTIP
@@ -280,9 +280,10 @@ function showTooltip(d) {
 //////////////////    UPDATE     /////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////
 
-function updateBarChart(inData, width, height, el, margin, colors, barPadding, tLong, tShort, mOpacity, numberFormat) {
-
-  var dim = {
+function updateBarChart(inData, width, height, el, margin, colors, barPadding, tLong, tShort, mOpacity, numberFormat, legendHeight, titleHeight) {
+ 
+ var chartAreaHeight = dim.height - legendHeight - titleHeight;
+ var dim = {
     width: width - margin.left - margin.right,
     height: height - margin.top - margin.bottom
   };
@@ -321,7 +322,7 @@ function updateBarChart(inData, width, height, el, margin, colors, barPadding, t
   // Scales
   var scaleY = d3.scaleLinear()
     .domain([0, maxY])
-    .range([dim.height - legendHeight, 0]);
+    .range([chartAreaHeight, 0]);
 
   var scaleX = d3.scaleBand()
     .domain(grouping1Names)
