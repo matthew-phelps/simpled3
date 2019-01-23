@@ -5,7 +5,7 @@ HTMLWidgets.widget({
   type: 'output',
 
   factory: function(el, width, height) {
-    var margin = ({top:1, right:20, bottom:40, left:60});
+    var margin = ({top:1, right:20, bottom:40, left:70});
     var colors = [ '#166abd', '#bd6916'];
     var barPadding = 0.2;
     var tLong = 450;
@@ -64,7 +64,7 @@ HTMLWidgets.widget({
         
         // Download function
           d3.select("#download_bar").on("click", function(){
-                saveSvgAsPng(document.getElementById("svgBar"), "HjerteTal_chart.png", {scale: 5, backgroundColor: "#FFFFFF"});
+                saveSvgAsPng(document.getElementById("svgBar"), "HjerteTal_chart.png", {scale: 1.5, backgroundColor: "#FFFFFF"});
             });
       },
 
