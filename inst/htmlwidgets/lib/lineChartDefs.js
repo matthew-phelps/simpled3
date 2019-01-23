@@ -23,20 +23,23 @@ function drawLineChart(inData, width, height, el, margin, rectPadding, colors, t
   var chartArea = topG.append("g")
     .attr("class", "chartArea");
 
+  var chartAxes = topG.append("g").attr("class", "chartAxes")
+      .attr('transform', 'translate(' + 0 + ',' + titleHeight +')');
+
   // Initial axis
-  var yAxis = topG.append('g')
+  var yAxis = chartAxes.append('g')
     .attr("class", "line y axis");
 
-  var xAxis = topG.append('g')
+  var xAxis = chartAxes.append('g')
     .attr("class", "line x axis");
 
   // Axis titles
-  topG.append("text")
+  chartAxes.append("text")
     .attr("x", dim.width / 2)
     .attr("y", chartAreaHeight + margin.bottom - 5)
     .attr("class", "line x axisTitle");
     
-  topG.append("text")
+  chartAxes.append("text")
     .attr("transform", "rotate(-90)")
     .attr("x", 0 - chartAreaHeight/ 2)
     .attr("y", 0 - margin.left + 20)
@@ -147,13 +150,13 @@ var grouping1Names = data.map(d => d.year);
       .tickFormat(d3.format("")));
 
   // Add axis titles
-  topG.select(".line.y.axisTitle")
+  chartAxes.select(".line.y.axisTitle")
     .transition()
     .duration(tLong)
     .text(varName)
     .style("text-anchor", "middle");
 
-  topG.select(".line.x.axisTitle")
+  chartAxes.select(".line.x.axisTitle")
     .transition()
     .duration(tLong)
     .text(yearName)
