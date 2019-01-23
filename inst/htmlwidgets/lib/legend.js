@@ -60,7 +60,7 @@ function drawLegend(topG, inData, dim, titleHeight, legendHeight, wrapperName, s
 /*Style text white with CSS - then CSS is ignored in saveSvgAsPng function - so it will turn back to black!*/
 titleWrapper.selectAll('text').data(inData.metaData)
   .enter().append('text')
-  .text(d => d.plotTitle)
+  .text(d => d)
   .attr("alignment-baseline", "hanging")
   .attr("text-anchor", "start")
   .attr("id", "plot_title")
