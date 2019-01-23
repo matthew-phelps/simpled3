@@ -61,7 +61,9 @@ titleWrapper.append("text")
   .text(inData.metaData.plotTitle)
   .attr("alignment-baseline", "hanging")
   .attr("text-anchor", "start")
-  .attr("id", "plotTitleDownload");
+  .attr("id", "plotTitleDownload")
+  .attr("class", "plot_text");
+
   /*var downloadButton = downloadButtonWrapper
   .append('rect')
   .attr('class', 'download button')
