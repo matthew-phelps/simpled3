@@ -10,19 +10,21 @@
 #' @param elementId Id if specified
 #'
 #' @export
-simpleD3Line <- function(data, colors, legendData, width = NULL, height = NULL, elementId = NULL) {
+simpleD3Line <- function(data, colors, plotTitle, sexVars, width = NULL, height = NULL, elementId = NULL) {
 
-  # List of settings to pass to d3
- legend = list(
+    # List of settings to pass to d3
+  metaData = list(
     colors = colors,
-    legendData = legendData
+    plotTitle = plotTitle,
+    sexVars = sexVars
   )
 
   # forward options using x
-   x = list(
+  x = list(
     data = data,
-    legend = legend
+    metaData = metaData
   )
+
 
   # create widget
   htmlwidgets::createWidget(

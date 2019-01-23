@@ -178,7 +178,7 @@ mouseRectsFemale
   /// ADD LEGEND
  var wrapperName = "legendWrapperBar";
  var svgName = "svgLegendBar";
-  drawLegend(topG, inData, dim, margin, legendHeight, wrapperName, svgName);
+ drawLegend(topG, inData, dim, margin, titleHeight, legendHeight, wrapperName, svgName);
 
 
 
