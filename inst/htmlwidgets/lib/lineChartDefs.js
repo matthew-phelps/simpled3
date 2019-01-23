@@ -6,12 +6,6 @@ function drawLineChart(inData, width, height, el, margin, rectPadding, colors, t
   };
 
   var chartHeight = dim.height  - legendHeight;
-  // Data management 
-  // Make sure variable name is consistent for 
-  // different variables/languages
-
-  
-
 
   var container = d3.select(el).html("").style("position", "relative")
     .append('div')
@@ -89,9 +83,7 @@ var grouping1Names = data.map(d => d.year);
     .tickFormat(d3.format("")))
     .attr("transform", "translate(" + 0 + "," + chartHeight + ')');
 
-
-  // Mouseover area for each circle should extend halfway to next circle on x-axis. This will cause problems for nearby male/female circles
- // var bigRadius = scaleX(d3.max(data, d=> d.year)) / data.length;
+  
   // Line generators
   var valueLine1 = d3.line()
     .x(d => scaleX(d.year))
