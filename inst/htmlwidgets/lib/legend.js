@@ -67,7 +67,7 @@ titleWrapper.append('text')
 }
 
 function updateLegend(inData, wrapperName, svgName, tDuration){
-  d3.select('#plot_title')
+  d3.select("." + wrapperName + ".title")
     .transition()
     .duration(tDuration)
     .text(inData.metaData.plotTitle);
