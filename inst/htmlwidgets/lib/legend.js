@@ -37,7 +37,7 @@ function drawLegend(topG, inData, dim, margin, legendHeight, wrapperName, svgNam
     legendMale.append("text")
     .attr('transform', 'translate(' + (rectSize + padding) +',' + rectSize/2 + ')')
   	 	.attr('alignment-baseline', 'middle') // verticle alignment?
-  	 	.text(inData.legend.metaData.sex[1]);
+  	 	.text(inData.metaData.sex[1]);
 
 
      legendFemale.append("rect")
@@ -47,7 +47,7 @@ function drawLegend(topG, inData, dim, margin, legendHeight, wrapperName, svgNam
      legendFemale.append("text")
      .attr('transform', 'translate(' + (rectSize + padding) +',' + rectSize/2 + ')')
   	 	.attr('alignment-baseline', 'middle') // verticle alignment?
-  	 	.text(inData.legend.metaData.sex[0]);
+  	 	.text(inData.metaData.sex[0]);
 
 
   /// ADD TITLE
