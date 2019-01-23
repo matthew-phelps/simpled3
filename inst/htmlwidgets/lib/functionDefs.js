@@ -282,13 +282,13 @@ function showTooltip(d) {
 
 function updateBarChart(inData, width, height, el, margin, colors, barPadding, tLong, tShort, mOpacity, numberFormat, legendHeight, titleHeight) {
  
- var chartAreaHeight = dim.height - legendHeight - titleHeight;
+
  var dim = {
     width: width - margin.left - margin.right,
     height: height - margin.top - margin.bottom
   };
 
-
+ var chartAreaHeight = dim.height - legendHeight - titleHeight;
   svg = d3.select('#containerBar').select('svg');
   var chartArea = svg.selectAll('.chartArea');
   var tooltip = d3.select("#tooltipBar");

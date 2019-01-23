@@ -55,9 +55,9 @@ HTMLWidgets.widget({
           
 
         } else if (resized){
-          updateBarChart(x, this.dim.width, this.dim.height, el, margin, colors, barPadding, tLong, tShort, mOpacity, numberFormat, legendHeight);
+          updateBarChart(x, this.dim.width, this.dim.height, el, margin, colors, barPadding, tLong, tShort, mOpacity, numberFormat, legendHeight, titleHeight);
         } else {
-          updateBarChart(x, width, height, el, margin, colors, barPadding, tLong, tShort, mOpacity, numberFormat, legendHeight);
+          updateBarChart(x, width, height, el, margin, colors, barPadding, tLong, tShort, mOpacity, numberFormat, legendHeight,titleHeight);
 
         }
         this.x = x; // store for resize
@@ -69,7 +69,7 @@ HTMLWidgets.widget({
       },
 
       resize: function(width, height) {
-        resizeBarChart(this.x, width, height, el, margin, colors, barPadding, tLong, tShort, mOpacity, numberFormat, legendHeight);
+        resizeBarChart(this.x, width, height, el, margin, colors, barPadding, tLong, tShort, mOpacity, numberFormat, legendHeight,titleHeight);
         var dim = {
                 width: width,
                 height: height
