@@ -192,12 +192,12 @@ function drawBarChart(inData, width, height, el,
 
  
 // TOOLTIP
-  scaffoldTooltip(tableBar, rectSize, colors, chartType);
- var tableBar = d3.select("#table" + chartType);
+  scaffoldTooltip(rectSize, colors, chartType);
+ var table = d3.select("#table" + chartType);
  var tooltip = d3.select('#tooltip' + chartType);
- var thead = tableBar.select('th');
- var maleCell = tableBar.select('.maleCell');
- var femaleCell = tableBar.select('.femaleCell');
+ var thead = table.select('th');
+ var maleCell = table.select('.maleCell');
+ var femaleCell = table.select('.femaleCell');
 
  function showTooltip(d) {    
    thead.text(groupingName + ": " + d.key);
@@ -408,11 +408,11 @@ updateLegend(inData, wrapperName, svgName, tLong);
   /* Tooltip functions. These should be hoisted to top of updateChart() function
   call, and therefore accessible at anytime from inside updateChart() */
   
- var tableBar = d3.select("#table" + chartType);
+ var table = d3.select("#table" + chartType);
  var tooltip = d3.select('#tooltip' + chartType);
- var thead = tableBar.select('th');
- var maleCell = tableBar.select('.maleCell');
- var femaleCell = tableBar.select('.femaleCell');
+ var thead = table.select('th');
+ var maleCell = table.select('.maleCell');
+ var femaleCell = table.select('.femaleCell');
 
  function showTooltip(d) {    
    thead.text(groupingName + ": " + d.key);
@@ -572,11 +572,11 @@ function resizeBarChart(inData, width, height, el, margin, barPadding, tLong, tS
 
     /* Tooltip functions. These should be hoisted to top of resizeChart() function
   call, and therefore accessible at anytime from inside resizeChart() */
-  var tableBar = d3.select("#table" + chartType);
+  var table = d3.select("#table" + chartType);
   var tooltip = d3.select('#tooltip' + chartType);
-  var thead = tableBar.select('th');
-  var maleCell = tableBar.select('.maleCell');
-  var femaleCell = tableBar.select('.femaleCell');
+  var thead = table.select('th');
+  var maleCell = table.select('.maleCell');
+  var femaleCell = table.select('.femaleCell');
 
   function showTooltip(d) {    
     thead.text(groupingName + ": " + d.key);

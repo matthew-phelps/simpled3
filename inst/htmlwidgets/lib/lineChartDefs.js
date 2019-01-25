@@ -183,12 +183,12 @@ mouseRectsFemale
 
 
 // TOOLTIP
-  scaffoldTooltip(tableBar, rectSize, colors, chartType);
-  var tableBar = d3.select("#table" + chartType);
+  scaffoldTooltip(rectSize, colors, chartType);
+  var table = d3.select("#table" + chartType);
   var tooltip = d3.select('#tooltip' + chartType);
-  var thead = tableBar.select('th');
-  var maleCell = tableBar.select('.maleCell');
-  var femaleCell = tableBar.select('.femaleCell');
+  var thead = table.select('th');
+  var maleCell = table.select('.maleCell');
+  var femaleCell = table.select('.femaleCell');
 
 
  // Tooltip functions  - these will be hoisted to top of fn call
@@ -240,9 +240,8 @@ var dim = {
   };
 
   var chartAreaHeight = dim.height  - legendHeight - titleHeight;
-  var svg = d3.select("#containerLine").select('svg');
+  var svg = d3.select("#container" + chartType).select('svg');
   var chartArea = svg.selectAll('.chartArea');
-  var tooltip = d3.select("#tooltipLine");
   
   var data = HTMLWidgets.dataframeToD3(inData.data);
   var varName = data[0].variable;
@@ -350,11 +349,14 @@ var mouseRectsFemale = chartArea
 
 
 // Tooltip functions - these will be hoisted to top of fn call
-  var thead = tableLine.select('th');
-  var maleCell = tableLine.select('.maleCell');
-  var femaleCell = tableLine.select('.femaleCell');
+  var table = d3.select("#table" + chartType);
+  var tooltip = d3.select('#tooltip' + chartType);
+  var thead = table.select('th');
+  var maleCell = table.select('.maleCell');
+  var femaleCell = table.select('.femaleCell');
 
 
+ // Tooltip functions  - these will be hoisted to top of fn call
   function showTooltip(d) {
     thead.text(d.year);
     maleCell.text(Object.keys(d)[1] + ": " + numberFormat(d.male));
@@ -372,7 +374,7 @@ var mouseRectsFemale = chartArea
   }
 
   function moveTooltip(d){
-    tooltip
+     tooltip
     .style("left", d3.mouse(this)[0] + "px")
     .style("top", (d3.mouse(this)[1] + 50) + "px");
   }
@@ -394,7 +396,7 @@ var mouseRectsFemale = chartArea
 ///////////////////////////////////////////////////////////
 
 function resizeLineChart(inData, width, height, el, margin, rectPadding, tLong, tShort, cRadius, bigRadius, rectSize, tablePadding, numberFormat) {
-  
+var chartType = "Line"  ;
 var dim = {
     width: width - margin.left - margin.right,
     height: height - margin.top - margin.bottom
@@ -414,12 +416,11 @@ var dim = {
     }
   var grouping1Names = data.map(d => d.year);
 
-  var svg = d3.select("#containerLine").select('svg')
+  var svg = d3.select("#container" + chartType).select('svg')
     .attr("width", dim.width + margin.left + margin.right)
     .attr("height", dim.height + margin.top + margin.bottom);
   var chartArea = svg.select(".chartArea");
-  var tooltip = d3.select("#tooltipLine");
-
+  
 
   svg.select('line.x.axisTitle')
     .attr("x", dim.width / 2)
@@ -516,46 +517,49 @@ var scaleXRects = d3.scaleBand()
     .style("text-anchor", "middle");
   
 // Resize legend
-  var wrapperName = "legendWrapperBar";
+  var wrapperName = "legendWrapper" + chartType;
   resizeLegend(dim, wrapperName);
 
-// Mouse event functions
-  // Tooltip functions - these will be hoisted to top of fn call
-  var thead = tableLine.select('th');
-  var maleCell = tableLine.select('.maleCell');
-  var femaleCell = tableLine.select('.femaleCell');
+  var table = d3.select("#table" + chartType);
+  var tooltip = d3.select('#tooltip' + chartType);
+  var thead = table.select('th');
+  var maleCell = table.select('.maleCell');
+  var femaleCell = table.select('.femaleCell');
 
-  function showTooltip(d) {
-    thead.text(d.year);
-    maleCell.text(Object.keys(d)[1] + ": " + numberFormat(d.male));
-    femaleCell.text(Object.keys(d)[0] + ": " + numberFormat(d.female));
 
-    d3.selectAll(".y" + d.year)
-      .transition()
-        .ease(d3.easeLinear)
-        .duration("200")
-        .attr("r", bigRadius);
-    tooltip.transition()
-    .duration(tShort)
-    .style('opacity', 0.9);
-  }
+// Tooltip functions  - these will be hoisted to top of fn call
+ function showTooltip(d) {
+   thead.text(d.year);
+   maleCell.text(Object.keys(d)[1] + ": " + numberFormat(d.male));
+   femaleCell.text(Object.keys(d)[0] + ": " + numberFormat(d.female));
 
-  function moveTooltip(d){
+   d3.selectAll(".y" + d.year)
+     .transition()
+       .ease(d3.easeLinear)
+       .duration("200")
+       .attr("r", bigRadius);
+   tooltip.transition()
+   .duration(tShort)
+   .style('opacity', 0.9);
+   
+ }
+
+ function moveTooltip(d){
     tooltip
-    .style("left", d3.mouse(this)[0] + "px")
-    .style("top", (d3.mouse(this)[1] + 50) + "px");
-  }
+   .style("left", d3.mouse(this)[0] + "px")
+   .style("top", (d3.mouse(this)[1] + 50) + "px");
+ }
 
-  function hideTooltip(d) {
-     d3.selectAll(".y" + d.year)
-      .transition()
-        .ease(d3.easeLinear)
-        .duration("200")
-        .attr("r", cRadius);
-    tooltip.transition()
-    .duration(tShort)
-    .style('opacity', 0);
-  }
+ function hideTooltip(d) {
+    d3.selectAll(".y" + d.year)
+     .transition()
+       .ease(d3.easeLinear)
+       .duration("200")
+       .attr("r", cRadius);
+   tooltip.transition()
+   .duration(tShort)
+   .style('opacity', 0);
+ }
 
 
 

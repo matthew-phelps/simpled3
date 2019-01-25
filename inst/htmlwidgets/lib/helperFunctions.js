@@ -12,23 +12,23 @@ var insertLinebreaks = function (d) {
     }
 };
 
-function scaffoldTooltip(tableBar, rectSize, colors, chartType){
+function scaffoldTooltip( rectSize, colors, chartType){
  // Tooltip table setup
    var tooltip = d3.select("#container" + chartType).append("div")
     .attr('id', 'tooltip' + chartType)
     .style('opacity', 0);
-  tableBar = tooltip.append("table")
+  table = tooltip.append("table")
       .classed("table", true)
       .attr('id', "table" + chartType);
   var cellSvgWidth = "20%";
   var cellTextWidth = "80%";
-  tableBar
+  table
       .append('thead')
       .append('tr')
       .append('th')
       .attr("colspan", 2)
       .attr("class", "tooltipTitle");
-  var tbody = tableBar.append('tbody');
+  var tbody = table.append('tbody');
   var rowMale = tbody.append('tr');
   rowMale.append('td').attr('width', cellSvgWidth)
   .append('svg')
