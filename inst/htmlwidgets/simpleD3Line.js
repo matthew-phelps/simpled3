@@ -13,8 +13,8 @@ HTMLWidgets.widget({
     var cRadius = 7;
     var bigRadius = 15;
     var rectSize = 20; //dimension of colored square
-    legendHeight = 50;
-    titleHeight = 40;
+    var legendHeight = 50;
+    var titleHeight = 40;
     var tablePadding = 10; 
     var localeFormatter = d3.formatLocale({
       "decimal": ",",
