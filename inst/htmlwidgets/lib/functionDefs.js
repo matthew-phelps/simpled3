@@ -7,14 +7,16 @@ function drawBarChart(inData, width, height, el,
     height: height - margin.top - margin.bottom
   };
 
+  var chartType = "Bar";
+  
   var chartAreaHeight = dim.height - legendHeight - titleHeight;
   var xAxisTitleMargin = chartAreaHeight + 25;
   var container = d3.select(el).style("position", "relative")
     .append('div')
-    .attr("id", "containerBar");
+    .attr("id", "container" + chartType);
 
   var svg = container.append('svg')
-    .attr("id", "svgBar")
+    .attr("id", "svg" + chartType)
     .attr("width", dim.width + margin.left + margin.right)
     .attr("height", dim.height + margin.top + margin.bottom);
 
@@ -48,14 +50,7 @@ function drawBarChart(inData, width, height, el,
     .attr("y", 0 - margin.left + 20)
     .attr("class", "bar y axisTitle plot_text");
 
-  // TOOLTIP
-  var tooltip = container.append("div")
-    .attr('id', 'tooltipBar')
-    .style('opacity', 0);
-  tableBar = tooltip.append("table")
-      .classed("table", true)
-      .attr('id', "tableBar");
-
+  
   
 
   // Data management
@@ -191,13 +186,51 @@ function drawBarChart(inData, width, height, el,
 
 
   /// ADD LEGEND
- var wrapperName = "legendWrapperBar";
- var svgName = "svgLegendBar";
-drawLegend(topG, inData, dim, titleHeight, legendHeight, wrapperName, svgName);
+  var wrapperName = "legendWrapper" + chartType;
+  var svgName = "svgLegend" + chartType;
+  drawLegend(topG, inData, dim, titleHeight, legendHeight, wrapperName, svgName);
 
- // SET up tooltip table
- scaffoldTooltip(tableBar, rectSize, colors);
+ 
+// TOOLTIP
+  scaffoldTooltip(tableBar, rectSize, colors, chartType);
+  var tableBar = d3.select("#table" + chartType);
+  function showTooltip(d) {    
+    tableBar.selectAll(".tooltipTitle").text(groupingName + ": " + d.key);
+    tableBar.selectAll(".maleCell").text(d.values[0].sex + ": " + numberFormat(d.values[0].value));
+    tableBar.selectAll(".femaleCell").text(d.values[1].sex + ": " + numberFormat(d.values[1].value));
 
+    tooltip.transition()
+        .duration(tShort)
+        .style('opacity', 0.9);
+    d3.select('.mouseSvg' + ".i" + d.key.slice(0,2))
+        .style('opacity', mOpacity);
+    d3.select('.barGroups' + ".i" + d.key.slice(0,2))
+        .append('line')
+        .attr("class", 'guide')
+        .attr("x1", scaleX1.bandwidth())
+        .attr("x2", scaleX1.bandwidth())
+        .attr("y1", 0)
+        .attr("y2",chartAreaHeight);
+  }
+
+  function moveTooltip(d) {
+          tooltip
+            .style("left", d3.mouse(this)[0] + "px")
+            .style("top", (d3.mouse(this)[1] + 50) + "px");
+  }
+
+  function hideTooltip(d) {
+    tooltip.transition()
+      .duration(tShort)
+      .style('opacity', 0);
+    d3.select('.mouseSvg' + ".i" + d.key.slice(0,2))
+        .transition().duration(tShort)
+        .style('opacity', 0.0);
+    d3.selectAll('.guide')
+      .transition().duration(tShort)
+      .style('opacity', 0)
+      .remove();
+  }
 
 
 
@@ -223,6 +256,9 @@ function updateBarChart(inData, width, height, el, margin, barPadding, tLong, tS
   var chartArea = svg.selectAll('.chartArea');
   var tooltip = d3.select("#tooltipBar");
   var tableBar = d3.select("#tableBar");
+
+  var wrapperName = "legendWrapperBar";
+  var svgName = "svgLegendBar";
 
  // Data management
   var data = HTMLWidgets.dataframeToD3(inData.data);
@@ -361,8 +397,7 @@ function updateBarChart(inData, width, height, el, margin, barPadding, tLong, tS
     .style("text-anchor", "middle");
 
 /*Update plot title*/
-var wrapperName = "legendWrapperBar";
-var svgName = "svgLegendBar";
+
 updateLegend(inData, wrapperName, svgName, tLong);
 
 
