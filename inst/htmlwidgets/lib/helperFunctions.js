@@ -56,7 +56,7 @@ var femaleCell = rowFemale
   }
 
   // Tooltip functions - hoisted to top of fn call
-function showTooltip(d, groupingName, chartAreaHeight) {
+function showTooltip(d, groupingName, chartAreaHeight, numberFormat, scaleX1) {
     tableBar.selectAll(".tooltipTitle").text(groupingName + ": " + d.key);
     tableBar.selectAll(".maleCell").text(d.values[0].sex + ": " + numberFormat(d.values[0].value));
     tableBar.selectAll(".femaleCell").text(d.values[1].sex + ": " + numberFormat(d.values[1].value));
