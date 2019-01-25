@@ -401,7 +401,6 @@ var chartType = "Bar";
     .style("text-anchor", "middle");
 
 /*Update plot title*/
-
 updateLegend(inData, wrapperName, svgName, tLong);
 
 
