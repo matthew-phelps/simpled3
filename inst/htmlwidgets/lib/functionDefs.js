@@ -193,45 +193,50 @@ function drawBarChart(inData, width, height, el,
  
 // TOOLTIP
   scaffoldTooltip(tableBar, rectSize, colors, chartType);
-  var tableBar = d3.select("#table" + chartType);
-  var tooltip = d3.select('#tooltip' + chartType);
-  function showTooltip(d) {    
-    tableBar.selectAll(".tooltipTitle").text(groupingName + ": " + d.key);
-    tableBar.selectAll(".maleCell").text(d.values[0].sex + ": " + numberFormat(d.values[0].value));
-    tableBar.selectAll(".femaleCell").text(d.values[1].sex + ": " + numberFormat(d.values[1].value));
+ var tableBar = d3.select("#table" + chartType);
+ var tooltip = d3.select('#tooltip' + chartType);
+ var thead = tableBar.select('th');
+ var maleCell = tableBar.select('.maleCell');
+ var femaleCell = tableBar.select('.femaleCell');
 
-    tooltip.transition()
-        .duration(tShort)
-        .style('opacity', 0.9);
-    d3.select('.mouseSvg' + ".i" + d.key.slice(0,2))
-        .style('opacity', mOpacity);
-    d3.select('.barGroups' + ".i" + d.key.slice(0,2))
-        .append('line')
-        .attr("class", 'guide')
-        .attr("x1", scaleX1.bandwidth())
-        .attr("x2", scaleX1.bandwidth())
-        .attr("y1", 0)
-        .attr("y2",chartAreaHeight);
-  }
+ function showTooltip(d) {    
+   thead.text(groupingName + ": " + d.key);
+   maleCell.text(d.values[0].sex + ": " + numberFormat(d.values[0].value));
+   femaleCell.text(d.values[1].sex + ": " + numberFormat(d.values[1].value));
 
-  function moveTooltip(d) {
-          tooltip
-            .style("left", d3.mouse(this)[0] + "px")
-            .style("top", (d3.mouse(this)[1] + 50) + "px");
-  }
+   tooltip.transition()
+       .duration(tShort)
+       .style('opacity', 0.9);
+   d3.select('.mouseSvg' + ".i" + d.key.slice(0,2))
+       .style('opacity', mOpacity);
+   d3.select('.barGroups' + ".i" + d.key.slice(0,2))
+       .append('line')
+       .attr("class", 'guide')
+       .attr("x1", scaleX1.bandwidth())
+       .attr("x2", scaleX1.bandwidth())
+       .attr("y1", 0)
+       .attr("y2",chartAreaHeight);
+ }
 
-  function hideTooltip(d) {
-    tooltip.transition()
-      .duration(tShort)
-      .style('opacity', 0);
-    d3.select('.mouseSvg' + ".i" + d.key.slice(0,2))
-        .transition().duration(tShort)
-        .style('opacity', 0.0);
-    d3.selectAll('.guide')
-      .transition().duration(tShort)
-      .style('opacity', 0)
-      .remove();
-  }
+ function moveTooltip(d) {
+         tooltip
+           .style("left", d3.mouse(this)[0] + "px")
+           .style("top", (d3.mouse(this)[1] + 50) + "px");
+ }
+
+ function hideTooltip(d) {
+   tooltip.transition()
+     .duration(tShort)
+     .style('opacity', 0);
+   d3.select('.mouseSvg' + ".i" + d.key.slice(0,2))
+       .transition().duration(tShort)
+       .style('opacity', 0.0);
+   d3.selectAll('.guide')
+     .transition().duration(tShort)
+     .style('opacity', 0)
+     .remove();
+ }
+
 
 
 
@@ -246,20 +251,18 @@ function drawBarChart(inData, width, height, el,
 
 function updateBarChart(inData, width, height, el, margin, barPadding, tLong, tShort, mOpacity, numberFormat, legendHeight, titleHeight) {
  
-
+var chartType = "Bar";
  var dim = {
     width: width - margin.left - margin.right,
     height: height - margin.top - margin.bottom
   };
 
  var chartAreaHeight = dim.height - legendHeight - titleHeight;
-  svg = d3.select('#containerBar').select('svg');
+  svg = d3.select('#container' + chartType).select('svg');
   var chartArea = svg.selectAll('.chartArea');
-  var tooltip = d3.select("#tooltipBar");
-  var tableBar = d3.select("#tableBar");
 
-  var wrapperName = "legendWrapperBar";
-  var svgName = "svgLegendBar";
+  var wrapperName = "legendWrapper" + chartType;
+  var svgName = "svgLegend" + chartType;
 
  // Data management
   var data = HTMLWidgets.dataframeToD3(inData.data);
@@ -404,47 +407,50 @@ updateLegend(inData, wrapperName, svgName, tLong);
 
   /* Tooltip functions. These should be hoisted to top of updateChart() function
   call, and therefore accessible at anytime from inside updateChart() */
-  var thead = tableBar.select('th');
-  var maleCell = tableBar.select('.maleCell');
-  var femaleCell = tableBar.select('.femaleCell');
-  function showTooltip(d) {
-    thead.text(groupingName + ": " + d.key);
-    maleCell.text(d.values[0].sex + ": " + numberFormat(d.values[0].value));
-    femaleCell.text(d.values[1].sex + ": " + numberFormat(d.values[1].value));
-    tooltip.transition()
-        .duration(tShort)
-        .style('opacity', 0.9);
-    d3.select('.mouseSvg' + ".i" + d.key.slice(0,2))
-        .style('opacity', mOpacity);
+  
+ var tableBar = d3.select("#table" + chartType);
+ var tooltip = d3.select('#tooltip' + chartType);
+ var thead = tableBar.select('th');
+ var maleCell = tableBar.select('.maleCell');
+ var femaleCell = tableBar.select('.femaleCell');
 
-    d3.select('.barGroups' + ".i" + d.key.slice(0,2))
-        .append('line')
-        .attr("class", 'guide')
-        .attr("x1", scaleX1.bandwidth())
-        .attr("x2", scaleX1.bandwidth())
-        .attr("y1", 0)
-        .attr("y2", dim.height - legendHeight);
+ function showTooltip(d) {    
+   thead.text(groupingName + ": " + d.key);
+   maleCell.text(d.values[0].sex + ": " + numberFormat(d.values[0].value));
+   femaleCell.text(d.values[1].sex + ": " + numberFormat(d.values[1].value));
 
-  }
+   tooltip.transition()
+       .duration(tShort)
+       .style('opacity', 0.9);
+   d3.select('.mouseSvg' + ".i" + d.key.slice(0,2))
+       .style('opacity', mOpacity);
+   d3.select('.barGroups' + ".i" + d.key.slice(0,2))
+       .append('line')
+       .attr("class", 'guide')
+       .attr("x1", scaleX1.bandwidth())
+       .attr("x2", scaleX1.bandwidth())
+       .attr("y1", 0)
+       .attr("y2",chartAreaHeight);
+ }
 
-  function moveTooltip(d) {
-     tooltip
-          .style("left", d3.mouse(this)[0] + "px")
-          .style("top", (d3.mouse(this)[1] + 50) + "px");
+ function moveTooltip(d) {
+         tooltip
+           .style("left", d3.mouse(this)[0] + "px")
+           .style("top", (d3.mouse(this)[1] + 50) + "px");
+ }
 
-  }
-  function hideTooltip(d) {
-    tooltip.transition()
-      .duration(tShort)
-      .style('opacity', 0);
-    d3.select('.mouseSvg' + ".i" + d.key.slice(0,2))
-        .transition().duration(tShort)
-        .style('opacity', 0.0);
-    d3.selectAll('.guide')
-      .transition().duration(tShort)
-      .style('opacity', 0)
-      .remove();
-  }
+ function hideTooltip(d) {
+   tooltip.transition()
+     .duration(tShort)
+     .style('opacity', 0);
+   d3.select('.mouseSvg' + ".i" + d.key.slice(0,2))
+       .transition().duration(tShort)
+       .style('opacity', 0.0);
+   d3.selectAll('.guide')
+     .transition().duration(tShort)
+     .style('opacity', 0)
+     .remove();
+ }
 }
 
 
