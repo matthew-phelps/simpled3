@@ -37,7 +37,7 @@ function drawBarChart(inData, width, height, el,
   // Axis titles
   chartAxes.append("text")
     .attr("x", dim.width / 2)
-    .attr("y", chartAreaHeight + 15)
+    .attr("y", chartAreaHeight + 20)
     .attr("alignment-baseline", "hanging")
     .attr("class", "bar x axisTitle plot_text");
     
@@ -505,7 +505,7 @@ function resizeBarChart(inData, width, height, el, margin, colors, barPadding, t
   // Axis titles
   d3.selectAll('.bar.x.axisTitle')
     .attr("x", dim.width / 2)
-    .attr("y", chartAreaHeight + 15);
+    .attr("y", chartAreaHeight + 20);
 
     d3.selectAll('.bar.y.axisTitle')
     .attr("x", 0 - (chartAreaHeight) / 2)
