@@ -1,7 +1,7 @@
 /*jshint esversion: 6 */
 function drawLineChart(inData, width, height, el, margin, rectPadding, tLong, tShort, cRadius, bigRadius, rectSize, tablePadding, numberFormat, legendHeight, titleHeight) {
   
-var chartType = "Line";
+  var chartType = "Line";
   var dim = {
     width: width - margin.left - margin.right,
     height: height - margin.top - margin.bottom
@@ -232,6 +232,8 @@ mouseRectsFemale
 ///////////////////////////////////////////////////////////
 
 function updateLineChart(inData, width, height, el, margin, rectPadding, tLong, tShort, cRadius, bigRadius, rectSize, tablePadding, numberFormat) {
+
+var chartType = "Line";
 var dim = {
     width: width - margin.left - margin.right,
     height: height - margin.top - margin.bottom

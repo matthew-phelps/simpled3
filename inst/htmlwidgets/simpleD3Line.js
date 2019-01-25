@@ -7,7 +7,7 @@ HTMLWidgets.widget({
   factory: function(el, width, height) {
     var margin = ({top:1, right:20, bottom:40, left:70});
     var rectPadding = 0.0;
-    var colors = ['#166abd', '#bd6916'];
+    
     var tLong = 450;
     var tShort = 200;
     var cRadius = 7;
@@ -43,11 +43,11 @@ HTMLWidgets.widget({
       renderValue: function(x) {
         if(!chartExists){
           chartExists = true;
-          drawLineChart(x, width, height, el, margin, rectPadding, colors, tLong, tShort, cRadius, bigRadius, rectSize, tablePadding, numberFormat, legendHeight, titleHeight);
+          drawLineChart(x, width, height, el, margin, rectPadding, tLong, tShort, cRadius, bigRadius, rectSize, tablePadding, numberFormat, titleHeight, legendHeight);
          } else if (resized){
-          updateLineChart(x, this.dim.width, this.dim.height, el, margin, rectPadding, colors, tLong, tShort, cRadius, bigRadius,rectSize, tablePadding, numberFormat, legendHeight,titleHeight);
+          updateLineChart(x, this.dim.width, this.dim.height, el, margin, rectPadding, tLong, tShort, cRadius, bigRadius,rectSize, tablePadding, numberFormat, legendHeight,titleHeight);
         } else {
-          updateLineChart(x, width, height, el, margin, rectPadding, colors, tLong, tShort, cRadius, bigRadius, rectSize, tablePadding, numberFormat, legendHeight,titleHeight);
+          updateLineChart(x, width, height, el, margin, rectPadding, tLong, tShort, cRadius, bigRadius, rectSize, tablePadding, numberFormat, legendHeight,titleHeight);
         }
         this.x = x;
         
@@ -59,7 +59,7 @@ HTMLWidgets.widget({
 
       resize: function(width, height) {
 
-        resizeLineChart(this.x, width, height, el, margin, rectPadding, colors, tLong, tShort, cRadius, bigRadius, rectSize, tablePadding, numberFormat, legendHeight,titleHeight);
+        resizeLineChart(this.x, width, height, el, margin, rectPadding, tLong, tShort, cRadius, bigRadius, rectSize, tablePadding, numberFormat, legendHeight,titleHeight);
           var dim = {
                 width: width,
                 height: height
