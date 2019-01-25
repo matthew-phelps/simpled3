@@ -16,12 +16,12 @@ function scaffoldTooltip(tableBar, rectSize, colors){
  // Tooltip table setup
   var cellSvgWidth = "20%";
   var cellTextWidth = "80%";
-  var thead = tableBar
+  tableBar
       .append('thead')
       .append('tr')
       .append('th')
       .attr("colspan", 2)
-      .classed("tooltipTitle");
+      .attr("class", "tooltipTitle");
   var tbody = tableBar.append('tbody');
   var rowMale = tbody.append('tr');
   rowMale.append('td').attr('width', cellSvgWidth)
