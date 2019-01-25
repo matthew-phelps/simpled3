@@ -347,16 +347,17 @@ var mouseRectsFemale = chartArea
     .text(varName)
     .style("text-anchor", "middle");
 
+/*Update plot title*/
+updateLegend(inData, wrapperName, svgName, tLong);
 
-// Tooltip functions - these will be hoisted to top of fn call
+
+// Tooltip 
   var table = d3.select("#table" + chartType);
   var tooltip = d3.select('#tooltip' + chartType);
   var thead = table.select('th');
   var maleCell = table.select('.maleCell');
   var femaleCell = table.select('.femaleCell');
 
-
- // Tooltip functions  - these will be hoisted to top of fn call
   function showTooltip(d) {
     thead.text(d.year);
     maleCell.text(Object.keys(d)[1] + ": " + numberFormat(d.male));
