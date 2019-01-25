@@ -63,7 +63,7 @@ titleWrapper.append('text')
   .attr("alignment-baseline", "hanging")
   .attr("text-anchor", "start")
   .attr("id", "plot_titleD3_" + wrapperName)
-  .attr("class", "plot_text")
+  .attr("class", "plot_text") 
   .attr("class", "plot_titleD3");
 }
 
