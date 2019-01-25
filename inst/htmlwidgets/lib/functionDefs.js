@@ -198,44 +198,6 @@ drawLegend(topG, inData, dim, titleHeight, legendHeight, wrapperName, svgName);
  // SET up tooltip table
  scaffoldTooltip(tableBar, rectSize, colors);
 
-// Tooltip functions - hoisted to top of fn call
-function showTooltip(d) {
-    tableBar.selectAll(".tooltipTitle").text(groupingName + ": " + d.key);
-    tableBar.selectAll(".maleCell").text(d.values[0].sex + ": " + numberFormat(d.values[0].value));
-    tableBar.selectAll(".femaleCell").text(d.values[1].sex + ": " + numberFormat(d.values[1].value));
-
-    tooltip.transition()
-        .duration(tShort)
-        .style('opacity', 0.9);
-    d3.select('.mouseSvg' + ".i" + d.key.slice(0,2))
-        .style('opacity', mOpacity);
-    d3.select('.barGroups' + ".i" + d.key.slice(0,2))
-        .append('line')
-        .attr("class", 'guide')
-        .attr("x1", scaleX1.bandwidth())
-        .attr("x2", scaleX1.bandwidth())
-        .attr("y1", 0)
-        .attr("y2", dim.height - legendHeight);
-  }
-
-  function moveTooltip(d) {
-          tooltip
-            .style("left", d3.mouse(this)[0] + "px")
-            .style("top", (d3.mouse(this)[1] + 50) + "px");
-  }
-
-  function hideTooltip(d) {
-    tooltip.transition()
-      .duration(tShort)
-      .style('opacity', 0);
-    d3.select('.mouseSvg' + ".i" + d.key.slice(0,2))
-        .transition().duration(tShort)
-        .style('opacity', 0.0);
-    d3.selectAll('.guide')
-      .transition().duration(tShort)
-      .style('opacity', 0)
-      .remove();
-  }
 
 
 
