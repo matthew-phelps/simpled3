@@ -55,7 +55,43 @@ function drawBarChart(inData, width, height, el,
   tableBar = tooltip.append("table")
       .classed("table", true)
       .attr('id', "tableBar");
+ 
+ // Tooltip table setup
+  var cellSvgWidth = "20%";
+  var cellTextWidth = "80%";
+  var thead = tableBar
+      .append('thead')
+      .append('tr')
+      .append('th')
+      .attr("colspan", 2);
+  var tbody = tableBar.append('tbody');
+  var rowMale = tbody.append('tr');
+  rowMale.append('td').attr('width', cellSvgWidth)
+  .append('svg')
+      .attr("width", rectSize)
+      .attr('height', rectSize)
+  .append('rect')
+      .attr('width', rectSize)
+      .attr('height', rectSize)
+      .style('fill', colors[0]);
+var maleCell = rowMale
+      .append('td')
+      .attr("class", 'maleCell')
+      .attr("width", cellTextWidth);
 
+var rowFemale = tbody.append('tr');
+rowFemale.append('td').attr("width", cellSvgWidth)
+  .append('svg')
+      .attr('width', rectSize)
+      .attr('height', rectSize)
+  .append('rect')
+      .attr('width', rectSize)
+      .attr('height', rectSize)
+      .style('fill', colors[1]);
+var femaleCell = rowFemale
+      .append('td')
+      .attr("class", 'femaleCell')
+      .attr('width', cellTextWidth);
   
 
   // Data management
@@ -194,43 +230,6 @@ function drawBarChart(inData, width, height, el,
  var wrapperName = "legendWrapperBar";
  var svgName = "svgLegendBar";
   drawLegend(topG, inData, dim, titleHeight, legendHeight, wrapperName, svgName);
-
-  // Tooltip table setup
-  var cellSvgWidth = "20%";
-  var cellTextWidth = "80%";
-  var thead = tableBar
-      .append('thead')
-      .append('tr')
-      .append('th')
-      .attr("colspan", 2);
-  var tbody = tableBar.append('tbody');
-  var rowMale = tbody.append('tr');
-  rowMale.append('td').attr('width', cellSvgWidth)
-  .append('svg')
-      .attr("width", rectSize)
-      .attr('height', rectSize)
-  .append('rect')
-      .attr('width', rectSize)
-      .attr('height', rectSize)
-      .style('fill', colors[0]);
-var maleCell = rowMale
-      .append('td')
-      .attr("class", 'maleCell')
-      .attr("width", cellTextWidth);
-
-var rowFemale = tbody.append('tr');
-rowFemale.append('td').attr("width", cellSvgWidth)
-  .append('svg')
-      .attr('width', rectSize)
-      .attr('height', rectSize)
-  .append('rect')
-      .attr('width', rectSize)
-      .attr('height', rectSize)
-      .style('fill', colors[1]);
-var femaleCell = rowFemale
-      .append('td')
-      .attr("class", 'femaleCell')
-      .attr('width', cellTextWidth);
 
 // Tooltip functions - hoisted to top of fn call
 
