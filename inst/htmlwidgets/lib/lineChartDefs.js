@@ -271,7 +271,7 @@ var dim = {
     height: height - margin.top - margin.bottom
   };
 
-  var chartAreaHeight = dim.height  - legendHeight;
+  var chartAreaHeight = dim.height  - legendHeight - titleHeight;
   var svg = d3.select("#containerLine").select('svg');
   var chartArea = svg.selectAll('.chartArea');
   var tooltip = d3.select("#tooltipLine");
