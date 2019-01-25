@@ -194,6 +194,7 @@ function drawBarChart(inData, width, height, el,
 // TOOLTIP
   scaffoldTooltip(tableBar, rectSize, colors, chartType);
   var tableBar = d3.select("#table" + chartType);
+  var tooltip = d3.select('#tooltip' + chartType);
   function showTooltip(d) {    
     tableBar.selectAll(".tooltipTitle").text(groupingName + ": " + d.key);
     tableBar.selectAll(".maleCell").text(d.values[0].sex + ": " + numberFormat(d.values[0].value));
