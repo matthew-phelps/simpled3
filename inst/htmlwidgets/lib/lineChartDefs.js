@@ -7,6 +7,7 @@ function drawLineChart(inData, width, height, el, margin, rectPadding, colors, t
 
   
   var chartAreaHeight = dim.height - legendHeight - titleHeight;
+  var xAxisTitleMargin = chartAreaHeight + 25;
 
   var container = d3.select(el).html("").style("position", "relative")
     .append('div')
@@ -37,7 +38,7 @@ function drawLineChart(inData, width, height, el, margin, rectPadding, colors, t
   // Axis titles
   chartAxes.append("text")
     .attr("x", dim.width / 2)
-    .attr("y", chartAreaHeight + margin.bottom - 5)
+    .attr("y", xAxisTitleMargin)
     .attr("class", "line x axisTitle");
     
   chartAxes.append("text")
@@ -429,7 +430,9 @@ var dim = {
     height: height - margin.top - margin.bottom
   };
  
-  var chartAreaHeight = dim.height  - legendHeight;
+  var chartAreaHeight = dim.height  - legendHeight + titleHeight;
+  var xAxisTitleMargin = chartAreaHeight + 25;
+
   var data = HTMLWidgets.dataframeToD3(inData.data);
   var varName = data[0].variable;
   var yearName = Object.keys(data[0])[0];
@@ -450,7 +453,7 @@ var dim = {
 
   svg.select('line.x.axisTitle')
     .attr("x", dim.width / 2)
-   .attr("y", chartAreaHeight + margin.bottom - 5);
+   .attr("y", xAxisTitleMargin);
 
   svg.select('line.y.axisTitle')
     .attr("x", 0 - chartAreaHeight / 2)
