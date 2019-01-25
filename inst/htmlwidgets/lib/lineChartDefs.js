@@ -348,6 +348,8 @@ var mouseRectsFemale = chartArea
     .style("text-anchor", "middle");
 
 /*Update plot title*/
+var wrapperName = "legendWrapper" + chartType;
+var svgName = "svgLegend" + chartType;
 updateLegend(inData, wrapperName, svgName, tLong);
 
 
