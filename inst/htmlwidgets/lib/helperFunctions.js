@@ -14,7 +14,7 @@ var insertLinebreaks = function (d) {
 
 
 
-function showTooltip(, thead, maleCell, femaleCell) {
+function showTooltip(d, thead, maleCell, femaleCell) {
     thead.text(groupingName + ": " + d.key);
     maleCell.text(d.values[0].sex + ": " + numberFormat(d.values[0].value));
     femaleCell.text(d.values[1].sex + ": " + numberFormat(d.values[1].value));
