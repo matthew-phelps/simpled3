@@ -1,5 +1,7 @@
 /*jshint esversion: 6 */
-function drawLineChart(inData, width, height, el, margin, rectPadding, colors, tLong, tShort, cRadius, bigRadius, rectSize, tablePadding, numberFormat, legendHeight, titleHeight) {
+function drawLineChart(inData, width, height, el, margin, rectPadding, tLong, tShort, cRadius, bigRadius, rectSize, tablePadding, numberFormat, legendHeight, titleHeight) {
+  
+var chartType = "Line";
   var dim = {
     width: width - margin.left - margin.right,
     height: height - margin.top - margin.bottom
@@ -11,10 +13,10 @@ function drawLineChart(inData, width, height, el, margin, rectPadding, colors, t
 
   var container = d3.select(el).html("").style("position", "relative")
     .append('div')
-    .attr('id', 'containerLine');
+    .attr('id', 'container' + chartType);
 
   var svg = container.append('svg')
-    .attr("id", "svgLine")
+    .attr("id", "svg" + chartType)
     .attr("width", dim.width + margin.left + margin.right)
     .attr("height", dim.height + margin.top + margin.bottom);
 
@@ -48,25 +50,18 @@ function drawLineChart(inData, width, height, el, margin, rectPadding, colors, t
     .attr("y", 0 - margin.left + 20)
     .attr("class", "line y axisTitle");
 
-   // TOOLTIP
-  var tooltip = container.append("div")
-    .attr('id', 'tooltipLine')
-    .style('opacity', 0);
-  tableLine = tooltip.append("table")
-      .classed("table", true)
-      .attr('id', "tableLine");
 
   // Data management
   var data = HTMLWidgets.dataframeToD3(inData.data);
   var varName = data[0].variable;
   var yearName = Object.keys(data[0])[0];
-  
+  var colors = inData.metaData.colors;  
   
   for (var i = 0; i<data.length; i++) {
     data[i].year = data[i][yearName];
     delete data[i][yearName];
     }
-var grouping1Names = data.map(d => d.year);
+  var grouping1Names = data.map(d => d.year);
 
   // Scales
   var maxY = d3.max(data, d=> Math.max(d.female, d.male));
@@ -182,48 +177,19 @@ mouseRectsFemale
       .on("mouseout", hideTooltip);
 
   /// ADD LEGEND
- var wrapperName = "legendWrapperBar";
- var svgName = "svgLegendBar";
+ var wrapperName = "legendWrapper" + chartType;
+ var svgName = "svgLegend" + chartType;
  drawLegend(topG, inData, dim, margin, titleHeight, legendHeight, wrapperName, svgName);
 
 
+// TOOLTIP
+  scaffoldTooltip(tableBar, rectSize, colors, chartType);
+  var tableBar = d3.select("#table" + chartType);
+  var tooltip = d3.select('#tooltip' + chartType);
+  var thead = tableBar.select('th');
+  var maleCell = tableBar.select('.maleCell');
+  var femaleCell = tableBar.select('.femaleCell');
 
-// Table setup
-    var cellSvgWidth = "20%";
-    var cellTextWidth = "80%";
-    var thead = tableLine
-        .append('thead')
-        .append('tr')
-        .append('th')
-        .attr("colspan", 2);
-    var tbody = tableLine.append('tbody');
-    var rowMale = tbody.append('tr');
-    rowMale.append('td').attr('width', cellSvgWidth)
-    .append('svg')
-        .attr("width", rectSize)
-        .attr('height', rectSize)
-    .append('rect')
-        .attr('width', rectSize)
-        .attr('height', rectSize)
-        .style('fill', colors[0]);
-  var maleCell = rowMale
-        .append('td')
-        .attr("class", 'maleCell')
-        .attr("width", cellTextWidth);
-
-  var rowFemale = tbody.append('tr');
-  rowFemale.append('td').attr("width", cellSvgWidth)
-    .append('svg')
-        .attr('width', rectSize)
-        .attr('height', rectSize)
-    .append('rect')
-        .attr('width', rectSize)
-        .attr('height', rectSize)
-        .style('fill', colors[1]);
-  var femaleCell = rowFemale
-        .append('td')
-        .attr("class", 'femaleCell')
-        .attr('width', cellTextWidth);
 
  // Tooltip functions  - these will be hoisted to top of fn call
   function showTooltip(d) {
@@ -265,7 +231,7 @@ mouseRectsFemale
 ///////////////      UPDATE     ///////////////////////////
 ///////////////////////////////////////////////////////////
 
-function updateLineChart(inData, width, height, el, margin, rectPadding, colors, tLong, tShort, cRadius, bigRadius, rectSize, tablePadding, numberFormat) {
+function updateLineChart(inData, width, height, el, margin, rectPadding, tLong, tShort, cRadius, bigRadius, rectSize, tablePadding, numberFormat) {
 var dim = {
     width: width - margin.left - margin.right,
     height: height - margin.top - margin.bottom
@@ -279,7 +245,8 @@ var dim = {
   var data = HTMLWidgets.dataframeToD3(inData.data);
   var varName = data[0].variable;
   var yearName = Object.keys(data[0])[0];
-  
+  var colors = inData.metaData.colors;
+
   for (var i = 0; i<data.length; i++) {
     data[i].year = data[i][yearName];
     delete data[i][yearName];
@@ -424,7 +391,7 @@ var mouseRectsFemale = chartArea
 ///////////////      RESIZE     ///////////////////////////
 ///////////////////////////////////////////////////////////
 
-function resizeLineChart(inData, width, height, el, margin, rectPadding, colors, tLong, tShort, cRadius, bigRadius, rectSize, tablePadding, numberFormat) {
+function resizeLineChart(inData, width, height, el, margin, rectPadding, tLong, tShort, cRadius, bigRadius, rectSize, tablePadding, numberFormat) {
   
 var dim = {
     width: width - margin.left - margin.right,
@@ -437,7 +404,7 @@ var dim = {
   var data = HTMLWidgets.dataframeToD3(inData.data);
   var varName = data[0].variable;
   var yearName = Object.keys(data[0])[0];
-  
+  var colors = inData.metaData.colors;
   
   for (var i = 0; i<data.length; i++) {
     data[i].year = data[i][yearName];

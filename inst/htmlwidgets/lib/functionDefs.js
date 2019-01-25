@@ -459,6 +459,7 @@ updateLegend(inData, wrapperName, svgName, tLong);
 //////////////////////////////////////////////////////////////////////////////
 
 function resizeBarChart(inData, width, height, el, margin, barPadding, tLong, tShort, mOpacity, numberFormat, legendHeight, titleHeight) {
+  var chartType = "Bar";
   var dim = {
     width: width - margin.left - margin.right,
     height: height - margin.top - margin.bottom
@@ -467,12 +468,9 @@ function resizeBarChart(inData, width, height, el, margin, barPadding, tLong, tS
   var chartAreaHeight = dim.height - legendHeight - titleHeight;
   var xAxisTitleMargin = chartAreaHeight + 25;
 
-  var svg = d3.select('#containerBar').select('svg')
+  var svg = d3.select('#container' + chartType).select('svg')
     .attr("width", dim.width + margin.left + margin.right)
     .attr("height", dim.height + margin.top + margin.bottom);
-
-  var tooltip = d3.select("#tooltipBar");
-  var tableBar = d3.select("#tableBar");
 
   // Axis titles
   d3.selectAll('.bar.x.axisTitle')
@@ -574,32 +572,35 @@ function resizeBarChart(inData, width, height, el, margin, barPadding, tLong, tS
 
     /* Tooltip functions. These should be hoisted to top of resizeChart() function
   call, and therefore accessible at anytime from inside resizeChart() */
+  var tableBar = d3.select("#table" + chartType);
+  var tooltip = d3.select('#tooltip' + chartType);
   var thead = tableBar.select('th');
   var maleCell = tableBar.select('.maleCell');
   var femaleCell = tableBar.select('.femaleCell');
-  function showTooltip(d) {
+
+  function showTooltip(d) {    
     thead.text(groupingName + ": " + d.key);
     maleCell.text(d.values[0].sex + ": " + numberFormat(d.values[0].value));
     femaleCell.text(d.values[1].sex + ": " + numberFormat(d.values[1].value));
+
     tooltip.transition()
         .duration(tShort)
         .style('opacity', 0.9);
     d3.select('.mouseSvg' + ".i" + d.key.slice(0,2))
         .style('opacity', mOpacity);
-
     d3.select('.barGroups' + ".i" + d.key.slice(0,2))
         .append('line')
         .attr("class", 'guide')
         .attr("x1", scaleX1.bandwidth())
         .attr("x2", scaleX1.bandwidth())
         .attr("y1", 0)
-        .attr("y2", dim.height - legendHeight);
+        .attr("y2",chartAreaHeight);
   }
 
   function moveTooltip(d) {
-     tooltip
-          .style("left", d3.mouse(this)[0] + "px")
-          .style("top", (d3.mouse(this)[1] + 50) + "px");
+          tooltip
+            .style("left", d3.mouse(this)[0] + "px")
+            .style("top", (d3.mouse(this)[1] + 50) + "px");
   }
 
   function hideTooltip(d) {
