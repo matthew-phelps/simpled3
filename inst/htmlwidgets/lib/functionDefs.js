@@ -38,6 +38,7 @@ function drawBarChart(inData, width, height, el,
   chartAxes.append("text")
     .attr("x", dim.width / 2)
     .attr("y", chartAreaHeight + 15)
+    .attr("alignment-baseline", "hanging")
     .attr("class", "bar x axisTitle plot_text");
     
   chartAxes.append("text")
