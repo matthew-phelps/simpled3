@@ -55,43 +55,7 @@ function drawBarChart(inData, width, height, el,
   tableBar = tooltip.append("table")
       .classed("table", true)
       .attr('id', "tableBar");
- 
- // Tooltip table setup
-  var cellSvgWidth = "20%";
-  var cellTextWidth = "80%";
-  var thead = tableBar
-      .append('thead')
-      .append('tr')
-      .append('th')
-      .attr("colspan", 2);
-  var tbody = tableBar.append('tbody');
-  var rowMale = tbody.append('tr');
-  rowMale.append('td').attr('width', cellSvgWidth)
-  .append('svg')
-      .attr("width", rectSize)
-      .attr('height', rectSize)
-  .append('rect')
-      .attr('width', rectSize)
-      .attr('height', rectSize)
-      .style('fill', colors[0]);
-var maleCell = rowMale
-      .append('td')
-      .attr("class", 'maleCell')
-      .attr("width", cellTextWidth);
 
-var rowFemale = tbody.append('tr');
-rowFemale.append('td').attr("width", cellSvgWidth)
-  .append('svg')
-      .attr('width', rectSize)
-      .attr('height', rectSize)
-  .append('rect')
-      .attr('width', rectSize)
-      .attr('height', rectSize)
-      .style('fill', colors[1]);
-var femaleCell = rowFemale
-      .append('td')
-      .attr("class", 'femaleCell')
-      .attr('width', cellTextWidth);
   
 
   // Data management
@@ -229,10 +193,49 @@ var femaleCell = rowFemale
   /// ADD LEGEND
  var wrapperName = "legendWrapperBar";
  var svgName = "svgLegendBar";
-  drawLegend(topG, inData, dim, titleHeight, legendHeight, wrapperName, svgName);
+drawLegend(topG, inData, dim, titleHeight, legendHeight, wrapperName, svgName);
+
+ // SET up tooltip table
+ scaffoldTooltip(tableBar);
 
 // Tooltip functions - hoisted to top of fn call
+function showTooltip(d) {
+    thead.text(groupingName + ": " + d.key);
+    maleCell.text(d.values[0].sex + ": " + numberFormat(d.values[0].value));
+    femaleCell.text(d.values[1].sex + ": " + numberFormat(d.values[1].value));
 
+    tooltip.transition()
+        .duration(tShort)
+        .style('opacity', 0.9);
+    d3.select('.mouseSvg' + ".i" + d.key.slice(0,2))
+        .style('opacity', mOpacity);
+    d3.select('.barGroups' + ".i" + d.key.slice(0,2))
+        .append('line')
+        .attr("class", 'guide')
+        .attr("x1", scaleX1.bandwidth())
+        .attr("x2", scaleX1.bandwidth())
+        .attr("y1", 0)
+        .attr("y2", dim.height - legendHeight);
+  }
+
+  function moveTooltip(d) {
+          tooltip
+            .style("left", d3.mouse(this)[0] + "px")
+            .style("top", (d3.mouse(this)[1] + 50) + "px");
+  }
+
+  function hideTooltip(d) {
+    tooltip.transition()
+      .duration(tShort)
+      .style('opacity', 0);
+    d3.select('.mouseSvg' + ".i" + d.key.slice(0,2))
+        .transition().duration(tShort)
+        .style('opacity', 0.0);
+    d3.selectAll('.guide')
+      .transition().duration(tShort)
+      .style('opacity', 0)
+      .remove();
+  }
 
 
 
