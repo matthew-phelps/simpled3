@@ -431,7 +431,7 @@ var dim = {
     height: height - margin.top - margin.bottom
   };
  
-  var chartAreaHeight = dim.height  - legendHeight + titleHeight;
+  var chartAreaHeight = dim.height  - legendHeight - titleHeight;
   var xAxisTitleMargin = chartAreaHeight + 25;
 
   var data = HTMLWidgets.dataframeToD3(inData.data);
