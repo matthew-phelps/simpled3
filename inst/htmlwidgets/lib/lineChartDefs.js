@@ -179,7 +179,7 @@ mouseRectsFemale
   /// ADD LEGEND
  var wrapperName = "legendWrapper" + chartType;
  var svgName = "svgLegend" + chartType;
- drawLegend(topG, inData, dim, margin, titleHeight, legendHeight, wrapperName, svgName);
+ drawLegend(topG, inData, dim, titleHeight, legendHeight, wrapperName, svgName);
 
 
 // TOOLTIP
