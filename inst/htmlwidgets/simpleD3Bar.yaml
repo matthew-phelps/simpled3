@@ -15,3 +15,7 @@ dependencies:
   src: htmlwidgets/lib/saveSvgAsPng
   script: ./saveSvgAsPng.js
   version: 1.4.6
+- name: helperFunctions
+  src: htmlwidgets/lib/
+  script: ./helperFunctions.js
+  version: 1.0
