@@ -1,5 +1,5 @@
 /*jshint esversion: 6 */
-function drawLineChart(inData, width, height, el, margin, rectPadding, tLong, tShort, cRadius, bigRadius, rectSize, tablePadding, numberFormat, legendHeight, titleHeight) {
+function drawLineChart(inData, width, height, el, margin, rectPadding, tLong, tShort, cRadius, bigRadius, rectSize, tablePadding, numberFormat, titleHeight, legendHeight) {
   
   var chartType = "Line";
   var dim = {
