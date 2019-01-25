@@ -12,7 +12,7 @@ var insertLinebreaks = function (d) {
     }
 };
 
-function scaffoldTooltip(tableBar){
+function scaffoldTooltip(tableBar, rectSize, colors){
  // Tooltip table setup
   var cellSvgWidth = "20%";
   var cellTextWidth = "80%";
