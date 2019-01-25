@@ -1,6 +1,6 @@
 /*jshint esversion: 6 */
 function drawBarChart(inData, width, height, el,
- margin, colors, barPadding, tLong, tShort, mOpacity, rectSize, tablePadding, numberFormat, legendHeight, titleHeight) {
+ margin, barPadding, tLong, tShort, mOpacity, rectSize, tablePadding, numberFormat, legendHeight, titleHeight) {
 
   var dim = {
     width: width - margin.left - margin.right,
@@ -63,7 +63,7 @@ function drawBarChart(inData, width, height, el,
   var groupingName = Object.keys(data[0])[1];
   var varName = Object.keys(data[0])[2];
   var sexName = Object.keys(data[0])[0];
-
+  var colors = inData.metaData.colors;
   // Variable/key names may changes, so standardized them
   for (var i = 0; i<data.length; i++) {
     data[i].sex = data[i][sexName];
@@ -196,7 +196,7 @@ function drawBarChart(inData, width, height, el,
 drawLegend(topG, inData, dim, titleHeight, legendHeight, wrapperName, svgName);
 
  // SET up tooltip table
- scaffoldTooltip(tableBar);
+ scaffoldTooltip(tableBar, rectSize, colors);
 
 // Tooltip functions - hoisted to top of fn call
 function showTooltip(d) {
@@ -248,7 +248,7 @@ function showTooltip(d) {
 //////////////////    UPDATE     /////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////
 
-function updateBarChart(inData, width, height, el, margin, colors, barPadding, tLong, tShort, mOpacity, numberFormat, legendHeight, titleHeight) {
+function updateBarChart(inData, width, height, el, margin, barPadding, tLong, tShort, mOpacity, numberFormat, legendHeight, titleHeight) {
  
 
  var dim = {
@@ -267,7 +267,7 @@ function updateBarChart(inData, width, height, el, margin, colors, barPadding, t
   var groupingName = Object.keys(data[0])[1];
   var varName = Object.keys(data[0])[2];
   var sexName = Object.keys(data[0])[0];
-
+  var colors = inData.metaData.colors;
   // Variable/key names may changes, so standardized them
   for (var i = 0; i<data.length; i++) {
     data[i].sex = data[i][sexName];
@@ -454,7 +454,7 @@ updateLegend(inData, wrapperName, svgName, tLong);
 //////////////////    RESIZE     /////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////
 
-function resizeBarChart(inData, width, height, el, margin, colors, barPadding, tLong, tShort, mOpacity, numberFormat, legendHeight, titleHeight) {
+function resizeBarChart(inData, width, height, el, margin, barPadding, tLong, tShort, mOpacity, numberFormat, legendHeight, titleHeight) {
   var dim = {
     width: width - margin.left - margin.right,
     height: height - margin.top - margin.bottom
@@ -483,7 +483,8 @@ function resizeBarChart(inData, width, height, el, margin, colors, barPadding, t
   var groupingName = Object.keys(data[0])[1];
   var varName = Object.keys(data[0])[2];
   var sexName = Object.keys(data[0])[0];
-
+  var colors = inData.metaData.colors;
+  
   for (var i = 0; i<data.length; i++) {
     data[i].sex = data[i][sexName];
     data[i].grouping = data[i][groupingName];

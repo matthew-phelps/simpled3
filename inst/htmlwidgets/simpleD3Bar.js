@@ -6,7 +6,6 @@ HTMLWidgets.widget({
 
   factory: function(el, width, height) {
     var margin = ({top:1, right:20, bottom:40, left:70});
-    var colors = [ '#166abd', '#bd6916'];
     var barPadding = 0.2;
     var tLong = 450;
     var tShort = 200;
@@ -50,14 +49,14 @@ HTMLWidgets.widget({
       renderValue: function(x) {
         if(!chartExists){
           chartExists = true;
-          drawBarChart(x, width, height, el, margin, colors, barPadding, tLong, tShort, mOpacity, rectSize, tablePadding, numberFormat, legendHeight, titleHeight);
+          drawBarChart(x, width, height, el, margin, barPadding, tLong, tShort, mOpacity, rectSize, tablePadding, numberFormat, legendHeight, titleHeight);
 
           
 
         } else if (resized){
-          updateBarChart(x, this.dim.width, this.dim.height, el, margin, colors, barPadding, tLong, tShort, mOpacity, numberFormat, legendHeight, titleHeight);
+          updateBarChart(x, this.dim.width, this.dim.height, el, margin, barPadding, tLong, tShort, mOpacity, numberFormat, legendHeight, titleHeight);
         } else {
-          updateBarChart(x, width, height, el, margin, colors, barPadding, tLong, tShort, mOpacity, numberFormat, legendHeight,titleHeight);
+          updateBarChart(x, width, height, el, margin, barPadding, tLong, tShort, mOpacity, numberFormat, legendHeight,titleHeight);
 
         }
         this.x = x; // store for resize
@@ -69,7 +68,7 @@ HTMLWidgets.widget({
       },
 
       resize: function(width, height) {
-        resizeBarChart(this.x, width, height, el, margin, colors, barPadding, tLong, tShort, mOpacity, numberFormat, legendHeight,titleHeight);
+        resizeBarChart(this.x, width, height, el, margin, barPadding, tLong, tShort, mOpacity, numberFormat, legendHeight,titleHeight);
         var dim = {
                 width: width,
                 height: height
