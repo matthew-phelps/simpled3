@@ -231,7 +231,7 @@ mouseRectsFemale
 ///////////////      UPDATE     ///////////////////////////
 ///////////////////////////////////////////////////////////
 
-function updateLineChart(inData, width, height, el, margin, rectPadding, tLong, tShort, cRadius, bigRadius, rectSize, tablePadding, numberFormat) {
+function updateLineChart(inData, width, height, el, margin, rectPadding, tLong, tShort, cRadius, bigRadius, rectSize, tablePadding, numberFormat, legendHeight, titleHeight) {
 
 var chartType = "Line";
 var dim = {
@@ -396,7 +396,7 @@ updateLegend(inData, wrapperName, svgName, tLong);
 ///////////////      RESIZE     ///////////////////////////
 ///////////////////////////////////////////////////////////
 
-function resizeLineChart(inData, width, height, el, margin, rectPadding, tLong, tShort, cRadius, bigRadius, rectSize, tablePadding, numberFormat) {
+function resizeLineChart(inData, width, height, el, margin, rectPadding, tLong, tShort, cRadius, bigRadius, rectSize, tablePadding, numberFormat, legendHeight, titleHeight) {
 var chartType = "Line"  ;
 var dim = {
     width: width - margin.left - margin.right,
