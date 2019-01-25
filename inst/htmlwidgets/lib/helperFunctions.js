@@ -20,7 +20,8 @@ function scaffoldTooltip(tableBar, rectSize, colors){
       .append('thead')
       .append('tr')
       .append('th')
-      .attr("colspan", 2);
+      .attr("colspan", 2)
+      .classed("thead");
   var tbody = tableBar.append('tbody');
   var rowMale = tbody.append('tr');
   rowMale.append('td').attr('width', cellSvgWidth)
@@ -34,7 +35,8 @@ function scaffoldTooltip(tableBar, rectSize, colors){
 var maleCell = rowMale
       .append('td')
       .attr("class", 'maleCell')
-      .attr("width", cellTextWidth);
+      .attr("width", cellTextWidth)
+      .classed("maleCell");
 
 var rowFemale = tbody.append('tr');
 rowFemale.append('td').attr("width", cellSvgWidth)
@@ -48,6 +50,7 @@ rowFemale.append('td').attr("width", cellSvgWidth)
 var femaleCell = rowFemale
       .append('td')
       .attr("class", 'femaleCell')
-      .attr('width', cellTextWidth);
+      .attr('width', cellTextWidth)
+      .classed("femaleCell");
 
   }
