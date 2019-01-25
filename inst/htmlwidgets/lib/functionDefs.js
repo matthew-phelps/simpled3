@@ -200,7 +200,7 @@ drawLegend(topG, inData, dim, titleHeight, legendHeight, wrapperName, svgName);
 
 // Tooltip functions - hoisted to top of fn call
 function showTooltip(d) {
-    tableBar.selectAll(".thead").text(groupingName + ": " + d.key);
+    tableBar.selectAll(".tooltipTitle").text(groupingName + ": " + d.key);
     tableBar.selectAll(".maleCell").text(d.values[0].sex + ": " + numberFormat(d.values[0].value));
     tableBar.selectAll(".femaleCell").text(d.values[1].sex + ": " + numberFormat(d.values[1].value));
 

@@ -21,7 +21,7 @@ function scaffoldTooltip(tableBar, rectSize, colors){
       .append('tr')
       .append('th')
       .attr("colspan", 2)
-      .classed("thead");
+      .classed("tooltipTitle");
   var tbody = tableBar.append('tbody');
   var rowMale = tbody.append('tr');
   rowMale.append('td').attr('width', cellSvgWidth)
