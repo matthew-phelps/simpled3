@@ -39,6 +39,7 @@ function drawLineChart(inData, width, height, el, margin, rectPadding, colors, t
   chartAxes.append("text")
     .attr("x", dim.width / 2)
     .attr("y", xAxisTitleMargin)
+    .attr("alignment-baseline", "hanging")
     .attr("class", "line x axisTitle");
     
   chartAxes.append("text")
