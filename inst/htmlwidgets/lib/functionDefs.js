@@ -315,7 +315,7 @@ var chartType = "Bar";
   // Remove any bar-groups not present in incoming data
   barGroupWithData.exit()
     .transition()
-    .duration(tShort)
+    .duration(20)
     .ease(d3.easeLinear)
     .style('opacity', 0)
     .remove();
@@ -557,8 +557,6 @@ function resizeBarChart(inData, width, height, el, margin, barPadding, tLong, tS
       .on("mouseover", showTooltip)
       .on("mousemove", moveTooltip)
       .on("mouseout", hideTooltip);
-
-
 
 
   // Resize Axes
