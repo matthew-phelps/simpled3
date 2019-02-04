@@ -10,8 +10,8 @@ function drawBarChart(inData, width, height, el,
   var chartType = "Bar";
   
   var chartAreaHeight = dim.height - legendHeight - titleHeight;
-  
-  
+   
+
   var xAxisTitleMargin = chartAreaHeight + 25;
   var container = d3.select(el).style("position", "relative")
     .append('div')
@@ -322,6 +322,7 @@ var chartType = "Bar";
     .style('opacity', 0)
     .remove();
 
+console.log(barGroupWithData.enter());
   var barsData = barGroupWithData.enter()
     .append("g")
     .attr('class', d => 'barGroups ' + "i" + d.key.slice(0,2))
