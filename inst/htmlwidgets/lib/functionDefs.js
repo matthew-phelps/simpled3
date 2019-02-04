@@ -315,7 +315,7 @@ var chartType = "Bar";
   // Remove any bar-groups not present in incoming data
   barGroupWithData.exit()
     .transition()
-    .duration(20)
+    .duration(100)
     .ease(d3.easeLinear)
     .style('opacity', 0)
     .remove();
