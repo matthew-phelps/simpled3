@@ -326,8 +326,9 @@ var chartType = "Bar";
   var barsData = barGroupWithData.enter()
     .append("g")
     .attr('class', d => 'barGroups ' + "i" + d.key.slice(0,2))
-    .merge(barGroupWithData)
-    .attr("transform", d => "translate(" + scaleX(d.key) + ",0)")
+    .merge(barGroupWithData);
+    
+    barsData.attr("transform", d => "translate(" + scaleX(d.key) + ",0)")
       .transition()
       .duration(tLong);
 
