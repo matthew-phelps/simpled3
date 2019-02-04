@@ -11,6 +11,7 @@ function drawBarChart(inData, width, height, el,
   
   var chartAreaHeight = dim.height - legendHeight - titleHeight;
   
+  
   var xAxisTitleMargin = chartAreaHeight + 25;
   var container = d3.select(el).style("position", "relative")
     .append('div')
