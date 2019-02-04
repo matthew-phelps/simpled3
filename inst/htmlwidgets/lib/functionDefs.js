@@ -336,13 +336,6 @@ var chartType = "Bar";
       .attr("y", d=> scaleY(0)).remove();
 
 
-  // Remove any bar-groups not present in incoming data
-  barGroupWithData.exit()
-    .transition()
-    .duration(tShort)
-    .ease(d3.easeLinear)
-    .style('opacity', 0)
-    .remove();
 
 
   var barsEntered = bars.enter()
@@ -358,6 +351,14 @@ var chartType = "Bar";
       .attr("width", scaleX1.bandwidth())
       .attr('y', d => scaleY(d.value))
       .attr("height", d => scaleY(0) - scaleY(d.value));
+
+  // Remove any bar-groups not present in incoming data
+  barGroupWithData.exit()
+    .transition()
+    .duration(tShort)
+    .ease(d3.easeLinear)
+    .style('opacity', 0)
+    .remove();
 
 
 // Data join for mouseover elements - invisible to user
