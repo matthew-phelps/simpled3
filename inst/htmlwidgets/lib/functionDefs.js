@@ -169,7 +169,7 @@ function drawBarChart(inData, width, height, el,
   console.log(chartAreaHeight);
   xAxis.call(d3.axisBottom(scaleX))
     .attr("transform", 'translate(0,' + (chartAreaHeight) + ')');
-
+  console.log(chartAreaHeight);
   // Add axes titles
   chartAxes.select(".bar.y.axisTitle")
     .transition()
