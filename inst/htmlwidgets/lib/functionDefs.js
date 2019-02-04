@@ -10,6 +10,7 @@ function drawBarChart(inData, width, height, el,
   var chartType = "Bar";
   
   var chartAreaHeight = dim.height - legendHeight - titleHeight;
+  console.log(chartAreaHeight);
   var xAxisTitleMargin = chartAreaHeight + 25;
   var container = d3.select(el).style("position", "relative")
     .append('div')
@@ -40,7 +41,7 @@ function drawBarChart(inData, width, height, el,
   // Axis titles
   chartAxes.append("text")
     .attr("x", dim.width / 2)
-    .attr("y", xAxisTitleMargin)
+    .attr("y", chartAreaHeight + 25)
     .attr("alignment-baseline", "hanging")
     .attr("class", "bar x axisTitle plot_text");
     
