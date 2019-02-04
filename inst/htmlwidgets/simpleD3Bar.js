@@ -65,7 +65,7 @@ HTMLWidgets.widget({
       },
 
       resize: function(width, height) {
-        setTimeout(function(){resizeBarChart(this.x, width, height, el, margin, barPadding, tLong, tShort, mOpacity, numberFormat, legendHeight,titleHeight);}, 5500);
+        setTimeout(function(){resizeBarChart(this.x, width, height, el, margin, barPadding, tLong, tShort, mOpacity, numberFormat, legendHeight,titleHeight);}, 20);
         var dim = {
                 width: width,
                 height: height
