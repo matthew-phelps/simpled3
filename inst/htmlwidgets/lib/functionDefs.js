@@ -166,9 +166,8 @@ function drawBarChart(inData, width, height, el,
   // Add axes
   yAxis.transition()
     .call(d3.axisLeft(scaleY));
-  
-  xAxis.transition()
-    .call(d3.axisBottom(scaleX))
+  console.log(chartAreaHeight);
+  xAxis.call(d3.axisBottom(scaleX))
     .attr("transform", 'translate(0,' + (chartAreaHeight) + ')');
 
   // Add axes titles
