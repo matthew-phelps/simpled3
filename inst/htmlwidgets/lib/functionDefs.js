@@ -322,7 +322,7 @@ var chartType = "Bar";
     .style('opacity', 0)
     .remove();
 
-console.log(barGroupWithData.enter());
+debugger;
   var barsData = barGroupWithData.enter()
     .append("g")
     .attr('class', d => 'barGroups ' + "i" + d.key.slice(0,2))
