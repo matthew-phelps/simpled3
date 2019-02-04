@@ -52,7 +52,7 @@ HTMLWidgets.widget({
           drawBarChart(x, width, height, el, margin, barPadding, tLong, tShort, mOpacity, rectSize, tablePadding, numberFormat, legendHeight, titleHeight);
         } else if (resized){
           updateBarChart(x, this.dim.width, this.dim.height, el, margin, barPadding, tLong, tShort, mOpacity, numberFormat, legendHeight, titleHeight);
-        } else {
+      } else {
           updateBarChart(x, width, height, el, margin, barPadding, tLong, tShort, mOpacity, numberFormat, legendHeight,titleHeight);
 
         }
@@ -65,12 +65,13 @@ HTMLWidgets.widget({
       },
 
       resize: function(width, height) {
-        resizeBarChart(this.x, width, height, el, margin, barPadding, tLong, tShort, mOpacity, numberFormat, legendHeight,titleHeight);
+        setTimeout(resizeBarChart(this.x, width, height, el, margin, barPadding, tLong, tShort, mOpacity, numberFormat, legendHeight,titleHeight), 1500);
         var dim = {
                 width: width,
                 height: height
               };
           resized = true;
+        
           this.dim = dim;
 
       }
