@@ -322,7 +322,6 @@ var chartType = "Bar";
     .style('opacity', 0)
     .remove();
 
-debugger;
   var barsData = barGroupWithData.enter()
     .append("g")
     .attr('class', d => 'barGroups ' + "i" + d.key.slice(0,2))
@@ -337,10 +336,14 @@ debugger;
         keyL2: grouping2Names[k],
         value: d.values[k].value }) ));
 
-  bars.exit()
+  setTimeout(func, 10);
+
+function func() {
+   bars.exit()
     .transition()
       .duration(tLong)
       .attr("y", d=> scaleY(0)).remove();
+}
 
   var barsEntered = bars.enter()
     .append("rect")
