@@ -312,13 +312,6 @@ var chartType = "Bar";
     .selectAll('g')
     .data(newData, d => d.key);
 
-
-
-  // Remove any bar-groups not present in incoming data
-  barGroupWithData.exit()
-    .remove();
-
-
   var barsData = barGroupWithData.enter()
     .append("g")
     .attr('class', d => 'barGroups ' + "i" + d.key.slice(0,2))
@@ -336,11 +329,20 @@ var chartType = "Bar";
         keyL2: grouping2Names[k],
         value: d.values[k].value }) ));
 
-
+// This seemingly does nothing
    bars.exit()
     .transition()
       .duration(tLong)
       .attr("y", d=> scaleY(0)).remove();
+
+
+  // Remove any bar-groups not present in incoming data
+  barGroupWithData.exit()
+    .transition()
+    .duration(tShort)
+    .ease(d3.easeLinear)
+    .style('opacity', 0)
+    .remove();
 
 
   var barsEntered = bars.enter()
