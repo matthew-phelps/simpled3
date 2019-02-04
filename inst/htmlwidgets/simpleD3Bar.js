@@ -65,13 +65,13 @@ HTMLWidgets.widget({
       },
 
       resize: function(width, height) {
-        setTimeout(resizeBarChart(this.x, width, height, el, margin, barPadding, tLong, tShort, mOpacity, numberFormat, legendHeight,titleHeight), 1500);
+        setTimeout(resizeBarChart(this.x, width, height, el, margin, barPadding, tLong, tShort, mOpacity, numberFormat, legendHeight,titleHeight), 5500);
         var dim = {
                 width: width,
                 height: height
               };
           resized = true;
-        
+
           this.dim = dim;
 
       }
