@@ -52,6 +52,7 @@ HTMLWidgets.widget({
           drawBarChart(x, width, height, el, margin, barPadding, tLong, tShort, mOpacity, rectSize, tablePadding, numberFormat, legendHeight, titleHeight);
         } else if (resized){
           setTimeout(function(){
+            debugger;
             updateBarChart(x, this.dim.width, this.dim.height, el, margin, barPadding, tLong, tShort, mOpacity, numberFormat, legendHeight, titleHeight);
           }, 100);  
       } else {
