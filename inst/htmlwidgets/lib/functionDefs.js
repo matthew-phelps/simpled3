@@ -53,7 +53,6 @@ function drawBarChart(
 
   // Initial axis
   var yAxis = chartAxes.append("g").attr("class", "bar y axis plot_text");
-
   var xAxis = chartAxes.append("g").attr("class", "bar x axis plot_text");
 
   // Axis titles
@@ -91,6 +90,10 @@ function drawBarChart(
     .nest()
     .key(d => d.grouping)
     .entries(data);
+
+  // Split var name just before "per" so that I can manually put labels on two lines
+
+
 
   grouping1Names = newData.map(d => d.key);
   grouping2Names = newData[0].values.map(d => d.sex);
@@ -194,8 +197,7 @@ function drawBarChart(
     .transition()
     .duration(tLong)
     .text(varName)
-    .style("text-anchor", "middle")
-    .call(wrap, 10);
+    .style("text-anchor", "middle");
 
   chartAxes
     .select(".bar.x.axisTitle")
