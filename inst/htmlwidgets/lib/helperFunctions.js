@@ -71,8 +71,8 @@ function scaffoldTooltip(rectSize, colors, chartType) {
 }
 
 
-// data management function
-function dataManagement(data) {
+// data management function 
+function dataManagement(data, sexName, groupingName, varName) {
   for (var i = 0; i < data.length; i++) {
     data[i].sex = data[i][sexName];
     data[i].grouping = data[i][groupingName];
