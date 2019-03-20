@@ -67,7 +67,7 @@ function drawBarChart(
     .append("text")
     .attr("transform", "rotate(-90)")
     .attr("x", 0 - chartAreaHeight / 2)
-    .attr("y", 0 - margin.left + 20)
+    .attr("y", 0 - margin.left + 30)
     .attr("class", "bar y axisTitle plot_text");
 
   // Data management
@@ -92,7 +92,7 @@ function drawBarChart(
     .entries(data);
 
   // Split var name just before "per" so that I can manually put labels on two lines
-
+  var varNameSplit = varName.split("  ");
 
 
   grouping1Names = newData.map(d => d.key);
