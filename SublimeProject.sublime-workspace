@@ -8,6 +8,38 @@
 				"chartAreaHeight"
 			],
 			[
+				"Ch",
+				"chartType"
+			],
+			[
+				"groupin",
+				"groupingName"
+			],
+			[
+				"xaxi",
+				"xAxisTitleMargin"
+			],
+			[
+				"xax",
+				"xAxisTitleMargin"
+			],
+			[
+				"plot",
+				"plotTitle"
+			],
+			[
+				"pl",
+				"plotTitle"
+			],
+			[
+				"in",
+				"inData"
+			],
+			[
+				"m",
+				"metaData"
+			],
+			[
 				"cahrt",
 				"chartAreaHeight"
 			],
@@ -184,54 +216,119 @@
 	"buffers":
 	[
 		{
-			"file": "inst/htmlwidgets/lib/functionDefs.js",
-			"settings":
-			{
-				"buffer_size": 17950,
-				"encoding": "UTF-8",
-				"line_ending": "Windows"
-			}
-		},
-		{
 			"file": "inst/htmlwidgets/simpleD3Bar.js",
 			"settings":
 			{
-				"buffer_size": 2966,
+				"buffer_size": 2918,
 				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
 		},
 		{
-			"file": "inst/htmlwidgets/lib/legend.js",
+			"file": "inst/htmlwidgets/lib/functionDefs.js",
 			"settings":
 			{
-				"buffer_size": 3048,
-				"encoding": "UTF-8",
+				"buffer_size": 17600,
 				"line_ending": "Windows"
 			}
 		},
 		{
-			"file": "R/simpleD3Bar.R",
+			"contents": "/*jshint esversion: 6 */\n\nvar insertLinebreaks = function (d) {\n    var el = d3.select(this);\n    var words = d.split(' ');\n    el.text('');\n\n    for (var i = 0; i < words.length; i++) {\n        var tspan = el.append('tspan').text(words[i]);\n        if (i > 0)\n            tspan.attr('x', 0).attr('dy', '15');\n    }\n};\n\n\nfunction scaffoldTooltip( rectSize, colors, chartType){\n // Tooltip table setup\n   var tooltip = d3.select(\"#container\" + chartType).append(\"div\")\n    .attr('id', 'tooltip' + chartType)\n    .style('opacity', 0);\n  table = tooltip.append(\"table\")\n      .classed(\"table\", true)\n      .attr('id', \"table\" + chartType);\n  var cellSvgWidth = \"20%\";\n  var cellTextWidth = \"80%\";\n  table\n      .append('thead')\n      .append('tr')\n      .append('th')\n      .attr(\"colspan\", 2)\n      .attr(\"class\", \"tooltipTitle\");\n  var tbody = table.append('tbody');\n  var rowMale = tbody.append('tr');\n  rowMale.append('td').attr('width', cellSvgWidth)\n  .append('svg')\n      .attr(\"width\", rectSize)\n      .attr('height', rectSize)\n  .append('rect')\n      .attr('width', rectSize)\n      .attr('height', rectSize)\n      .style('fill', colors[0]);\nvar maleCell = rowMale\n      .append('td')\n      .attr(\"class\", 'maleCell')\n      .attr(\"width\", cellTextWidth)\n      .classed(\"maleCell\");\n\nvar rowFemale = tbody.append('tr');\nrowFemale.append('td').attr(\"width\", cellSvgWidth)\n  .append('svg')\n      .attr('width', rectSize)\n      .attr('height', rectSize)\n  .append('rect')\n      .attr('width', rectSize)\n      .attr('height', rectSize)\n      .style('fill', colors[1]);\nvar femaleCell = rowFemale\n      .append('td')\n      .attr(\"class\", 'femaleCell')\n      .attr('width', cellTextWidth)\n      .classed(\"femaleCell\");\n\n  }\n\n \n",
+			"file": "inst/htmlwidgets/lib/helperFunctions.js",
+			"file_size": 1807,
+			"file_write_time": 131975430770458791,
 			"settings":
 			{
-				"buffer_size": 1904,
-				"encoding": "UTF-8",
+				"buffer_size": 1725,
 				"line_ending": "Windows"
 			}
 		},
 		{
-			"file": "inst/htmlwidgets/lib/lineChartDefs.js",
+			"contents": "Package Control Messages\n========================\n\nJsPrettier\n----------\n\n  # Js​Prettier\n  \n      JsPrettier is a Sublime Text Plug-in for Prettier, the opinionated code\n      formatter.\n  \n  \n  ## Install Prettier\n  \n      If you installed Prettier globally (using the yarn or npm command below),\n      there is nothing else you need to do.\n  \n          # using yarn:\n          yarn global add prettier\n  \n          # using npm:\n          npm install -g prettier\n  \n      You may be required to specify the path to the `prettier` executable, which\n      is configurable in the Package's settings file...\n  \n          -> \"Preferences\"\n          -> \"Package Settings\"\n          -> \"JsPrettier\"\n              -> \"Settings - Default\" (To view the default settings)\n              -> \"Settings - User\"    (To override the default settings)\n  \n  \n  ## Usage\n  \n      To run the JsPrettier command... open the Sublime Text Command Palette\n      (super + shift + p), and type \"JsPrettier: Format Code\".\n  \n      You can also right-click anywhere on the file to bring up the Context Menu\n      and select \"JsPrettier Format Code\".\n  \n  \n      ### Command Scope\n  \n          `JsPrettier` will attempt to format selections of code first, otherwise\n          the entire file will be formatted.\n  \n          > NOTE: When the `auto_format_on_save` setting is set to `true`, the\n          > entire file will always be formatted.\n  \n      ### Custom Key Binding\n  \n          To add a custom key binding to JsPrettier, please reference the\n          following example which binds `js_prettier` to \"ctrl/cmd + alt + f\".\n  \n              { \"keys\": [\"super+alt+f\"], \"command\": \"js_prettier\" }\n  \n  \n  ## Settings\n  \n      All Prettier options are configurable from the \"JsPrettier.sublime-settings\"\n      file, accessible from the Preferences > Package Settings > JsPrettier menu\n      shortcut.\n  \n      ### Project-level Settings\n  \n      JsPrettier supports Project-level settings, specified in\n      \"<project_name>.sublime-project\" files. In order for Project-level\n      settings to override the Defaults and User configured settings, a new\n      \"js_prettier\" section must be created under the project file's\n      \"settings\" section.\n  \n      Example Sublime Project File:\n  \n          {\n              \"folders\": [\n                  {\n                      \"path\": \".\"\n                  }\n              ],\n              \"settings\": {\n                  \"js_prettier\": {\n                      \"debug\": false,\n                      \"prettier_cli_path\": \"\",\n                      \"node_path\": \"\",\n                      \"auto_format_on_save\": false,\n                      \"auto_format_on_save_excludes\": [],\n                      \"auto_format_on_save_requires_prettier_config\": false,\n                      \"allow_inline_formatting\": false,\n                      \"custom_file_extensions\": [],\n                      \"max_file_size_limit\": -1,\n                      \"disable_tab_width_auto_detection\": false,\n                      \"additional_cli_args\": {},\n                      \"prettier_options\": {\n                          \"printWidth\": 80,\n                          \"tabWidth\": 2,\n                          \"singleQuote\": false,\n                          \"trailingComma\": \"none\",\n                          \"bracketSpacing\": true,\n                          \"jsxBracketSameLine\": false,\n                          \"parser\": \"babel\",\n                          \"semi\": true,\n                          \"requirePragma\": false,\n                          \"proseWrap\": \"preserve\",\n                          \"arrowParens\": \"avoid\",\n                          \"htmlWhitespaceSensitivity\": \"css\"\n                      }\n                  }\n              }\n          }\n  \n  \n  ## Help\n  \n      For additional help, including reporting issues, please visit the\n      JsPrettier homepage @ https://github.com/jonlabelle/SublimeJsPrettier.\n  \n  \n  ## Author\n  \n      Jon LaBelle\n  \n  \n  ## License\n  \n      The MIT License (MIT)\n  \n      Copyright (c) 2019 Jon LaBelle\n",
 			"settings":
 			{
-				"buffer_size": 15433,
-				"encoding": "UTF-8",
+				"buffer_size": 4039,
+				"line_ending": "Windows",
+				"name": "Package Control Messages",
+				"read_only": true,
+				"scratch": true
+			}
+		},
+		{
+			"file": "/C/Users/mphelps/AppData/Roaming/Sublime Text 3/Packages/JsPrettier/JsPrettier.sublime-settings",
+			"settings":
+			{
+				"buffer_size": 16377,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"contents": "",
+			"file": "/C/Users/mphelps/AppData/Roaming/Sublime Text 3/Packages/User/JsPrettier.sublime-settings",
+			"file_size": -1,
+			"file_write_time": -1,
+			"settings":
+			{
+				"buffer_size": 0,
 				"line_ending": "Windows"
 			}
 		}
 	],
-	"build_system": "",
+	"build_system": "Packages/User/JavaScript.sublime-build",
 	"build_system_choices":
 	[
+		[
+			[
+				[
+					"Packages/R-IDE/support/R Package.sublime-build",
+					""
+				],
+				[
+					"Packages/R-IDE/support/R Package.sublime-build",
+					"Clean and Build"
+				],
+				[
+					"Packages/R-IDE/support/R Package.sublime-build",
+					"Test"
+				],
+				[
+					"Packages/R-IDE/support/R Package.sublime-build",
+					"Check"
+				],
+				[
+					"Packages/R-IDE/support/R Package.sublime-build",
+					"Document"
+				],
+				[
+					"Packages/R-IDE/support/R Package.sublime-build",
+					"Compile C++ Attributes"
+				],
+				[
+					"Packages/R-IDE/support/R Package.sublime-build",
+					"Build Source"
+				],
+				[
+					"Packages/R-IDE/support/R Package.sublime-build",
+					"Build Binary"
+				],
+				[
+					"Packages/R-IDE/support/R Package.sublime-build",
+					"Build Site"
+				],
+				[
+					"Packages/R-IDE/support/R Package.sublime-build",
+					"Build Site (Lazy)"
+				],
+				[
+					"Packages/User/JavaScript.sublime-build",
+					""
+				]
+			],
+			[
+				"Packages/User/JavaScript.sublime-build",
+				""
+			]
+		]
 	],
 	"build_varint": "",
 	"command_palette":
@@ -241,15 +338,39 @@
 		"selected_items":
 		[
 			[
+				"install",
+				"Package Control: Install Package"
+			],
+			[
+				"in",
+				"Package Control: Install Package"
+			],
+			[
+				"packin",
+				"Package Control: Install Package"
+			],
+			[
+				"git",
+				"Git: Status"
+			],
+			[
+				"pac",
+				"Package Control: Install Package"
+			],
+			[
 				"push",
 				"Git: Push"
 			],
 			[
-				"quic",
+				"qui",
 				"Git: Quick Commit (repo)"
 			],
 			[
-				"qui",
+				"pus",
+				"Git: Push"
+			],
+			[
+				"quic",
 				"Git: Quick Commit (repo)"
 			],
 			[
@@ -261,12 +382,8 @@
 				"Git: Quick Commit (repo)"
 			],
 			[
-				"pus",
-				"Git: Push"
-			],
-			[
-				"git",
-				"Git: Gui"
+				"quik",
+				"Git: Quick Commit (repo)"
 			],
 			[
 				"Push",
@@ -305,15 +422,7 @@
 				"Package Control: Install Package"
 			],
 			[
-				"pac",
-				"Package Control: Install Package"
-			],
-			[
 				"quio",
-				"Git: Quick Commit (repo)"
-			],
-			[
-				"quik",
 				"Git: Quick Commit (repo)"
 			],
 			[
@@ -413,25 +522,34 @@
 	],
 	"file_history":
 	[
-		"/C/git/simpled3/inst/htmlwidgets/simpleD3Bar.js",
+		"/C/Users/mphelps/AppData/Roaming/Sublime Text 3/Packages/User/JavaScript.sublime-build",
+		"/C/Users/mphelps/Desktop/buildtest.js",
 		"/C/git/simpled3/inst/htmlwidgets/simpleD3Line.js",
-		"/C/git/simpled3/.Rproj.user/shared/notebooks/patch-chunk-names",
-		"/C/git/simpled3/inst/htmlwidgets/lib/legend.js",
-		"/C/git/simpled3/inst/htmlwidgets/simpleD3Bar.yaml",
 		"/C/git/simpled3/inst/htmlwidgets/lib/lineChartDefs.js",
+		"/C/git/simpled3/inst/htmlwidgets/lib/helperFunctions.js",
+		"/C/git/simpled3/.tern-project",
+		"/C/git/simpled3/inst/htmlwidgets/simpleD3Bar.js",
+		"/C/git/simpled3/inst/htmlwidgets/lib/functionDefs.js",
+		"/C/Users/mphelps/AppData/Roaming/Sublime Text 3/Packages/PackageResourceViewer/README.md",
+		"/C/Users/mphelps/AppData/Roaming/Sublime Text 3/Packages/Babel/Babel.sublime-settings",
+		"/C/git/simpled3/inst/htmlwidgets/lib/legend.js",
 		"/C/git/simpled3/inst/htmlwidgets/simpleD3Line.yaml",
-		"/C/git/simpled3/R/simpleD3Line.R",
+		"/C/git/simpled3/inst/htmlwidgets/simpleD3Bar.yaml",
+		"/C/git/ht2/www/css-ht2.css",
+		"/C/git/ht2/sublimeProject.sublime-workspace",
+		"/C/git/ht2/sublimeProject.sublime-project",
+		"/C/git/simpled3/.Rproj.user/shared/notebooks/patch-chunk-names",
 		"/C/git/simpled3/R/simpleD3Bar.R",
+		"/C/git/simpled3/R/simpleD3Line.R",
 		"/C/git/simpled3/inst/htmlwidgets/lib/d3SaveSvg/d3-save-svg.js",
 		"/C/git/ht2/server.R",
 		"/C/git/simpled3/inst/htmlwidgets/simpleD3Legend.js",
-		"/C/git/simpled3/inst/htmlwidgets/lib/functionDefs.js",
 		"/C/git/simpled3/inst/htmlwidgets/lib/d3/d3.js",
 		"/C/git/simpled3/inst/htmlwidgets/simpled3.js"
 	],
 	"find":
 	{
-		"height": 40.0
+		"height": 39.0
 	},
 	"find_in_files":
 	{
@@ -445,6 +563,30 @@
 		"case_sensitive": true,
 		"find_history":
 		[
+			"translate(",
+			"\")\n",
+			"xAxisTitleMargin",
+			"plot_titleD3",
+			"wrapp",
+			"Bar",
+			"bar",
+			"tableBar",
+			"legendHeight",
+			", colors,",
+			"chartType",
+			"chartAreaHeight",
+			", colors,",
+			"xAxisTitleMargin",
+			"varName",
+			"plot_title",
+			"topG",
+			"chartAxes",
+			"titleHeight",
+			"chartHeight",
+			"chartAreaHeight",
+			"topG",
+			"titleHeight",
+			"chartAreaHeight",
 			"font_text",
 			"plot_text",
 			"font_text",
@@ -548,31 +690,7 @@
 			"containerBar",
 			"svgContainerName",
 			"RESIZE",
-			"width",
-			"Udpate",
-			"Scales",
-			"mOpacity",
-			"mouseSvgBarChart",
-			"mouseSvg",
-			"axisTitle",
-			"bar",
-			"sd3",
-			"().",
-			"varName",
-			"barGroupWithData",
-			", tooltipOffsetY",
-			"tooltipOffsetY",
-			"28",
-			"tooltipOffsetY",
-			"tLong",
-			"mouseRectsFemale",
-			"barpadd",
-			"barpaddo",
-			"inData",
-			"bigRadius",
-			"female",
-			"mradius",
-			"rectPadding"
+			"width"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -580,6 +698,9 @@
 		"regex": false,
 		"replace_history":
 		[
+			"table",
+			",",
+			"chartAreaHeight",
 			"plot_text",
 			".sexVars[",
 			"metaData",
@@ -603,104 +724,210 @@
 	"groups":
 	[
 		{
-			"selected": 1,
+			"selected": 4,
 			"sheets":
 			[
 				{
 					"buffer": 0,
-					"file": "inst/htmlwidgets/lib/functionDefs.js",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 17950,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								4751,
-								4751
-							]
-						],
-						"settings":
-						{
-							"SL.14.region_keys":
-							[
-								"sublime_linter.protected_regions"
-							],
-							"SL.15.region_keys":
-							[
-								"sublime_linter.protected_regions"
-							],
-							"SL.161.region_keys":
-							[
-							],
-							"SL.217.region_keys":
-							[
-							],
-							"SL.275.region_keys":
-							[
-							],
-							"SL.30.region_keys":
-							[
-								"sublime_linter.protected_regions"
-							],
-							"SL.84.region_keys":
-							[
-							],
-							"SL.98.region_keys":
-							[
-								"sublime_linter.protected_regions",
-								"SL.jshint.Gutter.|region.redish markup.error.sublime_linter|dot",
-								"SL.jshint.Highlights.|796c0ebe26a8bb97e8d139c932d73779549341e91677a573309ce67ab5bb876d|region.redish markup.error.sublime_linter|1316"
-							],
-							"history_list_is_closing": true,
-							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 1287.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 1,
-					"type": "text"
-				},
-				{
-					"buffer": 1,
 					"file": "inst/htmlwidgets/simpleD3Bar.js",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 2966,
+						"buffer_size": 2918,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								396,
-								396
+								1372,
+								1372
 							]
 						],
 						"settings":
 						{
-							"SL.15.region_keys":
-							[
-								"sublime_linter.protected_regions"
-							],
-							"SL.306.region_keys":
+							"SL.156.region_keys":
 							[
 							],
-							"SL.85.region_keys":
+							"bracket_highlighter.busy": false,
+							"bracket_highlighter.clone": -1,
+							"bracket_highlighter.clone_locations":
+							{
+								"close":
+								{
+									"1":
+									[
+										2912,
+										2913
+									]
+								},
+								"icon":
+								{
+									"1":
+									[
+										"Packages/BracketHighlighter/icons/curly_bracket.png",
+										"region.purplish"
+									]
+								},
+								"open":
+								{
+									"1":
+									[
+										104,
+										105
+									]
+								},
+								"unmatched":
+								{
+								}
+							},
+							"bracket_highlighter.clone_regions":
 							[
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_c_define_content",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close",
+								"bh_single_quote_content",
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_angle_content",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_round_content",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_default_content",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_square_content",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_double_quote_content",
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_regex_content",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_tag_content",
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_curly_content",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_unmatched_content"
 							],
-							"SL.99.region_keys":
+							"bracket_highlighter.locations":
+							{
+								"close":
+								{
+									"1":
+									[
+										2912,
+										2913
+									]
+								},
+								"icon":
+								{
+									"1":
+									[
+										"Packages/BracketHighlighter/icons/curly_bracket.png",
+										"region.purplish"
+									]
+								},
+								"open":
+								{
+									"1":
+									[
+										104,
+										105
+									]
+								},
+								"unmatched":
+								{
+								}
+							},
+							"bracket_highlighter.regions":
 							[
-								"sublime_linter.protected_regions"
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_c_define_content",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close",
+								"bh_single_quote_content",
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_angle_content",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_round_content",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_default_content",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_square_content",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_double_quote_content",
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_regex_content",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_tag_content",
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_curly_content",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_unmatched_content"
 							],
-							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax",
+							"syntax": "Packages/Babel/JavaScript (Babel).sublime-syntax",
 							"tab_size": 2,
 							"translate_tabs_to_spaces": true
 						},
@@ -708,119 +935,16 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 0,
+					"stack_index": 5,
 					"type": "text"
 				},
 				{
-					"buffer": 2,
-					"file": "inst/htmlwidgets/lib/legend.js",
+					"buffer": 1,
+					"file": "inst/htmlwidgets/lib/functionDefs.js",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 3048,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								2285,
-								2285
-							]
-						],
-						"settings":
-						{
-							"SL.100.region_keys":
-							[
-								"sublime_linter.protected_regions"
-							],
-							"SL.16.region_keys":
-							[
-								"sublime_linter.protected_regions"
-							],
-							"SL.162.region_keys":
-							[
-								"sublime_linter.protected_regions"
-							],
-							"SL.17.region_keys":
-							[
-							],
-							"SL.219.region_keys":
-							[
-							],
-							"SL.26.region_keys":
-							[
-							],
-							"SL.277.region_keys":
-							[
-								"sublime_linter.protected_regions"
-							],
-							"SL.53.region_keys":
-							[
-								"sublime_linter.protected_regions"
-							],
-							"SL.58.region_keys":
-							[
-							],
-							"SL.86.region_keys":
-							[
-								"sublime_linter.protected_regions"
-							],
-							"SL.99.region_keys":
-							[
-							],
-							"history_list_is_closing": true,
-							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 2,
-					"type": "text"
-				},
-				{
-					"buffer": 3,
-					"file": "R/simpleD3Bar.R",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 1904,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								591,
-								591
-							]
-						],
-						"settings":
-						{
-							"SL.276.region_keys":
-							[
-							],
-							"syntax": "Packages/R/R.sublime-syntax",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 3,
-					"type": "text"
-				},
-				{
-					"buffer": 4,
-					"file": "inst/htmlwidgets/lib/lineChartDefs.js",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 15433,
+						"buffer_size": 17600,
 						"regions":
 						{
 						},
@@ -833,19 +957,373 @@
 						],
 						"settings":
 						{
-							"SL.102.region_keys":
+							"SL.163.region_keys":
 							[
 							],
-							"SL.18.region_keys":
+							"bracket_highlighter.busy": false,
+							"bracket_highlighter.clone": 163,
+							"bracket_highlighter.clone_locations":
+							{
+								"close":
+								{
+								},
+								"icon":
+								{
+								},
+								"open":
+								{
+								},
+								"unmatched":
+								{
+								}
+							},
+							"bracket_highlighter.clone_regions":
+							[
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_c_define_content",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close",
+								"bh_single_quote_content",
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_angle_content",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_round_content",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_default_content",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_square_content",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_double_quote_content",
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_regex_content",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_tag_content",
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_curly_content",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_unmatched_content"
+							],
+							"bracket_highlighter.locations":
+							{
+								"close":
+								{
+								},
+								"icon":
+								{
+								},
+								"open":
+								{
+								},
+								"unmatched":
+								{
+								}
+							},
+							"bracket_highlighter.regions":
+							[
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_c_define_content",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close",
+								"bh_single_quote_content",
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_angle_content",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_round_content",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_default_content",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_square_content",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_double_quote_content",
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_regex_content",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_tag_content",
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_curly_content",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_unmatched_content"
+							],
+							"syntax": "Packages/Babel/JavaScript (Babel).sublime-syntax",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 1599.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 4,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "inst/htmlwidgets/lib/helperFunctions.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1725,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1146,
+								1146
+							]
+						],
+						"settings":
+						{
+							"SL.16.region_keys":
 							[
 							],
-							"SL.269.region_keys":
+							"SL.164.region_keys":
 							[
+								"sublime_linter.protected_regions"
 							],
-							"SL.280.region_keys":
+							"bracket_highlighter.busy": false,
+							"bracket_highlighter.clone": -1,
+							"bracket_highlighter.clone_locations":
+							{
+								"close":
+								{
+									"1":
+									[
+										1720,
+										1721
+									]
+								},
+								"icon":
+								{
+									"1":
+									[
+										"Packages/BracketHighlighter/icons/curly_bracket.png",
+										"region.purplish"
+									]
+								},
+								"open":
+								{
+									"1":
+									[
+										375,
+										376
+									]
+								},
+								"unmatched":
+								{
+								}
+							},
+							"bracket_highlighter.clone_regions":
 							[
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_round_content",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_square_content",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close",
+								"bh_single_quote_content",
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_angle_content",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_default_content",
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_curly_content",
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_c_define_content",
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_regex_content",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_unmatched_content",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_double_quote_content",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_tag_content"
 							],
-							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax",
+							"bracket_highlighter.locations":
+							{
+								"close":
+								{
+									"1":
+									[
+										1720,
+										1721
+									]
+								},
+								"icon":
+								{
+									"1":
+									[
+										"Packages/BracketHighlighter/icons/curly_bracket.png",
+										"region.purplish"
+									]
+								},
+								"open":
+								{
+									"1":
+									[
+										375,
+										376
+									]
+								},
+								"unmatched":
+								{
+								}
+							},
+							"bracket_highlighter.regions":
+							[
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_round_content",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_square_content",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close",
+								"bh_single_quote_content",
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_angle_content",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_default_content",
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_curly_content",
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_c_define_content",
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_regex_content",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_unmatched_content",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_double_quote_content",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_tag_content"
+							],
+							"syntax": "Packages/Babel/JavaScript (Babel).sublime-syntax",
 							"tab_size": 2,
 							"translate_tabs_to_spaces": true
 						},
@@ -853,20 +1331,566 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 4,
+					"stack_index": 3,
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 4039,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								3967,
+								3967
+							]
+						],
+						"settings":
+						{
+							"auto_indent": false,
+							"bracket_highlighter.busy": false,
+							"bracket_highlighter.clone": -1,
+							"bracket_highlighter.clone_locations":
+							{
+								"close":
+								{
+								},
+								"icon":
+								{
+								},
+								"open":
+								{
+								},
+								"unmatched":
+								{
+								}
+							},
+							"bracket_highlighter.clone_regions":
+							[
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_round_content",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_square_content",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close",
+								"bh_single_quote_content",
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_angle_content",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_default_content",
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_curly_content",
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_c_define_content",
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_regex_content",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_unmatched_content",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_double_quote_content",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_tag_content"
+							],
+							"bracket_highlighter.locations":
+							{
+								"close":
+								{
+								},
+								"icon":
+								{
+								},
+								"open":
+								{
+								},
+								"unmatched":
+								{
+								}
+							},
+							"bracket_highlighter.regions":
+							[
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_round_content",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_square_content",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close",
+								"bh_single_quote_content",
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_angle_content",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_default_content",
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_curly_content",
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_c_define_content",
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_regex_content",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_unmatched_content",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_double_quote_content",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_tag_content"
+							],
+							"default_dir": "C:\\git\\simpled3\\inst\\htmlwidgets\\lib",
+							"syntax": "Packages/Text/Plain text.tmLanguage",
+							"tab_width": 2,
+							"word_wrap": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 2,
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"file": "/C/Users/mphelps/AppData/Roaming/Sublime Text 3/Packages/JsPrettier/JsPrettier.sublime-settings",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 16377,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								413,
+								413
+							]
+						],
+						"settings":
+						{
+							"SL.26.region_keys":
+							[
+							],
+							"bracket_highlighter.busy": false,
+							"bracket_highlighter.clone": -1,
+							"bracket_highlighter.clone_locations":
+							{
+								"close":
+								{
+								},
+								"icon":
+								{
+								},
+								"open":
+								{
+								},
+								"unmatched":
+								{
+									"1":
+									[
+										0,
+										1
+									]
+								}
+							},
+							"bracket_highlighter.clone_regions":
+							[
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_round_content",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_square_content",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close",
+								"bh_single_quote_content",
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_angle_content",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_default_content",
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_curly_content",
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_c_define_content",
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_regex_content",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_unmatched_content",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_double_quote_content",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_tag_content"
+							],
+							"bracket_highlighter.locations":
+							{
+								"close":
+								{
+								},
+								"icon":
+								{
+								},
+								"open":
+								{
+								},
+								"unmatched":
+								{
+									"1":
+									[
+										0,
+										1
+									]
+								}
+							},
+							"bracket_highlighter.regions":
+							[
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_round_content",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_square_content",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close",
+								"bh_single_quote_content",
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_angle_content",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_default_content",
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_curly_content",
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_c_define_content",
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_regex_content",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_unmatched_content",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_double_quote_content",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_tag_content"
+							],
+							"syntax": "Packages/zzz A File Icon zzz/aliases/JSON (Sublime).sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 273.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
 					"type": "text"
 				}
 			]
 		},
 		{
+			"selected": 0,
 			"sheets":
 			[
+				{
+					"buffer": 5,
+					"file": "/C/Users/mphelps/AppData/Roaming/Sublime Text 3/Packages/User/JsPrettier.sublime-settings",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 0,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"bracket_highlighter.busy": false,
+							"bracket_highlighter.clone": 27,
+							"bracket_highlighter.clone_locations":
+							{
+								"close":
+								{
+								},
+								"icon":
+								{
+								},
+								"open":
+								{
+								},
+								"unmatched":
+								{
+								}
+							},
+							"bracket_highlighter.clone_regions":
+							[
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_round_content",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_square_content",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close",
+								"bh_single_quote_content",
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_angle_content",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_default_content",
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_curly_content",
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_c_define_content",
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_regex_content",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_unmatched_content",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_double_quote_content",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_tag_content"
+							],
+							"bracket_highlighter.locations":
+							{
+								"close":
+								{
+								},
+								"icon":
+								{
+								},
+								"open":
+								{
+								},
+								"unmatched":
+								{
+								}
+							},
+							"bracket_highlighter.regions":
+							[
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_round_content",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_square_content",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close",
+								"bh_single_quote_content",
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_angle_content",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_default_content",
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_curly_content",
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_c_define_content",
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_regex_content",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_unmatched_content",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_double_quote_content",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_tag_content"
+							],
+							"syntax": "Packages/zzz A File Icon zzz/aliases/JSON (Sublime).sublime-syntax"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				}
 			]
 		}
 	],
 	"incremental_find":
 	{
-		"height": 22.0
+		"height": 38.0
 	},
 	"input":
 	{
@@ -892,7 +1916,7 @@
 		"cols":
 		[
 			0.0,
-			0.91475571316,
+			0.548750235114,
 			1.0
 		],
 		"rows":
@@ -906,6 +1930,10 @@
 	{
 		"height": 0.0
 	},
+	"output.exec":
+	{
+		"height": 96.0
+	},
 	"output.find_results":
 	{
 		"height": 0.0
@@ -913,6 +1941,10 @@
 	"output.git":
 	{
 		"height": 90.0
+	},
+	"output.mdpopups":
+	{
+		"height": 0.0
 	},
 	"pinned_build_system": "",
 	"project": "SublimeProject.sublime-project",
@@ -928,24 +1960,48 @@
 		"selected_items":
 		[
 			[
+				"fun\t",
+				"inst\\htmlwidgets\\lib\\helperFunctions.js"
+			],
+			[
+				"def",
+				"inst\\htmlwidgets\\lib\\functionDefs.js"
+			],
+			[
 				"bar",
 				"inst\\htmlwidgets\\simpleD3Bar.js"
 			],
 			[
-				"line",
+				"lin",
 				"inst\\htmlwidgets\\lib\\lineChartDefs.js"
 			],
 			[
-				"line.j",
-				"inst\\htmlwidgets\\simpleD3Line.js"
-			],
-			[
-				"lin",
-				"inst\\htmlwidgets\\simpleD3Line.js"
+				"fun",
+				"inst\\htmlwidgets\\lib\\functionDefs.js"
 			],
 			[
 				"ush",
 				".Rproj.user\\shared\\notebooks\\patch-chunk-names"
+			],
+			[
+				"line",
+				"inst\\htmlwidgets\\simpleD3Line.js"
+			],
+			[
+				"yam",
+				"inst\\htmlwidgets\\simpleD3Line.yaml"
+			],
+			[
+				"ya",
+				"inst\\htmlwidgets\\simpleD3Bar.yaml"
+			],
+			[
+				"lien",
+				"R\\simpleD3Line.R"
+			],
+			[
+				"line.j",
+				"inst\\htmlwidgets\\simpleD3Line.js"
 			],
 			[
 				"",
@@ -974,10 +2030,6 @@
 			[
 				"len",
 				"lib\\legend.js"
-			],
-			[
-				"fun",
-				"lib\\functionDefs.js"
 			],
 			[
 				"linya",
@@ -1016,7 +2068,7 @@
 	"show_open_files": false,
 	"show_tabs": true,
 	"side_bar_visible": false,
-	"side_bar_width": 140.0,
+	"side_bar_width": 196.0,
 	"status_bar_visible": false,
 	"template_settings":
 	{
