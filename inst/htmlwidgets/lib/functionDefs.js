@@ -84,15 +84,15 @@ function drawBarChart(
   var sexName = Object.keys(data[0])[0];
   var colors = inData.metaData.colors;
   // Variable/key names may changes, so standardized them
-  dataManagement(data);
-  for (var i = 0; i < data.length; i++) {
+  dataManagement(data, sexName, groupingName, varName);
+  /*for (var i = 0; i < data.length; i++) {
     data[i].sex = data[i][sexName];
     data[i].grouping = data[i][groupingName];
     data[i].value = data[i][varName];
     delete data[i][sexName];
     delete data[i][varName];
     delete data[i][groupingName];
-  }
+  }*/
 
   var newData = d3
     .nest()
