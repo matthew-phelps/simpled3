@@ -68,7 +68,15 @@ function drawBarChart(
     .attr("transform", "rotate(-90)")
     .attr("x", 0 - chartAreaHeight / 2)
     .attr("y", 0 - margin.left + 20)
-    .attr("class", "bar y axisTitle plot_text");
+    .attr("class", "bar y axisTitle one plot_text");
+
+chartAxes
+    .append("text")
+    .attr("transform", "rotate(-90)")
+    .attr("x", 0 - chartAreaHeight / 2)
+    .attr("y", 0 - margin.left + 40)
+    .attr("class", "bar y axisTitle two plot_text");
+
 
   // Data management
   var data = HTMLWidgets.dataframeToD3(inData.data);
@@ -196,7 +204,7 @@ function drawBarChart(
     .select(".bar.y.axisTitle")
     .transition()
     .duration(tLong)
-    .text(varName)
+    .text(varNameSplit[0])
     .style("text-anchor", "middle");
 
   chartAxes
