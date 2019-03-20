@@ -70,13 +70,12 @@ function drawBarChart(
     .attr("y", 0 - margin.left + 20)
     .attr("class", "bar y axisTitle one plot_text");
 
-chartAxes
+  chartAxes
     .append("text")
     .attr("transform", "rotate(-90)")
     .attr("x", 0 - chartAreaHeight / 2)
     .attr("y", 0 - margin.left + 40)
     .attr("class", "bar y axisTitle two plot_text");
-
 
   // Data management
   var data = HTMLWidgets.dataframeToD3(inData.data);
@@ -101,7 +100,6 @@ chartAxes
 
   // Split var name just before "per" so that I can manually put labels on two lines
   var varNameSplit = varName.split("  ");
-
 
   grouping1Names = newData.map(d => d.key);
   grouping2Names = newData[0].values.map(d => d.sex);
@@ -286,43 +284,6 @@ chartAxes
       .style("opacity", 0)
       .remove();
   }
-
-  function wrap(text, width) {
-    text.each(function() {
-      var text = d3.select(this),
-        words = text
-          .text()
-          .split(/\s+/)
-          .reverse(),
-        word,
-        line = [],
-        lineNumber = 0,
-        lineHeight = 1.1, // ems
-        y = text.attr("y"),
-        dy = parseFloat(text.attr("dy")),
-        tspan = text
-          .text(null)
-          .append("tspan")
-          .attr("x", 0)
-          .attr("y", y)
-          .attr("dy", dy + "em");
-      while ((word = words.pop())) {
-        line.push(word);
-        tspan.text(line.join(" "));
-        if (tspan.node().getComputedTextLength() > width) {
-          line.pop();
-          tspan.text(line.join(" "));
-          line = [word];
-          tspan = text
-            .append("tspan")
-            .attr("x", 0)
-            .attr("y", y)
-            .attr("dy", ++lineNumber * lineHeight + dy + "em")
-            .text(word);
-        }
-      }
-    });
-  }
 }
 
 //////////////////////////////////////////////////////////////////////////////
@@ -363,6 +324,7 @@ function updateBarChart(
   var sexName = Object.keys(data[0])[0];
   var colors = inData.metaData.colors;
   // Variable/key names may changes, so standardized them
+  dataManagement(data);
   for (var i = 0; i < data.length; i++) {
     data[i].sex = data[i][sexName];
     data[i].grouping = data[i][groupingName];
@@ -493,10 +455,16 @@ function updateBarChart(
     .text(groupingName)
     .style("text-anchor", "middle");
 
-  d3.selectAll(".bar.y.axisTitle")
+  d3.selectAll(".bar.y.axisTitle.one")
     .transition()
     .duration(tLong)
-    .text(varName)
+    .text(varNameSplit[0])
+    .style("text-anchor", "middle");
+
+  d3.selectAll(".bar.y.axisTitle.two")
+    .transition()
+    .duration(tLong)
+    .text(varNameSplit[1])
     .style("text-anchor", "middle");
 
   /*Update plot title*/
