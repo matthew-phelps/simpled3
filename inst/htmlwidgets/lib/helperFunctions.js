@@ -11,10 +11,6 @@ var insertLinebreaks = function(d) {
   }
 };
 
-
-
-
-
 function scaffoldTooltip(rectSize, colors, chartType) {
   // Tooltip table setup
   var tooltip = d3
@@ -70,8 +66,7 @@ function scaffoldTooltip(rectSize, colors, chartType) {
     .classed("femaleCell");
 }
 
-
-// data management function 
+// data management function
 function dataManagement(data, sexName, groupingName, varName) {
   for (var i = 0; i < data.length; i++) {
     data[i].sex = data[i][sexName];
@@ -81,4 +76,9 @@ function dataManagement(data, sexName, groupingName, varName) {
     delete data[i][varName];
     delete data[i][groupingName];
   }
+
+  return d3
+    .nest()
+    .key(d => d.grouping)
+    .entries(data);
 }

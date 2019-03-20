@@ -83,21 +83,10 @@ function drawBarChart(
   var varName = Object.keys(data[0])[2];
   var sexName = Object.keys(data[0])[0];
   var colors = inData.metaData.colors;
+  
   // Variable/key names may changes, so standardized them
-  dataManagement(data, sexName, groupingName, varName);
-  /*for (var i = 0; i < data.length; i++) {
-    data[i].sex = data[i][sexName];
-    data[i].grouping = data[i][groupingName];
-    data[i].value = data[i][varName];
-    delete data[i][sexName];
-    delete data[i][varName];
-    delete data[i][groupingName];
-  }*/
-
-  var newData = d3
-    .nest()
-    .key(d => d.grouping)
-    .entries(data);
+ var newData = dataManagement(data, sexName, groupingName, varName);
+  
 
   // Split var name just before "per" so that I can manually put labels on two lines
   var varNameSplit = varName.split("  ");
