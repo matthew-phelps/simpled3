@@ -194,7 +194,6 @@ function drawBarChart(
     .transition()
     .duration(tLong)
     .text(varName)
-    .selectAll("text")
     .style("text-anchor", "middle");
 
   chartAxes
