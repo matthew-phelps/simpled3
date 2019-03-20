@@ -84,6 +84,7 @@ function drawBarChart(
   var sexName = Object.keys(data[0])[0];
   var colors = inData.metaData.colors;
   // Variable/key names may changes, so standardized them
+  dataManagement(data);
   for (var i = 0; i < data.length; i++) {
     data[i].sex = data[i][sexName];
     data[i].grouping = data[i][groupingName];
