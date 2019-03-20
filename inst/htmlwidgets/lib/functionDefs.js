@@ -67,7 +67,7 @@ function drawBarChart(
     .append("text")
     .attr("transform", "rotate(-90)")
     .attr("x", 0 - chartAreaHeight / 2)
-    .attr("y", 0 - margin.left + 30)
+    .attr("y", 0 - margin.left + 10)
     .attr("class", "bar y axisTitle plot_text");
 
   // Data management
