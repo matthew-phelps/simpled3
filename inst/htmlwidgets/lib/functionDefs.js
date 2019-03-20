@@ -83,10 +83,9 @@ function drawBarChart(
   var varName = Object.keys(data[0])[2];
   var sexName = Object.keys(data[0])[0];
   var colors = inData.metaData.colors;
-  
+
   // Variable/key names may changes, so standardized them
- var newData = dataManagement(data, sexName, groupingName, varName);
-  
+  var newData = dataManagement(data, sexName, groupingName, varName);
 
   // Split var name just before "per" so that I can manually put labels on two lines
   var varNameSplit = varName.split("  ");
@@ -313,25 +312,12 @@ function updateBarChart(
   var varName = Object.keys(data[0])[2];
   var sexName = Object.keys(data[0])[0];
   var colors = inData.metaData.colors;
+  
   // Variable/key names may changes, so standardized them
-
-  for (var i = 0; i < data.length; i++) {
-    data[i].sex = data[i][sexName];
-    data[i].grouping = data[i][groupingName];
-    data[i].value = data[i][varName];
-    delete data[i][sexName];
-    delete data[i][varName];
-    delete data[i][groupingName];
-  }
-
-  var newData = d3
-    .nest()
-    .key(d => d.grouping)
-    .entries(data);
+  var newData = dataManagement(data, sexName, groupingName, varName);
 
   // Split var name just before "per" so that I can manually put labels on two lines
   var varNameSplit = varName.split("  ");
-
 
   var maxY = d3.max(newData, d => d3.max(d.values, k => k.value));
   grouping1Names = newData.map(d => d.key);
@@ -559,13 +545,9 @@ function resizeBarChart(
   d3.selectAll(".bar.y.axisTitle.one")
     .attr("x", 0 - chartAreaHeight / 2)
     .attr("y", 0 - margin.left + 20);
-d3.selectAll(".bar.y.axisTitle.two")
+  d3.selectAll(".bar.y.axisTitle.two")
     .attr("x", 0 - chartAreaHeight / 2)
     .attr("y", 0 - margin.left + 40);
-
-
-
-
 
   var data = HTMLWidgets.dataframeToD3(inData.data);
   var groupingName = Object.keys(data[0])[1];
@@ -573,20 +555,8 @@ d3.selectAll(".bar.y.axisTitle.two")
   var sexName = Object.keys(data[0])[0];
   var colors = inData.metaData.colors;
 
-  for (var i = 0; i < data.length; i++) {
-    data[i].sex = data[i][sexName];
-    data[i].grouping = data[i][groupingName];
-    data[i].value = data[i][varName];
-    delete data[i][sexName];
-    delete data[i][varName];
-    delete data[i][groupingName];
-  }
+ var newData = dataManagement(data, sexName, groupingName, varName);
 
-  var newData = d3
-    .nest()
-    .key(d => d.grouping)
-    .entries(data);
-  
   // Split var name just before "per" so that I can manually put labels on two lines
   var varNameSplit = varName.split("  ");
 
