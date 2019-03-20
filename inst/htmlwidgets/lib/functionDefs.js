@@ -201,10 +201,17 @@ chartAxes
 
   // Add axes titles
   chartAxes
-    .select(".bar.y.axisTitle")
+    .select(".bar.y.axisTitle.one")
     .transition()
     .duration(tLong)
     .text(varNameSplit[0])
+    .style("text-anchor", "middle");
+
+  chartAxes
+    .select(".bar.y.axisTitle.two")
+    .transition()
+    .duration(tLong)
+    .text(varNameSplit[1])
     .style("text-anchor", "middle");
 
   chartAxes
