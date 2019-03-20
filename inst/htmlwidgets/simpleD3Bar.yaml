@@ -19,3 +19,7 @@ dependencies:
   src: htmlwidgets/lib/
   script: ./helperFunctions.js
   version: 1.0
+- name: d3plus-text
+  src: htmlwidgets/lib/d3plus-text
+  script: ./d3plus-text.full.min.js
+  version: 0.9.43
