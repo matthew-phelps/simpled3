@@ -194,7 +194,8 @@ function drawBarChart(
     .transition()
     .duration(tLong)
     .text(varName)
-    .style("text-anchor", "middle");
+    .style("text-anchor", "middle")
+    .call(wrap, 20);
 
   chartAxes
     .select(".bar.x.axisTitle")
@@ -202,8 +203,8 @@ function drawBarChart(
     .duration(tLong)
     .style("opacity", 1)
     .text(groupingName)
-    .style("text-anchor", "middle")
-    .call(wrap, 20);
+    .style("text-anchor", "middle");
+
 
   /// ADD LEGEND
   var wrapperName = "legendWrapper" + chartType;
