@@ -615,13 +615,6 @@ function resizeLineChart(
     .duration(tLong)
     .call(d3.axisBottom(scaleX).tickFormat(d3.format("")));
 
-  // Update axis titles
-  svg
-    .select(".line.y.axisTitle")
-    .transition()
-    .duration(tLong)
-    .text(varName)
-    .style("text-anchor", "middle");
 
   // Resize legend
   var wrapperName = "legendWrapper" + chartType;
