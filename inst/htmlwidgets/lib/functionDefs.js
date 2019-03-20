@@ -339,6 +339,10 @@ function updateBarChart(
     .key(d => d.grouping)
     .entries(data);
 
+  // Split var name just before "per" so that I can manually put labels on two lines
+  var varNameSplit = varName.split("  ");
+
+
   var maxY = d3.max(newData, d => d3.max(d.values, k => k.value));
   grouping1Names = newData.map(d => d.key);
   grouping2Names = newData[0].values.map(d => d.sex);
