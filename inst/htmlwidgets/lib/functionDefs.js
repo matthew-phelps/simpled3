@@ -255,7 +255,7 @@ function drawBarChart(
 
   function moveTooltip(d) {
     tooltip
-      .style("left", d3.mouse(this)[0] + "px")
+      .style("left", scaleX1.bandwidth() + "px")
       .style("top", d3.mouse(this)[1] + 50 + "px");
   }
 
