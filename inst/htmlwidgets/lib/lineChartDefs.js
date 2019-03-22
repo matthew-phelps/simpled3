@@ -36,8 +36,7 @@ function drawLineChart(
   var svg = container
     .append("svg")
     .attr("id", "svg" + chartType)
-    .attr("width", dim.width + margi,
-      yAxisSpace,n.left + margin.right)
+    .attr("width", dim.width + margin.left + margin.right)
     .attr("height", dim.height + margin.top + margin.bottom);
 
   var topG = svg
@@ -617,7 +616,6 @@ function resizeLineChart(
     .transition()
     .duration(tLong)
     .call(d3.axisBottom(scaleX).tickFormat(d3.format("")));
-
 
   // Resize legend
   var wrapperName = "legendWrapper" + chartType;
