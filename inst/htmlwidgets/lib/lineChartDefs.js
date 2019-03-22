@@ -24,7 +24,7 @@ function drawLineChart(
   };
 
   var chartAreaHeight = dim.height - legendHeight - titleHeight;
-  var xAxisTitleMargin = chartAreaHeight + 25;
+  var xAxisTitleMargin = chartAreaHeight + 30;
 
   var container = d3
     .select(el)
