@@ -420,7 +420,7 @@ function updateLineChart(
 
   svg
     .select(".line.y.axisTitle.two")
-    .(yAxisSpace - 20)()
+    .transition()
     .duration(tLong)
     .text(varNameSplit[1])
     .style("text-anchor", "middle");
@@ -492,7 +492,7 @@ function resizeLineChart(
   numberFormat,
   legendHeight,
   titleHeight,
-  yAxisSpace,
+  yAxisSpace
 ) {
   var chartType = "Line";
   var dim = {
@@ -529,7 +529,7 @@ function resizeLineChart(
   svg
     .select("line.y.axisTitle.one")
     .attr("x", 0 - chartAreaHeight / 2)
-    .attr("y", 0 - margin.left + (yAxisSpace - 20));
+    .attr("y", 0 - margin.left + 20);
   svg
     .select("line.y.axisTitle.two")
     .attr("x", 0 - chartAreaHeight / 2)
