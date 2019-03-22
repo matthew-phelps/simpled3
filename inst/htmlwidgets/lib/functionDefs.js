@@ -60,7 +60,7 @@ function drawBarChart(
   chartAxes
     .append("text")
     .attr("x", dim.width / 2)
-    .attr("y", chartAreaHeight + 30)
+    .attr("y", xAxisTitleMargin)
     .attr("alignment-baseline", "hanging")
     .attr("class", "bar x axisTitle plot_text");
 
