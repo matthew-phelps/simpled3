@@ -261,7 +261,7 @@ function drawLineChart(
 
   function moveTooltip(d) {
     tooltip
-      .style("left", d3.select(this).attr('x') + "px")
+      .style("left", (d3.select(this).attr('x') - d3.select(this).attr('width')/3) + "px")
       .style("top", d3.mouse(this)[1] + 50 + "px");
   }
 
