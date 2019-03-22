@@ -528,7 +528,7 @@ function resizeLineChart(
   svg
     .select("line.y.axisTitle.one")
     .attr("x", 0 - chartAreaHeight / 2)
-    .attr("y", 0 - margin.left + 20);
+    .attr("y", 0 - margin.left + (yAxisSpace - 18));
   svg
     .select("line.y.axisTitle.two")
     .attr("x", 0 - chartAreaHeight / 2)

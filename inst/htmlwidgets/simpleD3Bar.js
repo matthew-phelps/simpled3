@@ -13,7 +13,7 @@ HTMLWidgets.widget({
     var legendHeight = 60;
     var titleHeight = 40;
     var tablePadding = 10;
-    var yAxisSpace = 45;
+    var yAxisSpace = 37;
 
     /*Format requires defining formats for several data types even though they will not be uses - apparently*/
     var localeFormatter = d3.formatLocale({

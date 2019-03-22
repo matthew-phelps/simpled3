@@ -68,7 +68,7 @@ function drawBarChart(
     .append("text")
     .attr("transform", "rotate(-90)")
     .attr("x", 0 - chartAreaHeight / 2)
-    .attr("y", 0 - margin.left + (yAxisSpace - 20))
+    .attr("y", 0 - margin.left + (yAxisSpace - 18))
     .attr("class", "bar y axisTitle one plot_text");
 
   chartAxes
@@ -546,7 +546,7 @@ function resizeBarChart(
 
   d3.selectAll(".bar.y.axisTitle.one")
     .attr("x", 0 - chartAreaHeight / 2)
-    .attr("y", 0 - margin.left + (yAxisSpace - 20));
+    .attr("y", 0 - margin.left + (yAxisSpace - 18));
   d3.selectAll(".bar.y.axisTitle.two")
     .attr("x", 0 - chartAreaHeight / 2)
     .attr("y", 0 - margin.left + yAxisSpace);
