@@ -70,7 +70,7 @@ function drawLineChart(
     .append("text")
     .attr("transform", "rotate(-90)")
     .attr("x", 0 - chartAreaHeight / 2)
-    .attr("y", 0 - margin.left + (yAxisSpace - 20))
+    .attr("y", 0 - margin.left + (yAxisSpace - 18))
     .attr("class", "line y axisTitle one");
 
   chartAxes
