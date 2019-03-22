@@ -4,7 +4,7 @@ HTMLWidgets.widget({
   type: "output",
 
   factory: function(el, width, height) {
-    var margin = { top: 1, right: 20, bottom: 40, left: 95 };
+    var margin = { top: 1, right: 20, bottom: 25, left: 95 };
     var rectPadding = 0.0;
 
     var tLong = 450;
