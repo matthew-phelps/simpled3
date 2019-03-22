@@ -261,7 +261,7 @@ function drawLineChart(
 
   function moveTooltip(d) {
     tooltip
-      .style("left", d3.mouse(this)[0] + "px")
+      .style("left", d3.select(this).attr('x') + "px")
       .style("top", d3.mouse(this)[1] + 50 + "px");
   }
 
@@ -454,7 +454,7 @@ function updateLineChart(
 
   function moveTooltip(d) {
     tooltip
-      .style("left", d3.mouse(this)[0] + "px")
+      .style("left", d3.select(this).attr('x') + "px")
       .style("top", d3.mouse(this)[1] + 50 + "px");
   }
 
@@ -646,7 +646,7 @@ function resizeLineChart(
 
   function moveTooltip(d) {
     tooltip
-      .style("left", d3.mouse(this)[0] + "px")
+      .style("left", d3.select(this).attr('x') + "px")
       .style("top", d3.mouse(this)[1] + 50 + "px");
   }
 

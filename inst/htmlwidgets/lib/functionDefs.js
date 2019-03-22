@@ -485,7 +485,7 @@ function updateBarChart(
 
   function moveTooltip(d) {
     tooltip
-      .style("left", d3.mouse(this)[0] + "px")
+.style("left", d3.select(this).attr('x') + "px")
       .style("top", d3.mouse(this)[1] + 50 + "px");
   }
 
@@ -666,7 +666,7 @@ function resizeBarChart(
 
   function moveTooltip(d) {
     tooltip
-      .style("left", d3.mouse(this)[0] + "px")
+      .style("left", d3.select(this).attr('x') + "px")
       .style("top", d3.mouse(this)[1] + 50 + "px");
   }
 
