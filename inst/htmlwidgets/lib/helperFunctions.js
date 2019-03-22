@@ -41,7 +41,7 @@ function scaffoldTooltip(rectSize, colors, chartType) {
     .append("rect")
     .attr("width", rectSize)
     .attr("height", rectSize)
-    .style("fill", colors[1]);
+    .style("fill", colors[0]);
   var maleCell = rowMale
     .append("td")
     .attr("class", "maleCell")
@@ -58,7 +58,7 @@ function scaffoldTooltip(rectSize, colors, chartType) {
     .append("rect")
     .attr("width", rectSize)
     .attr("height", rectSize)
-    .style("fill", colors[0]);
+    .style("fill", colors[1]);
   var femaleCell = rowFemale
     .append("td")
     .attr("class", "femaleCell")
