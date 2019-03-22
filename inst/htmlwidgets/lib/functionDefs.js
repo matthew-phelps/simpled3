@@ -25,7 +25,7 @@ function drawBarChart(
 
   var chartAreaHeight = dim.height - legendHeight - titleHeight;
 
-  var xAxisTitleMargin = chartAreaHeight + 30;
+  var xAxisTitleMargin = chartAreaHeight + 33;
   var container = d3
     .select(el)
     .style("position", "relative")
@@ -531,7 +531,7 @@ function resizeBarChart(
   };
 
   var chartAreaHeight = dim.height - legendHeight - titleHeight;
-  var xAxisTitleMargin = chartAreaHeight + 25;
+  var xAxisTitleMargin = chartAreaHeight + 33;
 
   var svg = d3
     .select("#container" + chartType)

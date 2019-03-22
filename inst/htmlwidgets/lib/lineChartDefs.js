@@ -24,7 +24,7 @@ function drawLineChart(
   };
 
   var chartAreaHeight = dim.height - legendHeight - titleHeight;
-  var xAxisTitleMargin = chartAreaHeight + 30;
+  var xAxisTitleMargin = chartAreaHeight + 33;
 
   var container = d3
     .select(el)
@@ -500,7 +500,7 @@ function resizeLineChart(
   };
 
   var chartAreaHeight = dim.height - legendHeight - titleHeight;
-  var xAxisTitleMargin = chartAreaHeight + 25;
+  var xAxisTitleMargin = chartAreaHeight + 33;
 
   var data = HTMLWidgets.dataframeToD3(inData.data);
   var varName = data[0].variable;

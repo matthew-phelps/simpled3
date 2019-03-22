@@ -13,7 +13,7 @@ HTMLWidgets.widget({
     var bigRadius = 15;
     var rectSize = 20; //dimension of colored square
     var legendHeight = 50;
-    var titleHeight = 40;
+    var titleHeight = 60;
     var tablePadding = 10;
     var yAxisSpace = 35;
     var localeFormatter = d3.formatLocale({
