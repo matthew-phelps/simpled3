@@ -4,7 +4,7 @@ HTMLWidgets.widget({
   type: "output",
 
   factory: function(el, width, height) {
-    var margin = { top: 1, right: 20, bottom: 40, left: 90 };
+    var margin = { top: 1, right: 20, bottom: 40, left: 95 };
     var rectPadding = 0.0;
 
     var tLong = 450;
@@ -15,7 +15,7 @@ HTMLWidgets.widget({
     var legendHeight = 50;
     var titleHeight = 40;
     var tablePadding = 10;
-        var yAxisSpace = 45;
+    var yAxisSpace = 45;
     var localeFormatter = d3.formatLocale({
       decimal: ",",
       thousands: ".",
