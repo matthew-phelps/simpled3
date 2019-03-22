@@ -15,7 +15,7 @@ HTMLWidgets.widget({
     var legendHeight = 50;
     var titleHeight = 40;
     var tablePadding = 10;
-    var yAxisSpace = 45;
+    var yAxisSpace = 60;
     var localeFormatter = d3.formatLocale({
       decimal: ",",
       thousands: ".",
