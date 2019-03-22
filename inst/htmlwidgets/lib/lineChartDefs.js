@@ -14,7 +14,8 @@ function drawLineChart(
   tablePadding,
   numberFormat,
   titleHeight,
-  legendHeight
+  legendHeight,
+  yAxisSpace
 ) {
   var chartType = "Line";
   var dim = {
@@ -35,7 +36,8 @@ function drawLineChart(
   var svg = container
     .append("svg")
     .attr("id", "svg" + chartType)
-    .attr("width", dim.width + margin.left + margin.right)
+    .attr("width", dim.width + margi,
+      yAxisSpace,n.left + margin.right)
     .attr("height", dim.height + margin.top + margin.bottom);
 
   var topG = svg
@@ -69,14 +71,14 @@ function drawLineChart(
     .append("text")
     .attr("transform", "rotate(-90)")
     .attr("x", 0 - chartAreaHeight / 2)
-    .attr("y", 0 - margin.left + 20)
+    .attr("y", 0 - margin.left + (yAxisSpace - 20))
     .attr("class", "line y axisTitle one");
 
   chartAxes
     .append("text")
     .attr("transform", "rotate(-90)")
     .attr("x", 0 - chartAreaHeight / 2)
-    .attr("y", 0 - margin.left + 40)
+    .attr("y", 0 - margin.left + yAxisSpace)
     .attr("class", "line y axisTitle two");
 
   // Data management
@@ -418,7 +420,7 @@ function updateLineChart(
 
   svg
     .select(".line.y.axisTitle.two")
-    .transition()
+    .(yAxisSpace - 20)()
     .duration(tLong)
     .text(varNameSplit[1])
     .style("text-anchor", "middle");
@@ -489,7 +491,8 @@ function resizeLineChart(
   tablePadding,
   numberFormat,
   legendHeight,
-  titleHeight
+  titleHeight,
+  yAxisSpace,
 ) {
   var chartType = "Line";
   var dim = {
@@ -526,11 +529,11 @@ function resizeLineChart(
   svg
     .select("line.y.axisTitle.one")
     .attr("x", 0 - chartAreaHeight / 2)
-    .attr("y", 0 - margin.left + 20);
+    .attr("y", 0 - margin.left + (yAxisSpace - 20));
   svg
     .select("line.y.axisTitle.two")
     .attr("x", 0 - chartAreaHeight / 2)
-    .attr("y", 0 - margin.left + 40);
+    .attr("y", 0 - margin.left + yAxisSpace);
 
   // Line generators
   var valueLine1 = d3

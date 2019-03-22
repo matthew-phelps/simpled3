@@ -13,7 +13,8 @@ function drawBarChart(
   tablePadding,
   numberFormat,
   legendHeight,
-  titleHeight
+  titleHeight,
+  yAxisSpace
 ) {
   var dim = {
     width: width - margin.left - margin.right,
@@ -67,14 +68,14 @@ function drawBarChart(
     .append("text")
     .attr("transform", "rotate(-90)")
     .attr("x", 0 - chartAreaHeight / 2)
-    .attr("y", 0 - margin.left + 20)
+    .attr("y", 0 - margin.left + (yAxisSpace - 20))
     .attr("class", "bar y axisTitle one plot_text");
 
   chartAxes
     .append("text")
     .attr("transform", "rotate(-90)")
     .attr("x", 0 - chartAreaHeight / 2)
-    .attr("y", 0 - margin.left + 40)
+    .attr("y", 0 - margin.left + yAxisSpace)
     .attr("class", "bar y axisTitle two plot_text");
 
   // Data management
@@ -520,7 +521,8 @@ function resizeBarChart(
   mOpacity,
   numberFormat,
   legendHeight,
-  titleHeight
+  titleHeight,
+  yAxisSpace
 ) {
   var chartType = "Bar";
   var dim = {
@@ -544,10 +546,10 @@ function resizeBarChart(
 
   d3.selectAll(".bar.y.axisTitle.one")
     .attr("x", 0 - chartAreaHeight / 2)
-    .attr("y", 0 - margin.left + 20);
+    .attr("y", 0 - margin.left + (yAxisSpace - 20));
   d3.selectAll(".bar.y.axisTitle.two")
     .attr("x", 0 - chartAreaHeight / 2)
-    .attr("y", 0 - margin.left + 40);
+    .attr("y", 0 - margin.left + yAxisSpace);
 
   var data = HTMLWidgets.dataframeToD3(inData.data);
   var groupingName = Object.keys(data[0])[1];
