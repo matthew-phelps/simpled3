@@ -253,7 +253,7 @@ function drawBarChart(
       .attr("y2", chartAreaHeight);
   }
 
-  function moveTooltip(d) {ush
+  function moveTooltip(d) {
 
     tooltip
       .style("left", d3.select(this).attr('x') + "px")
