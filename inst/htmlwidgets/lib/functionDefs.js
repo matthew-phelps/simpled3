@@ -208,7 +208,8 @@ function drawBarChart(
     .duration(tLong)
     .style("opacity", 1)
     .text(groupingName)
-    .style("text-anchor", "middle");
+    .style("text-anchor", "middle")
+    .attr("transform", "rotate(90)");
 
   /// ADD LEGEND
   var wrapperName = "legendWrapper" + chartType;
