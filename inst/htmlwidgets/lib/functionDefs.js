@@ -185,7 +185,9 @@ function drawBarChart(
 
   xAxis
     .call(d3.axisBottom(scaleX))
-    .attr("transform", "translate(0," + chartAreaHeight + ")");
+    .attr("transform", "translate(0," + chartAreaHeight + ")")
+    .selectAll("text")
+    .attr("transform", "rotate(90)");
 
   // Add axes titles
   chartAxes
@@ -208,8 +210,7 @@ function drawBarChart(
     .duration(tLong)
     .style("opacity", 1)
     .text(groupingName)
-    .style("text-anchor", "middle")
-    .attr("transform", "rotate(90)");
+    .style("text-anchor", "middle");
 
   /// ADD LEGEND
   var wrapperName = "legendWrapper" + chartType;
