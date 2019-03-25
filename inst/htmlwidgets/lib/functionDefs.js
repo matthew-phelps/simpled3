@@ -329,8 +329,8 @@ function updateBarChart(
   var maxY = d3.max(newData, d => d3.max(d.values, k => k.value));
   grouping1Names = newData.map(d => d.key);
   grouping2Names = newData[0].values.map(d => d.sex);
-  
-/*Chart height needs to be smaller for rotated text labels - but only for those labels*/
+
+  /*Chart height needs to be smaller for rotated text labels - but only for those labels*/
   var chartInitHeight = dim.height - legendHeight - titleHeight;
   var chartHeightReduction = 50;
   if (newData.length > 10) {
@@ -436,11 +436,11 @@ function updateBarChart(
     .selectAll(".bar.x.axis")
     .transition()
     .duration(tShort)
-    .call(d3.axisBottom(scaleX));
+    .call(d3.axisBottom(scaleX))
+    .attr("transform", "translate(0," + chartAreaHeight + ")");
 
   if (newData.length > 10) {
     xAxis
-      .attr("transform", "translate(0," + chartAreaHeight + ")")
       .selectAll("text")
       .attr("transform", "rotate(-45)")
       .style("text-anchor", "end")
