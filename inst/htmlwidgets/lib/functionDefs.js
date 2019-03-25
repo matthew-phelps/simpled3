@@ -308,6 +308,7 @@ function updateBarChart(
   };
 
   var chartAreaHeight = dim.height - legendHeight - titleHeight;
+
   svg = d3.select("#container" + chartType).select("svg");
   var chartArea = svg.selectAll(".chartArea");
 
@@ -330,6 +331,11 @@ function updateBarChart(
   var maxY = d3.max(newData, d => d3.max(d.values, k => k.value));
   grouping1Names = newData.map(d => d.key);
   grouping2Names = newData[0].values.map(d => d.sex);
+
+  var chartHeightReduction = 50;
+  if (inData.length > 10) {
+    chartAreaHeight = chartAreaHeight - chartHeightReduction;
+  }
 
   // Scales
   var scaleY = d3
