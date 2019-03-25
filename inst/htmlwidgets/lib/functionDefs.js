@@ -185,9 +185,11 @@ function drawBarChart(
 
   xAxis
     .call(d3.axisBottom(scaleX))
-    .attr("transform", "translate(0," + chartAreaHeight + ")")
-    .selectAll("text")
-    .attr("transform", "rotate(90)");
+    .attr("transform", "translate(0," + chartAreaHeight + ")");
+
+  if (newData.length > 10) {
+    xAxis.selectAll("text").attr("transform", "rotate(-45)");
+  }
 
   // Add axes titles
   chartAxes
@@ -256,9 +258,8 @@ function drawBarChart(
   }
 
   function moveTooltip(d) {
-
     tooltip
-      .style("left", d3.select(this).attr('x') + "px")
+      .style("left", d3.select(this).attr("x") + "px")
       .style("top", d3.mouse(this)[1] + 50 + "px");
   }
 
@@ -316,7 +317,7 @@ function updateBarChart(
   var varName = Object.keys(data[0])[2];
   var sexName = Object.keys(data[0])[0];
   var colors = inData.metaData.colors;
-  
+
   // Variable/key names may changes, so standardized them
   var newData = dataManagement(data, sexName, groupingName, varName);
 
@@ -420,11 +421,15 @@ function updateBarChart(
     .on("mouseout", hideTooltip);
 
   // Update axes scales
-  svg
+ var xAxis =  svg
     .selectAll(".bar.x.axis")
     .transition()
     .duration(tShort)
     .call(d3.axisBottom(scaleX));
+
+ if (newData.length > 10) {
+    xAxis.selectAll("text").attr("transform", "rotate(-45)");
+  }
 
   svg
     .selectAll(".bar.y.axis")
@@ -487,7 +492,7 @@ function updateBarChart(
 
   function moveTooltip(d) {
     tooltip
-.style("left", d3.select(this).attr('x') + "px")
+      .style("left", d3.select(this).attr("x") + "px")
       .style("top", d3.mouse(this)[1] + 50 + "px");
   }
 
@@ -560,7 +565,7 @@ function resizeBarChart(
   var sexName = Object.keys(data[0])[0];
   var colors = inData.metaData.colors;
 
- var newData = dataManagement(data, sexName, groupingName, varName);
+  var newData = dataManagement(data, sexName, groupingName, varName);
 
   // Split var name just before "per" so that I can manually put labels on two lines
   var varNameSplit = varName.split("  ");
@@ -668,7 +673,7 @@ function resizeBarChart(
 
   function moveTooltip(d) {
     tooltip
-      .style("left", d3.select(this).attr('x') + "px")
+      .style("left", d3.select(this).attr("x") + "px")
       .style("top", d3.mouse(this)[1] + 50 + "px");
   }
 
