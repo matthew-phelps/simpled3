@@ -171,7 +171,7 @@ function drawBarChart(
     .enter()
     .append("rect")
     // Need to give unique non-numeric class to each rect
-    .attr("class", d => "mouseSvg " + "i" + d.key.slice(0, 2))
+    .attr("class", d => "mouseSvg " + "i" + d.key)
     .attr("x", d => scaleX(d.key))
     .attr("width", scaleX.bandwidth())
     .attr("y", 0)
@@ -373,7 +373,7 @@ function updateBarChart(
   var barsData = barGroupWithData
     .enter()
     .append("g")
-    .attr("class", d => "barGroups " + "i" + d.key.slice(0, 2))
+    .attr("class", d => "barGroups " + "i" + d.key)
     .merge(barGroupWithData);
 
   barsData
@@ -422,7 +422,7 @@ function updateBarChart(
     .append("rect")
     .merge(mouseSvg)
     // Need to give unique non-numeric class to each rect
-    .attr("class", d => "mouseSvg " + "i" + d.key.slice(0, 2))
+    .attr("class", d => "mouseSvg " + "i" + d.key)
     .attr("x", d => scaleX(d.key))
     .attr("width", scaleX.bandwidth())
     .attr("y", 0)
@@ -436,7 +436,7 @@ function updateBarChart(
     .selectAll(".bar.x.axis")
     .transition()
     .duration(tShort)
-    .call(d3.axisBottom(scaleX))
+    .call(d3.axisBottom(scaleX)
     .attr("transform", "translate(0," + chartAreaHeight + ")");
 
   if (newData.length > 10) {
@@ -493,11 +493,11 @@ function updateBarChart(
       .transition()
       .duration(tShort)
       .style("opacity", 0.9);
-    d3.select(".mouseSvg" + ".i" + d.key.slice(0, 2)).style(
+    d3.select(".mouseSvg" + ".i" + d.key).style(
       "opacity",
       mOpacity
     );
-    d3.select(".barGroups" + ".i" + d.key.slice(0, 2))
+    d3.select(".barGroups" + ".i" + d.key)
       .append("line")
       .attr("class", "guide")
       .attr("x1", scaleX1.bandwidth())
@@ -517,7 +517,7 @@ function updateBarChart(
       .transition()
       .duration(tShort)
       .style("opacity", 0);
-    d3.select(".mouseSvg" + ".i" + d.key.slice(0, 2))
+    d3.select(".mouseSvg" + ".i" + d.key)
       .transition()
       .duration(tShort)
       .style("opacity", 0.0);
@@ -674,11 +674,11 @@ function resizeBarChart(
       .transition()
       .duration(tShort)
       .style("opacity", 0.9);
-    d3.select(".mouseSvg" + ".i" + d.key.slice(0, 2)).style(
+    d3.select(".mouseSvg" + ".i" + d.key).style(
       "opacity",
       mOpacity
     );
-    d3.select(".barGroups" + ".i" + d.key.slice(0, 2))
+    d3.select(".barGroups" + ".i" + d.key)
       .append("line")
       .attr("class", "guide")
       .attr("x1", scaleX1.bandwidth())
@@ -698,7 +698,7 @@ function resizeBarChart(
       .transition()
       .duration(tShort)
       .style("opacity", 0);
-    d3.select(".mouseSvg" + ".i" + d.key.slice(0, 2))
+    d3.select(".mouseSvg" + ".i" + d.key)
       .transition()
       .duration(tShort)
       .style("opacity", 0.0);
