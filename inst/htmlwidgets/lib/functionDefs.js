@@ -336,7 +336,7 @@ function updateBarChart(
   if (newData.length > 10) {
     chartAreaHeight = chartAreaHeight - chartHeightReduction;
   }
-
+  var xAxisTitleMargin = chartAreaHeight + 33;
   // Scales
   var scaleY = d3
     .scaleLinear()
@@ -438,6 +438,7 @@ function updateBarChart(
 
   if (newData.length > 10) {
     xAxis
+      .attr("transform", "translate(0," + chartAreaHeight + ")")
       .selectAll("text")
       .attr("transform", "rotate(-45)")
       .style("text-anchor", "end");
