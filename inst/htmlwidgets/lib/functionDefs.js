@@ -333,7 +333,7 @@ function updateBarChart(
   grouping2Names = newData[0].values.map(d => d.sex);
 
   var chartHeightReduction = 50;
-  if (inData.length > 10) {
+  if (newData.length > 10) {
     chartAreaHeight = chartAreaHeight - chartHeightReduction;
   }
 
