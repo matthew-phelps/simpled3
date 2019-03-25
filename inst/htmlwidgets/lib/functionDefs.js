@@ -437,8 +437,6 @@ function updateBarChart(
     .transition()
     .duration(tShort)
     .call(d3.axisBottom(scaleX))
-    .transition()
-    .duration(tShort)
     .attr("transform", "translate(0," + chartAreaHeight + ")");
 
   if (newData.length > 10) {
