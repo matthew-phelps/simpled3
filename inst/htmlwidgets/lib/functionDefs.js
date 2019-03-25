@@ -441,7 +441,8 @@ function updateBarChart(
       .attr("transform", "translate(0," + chartAreaHeight + ")")
       .selectAll("text")
       .attr("transform", "rotate(-45)")
-      .style("text-anchor", "end");
+      .style("text-anchor", "end")
+      .style("font-size", "1rem");
   }
 
   svg
