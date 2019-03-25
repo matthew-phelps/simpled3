@@ -129,7 +129,7 @@ function drawBarChart(
   var barsData = barGroupWithData
     .enter()
     .append("g")
-    .attr("class", d => "barGroups " + "i" + d.key.slice(0, 2))
+    .attr("class", d => "barGroups " + "i" + d.key)
     .merge(barGroupWithData)
     .attr("transform", d => "translate(" + scaleX(d.key) + ",0)");
 
@@ -247,11 +247,11 @@ function drawBarChart(
       .transition()
       .duration(tShort)
       .style("opacity", 0.9);
-    d3.select(".mouseSvg" + ".i" + d.key.slice(0, 2)).style(
+    d3.select(".mouseSvg" + ".i" + d.key).style(
       "opacity",
       mOpacity
     );
-    d3.select(".barGroups" + ".i" + d.key.slice(0, 2))
+    d3.select(".barGroups" + ".i" + d.key)
       .append("line")
       .attr("class", "guide")
       .attr("x1", scaleX1.bandwidth())
@@ -271,7 +271,7 @@ function drawBarChart(
       .transition()
       .duration(tShort)
       .style("opacity", 0);
-    d3.select(".mouseSvg" + ".i" + d.key.slice(0, 2))
+    d3.select(".mouseSvg" + ".i" + d.key)
       .transition()
       .duration(tShort)
       .style("opacity", 0.0);
