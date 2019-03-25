@@ -428,7 +428,9 @@ function updateBarChart(
     .call(d3.axisBottom(scaleX));
 
  if (newData.length > 10) {
-    xAxis.selectAll("text").attr("transform", "rotate(-45)");
+    xAxis
+    .selectAll("text").attr("transform", "rotate(-45)")
+    .style("text-anchor", "start");
   }
 
   svg
