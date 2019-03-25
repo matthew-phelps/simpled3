@@ -188,7 +188,10 @@ function drawBarChart(
     .attr("transform", "translate(0," + chartAreaHeight + ")");
 
   if (newData.length > 10) {
-    xAxis.selectAll("text").attr("transform", "rotate(-45)");
+    xAxis
+      .selectAll("text")
+      .attr("transform", "rotate(-45)")
+      .style("text-anchor", "end");
   }
 
   // Add axes titles
@@ -421,16 +424,17 @@ function updateBarChart(
     .on("mouseout", hideTooltip);
 
   // Update axes scales
- var xAxis =  svg
+  var xAxis = svg
     .selectAll(".bar.x.axis")
     .transition()
     .duration(tShort)
     .call(d3.axisBottom(scaleX));
 
- if (newData.length > 10) {
+  if (newData.length > 10) {
     xAxis
-    .selectAll("text").attr("transform", "rotate(-45)")
-    .style("text-anchor", "start");
+      .selectAll("text")
+      .attr("transform", "rotate(-45)")
+      .style("text-anchor", "end");
   }
 
   svg
