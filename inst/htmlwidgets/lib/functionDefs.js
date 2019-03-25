@@ -307,8 +307,6 @@ function updateBarChart(
     height: height - margin.top - margin.bottom
   };
 
-  var chartAreaHeight = dim.height - legendHeight - titleHeight;
-
   svg = d3.select("#container" + chartType).select("svg");
   var chartArea = svg.selectAll(".chartArea");
 
@@ -331,12 +329,16 @@ function updateBarChart(
   var maxY = d3.max(newData, d => d3.max(d.values, k => k.value));
   grouping1Names = newData.map(d => d.key);
   grouping2Names = newData[0].values.map(d => d.sex);
-
+  
+/*Chart height needs to be smaller for rotated text labels - but only for those labels*/
+  var chartInitHeight = dim.height - legendHeight - titleHeight;
   var chartHeightReduction = 50;
   if (newData.length > 10) {
-    chartAreaHeight = chartAreaHeight - chartHeightReduction;
+    var chartAreaHeight = chartInitHeight - chartHeightReduction;
+  } else {
+    var chartAreaHeight = chartInitHeight;
   }
-  var xAxisTitleMargin = chartAreaHeight + 33;
+
   // Scales
   var scaleY = d3
     .scaleLinear()
