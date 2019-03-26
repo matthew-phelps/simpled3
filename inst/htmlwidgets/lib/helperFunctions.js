@@ -77,8 +77,10 @@ function dataManagement(data, sexName, groupingName, varName) {
     delete data[i][groupingName];
   }
 
-  return d3
+  var nestedData = d3
     .nest()
     .key(d => d.grouping)
     .entries(data);
+
+    return nestedData;
 }
