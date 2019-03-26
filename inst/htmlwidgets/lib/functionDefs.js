@@ -442,6 +442,7 @@ function updateBarChart(
   if (newData.length > 10) {
     xAxis
       .selectAll("text")
+      .attr("y" 0)
       .attr("dx", "-0.4em")
       .attr("transform", "rotate(-45)")
       .style("text-anchor", "end")
