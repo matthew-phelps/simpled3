@@ -274,7 +274,7 @@ function drawBarChart(
     d3.select(".mouseSvg" + "." + d.mouseSvgName)
       .transition()
       .duration(tShort)
-      .style("opacity", 0.9);
+      .style("opacity", 0.2);
     d3.selectAll(".guide")
       .remove();
   }
