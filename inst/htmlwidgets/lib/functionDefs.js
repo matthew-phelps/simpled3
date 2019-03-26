@@ -442,7 +442,7 @@ function updateBarChart(
   if (newData.length > 10) {
     xAxis
       .selectAll("text")
-      .attr("transform", "rotate(90)")
+      .attr("transform", "rotate(-90)")
       .style("text-anchor", "end")
       .style("font-size", "1rem");
   }
