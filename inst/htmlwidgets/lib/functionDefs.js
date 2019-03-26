@@ -445,7 +445,7 @@ function updateBarChart(
       .attr("y", 0)
       .attr("x", 9)
       .attr("dx", "-1.6em")
-      .attr("transform", "rotate(-45)")
+      .attr("transform", "rotate(-60)")
       .style("text-anchor", "end")
       .style("font-size", "1rem");
   }
