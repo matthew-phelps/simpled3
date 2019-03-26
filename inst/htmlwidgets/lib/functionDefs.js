@@ -276,9 +276,6 @@ function drawBarChart(
       .duration(tShort)
       .style("opacity", 0.0);
     d3.selectAll(".guide")
-      .transition()
-      .duration(tShort)
-      .style("opacity", 0)
       .remove();
   }
 }
