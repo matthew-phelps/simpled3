@@ -129,7 +129,7 @@ function drawBarChart(
   var barsData = barGroupWithData
     .enter()
     .append("g")
-    .attr("class", d => "barGroups " + "i" + d.key)
+    .attr("class", d => "barGroups " + d.mouseSvgName)
     .merge(barGroupWithData)
     .attr("transform", d => "translate(" + scaleX(d.key) + ",0)");
 
@@ -171,7 +171,7 @@ function drawBarChart(
     .enter()
     .append("rect")
     // Need to give unique non-numeric class to each rect
-    .attr("class", d => "mouseSvg " + "i" + d.key)
+    .attr("class", d => "mouseSvg " + d.mouseSvgName)
     .attr("x", d => scaleX(d.key))
     .attr("width", scaleX.bandwidth())
     .attr("y", 0)
@@ -247,7 +247,7 @@ function drawBarChart(
       .transition()
       .duration(tShort)
       .style("opacity", 0.9);
-    d3.select(".mouseSvg" + ".i" + d.key).style(
+    d3.select(".mouseSvg" + "." + d.mouseSvgName).style(
       "opacity",
       mOpacity
     );
@@ -271,7 +271,7 @@ function drawBarChart(
       .transition()
       .duration(tShort)
       .style("opacity", 0);
-    d3.select(".mouseSvg" + ".i" + d.key)
+    d3.select(".mouseSvg" + "." + d.mouseSvgName)
       .transition()
       .duration(tShort)
       .style("opacity", 0.0);
