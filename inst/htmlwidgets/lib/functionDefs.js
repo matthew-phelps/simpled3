@@ -443,8 +443,8 @@ function updateBarChart(
     xAxis
       .selectAll("text")
       .attr("y", 0)
-      .attr("x", -1)
-      .attr("dx", "-0.4em")
+      .attr("x", 2)
+      .attr("dx", "-0.6em")
       .attr("transform", "rotate(-45)")
       .style("text-anchor", "end")
       .style("font-size", "1rem");
