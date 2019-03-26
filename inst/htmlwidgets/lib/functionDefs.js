@@ -251,7 +251,7 @@ function drawBarChart(
       "opacity",
       mOpacity
     );
-    d3.select(".barGroups" + ".i" + d.key)
+    d3.select(".barGroups" + "." + d.mouseSvgName)
       .append("line")
       .attr("class", "guide")
       .attr("x1", scaleX1.bandwidth())
