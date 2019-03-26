@@ -522,9 +522,6 @@ function updateBarChart(
       .duration(tShort)
       .style("opacity", 0.0);
     d3.selectAll(".guide")
-      .transition()
-      .duration(tShort)
-      .style("opacity", 0)
       .remove();
   }
 }
@@ -703,9 +700,6 @@ function resizeBarChart(
       .duration(tShort)
       .style("opacity", 0.0);
     d3.selectAll(".guide")
-      .transition()
-      .duration(tShort)
-      .style("opacity", 0)
       .remove();
   }
 }
