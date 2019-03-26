@@ -82,5 +82,8 @@ function dataManagement(data, sexName, groupingName, varName) {
     .key(d => d.grouping)
     .entries(data);
 
+for (var i = 0; i < nestedData.length; i++) {
+  nestedData[i].mouseSvgName = "i" + i + nestedData[i].key.slice(0,2)
+}
     return nestedData;
 }
