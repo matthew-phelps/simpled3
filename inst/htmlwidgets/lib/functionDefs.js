@@ -246,7 +246,7 @@ function drawBarChart(
     tooltip
       .transition()
       .duration(tShort)
-      .style("opacity", 0.9);
+      .style("opacity", 0.0);
     d3.select(".mouseSvg" + "." + d.mouseSvgName).style(
       "opacity",
       mOpacity
@@ -274,7 +274,7 @@ function drawBarChart(
     d3.select(".mouseSvg" + "." + d.mouseSvgName)
       .transition()
       .duration(tShort)
-      .style("opacity", 0.0);
+      .style("opacity", 0.9);
     d3.selectAll(".guide")
       .remove();
   }
