@@ -443,7 +443,7 @@ function updateBarChart(
     xAxis
       .selectAll("text")
       .attr("y", 0)
-      .attr("x", 2)
+      .attr("x", 9)
       .attr("dx", "-1.6em")
       .attr("transform", "rotate(-45)")
       .style("text-anchor", "end")
