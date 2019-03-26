@@ -246,11 +246,9 @@ function drawBarChart(
     tooltip
       .transition()
       .duration(tShort)
-      .style("opacity", 0.0);
-    d3.select(".mouseSvg" + "." + d.mouseSvgName).style(
-      "opacity",
-      mOpacity
-    );
+      .style("opacity", 0.9);
+    d3.select(".mouseSvg" + "." + d.mouseSvgName).style("opacity", 0);
+    
     d3.select(".barGroups" + "." + d.mouseSvgName)
       .append("line")
       .attr("class", "guide")
@@ -274,9 +272,8 @@ function drawBarChart(
     d3.select(".mouseSvg" + "." + d.mouseSvgName)
       .transition()
       .duration(tShort)
-      .style("opacity", 0.2);
-    d3.selectAll(".guide")
-      .remove();
+      .style("opacity", mOpacity);
+    d3.selectAll(".guide").remove();
   }
 }
 
@@ -493,10 +490,7 @@ function updateBarChart(
       .transition()
       .duration(tShort)
       .style("opacity", 0.9);
-    d3.select(".mouseSvg" + "." + d.mouseSvgName).style(
-      "opacity",
-      mOpacity
-    );
+    d3.select(".mouseSvg" + "." + d.mouseSvgName).style("opacity", mOpacity);
     d3.select(".barGroups" + "." + d.mouseSvgName)
       .append("line")
       .attr("class", "guide")
@@ -521,8 +515,7 @@ function updateBarChart(
       .transition()
       .duration(tShort)
       .style("opacity", 0.0);
-    d3.selectAll(".guide")
-      .remove();
+    d3.selectAll(".guide").remove();
   }
 }
 
@@ -671,10 +664,7 @@ function resizeBarChart(
       .transition()
       .duration(tShort)
       .style("opacity", 0.9);
-    d3.select(".mouseSvg" + "." + d.mouseSvgName).style(
-      "opacity",
-      mOpacity
-    );
+    d3.select(".mouseSvg" + "." + d.mouseSvgName).style("opacity", mOpacity);
     d3.select(".barGroups" + "." + d.mouseSvgName)
       .append("line")
       .attr("class", "guide")
@@ -699,7 +689,6 @@ function resizeBarChart(
       .transition()
       .duration(tShort)
       .style("opacity", 0.0);
-    d3.selectAll(".guide")
-      .remove();
+    d3.selectAll(".guide").remove();
   }
 }
