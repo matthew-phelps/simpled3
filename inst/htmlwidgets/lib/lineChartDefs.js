@@ -368,6 +368,7 @@ function updateLineChart(
   // Update circles with new data
   var dotFemale = chartArea.selectAll(".dotfemale").data(data);
 
+dotFemale.exit().remove();
   dotFemale
     .transition()
     .duration(tLong)
