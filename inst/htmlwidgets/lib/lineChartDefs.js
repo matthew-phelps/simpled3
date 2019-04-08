@@ -261,7 +261,10 @@ function drawLineChart(
 
   function moveTooltip(d) {
     tooltip
-      .style("left", (d3.select(this).attr('x') - d3.select(this).attr('width')/3) + "px")
+      .style(
+        "left",
+        d3.select(this).attr("x") - d3.select(this).attr("width") / 3 + "px"
+      )
       .style("top", d3.mouse(this)[1] + 50 + "px");
   }
 
@@ -368,14 +371,23 @@ function updateLineChart(
   // Update circles with new data
   var dotFemale = chartArea.selectAll(".dotfemale").data(data);
 
-dotFemale.exit().remove();
-dotFemale.enter().append("circle")
+  dotFemale
+    .exit()
+    .transition()
+    .duration(tLong)
+    .remove();
+
+  dotFemale
+    .enter()
+    .append("circle")
     .attr("class", d => "y" + d.year + " dotfemale")
+    .transition()
+    .duration(tLong)
     .attr("cx", d => scaleX(d.year))
     .attr("cy", d => scaleY(d.female))
     .attr("r", cRadius)
     .attr("fill", colors[1]);
-    
+
   dotFemale
     .transition()
     .duration(tLong)
@@ -462,7 +474,10 @@ dotFemale.enter().append("circle")
 
   function moveTooltip(d) {
     tooltip
-      .style("left", (d3.select(this).attr('x') - d3.select(this).attr('width')/3) + "px")
+      .style(
+        "left",
+        d3.select(this).attr("x") - d3.select(this).attr("width") / 3 + "px"
+      )
       .style("top", d3.mouse(this)[1] + 50 + "px");
   }
 
@@ -654,7 +669,10 @@ function resizeLineChart(
 
   function moveTooltip(d) {
     tooltip
-      .style("left", (d3.select(this).attr('x') - d3.select(this).attr('width')/3) + "px")
+      .style(
+        "left",
+        d3.select(this).attr("x") - d3.select(this).attr("width") / 3 + "px"
+      )
       .style("top", d3.mouse(this)[1] + 50 + "px");
   }
 
