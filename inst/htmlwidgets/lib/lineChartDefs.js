@@ -382,6 +382,7 @@ function updateLineChart(
     .enter()
     .append("circle")
     .attr("class", d => "y" + d.year + " dotfemale")
+    .merge(dotFemale)
     .transition()
     .duration(tLong)
     .attr("cx", d => scaleX(d.year))
@@ -389,21 +390,39 @@ function updateLineChart(
     .attr("r", cRadius)
     .attr("fill", colors[1]);
 
-  dotFemale
+ /* dotFemale
     .transition()
     .duration(tLong)
     .attr("cx", d => scaleX(d.year))
-    .attr("cy", d => scaleY(d.female));
+    .attr("cy", d => scaleY(d.female));*/
 
   dotFemale.on("mouseover", showTooltip).on("mouseout", hideTooltip);
 
-  chartArea
+var dotMale =   chartArea
     .selectAll(".dotmale")
-    .data(data)
+    .data(data);
+
+  dotMale
+    .exit()
+    .transition()
+    .duration(tLong)
+    .attr("cx", d => scaleX(2013))
+    .remove();
+
+  dotMale
+  .enter()
+  .append("circle")
+    .attr("class", d => "y" + d.year + " dotmale")
+    .merge(dotMale)
     .transition()
     .duration(tLong)
     .attr("cx", d => scaleX(d.year))
-    .attr("cy", d => scaleY(d.male));
+    .attr("cy", d => scaleY(d.male))
+    .attr("r", cRadius)
+    .attr("fill", colors[0]);
+
+
+
 
   // Larger invisible circles to trigger mouseover events
   var mouseRectsFemale = chartArea
