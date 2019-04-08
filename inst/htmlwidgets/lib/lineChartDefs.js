@@ -375,7 +375,7 @@ function updateLineChart(
     .exit()
     .transition()
     .duration(tLong)
-    .attr("cx", d => scaleX(2050))
+    .attr("cx", d => scaleX(2013))
     .remove();
 
   dotFemale
