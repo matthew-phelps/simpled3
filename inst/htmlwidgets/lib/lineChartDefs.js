@@ -369,6 +369,13 @@ function updateLineChart(
   var dotFemale = chartArea.selectAll(".dotfemale").data(data);
 
 dotFemale.exit().remove();
+dotFemale.enter().append("circle")
+    .attr("class", d => "y" + d.year + " dotfemale")
+    .attr("cx", d => scaleX(d.year))
+    .attr("cy", d => scaleY(d.female))
+    .attr("r", cRadius)
+    .attr("fill", colors[1]);
+    
   dotFemale
     .transition()
     .duration(tLong)
