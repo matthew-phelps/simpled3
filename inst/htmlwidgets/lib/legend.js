@@ -85,7 +85,7 @@ function drawLegend(
     .attr("text-anchor", "start")
     .attr("id", "plot_titleD3_" + wrapperName)
     .attr("class", "plot_text")
-    .attr("class", "plot_titleD3");
+    .attr("class", "output_titles");
 }
 
 function updateLegend(inData, wrapperName, svgName, tDuration) {
