@@ -544,8 +544,8 @@ function resizeBarChart(
     height: height - margin.top - margin.bottom
   };
 
-  var chartAreaHeight = dim.height - legendHeight - titleHeight;
-  var xAxisTitleMargin = chartAreaHeight + 33;
+
+
 
   var svg = d3
     .select("#container" + chartType)
@@ -580,6 +580,15 @@ function resizeBarChart(
   grouping1Names = newData.map(d => d.key);
   grouping2Names = newData[0].values.map(d => d.sex);
 
+  var chartInitHeight = dim.height - legendHeight - titleHeight;
+  var chartHeightReduction = 50;
+  if (newData.length > 10) {
+    var chartAreaHeight = chartInitHeight - chartHeightReduction;
+  } else {
+    var chartAreaHeight = chartInitHeight;
+  }
+
+  var xAxisTitleMargin = chartAreaHeight + 33;
   // SCALES
   var scaleY = d3
     .scaleLinear()
