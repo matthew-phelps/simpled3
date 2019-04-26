@@ -543,7 +543,7 @@ function resizeBarChart(
     width: width - margin.left - margin.right,
     height: height - margin.top - margin.bottom
   };
-
+ 
  var data = HTMLWidgets.dataframeToD3(inData.data);
   var groupingName = Object.keys(data[0])[1];
   var varName = Object.keys(data[0])[2];
@@ -560,6 +560,7 @@ function resizeBarChart(
   grouping2Names = newData[0].values.map(d => d.sex);
 
   var chartInitHeight = dim.height - legendHeight - titleHeight;
+  var xAxisTitleMargin = chartInitHeight + 34;
   var chartHeightReduction = 50;
   if (newData.length > 10) {
     var chartAreaHeight = chartInitHeight - chartHeightReduction;
@@ -567,7 +568,7 @@ function resizeBarChart(
     var chartAreaHeight = chartInitHeight;
   }
 
-  var xAxisTitleMargin = chartAreaHeight + 33;
+ 
 
 
   var svg = d3
