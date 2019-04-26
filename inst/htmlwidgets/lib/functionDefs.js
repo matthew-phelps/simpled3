@@ -544,28 +544,7 @@ function resizeBarChart(
     height: height - margin.top - margin.bottom
   };
 
-
-
-
-  var svg = d3
-    .select("#container" + chartType)
-    .select("svg")
-    .attr("width", dim.width + margin.left + margin.right)
-    .attr("height", dim.height + margin.top + margin.bottom);
-
-  // Axis titles
-  d3.selectAll(".bar.x.axisTitle")
-    .attr("x", dim.width / 2)
-    .attr("y", xAxisTitleMargin);
-
-  d3.selectAll(".bar.y.axisTitle.one")
-    .attr("x", 0 - chartAreaHeight / 2)
-    .attr("y", 0 - margin.left + (yAxisSpace - 18));
-  d3.selectAll(".bar.y.axisTitle.two")
-    .attr("x", 0 - chartAreaHeight / 2)
-    .attr("y", 0 - margin.left + yAxisSpace);
-
-  var data = HTMLWidgets.dataframeToD3(inData.data);
+ var data = HTMLWidgets.dataframeToD3(inData.data);
   var groupingName = Object.keys(data[0])[1];
   var varName = Object.keys(data[0])[2];
   var sexName = Object.keys(data[0])[0];
@@ -589,6 +568,27 @@ function resizeBarChart(
   }
 
   var xAxisTitleMargin = chartAreaHeight + 33;
+
+
+  var svg = d3
+    .select("#container" + chartType)
+    .select("svg")
+    .attr("width", dim.width + margin.left + margin.right)
+    .attr("height", dim.height + margin.top + margin.bottom);
+
+  // Axis titles
+  d3.selectAll(".bar.x.axisTitle")
+    .attr("x", dim.width / 2)
+    .attr("y", xAxisTitleMargin);
+
+  d3.selectAll(".bar.y.axisTitle.one")
+    .attr("x", 0 - chartAreaHeight / 2)
+    .attr("y", 0 - margin.left + (yAxisSpace - 18));
+  d3.selectAll(".bar.y.axisTitle.two")
+    .attr("x", 0 - chartAreaHeight / 2)
+    .attr("y", 0 - margin.left + yAxisSpace);
+
+ 
   // SCALES
   var scaleY = d3
     .scaleLinear()
