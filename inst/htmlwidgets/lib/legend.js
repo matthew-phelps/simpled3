@@ -75,7 +75,7 @@ function drawLegend(
   var titleWrapper = topG
     .append("g")
     .attr("class", wrapperName + " title")
-    .attr("transform", "translate(" + 0 + "," + 0 + ")");
+    .attr("transform", "translate(" + -90 + "," + 0 + ")");
 
   /*Style text white with CSS - then CSS is ignored in saveSvgAsPng function - so it will turn back to black!*/
   titleWrapper
