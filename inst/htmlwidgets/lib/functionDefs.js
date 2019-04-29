@@ -569,8 +569,6 @@ function resizeBarChart(
   }
 
  
-
-
   var svg = d3
     .select("#container" + chartType)
     .select("svg")
