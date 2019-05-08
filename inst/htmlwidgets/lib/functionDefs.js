@@ -526,8 +526,6 @@ function updateBarChart(
       .style("opacity", mOpacity);
     d3.selectAll(".guide").remove();
   }
-
-  
 }
 
 //////////////////////////////////////////////////////////////////////////////
@@ -652,7 +650,9 @@ function resizeBarChart(
     .selectAll(".bar.x.axis")
     .transition()
     .duration(tShort)
-    .call(d3.axisBottom(scaleX));
+    .call(d3.axisBottom(scaleX))
+    .selectAll(".tick text")
+      .call(wrap, scaleX.bandwidth());
 
   svg
     .selectAll(".bar.y.axis")
