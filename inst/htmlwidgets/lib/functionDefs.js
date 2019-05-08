@@ -194,6 +194,9 @@ function drawBarChart(
       .style("text-anchor", "end");
   }
 
+  /*Wrap x axis labels*/
+  chartAxes.selectAll(".tick text").call(wrap, scaleX.bandwidth());
+
   // Add axes titles
   chartAxes
     .select(".bar.y.axisTitle.one")
@@ -248,7 +251,7 @@ function drawBarChart(
       .duration(tShort)
       .style("opacity", 0.9);
     d3.select(".mouseSvg" + "." + d.mouseSvgName).style("opacity", 0);
-    
+
     d3.select(".barGroups" + "." + d.mouseSvgName)
       .append("line")
       .attr("class", "guide")
@@ -275,6 +278,44 @@ function drawBarChart(
       .style("opacity", mOpacity);
     d3.selectAll(".guide").remove();
   }
+}
+
+/*Text wrap frunction*/
+function wrap(text, width) {
+  text.each(function() {
+    var text = d3.select(this),
+      words = text
+        .text()
+        .split(/\s+/)
+        .reverse(),
+      word,
+      line = [],
+      lineNumber = 0,
+      lineHeight = 1.1, // ems
+      y = text.attr("y"),
+      dy = parseFloat(text.attr("dy")),
+      tspan = text
+        .text(null)
+        .append("tspan")
+        .attr("x", 0)
+        .attr("y", y)
+        .attr("dy", dy + "em");
+    while ((word = words.pop())) {
+      line.push(word);
+      tspan.text(line.join(" "));
+      if (tspan.node().getComputedTextLength() > width) {
+        line.pop();
+        tspan.text(line.join(" "));
+        line = [word];
+        tspan = text
+          .append("tspan")
+          .attr("x", 0)
+          .attr("y", y)
+          .attr("dy", ++lineNumber * lineHeight + dy + "em")
+          .text(word);
+      }
+    }
+  });
 }
 
 //////////////////////////////////////////////////////////////////////////////
@@ -543,8 +584,8 @@ function resizeBarChart(
     width: width - margin.left - margin.right,
     height: height - margin.top - margin.bottom
   };
- 
- var data = HTMLWidgets.dataframeToD3(inData.data);
+
+  var data = HTMLWidgets.dataframeToD3(inData.data);
   var groupingName = Object.keys(data[0])[1];
   var varName = Object.keys(data[0])[2];
   var sexName = Object.keys(data[0])[0];
@@ -568,7 +609,6 @@ function resizeBarChart(
     var chartAreaHeight = chartInitHeight;
   }
 
- 
   var svg = d3
     .select("#container" + chartType)
     .select("svg")
@@ -587,7 +627,6 @@ function resizeBarChart(
     .attr("x", 0 - chartAreaHeight / 2)
     .attr("y", 0 - margin.left + yAxisSpace);
 
- 
   // SCALES
   var scaleY = d3
     .scaleLinear()
