@@ -646,12 +646,13 @@ function resizeBarChart(
     .on("mouseout", hideTooltip);
 
   // Resize Axes
-  svg
+  var xAxis = svg
     .selectAll(".bar.x.axis")
     .transition()
     .duration(tShort)
     .call(d3.axisBottom(scaleX))
-    .selectAll(".tick text")
+
+    xAxis.selectAll(".tick text")
       .call(wrap, scaleX.bandwidth());
 
   svg
