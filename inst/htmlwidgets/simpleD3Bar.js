@@ -10,7 +10,7 @@ HTMLWidgets.widget({
     var tShort = 200;
     var mOpacity = 0.2;
     var rectSize = 20; //dimension of colored square
-    var legendHeight = 60;
+    var legendHeight = 50;
     var titleHeight = 40;
     var tablePadding = 10;
     var yAxisSpace = 37;
