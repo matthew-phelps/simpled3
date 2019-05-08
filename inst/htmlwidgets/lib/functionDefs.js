@@ -770,7 +770,7 @@ if(words.length>1){ // Only add lines if >1 words
           .attr("dy", ++lineNumber * lineHeight + dy + "em")
           .text(word);
       }
-      i = i++ // count words
+      i++ // increment word count
     }
   } else {
      while ((word = words.pop())) {
