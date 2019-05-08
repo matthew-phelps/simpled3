@@ -14,7 +14,8 @@ function drawBarChart(
   numberFormat,
   legendHeight,
   titleHeight,
-  yAxisSpace
+  yAxisSpace,
+  xAxisSpace
 ) {
   var dim = {
     width: width - margin.left - margin.right,
@@ -25,7 +26,7 @@ function drawBarChart(
 
   var chartAreaHeight = dim.height - legendHeight - titleHeight;
 
-  var xAxisTitleMargin = chartAreaHeight + 33;
+  var xAxisTitleMargin = chartAreaHeight + xAxisSpace;
   var container = d3
     .select(el)
     .style("position", "relative")
