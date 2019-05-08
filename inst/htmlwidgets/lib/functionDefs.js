@@ -775,5 +775,6 @@ if(words.length>1){ // Only add lines if >1 words
       line.push(word);
       tspan.text(line.join(" "));
   }
+}
   });
 }
