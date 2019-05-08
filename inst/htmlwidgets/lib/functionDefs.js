@@ -544,7 +544,8 @@ function resizeBarChart(
   numberFormat,
   legendHeight,
   titleHeight,
-  yAxisSpace
+  yAxisSpace,
+  xAxisSpace
 ) {
   var chartType = "Bar";
   var dim = {
@@ -568,7 +569,7 @@ function resizeBarChart(
   grouping2Names = newData[0].values.map(d => d.sex);
 
   var chartInitHeight = dim.height - legendHeight - titleHeight;
-  var xAxisTitleMargin = chartInitHeight + 34;
+  var xAxisTitleMargin = chartInitHeight + xAxisSpace;
   var chartHeightReduction = 50;
   if (newData.length > 10) {
     var chartAreaHeight = chartInitHeight - chartHeightReduction;
