@@ -317,7 +317,7 @@ function wrap(text, width) {
   });
 }
 
-  
+
 }
 
 //////////////////////////////////////////////////////////////////////////////
@@ -474,9 +474,8 @@ function updateBarChart(
     .transition()
     .duration(tShort)
     .call(d3.axisBottom(scaleX))
-    .attr("transform", "translate(0," + chartAreaHeight + ")")
-    .selectAll(".tick text")
-    .call(wrap, scaleX.bandwidth());
+    .attr("transform", "translate(0," + chartAreaHeight + ")");
+    
 
   if (newData.length > 10) {
     xAxis
@@ -488,6 +487,9 @@ function updateBarChart(
       .style("text-anchor", "end")
       .style("font-size", "1.1rem");
   }
+
+  xAxis.selectAll(".tick text")
+    .call(wrap, scaleX.bandwidth());
 
   svg
     .selectAll(".bar.y.axis")
