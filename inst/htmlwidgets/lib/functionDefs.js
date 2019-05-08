@@ -753,8 +753,6 @@ function wrap(text, width) {
         .attr("x", 0)
         .attr("y", y)
         .attr("dy", dy + "em");
-    
-if(words.length>1){ // Only add lines if >1 words
   i = 0; // set up counter
     while ((word = words.pop())) {
       line.push(word);
@@ -772,11 +770,5 @@ if(words.length>1){ // Only add lines if >1 words
       }
       i++ // increment word count
     }
-  } else {
-     while ((word = words.pop())) {
-      line.push(word);
-      tspan.text(line.join(" "));
-  }
-}
   });
 }
