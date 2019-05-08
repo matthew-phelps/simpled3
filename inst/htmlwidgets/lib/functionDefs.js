@@ -758,7 +758,7 @@ if(words.length>1){ // Only add lines if >1 words
     while ((word = words.pop())) {
       line.push(word);
       tspan.text(line.join(" "));
-      if (tspan.node().getComputedTextLength() > width && word !== words ) {
+      if (tspan.node().getComputedTextLength() > width) {
         line.pop();
         tspan.text(line.join(" "));
         line = [word];
@@ -770,6 +770,10 @@ if(words.length>1){ // Only add lines if >1 words
           .text(word);
       }
     }
+  } else {
+     while ((word = words.pop())) {
+      line.push(word);
+      tspan.text(line.join(" "));
   }
   });
 }
