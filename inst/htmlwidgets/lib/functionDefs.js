@@ -279,8 +279,6 @@ function drawBarChart(
       .style("opacity", mOpacity);
     d3.selectAll(".guide").remove();
   }
-
-  
 }
 
 //////////////////////////////////////////////////////////////////////////////
@@ -434,7 +432,8 @@ function updateBarChart(
   // Remove old x-labels
   svg.selectAll(".bar.x.axis").remove();
 
-  var xAxis = svg.select(".chartAxes")
+  var xAxis = svg
+    .select(".chartAxes")
     .append("g")
     .attr("class", "bar x axis plot_text")
     .call(d3.axisBottom(scaleX))
@@ -449,9 +448,9 @@ function updateBarChart(
       .attr("transform", "rotate(-70)")
       .style("text-anchor", "end")
       .style("font-size", "1.1rem");
+  } else {
+    xAxis.selectAll(".tick text").call(wrap, scaleX.bandwidth());
   }
-
-  xAxis.selectAll(".tick text").call(wrap, scaleX.bandwidth());
 
   svg
     .selectAll(".bar.y.axis")
@@ -646,14 +645,29 @@ function resizeBarChart(
     .on("mouseout", hideTooltip);
 
   // Resize Axes
-  var xAxis = svg
-    .selectAll(".bar.x.axis")
-    .transition()
-    .duration(tShort)
-    .call(d3.axisBottom(scaleX))
+  // Remove old x-labels
+  svg.selectAll(".bar.x.axis").remove();
 
-    xAxis.selectAll(".tick text")
-      .call(wrap, scaleX.bandwidth());
+  var xAxis = svg
+    .select(".chartAxes")
+    .append("g")
+    .attr("class", "bar x axis plot_text")
+    .call(d3.axisBottom(scaleX))
+    .attr("transform", "translate(0," + chartAreaHeight + ")");
+
+  if (newData.length > 10) {
+    xAxis
+      .selectAll("text")
+      .attr("y", 0)
+      .attr("x", 9)
+      .attr("dx", "-1.6em")
+      .attr("transform", "rotate(-70)")
+      .style("text-anchor", "end")
+      .style("font-size", "1.1rem");
+  } else {
+    xAxis.selectAll(".tick text").call(wrap, scaleX.bandwidth());
+  }
+
 
   svg
     .selectAll(".bar.y.axis")
@@ -721,38 +735,38 @@ function resizeBarChart(
 
 /*Text wrap frunction*/
 function wrap(text, width) {
-    text.each(function() {
-      var text = d3.select(this),
-        words = text
-          .text()
-          .split(/\s+/)
-          .reverse(),
-        word,
-        line = [],
-        lineNumber = 0,
-        lineHeight = 1.1, // ems
-        y = text.attr("y"),
-        dy = parseFloat(text.attr("dy")),
+  text.each(function() {
+    var text = d3.select(this),
+      words = text
+        .text()
+        .split(/\s+/)
+        .reverse(),
+      word,
+      line = [],
+      lineNumber = 0,
+      lineHeight = 1.1, // ems
+      y = text.attr("y"),
+      dy = parseFloat(text.attr("dy")),
+      tspan = text
+        .text(null)
+        .append("tspan")
+        .attr("x", 0)
+        .attr("y", y)
+        .attr("dy", dy + "em");
+    while ((word = words.pop())) {
+      line.push(word);
+      tspan.text(line.join(" "));
+      if (tspan.node().getComputedTextLength() > width) {
+        line.pop();
+        tspan.text(line.join(" "));
+        line = [word];
         tspan = text
-          .text(null)
           .append("tspan")
           .attr("x", 0)
           .attr("y", y)
-          .attr("dy", dy + "em");
-      while ((word = words.pop())) {
-        line.push(word);
-        tspan.text(line.join(" "));
-        if (tspan.node().getComputedTextLength() > width) {
-          line.pop();
-          tspan.text(line.join(" "));
-          line = [word];
-          tspan = text
-            .append("tspan")
-            .attr("x", 0)
-            .attr("y", y)
-            .attr("dy", ++lineNumber * lineHeight + dy + "em")
-            .text(word);
-        }
+          .attr("dy", ++lineNumber * lineHeight + dy + "em")
+          .text(word);
       }
-    });
-  }
+    }
+  });
+}
