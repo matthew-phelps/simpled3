@@ -24,7 +24,7 @@ function drawLegend(
     .attr("class", wrapperName)
     .attr(
       "transform",
-      "translate(" + (dim.width / 2 - legendWidth / 2) + "," + dim.height + ")"
+      "translate(" + (0) + "," + dim.height + ")"
     );
 
   // Wrappers for each gender
@@ -77,7 +77,7 @@ function drawLegend(
     .attr("class", wrapperName + " title")
     .attr("transform", "translate(" + -90 + "," + 0 + ")");
 
-  /*Style text white with CSS - then CSS is ignored in saveSvgAsPng function - so it will turn back to black!*/
+  
   titleWrapper
     .append("text")
     .text(inData.metaData.plotTitle)
