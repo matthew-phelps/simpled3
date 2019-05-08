@@ -279,45 +279,42 @@ function drawBarChart(
     d3.selectAll(".guide").remove();
   }
 
-
-function wrap(text, width) {
-  text.each(function() {
-    var text = d3.select(this),
-      words = text
-        .text()
-        .split(/\s+/)
-        .reverse(),
-      word,
-      line = [],
-      lineNumber = 0,
-      lineHeight = 1.1, // ems
-      y = text.attr("y"),
-      dy = parseFloat(text.attr("dy")),
-      tspan = text
-        .text(null)
-        .append("tspan")
-        .attr("x", 0)
-        .attr("y", y)
-        .attr("dy", dy + "em");
-    while ((word = words.pop())) {
-      line.push(word);
-      tspan.text(line.join(" "));
-      if (tspan.node().getComputedTextLength() > width) {
-        line.pop();
-        tspan.text(line.join(" "));
-        line = [word];
+  function wrap(text, width) {
+    text.each(function() {
+      var text = d3.select(this),
+        words = text
+          .text()
+          .split(/\s+/)
+          .reverse(),
+        word,
+        line = [],
+        lineNumber = 0,
+        lineHeight = 1.1, // ems
+        y = text.attr("y"),
+        dy = parseFloat(text.attr("dy")),
         tspan = text
+          .text(null)
           .append("tspan")
           .attr("x", 0)
           .attr("y", y)
-          .attr("dy", ++lineNumber * lineHeight + dy + "em")
-          .text(word);
+          .attr("dy", dy + "em");
+      while ((word = words.pop())) {
+        line.push(word);
+        tspan.text(line.join(" "));
+        if (tspan.node().getComputedTextLength() > width) {
+          line.pop();
+          tspan.text(line.join(" "));
+          line = [word];
+          tspan = text
+            .append("tspan")
+            .attr("x", 0)
+            .attr("y", y)
+            .attr("dy", ++lineNumber * lineHeight + dy + "em")
+            .text(word);
+        }
       }
-    }
-  });
-}
-
-
+    });
+  }
 }
 
 //////////////////////////////////////////////////////////////////////////////
@@ -469,17 +466,13 @@ function updateBarChart(
     .on("mouseout", hideTooltip);
 
   // Remove old x-labels
-  svg
-    .selectAll(".bar.x.axis")
-    .remove()
+  svg.selectAll(".bar.x.axis").remove();
 
-  var xAxis = svg
-  . append("g")
-  .attr("class", "bar x axis plot_text")
-  .call(d3.axisBottom(scaleX))
-  .attr("transform", "translate(0," + chartAreaHeight + ")");
-   
-    
+  var xAxis = svg.select(".chartAxes")
+    .append("g")
+    .attr("class", "bar x axis plot_text")
+    .call(d3.axisBottom(scaleX))
+    .attr("transform", "translate(0," + chartAreaHeight + ")");
 
   if (newData.length > 10) {
     xAxis
@@ -492,8 +485,7 @@ function updateBarChart(
       .style("font-size", "1.1rem");
   }
 
-  xAxis.selectAll(".tick text")
-    .call(wrap, scaleX.bandwidth());
+  xAxis.selectAll(".tick text").call(wrap, scaleX.bandwidth());
 
   svg
     .selectAll(".bar.y.axis")
@@ -569,49 +561,42 @@ function updateBarChart(
     d3.selectAll(".guide").remove();
   }
 
-
-function wrap(text, width) {
-  text.each(function() {
-    var text = d3.select(this),
-      words = text
-        .text()
-        .split(/\s+/)
-        .reverse(),
-      word,
-      line = [],
-      lineNumber = 0,
-      lineHeight = 1.1, // ems
-      y = text.attr("y"),
-      dy = parseFloat(text.attr("dy")),
-      tspan = text
-        .text(null)
-        .append("tspan")
-        .attr("x", 0)
-        .attr("y", y)
-        .attr("dy", dy + "em");
-    while ((word = words.pop())) {
-      line.push(word);
-      tspan.text(line.join(" "));
-      if (tspan.node().getComputedTextLength() > width) {
-        line.pop();
-        tspan.text(line.join(" "));
-        line = [word];
+  function wrap(text, width) {
+    text.each(function() {
+      var text = d3.select(this),
+        words = text
+          .text()
+          .split(/\s+/)
+          .reverse(),
+        word,
+        line = [],
+        lineNumber = 0,
+        lineHeight = 1.1, // ems
+        y = text.attr("y"),
+        dy = parseFloat(text.attr("dy")),
         tspan = text
+          .text(null)
           .append("tspan")
           .attr("x", 0)
           .attr("y", y)
-          .attr("dy", ++lineNumber * lineHeight + dy + "em")
-          .text(word);
+          .attr("dy", dy + "em");
+      while ((word = words.pop())) {
+        line.push(word);
+        tspan.text(line.join(" "));
+        if (tspan.node().getComputedTextLength() > width) {
+          line.pop();
+          tspan.text(line.join(" "));
+          line = [word];
+          tspan = text
+            .append("tspan")
+            .attr("x", 0)
+            .attr("y", y)
+            .attr("dy", ++lineNumber * lineHeight + dy + "em")
+            .text(word);
+        }
       }
-    }
-  });
-}
-
-
-
-
-
-
+    });
+  }
 }
 
 //////////////////////////////////////////////////////////////////////////////
@@ -803,4 +788,3 @@ function resizeBarChart(
 /////////////////////////////////////////////////////////////////////
 
 /*Text wrap frunction*/
-
