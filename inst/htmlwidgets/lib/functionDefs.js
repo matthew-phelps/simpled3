@@ -753,10 +753,12 @@ function wrap(text, width) {
         .attr("x", 0)
         .attr("y", y)
         .attr("dy", dy + "em");
+    
+if(words.length>1){ // Only add lines if >1 words
     while ((word = words.pop())) {
       line.push(word);
       tspan.text(line.join(" "));
-      if (tspan.node().getComputedTextLength() > width) {
+      if (tspan.node().getComputedTextLength() > width && word !== words ) {
         line.pop();
         tspan.text(line.join(" "));
         line = [word];
@@ -768,5 +770,6 @@ function wrap(text, width) {
           .text(word);
       }
     }
+  }
   });
 }
