@@ -106,6 +106,6 @@ function resizeLegend(dim, wrapperName) {
     .select("." + wrapperName)
     .attr(
       "transform",
-      "translate(" + (dim.width / 2 - legendWidth / 2) + "," + dim.height + ")"
+      "translate(" + (0) + "," + dim.height + ")"
     );
 }
