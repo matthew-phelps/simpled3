@@ -430,7 +430,7 @@ function updateBarChart(
     .on("mousemove", moveTooltip)
     .on("mouseout", hideTooltip);
 
-  // Update axes scales
+  // Update axes
   var xAxis = svg
     .selectAll(".bar.x.axis")
     .transition()
@@ -448,6 +448,9 @@ function updateBarChart(
       .style("text-anchor", "end")
       .style("font-size", "1.1rem");
   }
+
+/*Wrap x axis labels*/
+  xAxis.selectAll(".tick text").call(wrap, scaleX.bandwidth());
 
   svg
     .selectAll(".bar.y.axis")
@@ -712,7 +715,14 @@ function resizeBarChart(
 
 
 
-///////////////////////
+/////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////
+//                       FUNCTIONS                                 //
+/////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////
+
 /*Text wrap frunction*/
 function wrap(text, width) {
   text.each(function() {
