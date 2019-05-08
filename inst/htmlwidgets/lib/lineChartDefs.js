@@ -563,17 +563,18 @@ function resizeLineChart(
     .attr("height", dim.height + margin.top + margin.bottom);
   var chartArea = svg.select(".chartArea");
 
+// Axis titles
   svg
-    .select("line.x.axisTitle")
+    .select(".line.x.axisTitle")
     .attr("x", dim.width / 2)
     .attr("y", xAxisTitleMargin);
 
   svg
-    .select("line.y.axisTitle.one")
+    .select(".line.y.axisTitle.one")
     .attr("x", 0 - chartAreaHeight / 2)
     .attr("y", 0 - margin.left + (yAxisSpace - 18));
   svg
-    .select("line.y.axisTitle.two")
+    .select(".line.y.axisTitle.two")
     .attr("x", 0 - chartAreaHeight / 2)
     .attr("y", 0 - margin.left + yAxisSpace);
 
