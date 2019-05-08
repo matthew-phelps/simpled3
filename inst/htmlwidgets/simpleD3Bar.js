@@ -156,7 +156,8 @@ HTMLWidgets.widget({
           numberFormat,
           legendHeight,
           titleHeight,
-          yAxisSpace
+          yAxisSpace,
+          xAxisSpace
         );
         var dim = {
           width: width,
