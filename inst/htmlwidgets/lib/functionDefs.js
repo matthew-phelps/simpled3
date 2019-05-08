@@ -757,7 +757,6 @@ function wrap(text, width) {
 if(words.length>1){ // Only add lines if >1 words
   i = 0; // set up counter
     while ((word = words.pop())) {
-      i++ // count words
       line.push(word);
       tspan.text(line.join(" "));
       if (tspan.node().getComputedTextLength() > width && i > 0) {
@@ -771,6 +770,7 @@ if(words.length>1){ // Only add lines if >1 words
           .attr("dy", ++lineNumber * lineHeight + dy + "em")
           .text(word);
       }
+      i = i++ // count words
     }
   } else {
      while ((word = words.pop())) {
