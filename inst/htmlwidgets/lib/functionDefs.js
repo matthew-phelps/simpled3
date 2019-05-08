@@ -280,8 +280,6 @@ function drawBarChart(
   }
 }
 
-
-
 //////////////////////////////////////////////////////////////////////////////
 //////////////////    UPDATE     /////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////
@@ -436,7 +434,9 @@ function updateBarChart(
     .transition()
     .duration(tShort)
     .call(d3.axisBottom(scaleX))
-    .attr("transform", "translate(0," + chartAreaHeight + ")");
+    .attr("transform", "translate(0," + chartAreaHeight + ")")
+    .selectAll(".tick text")
+    .call(wrap, scaleX.bandwidth());
 
   if (newData.length > 10) {
     xAxis
@@ -448,9 +448,6 @@ function updateBarChart(
       .style("text-anchor", "end")
       .style("font-size", "1.1rem");
   }
-
-/*Wrap x axis labels*/
-  xAxis.selectAll(".tick text").call(wrap, scaleX.bandwidth());
 
   svg
     .selectAll(".bar.y.axis")
@@ -707,14 +704,6 @@ function resizeBarChart(
   }
 }
 
-
-
-
-
-
-
-
-
 /////////////////////////////////////////////////////////////////////
 /////////////////////////////////////////////////////////////////////
 /////////////////////////////////////////////////////////////////////
@@ -759,5 +748,4 @@ function wrap(text, width) {
       }
     }
   });
-
 }
