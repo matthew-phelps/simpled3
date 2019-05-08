@@ -14,7 +14,7 @@ HTMLWidgets.widget({
     var titleHeight = 40;
     var tablePadding = 10;
     var yAxisSpace = 37;
-    var xAxisSpace = 50
+    var xAxisSpace = 40;
 
     /*Format requires defining formats for several data types even though they will not be uses - apparently*/
     var localeFormatter = d3.formatLocale({
@@ -96,7 +96,8 @@ HTMLWidgets.widget({
             numberFormat,
             legendHeight,
             titleHeight,
-            yAxisSpace
+            yAxisSpace,
+            xAxisSpace
           );
         } else if (resized) {
           updateBarChart(
