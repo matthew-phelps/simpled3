@@ -755,10 +755,12 @@ function wrap(text, width) {
         .attr("dy", dy + "em");
     
 if(words.length>1){ // Only add lines if >1 words
+  i = 0; // set up counter
     while ((word = words.pop())) {
+      i++ // count words
       line.push(word);
       tspan.text(line.join(" "));
-      if (tspan.node().getComputedTextLength() > width) {
+      if (tspan.node().getComputedTextLength() > width && i > 0) {
         line.pop();
         tspan.text(line.join(" "));
         line = [word];
