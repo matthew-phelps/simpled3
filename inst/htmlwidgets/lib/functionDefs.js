@@ -468,13 +468,17 @@ function updateBarChart(
     .on("mousemove", moveTooltip)
     .on("mouseout", hideTooltip);
 
-  // Update axes
-  var xAxis = svg
+  // Remove old x-labels
+  svg
     .selectAll(".bar.x.axis")
-    .transition()
-    .duration(tShort)
-    .call(d3.axisBottom(scaleX))
-    .attr("transform", "translate(0," + chartAreaHeight + ")");
+    .remove()
+
+  var xAxis = svg
+  . append("g")
+  .attr("class", "bar x axis plot_text")
+  .call(d3.axisBottom(scaleX))
+  .attr("transform", "translate(0," + chartAreaHeight + ")");
+   
     
 
   if (newData.length > 10) {
