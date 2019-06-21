@@ -243,7 +243,7 @@ function drawBarChart(
   var femaleCell = table.select(".femaleCell");
 
   function showTooltip(d) {
-    thead.text(groupingName + ": " + d.key);
+    thead.text(d.key);
     maleCell.text(d.values[0].sex + ": " + numberFormat(d.values[0].value));
     femaleCell.text(d.values[1].sex + ": " + numberFormat(d.values[1].value));
 
@@ -490,7 +490,7 @@ function updateBarChart(
   var femaleCell = table.select(".femaleCell");
 
   function showTooltip(d) {
-    thead.text(groupingName + ": " + d.key);
+    thead.text(d.key);
     maleCell.text(d.values[0].sex + ": " + numberFormat(d.values[0].value));
     femaleCell.text(d.values[1].sex + ": " + numberFormat(d.values[1].value));
 
@@ -689,7 +689,7 @@ function resizeBarChart(
   var femaleCell = table.select(".femaleCell");
 
   function showTooltip(d) {
-    thead.text(groupingName + ": " + d.key);
+    thead.text(d.key);
     maleCell.text(d.values[0].sex + ": " + numberFormat(d.values[0].value));
     femaleCell.text(d.values[1].sex + ": " + numberFormat(d.values[1].value));
 
