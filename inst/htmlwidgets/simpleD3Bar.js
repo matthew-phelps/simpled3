@@ -8,7 +8,7 @@ HTMLWidgets.widget({
     var barPadding = 0.2;
     var tLong = 450;
     var tShort = 200;
-    var mOpacity = 0.2;
+    var mOpacity = 0.0;
     var rectSize = 20; //dimension of colored square
     var legendHeight = 50;
     var titleHeight = 40;
