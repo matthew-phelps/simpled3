@@ -91,7 +91,6 @@ HTMLWidgets.widget({
             tLong,
             tShort,
             mOpacity,
-      
             numberFormat,
             dims
           );
@@ -116,7 +115,8 @@ HTMLWidgets.widget({
             tLong,
             tShort,
             mOpacity,
-            numberFormat
+            numberFormat,
+            dims
           );
         }
         this.x = x; // store for resize
