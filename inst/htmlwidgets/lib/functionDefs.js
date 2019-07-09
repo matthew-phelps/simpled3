@@ -660,7 +660,7 @@ function resizeBarChart(
 
   // Resize legend
   var wrapperName = "legendWrapperBar";
-  resizeLegend(dim, wrapperName);
+  resizeLegend(innerDim, wrapperName);
 
   /* Tooltip functions. These should be hoisted to top of resizeChart() function
   call, and therefore accessible at anytime from inside resizeChart() */
