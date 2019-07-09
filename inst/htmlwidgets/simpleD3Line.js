@@ -127,18 +127,10 @@ HTMLWidgets.widget({
           width,
           height,
           el,
-          margin,
-          rectPadding,
           tLong,
           tShort,
-          cRadius,
-          bigRadius,
-          rectSize,
-          tablePadding,
           numberFormat,
-          legendHeight,
-          titleHeight,
-          yAxisSpace
+          dims
         );
         var dim = {
           width: width,

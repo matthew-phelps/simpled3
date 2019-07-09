@@ -620,7 +620,7 @@ function resizeLineChart(
 
   // Resize legend
   var wrapperName = "legendWrapper" + chartType;
-  resizeLegend(dim, wrapperName);
+  resizeLegend(innerDim, dims, wrapperName);
 
   var table = d3.select("#table" + chartType);
   var tooltip = d3.select("#tooltip" + chartType);
