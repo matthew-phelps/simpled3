@@ -23,7 +23,7 @@ function drawLegend(
     .attr("class", wrapperName)
     .attr(
       "transform",
-      "translate(" + (0) + "," + innerDim.innerHeight + ")"
+      "translate(" + (0) + "," + (innerDim.innerHeight + dims.legendBuffer) + ")"
     );
 
   // Wrappers for each gender
@@ -74,7 +74,7 @@ function drawLegend(
   var titleWrapper = topG
     .append("g")
     .attr("class", wrapperName + " title")
-    .attr("transform", "translate(" + -dims.margin.left + "," + 0 + ")");
+    .attr("transform", "translate(" + -dims.margin.left + "," + dims.margin.top + ")");
 
   
   titleWrapper
