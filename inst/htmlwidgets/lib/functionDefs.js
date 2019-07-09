@@ -289,8 +289,8 @@ function updateBarChart(
 ) {
   var chartType = "Bar";
   var innerDim = {
-    width: innerWidth - dims.margin.left - dims.margin.right,
-    height: innerHeight - dims.margin.top - dims.margin.bottom
+    innerWidth: width - dims.margin.left - dims.margin.right,
+    innerHeight: height - dims.margin.top - dims.margin.bottom
   };
 
   svg = d3.select("#container" + chartType).select("svg");
@@ -532,8 +532,8 @@ function resizeBarChart(
 ) {
   var chartType = "Bar";
   var innerDim = {
-    width: innerWidth - dims.margin.left - dims.margin.right,
-    height: innerHeight - dims.margin.top - dims.margin.bottom
+    innerWidth: width - dims.margin.left - dims.margin.right,
+    innerHeight: height - dims.margin.top - dims.margin.bottom
   };
 
   var data = HTMLWidgets.dataframeToD3(inData.data);
