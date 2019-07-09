@@ -4,7 +4,6 @@ function drawBarChart(
   width,
   height,
   el,
-  margin,
   barPadding,
   tLong,
   tShort,
