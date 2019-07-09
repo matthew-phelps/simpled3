@@ -284,7 +284,8 @@ function updateBarChart(
   tLong,
   tShort,
   mOpacity,
-  numberFormat
+  numberFormat,
+  dims
 ) {
   var chartType = "Bar";
   var innerDim = {
@@ -526,7 +527,8 @@ function resizeBarChart(
   tLong,
   tShort,
   mOpacity,
-  numberFormat
+  numberFormat,
+  dims
 ) {
   var chartType = "Bar";
   var innerDim = {
