@@ -572,10 +572,11 @@ function resizeBarChart(
 
   d3.selectAll(".bar.y.axisTitle.one")
     .attr("x", 0 - innerDim.innerHeight / 2)
-    .attr("y", 0 - dims.margin.left + (dims.yAxisSpace - 18));
+    .attr("y", -dims.margin.left);
+ 
   d3.selectAll(".bar.y.axisTitle.two")
     .attr("x", 0 - innerDim.innerHeight / 2)
-    .attr("y", 0 - dims.margin.left + dims.yAxisSpace);
+    .attr("y", (-dims.margin.left + 19))
 
   // SCALES
   var scaleY = d3
