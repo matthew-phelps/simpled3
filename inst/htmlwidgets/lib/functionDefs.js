@@ -106,7 +106,7 @@ function drawBarChart(
   var scaleY = d3
     .scaleLinear()
     .domain([0, maxY])
-    .range([chartAreaHeight, 0]);
+    .range([innerDim.innerHeight, 0]);
 
   var scaleX = d3
     .scaleBand()
@@ -182,7 +182,7 @@ function drawBarChart(
     .attr("x", d => scaleX(d.key))
     .attr("width", scaleX.bandwidth())
     .attr("y", 0)
-    .attr("height", chartAreaHeight)
+    .attr("height", innerDim.innerHeight)
     .on("mouseover", showTooltip)
     .on("mousemove", moveTooltip)
     .on("mouseout", hideTooltip);
@@ -192,7 +192,7 @@ function drawBarChart(
 
   xAxis
     .call(d3.axisBottom(scaleX))
-    .attr("transform", "translate(0," + chartAreaHeight + ")");
+    .attr("transform", "translate(0," + innerDim.innerHeight + ")");
 
   if (newData.length > 10) {
     xAxis
@@ -252,7 +252,7 @@ function drawBarChart(
       .attr("x1", scaleX1.bandwidth())
       .attr("x2", scaleX1.bandwidth())
       .attr("y1", 0)
-      .attr("y2", chartAreaHeight);
+      .attr("y2", innerDim.innerHeight);
   }
 
   function moveTooltip(d) {
