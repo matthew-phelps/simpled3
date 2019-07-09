@@ -111,7 +111,7 @@ function drawBarChart(
   var scaleX = d3
     .scaleBand()
     .domain(grouping1Names)
-    .range([0, innerDim.width])
+    .range([0, innerDim.innerWidth])
     .padding(barPadding);
 
   var scaleX1 = d3
