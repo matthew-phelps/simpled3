@@ -18,8 +18,8 @@ function drawBarChart(
   xAxisSpace
 ) {
   var dim = {
-    width: width - margin.left - margin.right,
-    height: height - margin.top - margin.bottom
+   innerWidth: width - margin.left - margin.right,
+    innerHeight: height - margin.top - margin.bottom
   };
 
   var chartType = "Bar";
@@ -36,8 +36,8 @@ function drawBarChart(
   var svg = container
     .append("svg")
     .attr("id", "svg" + chartType)
-    .attr("width", dim.width + margin.left + margin.right)
-    .attr("height", dim.height + margin.top + margin.bottom);
+    .attr("width", width)
+    .attr("height", height);
 
   var topG = svg
     .append("g")
