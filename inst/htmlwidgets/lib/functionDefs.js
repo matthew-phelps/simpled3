@@ -41,6 +41,7 @@ function drawBarChart(
 
   var topG = svg
     .append("g")
+    .attr("id", "topG")
     .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
   var chartArea = topG
@@ -52,6 +53,21 @@ function drawBarChart(
     .append("g")
     .attr("class", "chartAxes")
     .attr("transform", "translate(" + 0 + "," + titleHeight + ")");
+
+
+/// ADD LEGEND AND TITLE
+  var wrapperName = "legendWrapper" + chartType;
+  var svgName = "svgLegend" + chartType;
+  drawLegend(
+    topG,
+    inData,
+    dim,
+    titleHeight,
+    legendHeight,
+    wrapperName,
+    svgName
+  );
+
 
   // Initial axis
   var yAxis = chartAxes.append("g").attr("class", "bar y axis plot_text");
@@ -221,18 +237,7 @@ function drawBarChart(
     .text(groupingName)
     .style("text-anchor", "middle");
 
-  /// ADD LEGEND
-  var wrapperName = "legendWrapper" + chartType;
-  var svgName = "svgLegend" + chartType;
-  drawLegend(
-    topG,
-    inData,
-    dim,
-    titleHeight,
-    legendHeight,
-    wrapperName,
-    svgName
-  );
+  
 
   // TOOLTIP
   scaffoldTooltip(rectSize, colors, chartType);
