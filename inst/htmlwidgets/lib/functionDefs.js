@@ -35,7 +35,7 @@ function drawBarChart(
     .attr("id", "topG")
     .attr("transform", "translate(" + dims.margin.left + "," + dims.margin.top + ")");
 
-  ///// TESTING to see where stuff falls /////
+ /* ///// TESTING to see where stuff falls /////
   topG
     .append("rect")
     .attr("class", "inner")
@@ -43,7 +43,7 @@ function drawBarChart(
     .attr("height", innerDim.innerHeight)
     .attr("fill", "white")
     .attr("stroke", "black");
-  ///////////////////////////////////
+  ///////////////////////////////////*/
 
   var chartArea = topG.append("g").attr("class", "chartArea");
 
