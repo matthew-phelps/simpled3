@@ -44,20 +44,23 @@ function drawBarChart(
     .attr("id", "topG")
     .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
+///// TESTING to see where stuff falls /////
 topG.append("rect")
   .attr("class", "inner")
   .attr("width", dim.innerWidth)
-  .attr("height", dim.innerHeight);
+  .attr("height", dim.innerHeight)
+  .attr("fill" "white")
+  .attr("stroke", "black");
+///////////////////////////////////
+
 
   var chartArea = topG
     .append("g")
     .attr("class", "chartArea")
-    .attr("transform", "translate(" + 0 + "," + titleHeight + ")");
 
   var chartAxes = topG
     .append("g")
     .attr("class", "chartAxes")
-    .attr("transform", "translate(" + 0 + "," + titleHeight + ")");
 
 
 /// ADD LEGEND AND TITLE
@@ -78,26 +81,27 @@ topG.append("rect")
   var yAxis = chartAxes.append("g").attr("class", "bar y axis plot_text");
   var xAxis = chartAxes.append("g").attr("class", "bar x axis plot_text");
 
-  // Axis titles
+  // X axis titles
   chartAxes
     .append("text")
-    .attr("x", dim.width / 2)
-    .attr("y", xAxisTitleMargin)
+    .attr("x", dim.innerWidth / 2)
+    .attr("y", dim.innerHeight )
     .attr("alignment-baseline", "hanging")
     .attr("class", "bar x axisTitle plot_text");
 
+// Y axis titles (2 rows)
   chartAxes
     .append("text")
     .attr("transform", "rotate(-90)")
-    .attr("x", 0 - chartAreaHeight / 2)
-    .attr("y", 0 - margin.left + (yAxisSpace - 18))
+    .attr("x", 0 - dim.innerHeight /2)
+    .attr("y", -18))
     .attr("class", "bar y axisTitle one plot_text");
 
   chartAxes
     .append("text")
     .attr("transform", "rotate(-90)")
-    .attr("x", 0 - chartAreaHeight / 2)
-    .attr("y", 0 - margin.left + yAxisSpace)
+    .attr("x", 0 - dim.innerHeight   / 2)
+    .attr("y", -yAxisSpace)
     .attr("class", "bar y axisTitle two plot_text");
 
   // Data management
