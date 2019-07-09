@@ -46,8 +46,8 @@ function drawBarChart(
 
 topG.append("rect")
   .attr("class", "inner")
-  .attr("width", innerWidth)
-  .attr("height", innerHeight);
+  .attr("width", dim.innerWidth)
+  .attr("height", dim.innerHeight);
 
   var chartArea = topG
     .append("g")
