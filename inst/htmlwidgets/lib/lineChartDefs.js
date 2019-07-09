@@ -4,27 +4,16 @@ function drawLineChart(
   width,
   height,
   el,
-  margin,
-  rectPadding,
   tLong,
   tShort,
-  cRadius,
-  bigRadius,
-  rectSize,
-  tablePadding,
   numberFormat,
-  titleHeight,
-  legendHeight,
-  yAxisSpace
+  dims
 ) {
   var chartType = "Line";
-  var dim = {
-    width: width - margin.left - margin.right,
-    height: height - margin.top - margin.bottom
+  var innerDim = {
+    innerWidth: width - dims.margin.left - dims.margin.right,
+    innerHeight: height - dims.margin.top - dims.margin.bottom
   };
-
-  var chartAreaHeight = dim.height - legendHeight - titleHeight;
-  var xAxisTitleMargin = chartAreaHeight + 33;
 
   var container = d3
     .select(el)
@@ -36,22 +25,20 @@ function drawLineChart(
   var svg = container
     .append("svg")
     .attr("id", "svg" + chartType)
-    .attr("width", dim.width + margin.left + margin.right)
-    .attr("height", dim.height + margin.top + margin.bottom);
+    .attr("width", width)
+    .attr("height", height);
 
   var topG = svg
     .append("g")
-    .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+    .attr("id", "topG")
+    .attr(
+      "transform",
+      "translate(" + dims.margin.left + "," + dims.margin.top + ")"
+    );
 
-  var chartArea = topG
-    .append("g")
-    .attr("class", "chartArea")
-    .attr("transform", "translate(" + 0 + "," + titleHeight + ")");
+  var chartArea = topG.append("g").attr("class", "chartArea");
 
-  var chartAxes = topG
-    .append("g")
-    .attr("class", "chartAxes")
-    .attr("transform", "translate(" + 0 + "," + titleHeight + ")");
+  var chartAxes = topG.append("g").attr("class", "chartAxes");
 
   // Initial axis
   var yAxis = chartAxes.append("g").attr("class", "line y axis");
@@ -61,23 +48,25 @@ function drawLineChart(
   // Axis titles
   chartAxes
     .append("text")
-    .attr("x", dim.width / 2)
-    .attr("y", xAxisTitleMargin)
-    .attr("alignment-baseline", "hanging")
+    .attr("x", innerDim.width / 2)
+    .attr("y", innerDim.innerHeight + dims.xAxisSpace)
+    .attr("dominant-baseline", "hanging")
     .attr("class", "line x axisTitle");
 
   chartAxes
     .append("text")
     .attr("transform", "rotate(-90)")
-    .attr("x", 0 - chartAreaHeight / 2)
-    .attr("y", 0 - margin.left + (yAxisSpace - 18))
+    .attr("x", 0 - innerDim.innerHeight / 2)
+    .attr("y", -dims.margin.left)
+    .attr("dominant-baseline", "hanging")
     .attr("class", "line y axisTitle one");
 
   chartAxes
     .append("text")
     .attr("transform", "rotate(-90)")
-    .attr("x", 0 - chartAreaHeight / 2)
-    .attr("y", 0 - margin.left + yAxisSpace)
+    .attr("x", 0 - innerDim.innerHeight / 2)
+    .attr("y", -dims.margin.left + 19)
+    .attr("dominant-baseline", "hanging")
     .attr("class", "line y axisTitle two");
 
   // Data management
@@ -99,24 +88,24 @@ function drawLineChart(
   var scaleX = d3
     .scaleLinear()
     .domain(d3.extent(data, d => d.year))
-    .range([0, dim.width]);
+    .range([0, innerDim.innerWidth]);
 
   var scaleXRects = d3
     .scaleBand()
     .domain(grouping1Names)
-    .range([0, dim.width])
-    .padding(rectPadding);
+    .range([0, innerDim.innerWidth])
+    .padding(dims.rectPadding);
 
   var scaleY = d3
     .scaleLinear()
     .domain([0, maxY])
-    .range([chartAreaHeight, 0]);
+    .range([innerDim.innerHeight, 0]);
 
   var scaleColors = d3.scaleOrdinal().range(colors);
 
   xAxis
     .call(d3.axisBottom(scaleX).tickFormat(d3.format("")))
-    .attr("transform", "translate(" + 0 + "," + chartAreaHeight + ")");
+    .attr("transform", "translate(" + 0 + "," + innerDim.innerHeight + ")");
 
   // Line generators
   var valueLine1 = d3
@@ -157,7 +146,7 @@ function drawLineChart(
     .attr("class", d => "y" + d.year + " dotmale")
     .attr("cx", d => scaleX(d.year))
     .attr("cy", d => scaleY(d.male))
-    .attr("r", cRadius)
+    .attr("r", dims.cRadius)
     .attr("fill", colors[0]);
 
   var circlesFemale = chartArea
@@ -168,7 +157,7 @@ function drawLineChart(
     .attr("class", d => "y" + d.year + " dotfemale")
     .attr("cx", d => scaleX(d.year))
     .attr("cy", d => scaleY(d.female))
-    .attr("r", cRadius)
+    .attr("r", dims.cRadius)
     .attr("fill", colors[1]);
 
   // Add axes
@@ -214,7 +203,7 @@ function drawLineChart(
     .attr("x", d => scaleX(d.year) - scaleXRects.bandwidth() / 2)
     .attr("width", scaleXRects.bandwidth())
     .attr("y", 0)
-    .attr("height", chartAreaHeight);
+    .attr("height", innerDim.innerHeight);
 
   mouseRectsFemale
     .on("mouseover", showTooltip)
@@ -224,18 +213,10 @@ function drawLineChart(
   /// ADD LEGEND
   var wrapperName = "legendWrapper" + chartType;
   var svgName = "svgLegend" + chartType;
-  drawLegend(
-    topG,
-    inData,
-    dim,
-    titleHeight,
-    legendHeight,
-    wrapperName,
-    svgName
-  );
+  drawLegend(topG, inData, innerDim, dims, wrapperName, svgName);
 
   // TOOLTIP
-  scaffoldTooltip(rectSize, colors, chartType);
+  scaffoldTooltip(dims.rectSize, colors, chartType);
   var table = d3.select("#table" + chartType);
   var tooltip = d3.select("#tooltip" + chartType);
   var thead = table.select("th");
@@ -252,7 +233,7 @@ function drawLineChart(
       .transition()
       .ease(d3.easeLinear)
       .duration("200")
-      .attr("r", bigRadius);
+      .attr("r", dims.bigRadius);
     tooltip
       .transition()
       .duration(tShort)
@@ -273,7 +254,7 @@ function drawLineChart(
       .transition()
       .ease(d3.easeLinear)
       .duration("200")
-      .attr("r", cRadius);
+      .attr("r", dims.cRadius);
     tooltip
       .transition()
       .duration(tShort)
@@ -289,25 +270,17 @@ function updateLineChart(
   width,
   height,
   el,
-  margin,
-  rectPadding,
   tLong,
   tShort,
-  cRadius,
-  bigRadius,
-  rectSize,
-  tablePadding,
   numberFormat,
-  legendHeight,
-  titleHeight
+  dims
 ) {
   var chartType = "Line";
-  var dim = {
-    width: width - margin.left - margin.right,
-    height: height - margin.top - margin.bottom
+  var innerDim = {
+    innerWidth: width - dims.margin.left - dims.margin.right,
+    innerHeight: height - dims.margin.top - dims.margin.bottom
   };
 
-  var chartAreaHeight = dim.height - legendHeight - titleHeight;
   var svg = d3.select("#container" + chartType).select("svg");
   var chartArea = svg.selectAll(".chartArea");
 
@@ -340,18 +313,18 @@ function updateLineChart(
   var scaleX = d3
     .scaleLinear()
     .domain(d3.extent(data, d => d.year))
-    .range([0, dim.width]);
+    .range([0, innerDim.innerWidth]);
 
   var scaleXRects = d3
     .scaleBand()
     .domain(grouping1Names)
-    .range([0, dim.width])
-    .padding(rectPadding);
+    .range([0, innerDim.innerWidth])
+    .padding(dims.rectPadding);
 
   var scaleY = d3
     .scaleLinear()
     .domain([0, maxY])
-    .range([chartAreaHeight, 0]);
+    .range([innerDim.innerHeight, 0]);
 
   var scaleColors = d3.scaleOrdinal().range(colors);
 
@@ -387,10 +360,10 @@ function updateLineChart(
     .duration(tLong)
     .attr("cx", d => scaleX(d.year))
     .attr("cy", d => scaleY(d.female))
-    .attr("r", cRadius)
+    .attr("r", dims.cRadius)
     .attr("fill", colors[1]);
 
- /* dotFemale
+  /* dotFemale
     .transition()
     .duration(tLong)
     .attr("cx", d => scaleX(d.year))
@@ -398,9 +371,7 @@ function updateLineChart(
 
   dotFemale.on("mouseover", showTooltip).on("mouseout", hideTooltip);
 
-var dotMale =   chartArea
-    .selectAll(".dotmale")
-    .data(data);
+  var dotMale = chartArea.selectAll(".dotmale").data(data);
 
   dotMale
     .exit()
@@ -410,28 +381,25 @@ var dotMale =   chartArea
     .remove();
 
   dotMale
-  .enter()
-  .append("circle")
+    .enter()
+    .append("circle")
     .attr("class", d => "y" + d.year + " dotmale")
     .merge(dotMale)
     .transition()
     .duration(tLong)
     .attr("cx", d => scaleX(d.year))
     .attr("cy", d => scaleY(d.male))
-    .attr("r", cRadius)
+    .attr("r", dims.cRadius)
     .attr("fill", colors[0]);
 
-
-
-
-  // Larger invisible circles to trigger mouseover events
+  // Larger invisible area to trigger mouseover events
   var mouseRectsFemale = chartArea
     .selectAll(".mouseSvg.female")
     .data(data)
     .attr("x", d => scaleX(d.year) - scaleXRects.bandwidth() / 2)
     .attr("width", scaleXRects.bandwidth())
     .attr("y", 0)
-    .attr("height", chartAreaHeight)
+    .attr("height", innerDim.innerHeight)
     .on("mouseover", showTooltip)
     .on("mousemove", moveTooltip)
     .on("mouseout", hideTooltip);
@@ -485,7 +453,7 @@ var dotMale =   chartArea
       .transition()
       .ease(d3.easeLinear)
       .duration("200")
-      .attr("r", bigRadius);
+      .attr("r", dims.bigRadius);
     tooltip
       .transition()
       .duration(tShort)
@@ -506,7 +474,7 @@ var dotMale =   chartArea
       .transition()
       .ease(d3.easeLinear)
       .duration("200")
-      .attr("r", cRadius);
+      .attr("r", dims.cRadius);
     tooltip
       .transition()
       .duration(tShort)
@@ -523,27 +491,16 @@ function resizeLineChart(
   width,
   height,
   el,
-  margin,
-  rectPadding,
   tLong,
   tShort,
-  cRadius,
-  bigRadius,
-  rectSize,
-  tablePadding,
   numberFormat,
-  legendHeight,
-  titleHeight,
-  yAxisSpace
+  dims
 ) {
   var chartType = "Line";
-  var dim = {
-    width: width - margin.left - margin.right,
-    height: height - margin.top - margin.bottom
+  var innerDim = {
+    innerWidth: width - dims.margin.left - dims.margin.right,
+    innerHeight: height - dims.margin.top - dims.margin.bottom
   };
-
-  var chartAreaHeight = dim.height - legendHeight - titleHeight;
-  var xAxisTitleMargin = chartAreaHeight + 33;
 
   var data = HTMLWidgets.dataframeToD3(inData.data);
   var varName = data[0].variable;
@@ -559,24 +516,24 @@ function resizeLineChart(
   var svg = d3
     .select("#container" + chartType)
     .select("svg")
-    .attr("width", dim.width + margin.left + margin.right)
-    .attr("height", dim.height + margin.top + margin.bottom);
+    .attr("width", innerDim.innerWidth + dims.margin.left + dims.margin.right)
+    .attr("height", innderDim.height + dims.margin.top + dims.margin.bottom);
   var chartArea = svg.select(".chartArea");
 
-// Axis titles
+  // Axis titles
   svg
     .select(".line.x.axisTitle")
-    .attr("x", dim.width / 2)
-    .attr("y", xAxisTitleMargin);
+    .attr("x", innerDim.innerWidth / 2)
+    .attr("y", innerDim.innerHeight + dims.xAxisSpace);
 
   svg
     .select(".line.y.axisTitle.one")
-    .attr("x", 0 - chartAreaHeight / 2)
-    .attr("y", 0 - margin.left + (yAxisSpace - 18));
+    .attr("x", 0 - innerDim.innerHeight / 2)
+    .attr("y", -dims.margin.left);
   svg
     .select(".line.y.axisTitle.two")
-    .attr("x", 0 - chartAreaHeight / 2)
-    .attr("y", 0 - margin.left + yAxisSpace);
+    .attr("x", 0 - innerDim.innerHeight / 2)
+    .attr("y", -dims.margin.left + 19);
 
   // Line generators
   var valueLine1 = d3
@@ -594,18 +551,18 @@ function resizeLineChart(
   var scaleX = d3
     .scaleLinear()
     .domain(d3.extent(data, d => d.year))
-    .range([0, dim.width]);
+    .range([0, innerDim.innerWidth]);
 
   var scaleXRects = d3
     .scaleBand()
     .domain(grouping1Names)
-    .range([0, dim.width])
-    .padding(rectPadding);
+    .range([0, innerDim.innerWidth])
+    .padding(dims.rectPadding);
 
   var scaleY = d3
     .scaleLinear()
     .domain([0, maxY])
-    .range([chartAreaHeight, 0]);
+    .range([innerDim.innerHeight, 0]);
 
   var scaleColors = d3.scaleOrdinal().range(colors);
 
@@ -643,7 +600,7 @@ function resizeLineChart(
     .attr("x", d => scaleX(d.year) - scaleXRects.bandwidth() / 2)
     .attr("width", scaleXRects.bandwidth())
     .attr("y", 0)
-    .attr("height", chartAreaHeight)
+    .attr("height", innerDim.innerHeight)
     .on("mouseover", showTooltip)
     .on("mousemove", moveTooltip)
     .on("mouseout", hideTooltip);
@@ -681,7 +638,7 @@ function resizeLineChart(
       .transition()
       .ease(d3.easeLinear)
       .duration("200")
-      .attr("r", bigRadius);
+      .attr("r", dims.bigRadius);
     tooltip
       .transition()
       .duration(tShort)
@@ -702,7 +659,7 @@ function resizeLineChart(
       .transition()
       .ease(d3.easeLinear)
       .duration("200")
-      .attr("r", cRadius);
+      .attr("r", dims.cRadius);
     tooltip
       .transition()
       .duration(tShort)
