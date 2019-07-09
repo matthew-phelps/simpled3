@@ -94,7 +94,7 @@ function updateLegend(inData, wrapperName, svgName, tDuration) {
     .text(inData.metaData.plotTitle);
 }
 
-function resizeLegend(innerDim, wrapperName) {
+function resizeLegend(innerDim, dims, wrapperName) {
   var rectSize = 20; //dimension of colored square
   var padding = 10;
   var entryWidth = 100; // width of square and text combined
