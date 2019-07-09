@@ -4,20 +4,21 @@ HTMLWidgets.widget({
   type: "output",
 
   factory: function(el, width, height) {
-    var margin = { top: 40, right: 20, bottom: 50, left: 75 };
     var barPadding = 0.2;
     var tLong = 450;
     var tShort = 200;
     var mOpacity = 0.0;
-    
-    var dims = {legendBuffer: 10,
-    rectSize: 20, //dimension of colored square
-    yAxisSpace: 37,
-    xAxisSpace: 45,
-    titleHeight: 40
-  };
+
+    var dims = {
+      margin: { top: 40, right: 20, bottom: 50, left: 75 },
+      legendBuffer: 10,
+      rectSize: 20, //dimension of colored square
+      yAxisSpace: 37,
+      xAxisSpace: 45,
+      titleHeight: 40
+    };
     var tablePadding = 10;
-    
+
     /*Format requires defining formats for several data types even though they will not be uses - apparently*/
     var localeFormatter = d3.formatLocale({
       decimal: ",",
@@ -88,11 +89,10 @@ HTMLWidgets.widget({
             width,
             height,
             el,
-            margin,
             barPadding,
             tLong,
             tShort,
-            mOpacity,          
+            mOpacity,
             tablePadding,
             numberFormat,
             dims

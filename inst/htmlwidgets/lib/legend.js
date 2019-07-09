@@ -6,8 +6,8 @@
 function drawLegend(
   topG,
   inData,
-  dim,
-  legendHeight,
+  innerDim,
+  dims,
   wrapperName,
   svgName
 ) {
@@ -23,7 +23,7 @@ function drawLegend(
     .attr("class", wrapperName)
     .attr(
       "transform",
-      "translate(" + (0) + "," + dim.height + ")"
+      "translate(" + (0) + "," + innerDim.innerHeight + ")"
     );
 
   // Wrappers for each gender
@@ -74,7 +74,7 @@ function drawLegend(
   var titleWrapper = topG
     .append("g")
     .attr("class", wrapperName + " title")
-    .attr("transform", "translate(" + -dim.innerHeight + "," + 0 + ")");
+    .attr("transform", "translate(" + -margin + "," + 0 + ")");
 
   
   titleWrapper
@@ -94,7 +94,7 @@ function updateLegend(inData, wrapperName, svgName, tDuration) {
     .text(inData.metaData.plotTitle);
 }
 
-function resizeLegend(dim, wrapperName) {
+function resizeLegend(innerDim, wrapperName) {
   var rectSize = 20; //dimension of colored square
   var padding = 10;
   var entryWidth = 100; // width of square and text combined
@@ -105,6 +105,6 @@ function resizeLegend(dim, wrapperName) {
     .select("." + wrapperName)
     .attr(
       "transform",
-      "translate(" + (0) + "," + dim.height + ")"
+      "translate(" + (0) + "," + innerDim.innerHeight + ")"
     );
 }

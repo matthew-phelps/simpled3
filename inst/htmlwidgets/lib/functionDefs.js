@@ -14,8 +14,8 @@ function drawBarChart(
   dims
 ) {
   var innerDim = {
-    innerWidth: width - margin.left - margin.right,
-    innerHeight: height - margin.top - margin.bottom
+    innerWidth: width - dims.margin.left - dims.margin.right,
+    innerHeight: height - dims.margin.top - dims.margin.bottom
   };
 
   var chartType = "Bar";
@@ -38,7 +38,7 @@ function drawBarChart(
   var topG = svg
     .append("g")
     .attr("id", "topG")
-    .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+    .attr("transform", "translate(" + dims.margin.left + "," + dims.margin.top + ")");
 
   ///// TESTING to see where stuff falls /////
   topG
@@ -57,7 +57,7 @@ function drawBarChart(
   /// ADD LEGEND AND TITLE
   var wrapperName = "legendWrapper" + chartType;
   var svgName = "svgLegend" + chartType;
-  drawLegend(topG, inData, innerDim, dims.legendBuffer, wrapperName, svgName);
+  drawLegend(topG, inData, innerDim, dims, wrapperName, svgName);
 
   // Initial axis
   var yAxis = chartAxes.append("g").attr("class", "bar y axis plot_text");
