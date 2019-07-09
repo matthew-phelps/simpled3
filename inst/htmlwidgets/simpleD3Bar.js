@@ -95,6 +95,7 @@ HTMLWidgets.widget({
             mOpacity,          
             tablePadding,
             numberFormat,
+            dims
           );
         } else if (resized) {
           updateBarChart(
