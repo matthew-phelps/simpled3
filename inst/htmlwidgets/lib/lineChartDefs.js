@@ -517,7 +517,7 @@ function resizeLineChart(
     .select("#container" + chartType)
     .select("svg")
     .attr("width", innerDim.innerWidth + dims.margin.left + dims.margin.right)
-    .attr("height", innderDim.height + dims.margin.top + dims.margin.bottom);
+    .attr("height", innerDim.height + dims.margin.top + dims.margin.bottom);
   var chartArea = svg.select(".chartArea");
 
   // Axis titles
