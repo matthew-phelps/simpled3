@@ -49,18 +49,18 @@ topG.append("rect")
   .attr("class", "inner")
   .attr("width", dim.innerWidth)
   .attr("height", dim.innerHeight)
-  .attr("fill" "white")
+  .attr("fill", "white")
   .attr("stroke", "black");
 ///////////////////////////////////
 
 
   var chartArea = topG
     .append("g")
-    .attr("class", "chartArea")
+    .attr("class", "chartArea");
 
   var chartAxes = topG
     .append("g")
-    .attr("class", "chartAxes")
+    .attr("class", "chartAxes");
 
 
 /// ADD LEGEND AND TITLE
