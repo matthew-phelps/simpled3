@@ -9,13 +9,15 @@ HTMLWidgets.widget({
     var tLong = 450;
     var tShort = 200;
     var mOpacity = 0.0;
-    var rectSize = 20; //dimension of colored square
-    var legendHeight = 50;
-    var titleHeight = 40;
+    
+    var dims = {legendBuffer: 10,
+    rectSize: 20, //dimension of colored square
+    yAxisSpace: 37,
+    xAxisSpace: 45,
+    titleHeight: 40
+  };
     var tablePadding = 10;
-    var yAxisSpace = 37;
-    var xAxisSpace = 45;
-
+    
     /*Format requires defining formats for several data types even though they will not be uses - apparently*/
     var localeFormatter = d3.formatLocale({
       decimal: ",",
@@ -90,14 +92,9 @@ HTMLWidgets.widget({
             barPadding,
             tLong,
             tShort,
-            mOpacity,
-            rectSize,
+            mOpacity,          
             tablePadding,
             numberFormat,
-            legendHeight,
-            titleHeight,
-            yAxisSpace,
-            xAxisSpace
           );
         } else if (resized) {
           updateBarChart(

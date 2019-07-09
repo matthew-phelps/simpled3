@@ -7,7 +7,6 @@ function drawLegend(
   topG,
   inData,
   dim,
-  titleHeight,
   legendHeight,
   wrapperName,
   svgName
@@ -75,7 +74,7 @@ function drawLegend(
   var titleWrapper = topG
     .append("g")
     .attr("class", wrapperName + " title")
-    .attr("transform", "translate(" + -90 + "," + 0 + ")");
+    .attr("transform", "translate(" + -dim.innerHeight + "," + 0 + ")");
 
   
   titleWrapper

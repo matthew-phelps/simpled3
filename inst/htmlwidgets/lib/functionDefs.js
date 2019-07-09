@@ -9,24 +9,20 @@ function drawBarChart(
   tLong,
   tShort,
   mOpacity,
-  rectSize,
   tablePadding,
   numberFormat,
-  legendHeight,
-  titleHeight,
-  yAxisSpace,
-  xAxisSpace
+  dims
 ) {
-  var dim = {
-   innerWidth: width - margin.left - margin.right,
+  var innerDim = {
+    innerWidth: width - margin.left - margin.right,
     innerHeight: height - margin.top - margin.bottom
   };
 
   var chartType = "Bar";
 
-  var chartAreaHeight = dim.height - legendHeight - titleHeight;
+  var chartAreaHeight = innerDim.height - dims.legendBuffer - dims.titleHeight;
 
-  var xAxisTitleMargin = chartAreaHeight + xAxisSpace;
+  var xAxisTitleMargin = chartAreaHeight + dims.xAxisSpace;
   var container = d3
     .select(el)
     .style("position", "relative")
@@ -44,38 +40,24 @@ function drawBarChart(
     .attr("id", "topG")
     .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
-///// TESTING to see where stuff falls /////
-topG.append("rect")
-  .attr("class", "inner")
-  .attr("width", dim.innerWidth)
-  .attr("height", dim.innerHeight)
-  .attr("fill", "white")
-  .attr("stroke", "black");
-///////////////////////////////////
+  ///// TESTING to see where stuff falls /////
+  topG
+    .append("rect")
+    .attr("class", "inner")
+    .attr("width", innerDim.innerWidth)
+    .attr("height", innerDim.innerHeight)
+    .attr("fill", "white")
+    .attr("stroke", "black");
+  ///////////////////////////////////
 
+  var chartArea = topG.append("g").attr("class", "chartArea");
 
-  var chartArea = topG
-    .append("g")
-    .attr("class", "chartArea");
+  var chartAxes = topG.append("g").attr("class", "chartAxes");
 
-  var chartAxes = topG
-    .append("g")
-    .attr("class", "chartAxes");
-
-
-/// ADD LEGEND AND TITLE
+  /// ADD LEGEND AND TITLE
   var wrapperName = "legendWrapper" + chartType;
   var svgName = "svgLegend" + chartType;
-  drawLegend(
-    topG,
-    inData,
-    dim,
-    titleHeight,
-    legendHeight,
-    wrapperName,
-    svgName
-  );
-
+  drawLegend(topG, inData, innerDim, dims.legendBuffer, wrapperName, svgName);
 
   // Initial axis
   var yAxis = chartAxes.append("g").attr("class", "bar y axis plot_text");
@@ -84,24 +66,24 @@ topG.append("rect")
   // X axis titles
   chartAxes
     .append("text")
-    .attr("x", dim.innerWidth / 2)
-    .attr("y", dim.innerHeight )
+    .attr("x", innerDim.innerWidth / 2)
+    .attr("y", innerDim.innerHeight)
     .attr("alignment-baseline", "hanging")
     .attr("class", "bar x axisTitle plot_text");
 
-// Y axis titles (2 rows)
+  // Y axis titles (2 rows)
   chartAxes
     .append("text")
     .attr("transform", "rotate(-90)")
-    .attr("x", 0 - dim.innerHeight /2)
+    .attr("x", 0 - innerDim.innerHeight / 2)
     .attr("y", -18)
     .attr("class", "bar y axisTitle one plot_text");
 
   chartAxes
     .append("text")
     .attr("transform", "rotate(-90)")
-    .attr("x", 0 - dim.innerHeight   / 2)
-    .attr("y", -yAxisSpace)
+    .attr("x", 0 - innerDim.innerHeight / 2)
+    .attr("y", -dims.yAxisSpace)
     .attr("class", "bar y axisTitle two plot_text");
 
   // Data management
@@ -130,7 +112,7 @@ topG.append("rect")
   var scaleX = d3
     .scaleBand()
     .domain(grouping1Names)
-    .range([0, dim.width])
+    .range([0, innerDim.width])
     .padding(barPadding);
 
   var scaleX1 = d3
@@ -246,10 +228,8 @@ topG.append("rect")
     .text(groupingName)
     .style("text-anchor", "middle");
 
-  
-
   // TOOLTIP
-  scaffoldTooltip(rectSize, colors, chartType);
+  scaffoldTooltip(dims.rectSize, colors, chartType);
   var table = d3.select("#table" + chartType);
   var tooltip = d3.select("#tooltip" + chartType);
   var thead = table.select("th");
@@ -683,7 +663,6 @@ function resizeBarChart(
     xAxis.selectAll(".tick text").call(wrap, scaleX.bandwidth());
   }
 
-
   svg
     .selectAll(".bar.y.axis")
     .transition()
@@ -768,7 +747,7 @@ function wrap(text, width) {
         .attr("x", 0)
         .attr("y", y)
         .attr("dy", dy + "em");
-  i = 0; // set up counter
+    i = 0; // set up counter
     while ((word = words.pop())) {
       line.push(word);
       tspan.text(line.join(" "));
@@ -783,7 +762,7 @@ function wrap(text, width) {
           .attr("dy", ++lineNumber * lineHeight + dy + "em")
           .text(word);
       }
-      i++ // increment word count
+      i++; // increment word count
     }
   });
 }
