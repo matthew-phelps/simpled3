@@ -551,8 +551,7 @@ function resizeBarChart(
   grouping1Names = newData.map(d => d.key);
   grouping2Names = newData[0].values.map(d => d.sex);
 
-  var chartInitHeight = innerDim.innerHeight - dims.legendBuffer - dims.titleHeight;
-  var xAxisTitleMargin = chartInitHeight + dims.xAxisSpace;
+  var chartInitHeight = innerDim.innerHeight;
   var chartHeightReduction = 50;
   if (newData.length > 10) {
     innerDim.innerHeight = chartInitHeight - chartHeightReduction;
@@ -569,7 +568,7 @@ function resizeBarChart(
   // Axis titles
   d3.selectAll(".bar.x.axisTitle")
     .attr("x", innerDim.innerWidth / 2)
-    .attr("y", xAxisTitleMargin);
+    .attr("y", innerDim.innerHeight + dims.xAxisSpace);
 
   d3.selectAll(".bar.y.axisTitle.one")
     .attr("x", 0 - innerDim.innerHeight / 2)
