@@ -44,6 +44,11 @@ function drawBarChart(
     .attr("id", "topG")
     .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
+topG.append("rect")
+  .attr("class", "inner")
+  .attr("width", innerWidth)
+  .attr("height", innerHeight);
+
   var chartArea = topG
     .append("g")
     .attr("class", "chartArea")
