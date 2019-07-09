@@ -19,9 +19,7 @@ function drawBarChart(
 
   var chartType = "Bar";
 
-  var chartAreaHeight = innerDim.height - dims.legendBuffer - dims.titleHeight;
-
-  var xAxisTitleMargin = chartAreaHeight + dims.xAxisSpace;
+  /*var xAxisTitleMargin = innerDim.innerHeight + dims.xAxisSpace;*/
   var container = d3
     .select(el)
     .style("position", "relative")
@@ -66,7 +64,7 @@ function drawBarChart(
   chartAxes
     .append("text")
     .attr("x", innerDim.innerWidth / 2)
-    .attr("y", innerDim.innerHeight)
+    .attr("y", innerDim.innerHeight + dims.xAxisSpace)
     .attr("dominant-baseline", "hanging")
     .attr("class", "bar x axisTitle plot_text");
 
@@ -75,14 +73,14 @@ function drawBarChart(
     .append("text")
     .attr("transform", "rotate(-90)")
     .attr("x", 0 - innerDim.innerHeight / 2)
-    .attr("y", -18)
+    .attr("y", (-dims.margin.left + 19))
     .attr("class", "bar y axisTitle one plot_text");
 
   chartAxes
     .append("text")
     .attr("transform", "rotate(-90)")
     .attr("x", 0 - innerDim.innerHeight / 2)
-    .attr("y", -dims.yAxisSpace)
+    .attr("y", -dims.margin.left)
     .attr("class", "bar y axisTitle two plot_text");
 
   // Data management

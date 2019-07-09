@@ -10,10 +10,10 @@ HTMLWidgets.widget({
     var mOpacity = 0.0;
 
     var dims = {
-      margin: { top: 40, right: 20, bottom: 50, left: 75 },
-      legendBuffer: 10,
+      margin: { top: 40, right: 20, bottom: 70, left: 75 },
+      legendBuffer: 45,
       rectSize: 20, //dimension of colored square
-      yAxisSpace: 37,
+      yAxisSpace: 67,
       xAxisSpace: 45,
       titleHeight: 40
     };
