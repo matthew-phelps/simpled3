@@ -101,14 +101,11 @@ HTMLWidgets.widget({
             this.dim.width,
             this.dim.height,
             el,
-            margin,
-            barPadding,
             tLong,
             tShort,
             mOpacity,
             numberFormat,
-            legendHeight,
-            titleHeight
+            dims
           );
         } else {
           updateBarChart(
@@ -116,14 +113,10 @@ HTMLWidgets.widget({
             width,
             height,
             el,
-            margin,
-            barPadding,
             tLong,
             tShort,
             mOpacity,
-            numberFormat,
-            legendHeight,
-            titleHeight
+            numberFormat
           );
         }
         this.x = x; // store for resize

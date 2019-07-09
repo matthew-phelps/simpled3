@@ -281,19 +281,15 @@ function updateBarChart(
   width,
   height,
   el,
-  margin,
-  barPadding,
   tLong,
   tShort,
   mOpacity,
-  numberFormat,
-  legendHeight,
-  titleHeight
+  numberFormat
 ) {
   var chartType = "Bar";
-  var dim = {
-    width: width - margin.left - margin.right,
-    height: height - margin.top - margin.bottom
+  var innerDim = {
+    width: innerWidth - dims.margin.left - dims.margin.right,
+    height: innerHeight - dims.margin.top - dims.margin.bottom
   };
 
   svg = d3.select("#container" + chartType).select("svg");
@@ -320,25 +316,25 @@ function updateBarChart(
   grouping2Names = newData[0].values.map(d => d.sex);
 
   /*Chart height needs to be smaller for rotated text labels - but only for those labels*/
-  var chartInitHeight = dim.height - legendHeight - titleHeight;
+  var chartInitHeight = innerDim.innerHeight;
   var chartHeightReduction = 50;
   if (newData.length > 10) {
-    var chartAreaHeight = chartInitHeight - chartHeightReduction;
+    innerDim.innerHeight = chartInitHeight - chartHeightReduction;
   } else {
-    var chartAreaHeight = chartInitHeight;
+    innerDim.innerHeight = chartInitHeight;
   }
 
   // Scales
   var scaleY = d3
     .scaleLinear()
     .domain([0, maxY])
-    .range([chartAreaHeight, 0]);
+    .range([innerDim.innerHeight, 0]);
 
   var scaleX = d3
     .scaleBand()
     .domain(grouping1Names)
-    .range([0, dim.width])
-    .padding(barPadding);
+    .range([0, innerDim.innerWidth])
+    .padding(dims.barPadding);
 
   var scaleX1 = d3
     .scaleBand()
@@ -415,7 +411,7 @@ function updateBarChart(
     .attr("x", d => scaleX(d.key))
     .attr("width", scaleX.bandwidth())
     .attr("y", 0)
-    .attr("height", dim.height - legendHeight)
+    .attr("height", innerDim.innerHeight)
     .on("mouseover", showTooltip)
     .on("mousemove", moveTooltip)
     .on("mouseout", hideTooltip);
@@ -428,7 +424,7 @@ function updateBarChart(
     .append("g")
     .attr("class", "bar x axis plot_text")
     .call(d3.axisBottom(scaleX))
-    .attr("transform", "translate(0," + chartAreaHeight + ")");
+    .attr("transform", "translate(0," + innerDim.innerHeight + ")");
 
   if (newData.length > 10) {
     xAxis
@@ -496,7 +492,7 @@ function updateBarChart(
       .attr("x1", scaleX1.bandwidth())
       .attr("x2", scaleX1.bandwidth())
       .attr("y1", 0)
-      .attr("y2", chartAreaHeight);
+      .attr("y2", innerDim.innerHeight);
   }
 
   function moveTooltip(d) {
@@ -527,21 +523,15 @@ function resizeBarChart(
   width,
   height,
   el,
-  margin,
-  barPadding,
   tLong,
   tShort,
   mOpacity,
-  numberFormat,
-  legendHeight,
-  titleHeight,
-  yAxisSpace,
-  xAxisSpace
+  numberFormat
 ) {
   var chartType = "Bar";
-  var dim = {
-    width: width - margin.left - margin.right,
-    height: height - margin.top - margin.bottom
+  var innerDim = {
+    width: innerWidth - dims.margin.left - dims.margin.right,
+    height: innerHeight - dims.margin.top - dims.margin.bottom
   };
 
   var data = HTMLWidgets.dataframeToD3(inData.data);
@@ -559,44 +549,44 @@ function resizeBarChart(
   grouping1Names = newData.map(d => d.key);
   grouping2Names = newData[0].values.map(d => d.sex);
 
-  var chartInitHeight = dim.height - legendHeight - titleHeight;
-  var xAxisTitleMargin = chartInitHeight + xAxisSpace;
+  var chartInitHeight = innerDim.innerHeight - dims.legendBuffer - dims.titleHeight;
+  var xAxisTitleMargin = chartInitHeight + dims.xAxisSpace;
   var chartHeightReduction = 50;
   if (newData.length > 10) {
-    var chartAreaHeight = chartInitHeight - chartHeightReduction;
+    innerDim.innerHeight = chartInitHeight - chartHeightReduction;
   } else {
-    var chartAreaHeight = chartInitHeight;
+    innerDim.innerHeight = chartInitHeight;
   }
 
   var svg = d3
     .select("#container" + chartType)
     .select("svg")
-    .attr("width", dim.width + margin.left + margin.right)
-    .attr("height", dim.height + margin.top + margin.bottom);
+    .attr("width", innerDim.innerWidth + dims.margin.left + dims.margin.right)
+    .attr("height", innerDim.innerHeight + dims.margin.top + dims.margin.bottom);
 
   // Axis titles
   d3.selectAll(".bar.x.axisTitle")
-    .attr("x", dim.width / 2)
+    .attr("x", innerDim.innerWidth / 2)
     .attr("y", xAxisTitleMargin);
 
   d3.selectAll(".bar.y.axisTitle.one")
-    .attr("x", 0 - chartAreaHeight / 2)
-    .attr("y", 0 - margin.left + (yAxisSpace - 18));
+    .attr("x", 0 - innerDim.innerHeight / 2)
+    .attr("y", 0 - dims.margin.left + (dims.yAxisSpace - 18));
   d3.selectAll(".bar.y.axisTitle.two")
-    .attr("x", 0 - chartAreaHeight / 2)
-    .attr("y", 0 - margin.left + yAxisSpace);
+    .attr("x", 0 - innerDim.innerHeight / 2)
+    .attr("y", 0 - dims.margin.left + dims.yAxisSpace);
 
   // SCALES
   var scaleY = d3
     .scaleLinear()
     .domain([0, maxY])
-    .range([chartAreaHeight, 0]);
+    .range([innerDim.innerHeight, 0]);
 
   var scaleX = d3
     .scaleBand()
     .domain(grouping1Names)
-    .range([0, dim.width])
-    .padding(barPadding);
+    .range([0, innerDim.innerWidth])
+    .padding(dims.barPadding);
 
   var scaleX1 = d3
     .scaleBand()
@@ -629,7 +619,7 @@ function resizeBarChart(
     .attr("x", d => scaleX(d.key))
     .attr("width", scaleX.bandwidth())
     .attr("y", 0)
-    .attr("height", chartAreaHeight);
+    .attr("height", innerDim.innerHeight);
 
   mouseSvg
     .on("mouseover", showTooltip)
@@ -645,7 +635,7 @@ function resizeBarChart(
     .append("g")
     .attr("class", "bar x axis plot_text")
     .call(d3.axisBottom(scaleX))
-    .attr("transform", "translate(0," + chartAreaHeight + ")");
+    .attr("transform", "translate(0," + innerDim.innerHeight + ")");
 
   if (newData.length > 10) {
     xAxis
@@ -694,7 +684,7 @@ function resizeBarChart(
       .attr("x1", scaleX1.bandwidth())
       .attr("x2", scaleX1.bandwidth())
       .attr("y1", 0)
-      .attr("y2", chartAreaHeight);
+      .attr("y2", innerDim.innerHeight);
   }
 
   function moveTooltip(d) {
