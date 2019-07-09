@@ -4,7 +4,6 @@ HTMLWidgets.widget({
   type: "output",
 
   factory: function(el, width, height) {
-    var barPadding = 0.2;
     var tLong = 450;
     var tShort = 200;
     var mOpacity = 0.0;
@@ -15,9 +14,9 @@ HTMLWidgets.widget({
       rectSize: 20, //dimension of colored square
       yAxisSpace: 67,
       xAxisSpace: 45,
-      titleHeight: 40
+      titleHeight: 40,
+      barPadding: 0.2
     };
-    var tablePadding = 10;
 
     /*Format requires defining formats for several data types even though they will not be uses - apparently*/
     var localeFormatter = d3.formatLocale({
@@ -89,11 +88,10 @@ HTMLWidgets.widget({
             width,
             height,
             el,
-            barPadding,
             tLong,
             tShort,
             mOpacity,
-            tablePadding,
+      
             numberFormat,
             dims
           );

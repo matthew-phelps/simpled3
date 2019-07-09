@@ -4,11 +4,9 @@ function drawBarChart(
   width,
   height,
   el,
-  barPadding,
   tLong,
   tShort,
   mOpacity,
-  tablePadding,
   numberFormat,
   dims
 ) {
@@ -112,7 +110,7 @@ function drawBarChart(
     .scaleBand()
     .domain(grouping1Names)
     .range([0, innerDim.innerWidth])
-    .padding(barPadding);
+    .padding(dims.barPadding);
 
   var scaleX1 = d3
     .scaleBand()
