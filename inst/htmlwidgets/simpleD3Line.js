@@ -4,18 +4,20 @@ HTMLWidgets.widget({
   type: "output",
 
   factory: function(el, width, height) {
-    var margin = { top: 1, right: 20, bottom: 25, left: 95 };
-    var rectPadding = 0.0;
-
     var tLong = 450;
     var tShort = 200;
-    var cRadius = 7;
-    var bigRadius = 15;
-    var rectSize = 20; //dimension of colored square
-    var legendHeight = 40;
-    var titleHeight = 40;
-    var tablePadding = 10;
-    var yAxisSpace = 35;
+    var dims = {
+      margin: { top: 40, right: 20, bottom: 70, left: 95 },
+      legendBuffer: 45,
+      rectSize: 20, //dimension of colored square
+      yAxisSpace: 67,
+      xAxisSpace: 45,
+      titleHeight: 40,
+      rectPadding: 0.0,
+      cRadius: 7,
+      bigRadius: 15
+    };
+
     var localeFormatter = d3.formatLocale({
       decimal: ",",
       thousands: ".",
@@ -79,18 +81,10 @@ HTMLWidgets.widget({
             width,
             height,
             el,
-            margin,
-            rectPadding,
             tLong,
             tShort,
-            cRadius,
-            bigRadius,
-            rectSize,
-            tablePadding,
             numberFormat,
-            titleHeight,
-            legendHeight,
-            yAxisSpace
+            dims
           );
         } else if (resized) {
           updateLineChart(
@@ -98,17 +92,10 @@ HTMLWidgets.widget({
             this.dim.width,
             this.dim.height,
             el,
-            margin,
-            rectPadding,
             tLong,
             tShort,
-            cRadius,
-            bigRadius,
-            rectSize,
-            tablePadding,
             numberFormat,
-            legendHeight,
-            titleHeight
+            dims
           );
         } else {
           updateLineChart(
@@ -116,17 +103,10 @@ HTMLWidgets.widget({
             width,
             height,
             el,
-            margin,
-            rectPadding,
             tLong,
             tShort,
-            cRadius,
-            bigRadius,
-            rectSize,
-            tablePadding,
             numberFormat,
-            legendHeight,
-            titleHeight
+            dims
           );
         }
         this.x = x;

@@ -137,16 +137,11 @@ HTMLWidgets.widget({
           width,
           height,
           el,
-          margin,
-          barPadding,
           tLong,
           tShort,
           mOpacity,
           numberFormat,
-          legendHeight,
-          titleHeight,
-          yAxisSpace,
-          xAxisSpace
+          dims
         );
         var dim = {
           width: width,
