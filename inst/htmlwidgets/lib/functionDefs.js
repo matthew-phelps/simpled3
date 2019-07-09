@@ -73,14 +73,16 @@ function drawBarChart(
     .append("text")
     .attr("transform", "rotate(-90)")
     .attr("x", 0 - innerDim.innerHeight / 2)
-    .attr("y", (-dims.margin.left + 19))
+    .attr("y", dims.margin.left)
+    .attr("dominant-baseline", "hanging")
     .attr("class", "bar y axisTitle one plot_text");
 
   chartAxes
     .append("text")
     .attr("transform", "rotate(-90)")
     .attr("x", 0 - innerDim.innerHeight / 2)
-    .attr("y", -dims.margin.left)
+    .attr("y", (-dims.margin.left + 19))
+    .attr("dominant-baseline", "hanging")
     .attr("class", "bar y axisTitle two plot_text");
 
   // Data management
