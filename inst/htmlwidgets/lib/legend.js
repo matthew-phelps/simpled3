@@ -80,7 +80,7 @@ function drawLegend(
   titleWrapper
     .append("text")
     .text(inData.metaData.plotTitle)
-    .attr("alignment-baseline", "hanging")
+    .attr("dominant-baseline", "hanging")
     .attr("text-anchor", "start")
     .attr("id", "plot_titleD3_" + wrapperName)
     .attr("class", "plot_text")
