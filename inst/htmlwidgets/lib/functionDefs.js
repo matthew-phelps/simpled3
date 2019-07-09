@@ -67,7 +67,7 @@ function drawBarChart(
     .append("text")
     .attr("x", innerDim.innerWidth / 2)
     .attr("y", innerDim.innerHeight)
-    .attr("alignment-baseline", "hanging")
+    .attr("dominant-baseline", "hanging")
     .attr("class", "bar x axisTitle plot_text");
 
   // Y axis titles (2 rows)

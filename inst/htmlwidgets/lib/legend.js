@@ -53,7 +53,7 @@ function drawLegend(
       "transform",
       "translate(" + (rectSize + padding) + "," + rectSize / 2 + ")"
     )
-    .attr("alignment-baseline", "middle") // verticle alignment?
+    .attr("dominant-baseline", "middle") // verticle alignment?
     .text(inData.metaData.sexVars[1]);
 
   legendFemale
@@ -67,7 +67,7 @@ function drawLegend(
       "transform",
       "translate(" + (rectSize + padding) + "," + rectSize / 2 + ")"
     )
-    .attr("alignment-baseline", "middle") // verticle alignment?
+    .attr("dominant-baseline", "middle") // verticle alignment?
     .text(inData.metaData.sexVars[0]);
 
   /// ADD TITLE
