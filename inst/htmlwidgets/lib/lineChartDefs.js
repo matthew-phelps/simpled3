@@ -48,7 +48,7 @@ function drawLineChart(
   // Axis titles
   chartAxes
     .append("text")
-    .attr("x", innerDim.width / 2)
+    .attr("x", innerDim.innerWidth / 2)
     .attr("y", innerDim.innerHeight + dims.xAxisSpace)
     .attr("dominant-baseline", "hanging")
     .attr("class", "line x axisTitle");
