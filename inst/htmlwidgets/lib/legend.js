@@ -105,6 +105,6 @@ function resizeLegend(innerDim, wrapperName) {
     .select("." + wrapperName)
     .attr(
       "transform",
-      "translate(" + (0) + "," + innerDim.innerHeight + ")"
+      "translate(" + (0) + "," + (innerDim.innerHeight + dims.legendBuffer) + ")"
     );
 }
