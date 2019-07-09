@@ -94,7 +94,7 @@ topG.append("rect")
     .append("text")
     .attr("transform", "rotate(-90)")
     .attr("x", 0 - dim.innerHeight /2)
-    .attr("y", -18))
+    .attr("y", -18)
     .attr("class", "bar y axisTitle one plot_text");
 
   chartAxes
