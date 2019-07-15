@@ -70,28 +70,43 @@ function drawLegend(
     .attr("dominant-baseline", "middle") // verticle alignment?
     .text(inData.metaData.sexVars[0]);
 
-  /// ADD TITLE
+
+  /////////////    ADD TITLE   ////////////////////////////////////////////////////
   var titleWrapper = topG
     .append("g")
     .attr("class", wrapperName + " title")
     .attr("transform", "translate(" + -dims.margin.left + "," + -dims.margin.top + ")");
-
   
+  /*Split title into two line*/
+  var titleText = inData.metaData.plotTitle.split(": ")
+  /* First line of title */
   titleWrapper
     .append("text")
-    .text(inData.metaData.plotTitle)
+    .text(titleText[0])
     .attr("dominant-baseline", "hanging")
     .attr("text-anchor", "start")
-    .attr("id", "plot_titleD3_" + wrapperName)
+    .attr("id", "plot_titleD3_0_" + wrapperName)
+    .attr("class", "plot_text")
+    .attr("class", "output_titles");
+
+/* 2nd line of title*/
+    titleWrapper
+    .append("text")
+    .text(titleText[1])
+    .attr("transform", "translate(" + 0 + "," + dims.titleHeight1 + ")")
+    .attr("dominant-baseline", "hanging")
+    .attr("text-anchor", "start")
+    .attr("id", "plot_titleD3_1_" + wrapperName)
     .attr("class", "plot_text")
     .attr("class", "output_titles");
 }
 
 function updateLegend(inData, wrapperName, svgName, tDuration) {
-  d3.select("#plot_titleD3_" + wrapperName)
+  var titleText = inData.metaData.plotTitle.split(": ")
+  d3.select("#plot_titleD3_1_" + wrapperName)
     .transition()
     .duration(tDuration)
-    .text(inData.metaData.plotTitle);
+    .text(titleText[0]);
 }
 
 function resizeLegend(innerDim, dims, wrapperName) {

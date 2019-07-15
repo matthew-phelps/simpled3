@@ -9,12 +9,13 @@ HTMLWidgets.widget({
     var mOpacity = 0.0;
 
     var dims = {
-      margin: { top: 40, right: 20, bottom: 70, left: 95 },
+      margin: { top: 80, right: 20, bottom: 70, left: 95 },
       legendBuffer: 45,
       rectSize: 20, //dimension of colored square
       yAxisSpace: 67,
       xAxisSpace: 45,
       titleHeight: 40,
+      titleHeight1: 40,
       barPadding: 0.2
     };
 
