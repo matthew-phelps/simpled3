@@ -103,10 +103,15 @@ function drawLegend(
 
 function updateLegend(inData, wrapperName, svgName, tDuration) {
   var titleText = inData.metaData.plotTitle.split(": ")
-  d3.select("#plot_titleD3_1_" + wrapperName)
+  d3.select("#plot_titleD3_0_" + wrapperName)
     .transition()
     .duration(tDuration)
     .text(titleText[0]);
+
+  d3.select("#plot_titleD3_1_" + wrapperName)
+    .transition()
+    .duration(tDuration)
+    .text(titleText[1]);
 }
 
 function resizeLegend(innerDim, dims, wrapperName) {
