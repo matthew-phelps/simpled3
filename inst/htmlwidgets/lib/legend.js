@@ -78,7 +78,7 @@ function drawLegend(
     .attr("transform", "translate(" + -dims.margin.left + "," + -dims.margin.top + ")");
   
   /*Split title into two line*/
-  var titleText = inData.metaData.plotTitle.split(": ")
+  var titleText = inData.metaData.plotTitle.split(", ")
   /* First line of title */
   titleWrapper
     .append("text")
@@ -102,7 +102,7 @@ function drawLegend(
 }
 
 function updateLegend(inData, wrapperName, svgName, tDuration) {
-  var titleText = inData.metaData.plotTitle.split(": ")
+  var titleText = inData.metaData.plotTitle.split(", ")
   d3.select("#plot_titleD3_0_" + wrapperName)
     .transition()
     .duration(tDuration)
