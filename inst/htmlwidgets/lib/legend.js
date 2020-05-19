@@ -10,8 +10,7 @@ function drawLegend(
   dims,
   wrapperName,
   svgName
-) {
-  var rectSize = 20; //dimension of colored square
+) {  var rectSize = 20; //dimension of colored square
   var padding = 10;
   var entryWidth = 100; // width of square and text combined
   var legendWidth = rectSize + 2 * padding + entryWidth;
@@ -78,7 +77,7 @@ function drawLegend(
     .attr("transform", "translate(" + -dims.margin.left + "," + -dims.margin.top + ")");
   
   /*Split title into two line*/
-  var titleText = inData.metaData.plotTitle.split("  ")
+  var titleText = inData.metaData.plotTitle.split("  ");
   /* First line of title */
   titleWrapper
     .append("text")
@@ -102,7 +101,7 @@ function drawLegend(
 }
 
 function updateLegend(inData, wrapperName, svgName, tDuration) {
-  var titleText = inData.metaData.plotTitle.split("  ")
+  var titleText = inData.metaData.plotTitle.split("  pus")
   d3.select("#plot_titleD3_0_" + wrapperName)
     .transition()
     .duration(tDuration)
