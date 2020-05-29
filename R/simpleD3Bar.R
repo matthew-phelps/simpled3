@@ -16,7 +16,8 @@ simpleD3Bar <- function(data, colors, plotTitle, sexVars, width = NULL, height =
   metaData = list(
     colors = colors,
     plotTitle = plotTitle,
-    sexVars = sexVars
+    sexVars = sexVars,
+    dataVar = dataVar
   )
 
   # forward options using x
