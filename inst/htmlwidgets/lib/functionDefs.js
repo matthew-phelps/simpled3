@@ -7,7 +7,7 @@ function drawBarChart(
   tLong,
   tShort,
   mOpacity,
-
+  numberFormat,
   dims
 ) {
   var innerDim = {
@@ -189,7 +189,9 @@ function drawBarChart(
     .on("mouseout", hideTooltip);
 
   // Add axes
-  yAxis.transition().call(d3.axisLeft(scaleY));
+  yAxis.transition()
+    .call(d3.axisLeft(scaleY))
+      .tickFormat(numberFormat());
 
   xAxis
     .call(d3.axisBottom(scaleX))

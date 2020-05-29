@@ -34,8 +34,8 @@ HTMLWidgets.widget({
       currency: ["", "$"]
     });
 
-    var numberFormatDK = numFormatDefDK.format(",");
-    var numberFormatEN = numFormatDefEN.format(",");
+    
+    
     // State variables
     var chartExists = false;
     var resized = false;
@@ -50,14 +50,9 @@ HTMLWidgets.widget({
     return {
       renderValue: function(x) {
         if(x.metaData.lang === "dk"){          
-          for (var i = 0; i < x.data[x.metaData.dataVar].length; i++) {
-            x.data[x.metaData.dataVar][i] = numberFormatDK(x.data[x.metaData.dataVar][i])
-          }
-
-
-        }
-        else if(x.metaData.lang === "en"){
-          x.data[x.metaData.dataVar]
+          var numberFormat = numFormatDefDK.format(",");
+          } else if (x.metaData.lang === "en"){
+          var numberFormat = numFormatDefEN.format(",");
         }
 
         if (!chartExists) {
@@ -70,7 +65,7 @@ HTMLWidgets.widget({
             tLong,
             tShort,
             mOpacity,
-            
+            numberFormat,
             dims
           );
         } else if (resized) {
@@ -82,7 +77,7 @@ HTMLWidgets.widget({
             tLong,
             tShort,
             mOpacity,
-            
+            numberFormat,
             dims
           );
         } else {
@@ -94,7 +89,7 @@ HTMLWidgets.widget({
             tLong,
             tShort,
             mOpacity,
-            
+            numberFormat,
             dims
           );
         }
