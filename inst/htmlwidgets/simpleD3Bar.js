@@ -106,6 +106,11 @@ HTMLWidgets.widget({
       },
 
       resize: function(width, height) {
+        if(this.x.metaData.lang === "dk"){          
+          var numberFormat = numFormatDefDK.format(",");
+          } else if (this.x.metaData.lang === "en"){
+          var numberFormat = numFormatDefEN.format(",");
+        }
         resizeBarChart(
           this.x,
           width,
