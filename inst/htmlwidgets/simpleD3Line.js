@@ -39,12 +39,12 @@ HTMLWidgets.widget({
 
     return {
       renderValue: function(x) {
-        if (!chartExists) {
-          if(x.metaData.lang === "dk"){          
+        if(x.metaData.lang === "dk"){          
           var numberFormat = numFormatDefDK.format(",");
           } else if (x.metaData.lang === "en"){
           var numberFormat = numFormatDefEN.format(",");
         }
+        if (!chartExists) {
           chartExists = true;
           drawLineChart(
             x,
@@ -92,12 +92,12 @@ HTMLWidgets.widget({
       },
 
       resize: function(width, height) {
-        if (!chartExists) {
-          if(x.metaData.lang === "dk"){          
+         if(x.metaData.lang === "dk"){          
           var numberFormat = numFormatDefDK.format(",");
           } else if (x.metaData.lang === "en"){
           var numberFormat = numFormatDefEN.format(",");
         }
+
         resizeLineChart(
           this.x,
           width,
