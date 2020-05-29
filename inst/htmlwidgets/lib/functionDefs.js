@@ -191,7 +191,8 @@ function drawBarChart(
   // Add axes
   yAxis.transition()
     .call(d3.axisLeft(scaleY)
-      .tickFormat(numberFormat(d=>d)));
+      .tick()
+      .tickFormat(d => numberFormat(d)));
 
   xAxis
     .call(d3.axisBottom(scaleX))
