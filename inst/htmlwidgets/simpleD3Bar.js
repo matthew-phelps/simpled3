@@ -70,7 +70,7 @@ HTMLWidgets.widget({
             tLong,
             tShort,
             mOpacity,
-            numberFormat,
+            
             dims
           );
         } else if (resized) {
@@ -82,7 +82,7 @@ HTMLWidgets.widget({
             tLong,
             tShort,
             mOpacity,
-            numberFormat,
+            
             dims
           );
         } else {
@@ -94,7 +94,7 @@ HTMLWidgets.widget({
             tLong,
             tShort,
             mOpacity,
-            numberFormat,
+            
             dims
           );
         }

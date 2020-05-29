@@ -7,7 +7,7 @@ function drawBarChart(
   tLong,
   tShort,
   mOpacity,
-  numberFormat,
+
   dims
 ) {
   var innerDim = {
@@ -16,6 +16,9 @@ function drawBarChart(
   };
 
   var chartType = "Bar";
+
+/*Format data into language specific style*/
+
 
   /*var xAxisTitleMargin = innerDim.innerHeight + dims.xAxisSpace;*/
   var container = d3
@@ -235,8 +238,8 @@ function drawBarChart(
 
   function showTooltip(d) {
     thead.text(d.key);
-    maleCell.text(d.values[0].sex + ": " + numberFormat(d.values[0].value));
-    femaleCell.text(d.values[1].sex + ": " + numberFormat(d.values[1].value));
+    maleCell.text(d.values[0].sex + ": " + d.values[0].value);
+    femaleCell.text(d.values[1].sex + ": " + d.values[1].value);
 
     tooltip
       .transition()
