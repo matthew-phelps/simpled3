@@ -49,14 +49,14 @@ HTMLWidgets.widget({
 
     return {
       renderValue: function(x) {
-        if(x.metaData.lang === "DK"){          
+        if(x.metaData.lang === "dk"){          
           for (var i = 0; i < x.data[x.metaData.dataVar].length; i++) {
             x.data[x.metaData.dataVar][i] = numberFormatDK(x.data[x.metaData.dataVar][i])
           }
 
 
         }
-        else if(x.metaData.lang === "EN"){
+        else if(x.metaData.lang === "en"){
           x.data[x.metaData.dataVar]
         }
 
