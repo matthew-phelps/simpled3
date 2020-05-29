@@ -164,7 +164,8 @@ function drawLineChart(
   yAxis
     .transition()
     .duration(tLong)
-    .call(d3.axisLeft(scaleY));
+    .call(d3.axisLeft(scaleY)
+      .tickFormat(d => numberFormat(d)));
 
   xAxis
     .transition()
