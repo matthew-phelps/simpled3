@@ -18,55 +18,20 @@ HTMLWidgets.widget({
       bigRadius: 15
     };
 
-    var localeFormatter = d3.formatLocale({
+/*Format requires defining formats for several data types even though they will not be uses - apparently*/
+    var numFormatDefDK= d3.formatLocale({
       decimal: ",",
       thousands: ".",
       grouping: [3],
-      currency: ["", "€"],
-      dateTime: "%a, %e %b %Y, %X",
-      date: "%d.%m.%Y",
-      time: "%H:%M:%S",
-      periods: ["", ""],
-      days: [
-        "Sonntag",
-        "Montag",
-        "Dienstag",
-        "Mittwoch",
-        "Donnerstag",
-        "Freitag",
-        "Samstag"
-      ],
-      shortDays: ["So", "Mo", "Di", "Mi", "Do", "Fr", "Sa"],
-      months: [
-        "Januar",
-        "Februar",
-        "März",
-        "April",
-        "Mai",
-        "Juni",
-        "Juli",
-        "August",
-        "September",
-        "Oktober",
-        "November",
-        "December"
-      ],
-      shortMonths: [
-        "Jan",
-        "Feb",
-        "Mär",
-        "Apr",
-        "Mai",
-        "Jun",
-        "Jul",
-        "Aug",
-        "Sep",
-        "Okt",
-        "Nov",
-        "Dec"
-      ]
+      currency: ["", "DKK"]
     });
-    var numberFormat = localeFormatter.format(",");
+
+    var numFormatDefEN= d3.formatLocale({
+      decimal: ".",
+      thousands: ",",
+      grouping: [3],
+      currency: ["", "$"]
+    });
 
     // State variables
     var chartExists = false;
@@ -75,6 +40,11 @@ HTMLWidgets.widget({
     return {
       renderValue: function(x) {
         if (!chartExists) {
+          if(x.metaData.lang === "dk"){          
+          var numberFormat = numFormatDefDK.format(",");
+          } else if (x.metaData.lang === "en"){
+          var numberFormat = numFormatDefEN.format(",");
+        }
           chartExists = true;
           drawLineChart(
             x,
@@ -122,6 +92,12 @@ HTMLWidgets.widget({
       },
 
       resize: function(width, height) {
+        if (!chartExists) {
+          if(x.metaData.lang === "dk"){          
+          var numberFormat = numFormatDefDK.format(",");
+          } else if (x.metaData.lang === "en"){
+          var numberFormat = numFormatDefEN.format(",");
+        }
         resizeLineChart(
           this.x,
           width,
