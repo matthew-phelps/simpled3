@@ -10,14 +10,15 @@
 #' @param elementId Id if specified
 #'
 #' @export
-simpleD3Bar <- function(data, colors, plotTitle, sexVars, dataVar, width = NULL, height = NULL, elementId = NULL) {
+simpleD3Bar <- function(data, colors, plotTitle, sexVars, dataVar, lang, width = NULL, height = NULL, elementId = NULL) {
 
   # List of settings to pass to d3
   metaData = list(
     colors = colors,
     plotTitle = plotTitle,
     sexVars = sexVars,
-    dataVar = dataVar
+    dataVar = dataVar,
+    lang = lang
   )
 
   # forward options using x
