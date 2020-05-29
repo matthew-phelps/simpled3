@@ -662,7 +662,8 @@ function resizeBarChart(
     .selectAll(".bar.y.axis")
     .transition()
     .duration(tShort)
-    .call(d3.axisLeft(scaleY));
+    .call(d3.axisLeft(scaleY)
+      .tickFormat(d => numberFormat(d)));
 
   // Resize legend
   var wrapperName = "legendWrapperBar";
