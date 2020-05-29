@@ -92,9 +92,9 @@ HTMLWidgets.widget({
       },
 
       resize: function(width, height) {
-         if(x.metaData.lang === "dk"){          
+         if(this.x.metaData.lang === "dk"){          
           var numberFormat = numFormatDefDK.format(",");
-          } else if (x.metaData.lang === "en"){
+          } else if (this.x.metaData.lang === "en"){
           var numberFormat = numFormatDefEN.format(",");
         }
 
