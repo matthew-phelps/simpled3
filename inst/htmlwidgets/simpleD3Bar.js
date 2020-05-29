@@ -20,55 +20,22 @@ HTMLWidgets.widget({
     };
 
     /*Format requires defining formats for several data types even though they will not be uses - apparently*/
-    var localeFormatter = d3.formatLocale({
+    var numFormatDefDK= d3.formatLocale({
       decimal: ",",
       thousands: ".",
       grouping: [3],
-      currency: ["", "€"],
-      dateTime: "%a, %e %b %Y, %X",
-      date: "%d.%m.%Y",
-      time: "%H:%M:%S",
-      periods: ["", ""],
-      days: [
-        "Sonntag",
-        "Montag",
-        "Dienstag",
-        "Mittwoch",
-        "Donnerstag",
-        "Freitag",
-        "Samstag"
-      ],
-      shortDays: ["So", "Mo", "Di", "Mi", "Do", "Fr", "Sa"],
-      months: [
-        "Januar",
-        "Februar",
-        "März",
-        "April",
-        "Mai",
-        "Juni",
-        "Juli",
-        "August",
-        "September",
-        "Oktober",
-        "November",
-        "December"
-      ],
-      shortMonths: [
-        "Jan",
-        "Feb",
-        "Mär",
-        "Apr",
-        "Mai",
-        "Jun",
-        "Jul",
-        "Aug",
-        "Sep",
-        "Okt",
-        "Nov",
-        "Dec"
-      ]
+      currency: ["", "DKK"]
     });
-    var numberFormat = localeFormatter.format(",");
+
+    var numFormatDefEN= d3.formatLocale({
+      decimal: ".",
+      thousands: ",",
+      grouping: [3],
+      currency: ["", "$"]
+    });
+
+    var numberFormatDK = numFormatDefDK.format(",");
+    var numberFormatEN = numFormatDefEN.format(",");
     // State variables
     var chartExists = false;
     var resized = false;
@@ -82,6 +49,17 @@ HTMLWidgets.widget({
 
     return {
       renderValue: function(x) {
+        if(x.metaData.lang === "DK"){          
+          for (var i = 0; i < x.data[x.metaData.dataVar].length; i++) {
+            x.data[x.metaData.dataVar][i] = numberFormatDK(x.data[x.metaData.dataVar][i])
+          }
+
+
+        }
+        else if(x.metaData.lang === "EN"){
+          x.data[x.metaData.dataVar]
+        }
+
         if (!chartExists) {
           chartExists = true;
           drawBarChart(
