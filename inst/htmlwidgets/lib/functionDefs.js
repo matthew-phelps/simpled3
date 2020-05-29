@@ -240,8 +240,8 @@ function drawBarChart(
 
   function showTooltip(d) {
     thead.text(d.key);
-    maleCell.text(d.values[0].sex + ": " + d.values[0].value);
-    femaleCell.text(d.values[1].sex + ": " + d.values[1].value);
+    maleCell.text(d.values[0].sex + ": " + numberFormat(d.values[0].value));
+    femaleCell.text(d.values[1].sex + ": " + numberFormat(d.values[1].value));
 
     tooltip
       .transition()
@@ -449,7 +449,8 @@ function updateBarChart(
     .selectAll(".bar.y.axis")
     .transition()
     .duration(tShort)
-    .call(d3.axisLeft(scaleY));
+    .call(d3.axisLeft(scaleY)
+      .tickFormat(d => numberFormat(d)));
 
   // Axis titles
   d3.selectAll(".bar.x.axisTitle")
