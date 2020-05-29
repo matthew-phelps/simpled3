@@ -410,7 +410,8 @@ function updateLineChart(
     .select(".line.y.axis")
     .transition()
     .duration(tLong)
-    .call(d3.axisLeft(scaleY));
+    .call(d3.axisLeft(scaleY)
+      .tickFormat(d => numberFormat(d)));
 
   svg
     .select(".line.x.axis")
@@ -611,7 +612,8 @@ function resizeLineChart(
     .select(".line.y.axis")
     .transition()
     .duration(tLong)
-    .call(d3.axisLeft(scaleY));
+    .call(d3.axisLeft(scaleY)
+      .tickFormat(d => numberFormat(d)));
 
   svg
     .select(".line.x.axis")
